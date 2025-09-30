@@ -1,0 +1,26 @@
+# Node.js dependencies
+node_modules/
+
+# Lokale Umgebungsdateien
+.env
+*.local
+
+# Systemdateien
+.DS_Store
+Thumbs.db
+
+# Editor-/IDE-Dateien
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Sonstiges
+*.zip
+*.tar.gz
