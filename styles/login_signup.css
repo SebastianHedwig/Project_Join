@@ -6,17 +6,11 @@ main {
 }
 
 .joinlogo {
-    position: absolute;
-    top: 80px;
-    left: 77px;
     width: 100px;
     height: 122px;
 }
 
 .signup {
-    position: absolute;
-    top: 67px;
-    left: 1039px; 
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -24,4 +18,66 @@ main {
     gap: 35px;
     width: 279px;
     height: 49px;
+}
+
+.signupBtn {
+    background-color: var(--color-maincolor);
+    border-radius: 8px;
+    padding: 15px 16px;
+    gap: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-white);
+    border-radius: 30px;
+    padding: 48px 115px;
+    gap: 32px;
+    width: 652px;
+    height: 449px;
+}
+
+.bluestrip {
+    width: 0px;
+    height: 150px;
+    border: 3px solid;
+    border-color: var(--color-lightblue);
+    rotate: 90deg
+}
+
+.btnholder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    width: 100%;
+}
+
+
+.loginBtn {
+    background-color: var(--color-maincolor);
+    border-radius: 8px;
+    padding: 15px 24px;
+    gap: 10px;
+    height: 48px;
+    width: 110px;
+}
+
+.guestloginBtn {
+    background-color: var(--color-white);
+    border-radius: 8px;
+    padding: 15px 24px;
+    gap: 10px;
+    height: 48px;
+    width: 177px;
+}
+
+.content-wrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
