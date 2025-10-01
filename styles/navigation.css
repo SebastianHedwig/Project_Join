@@ -1,0 +1,38 @@
+.nav_bar_side {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 230px;
+    height: 100vh;
+    background-color: #2a3647;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#logo {
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.nav_bar_side_btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    gap: 15px;
+    transition: background-color 0.3s;
+}
+
+.nav_bar_side_bottom {
+    display: flex;
+    flex-direction: column;
+    padding-top: 243px;
+    gap: 4px;
+}
