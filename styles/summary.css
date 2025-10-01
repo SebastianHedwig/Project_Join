@@ -1,0 +1,8 @@
+.summary_content_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 326px;
+    margin-top: 128px;
+    gap: 60px;
+}
