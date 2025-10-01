@@ -1,0 +1,27 @@
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+}
+
+.joinlogo {
+    position: absolute;
+    top: 80px;
+    left: 77px;
+    width: 100px;
+    height: 122px;
+}
+
+.signup {
+    position: absolute;
+    top: 67px;
+    left: 1039px; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    width: 279px;
+    height: 49px;
+}
