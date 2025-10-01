@@ -28,6 +28,7 @@
     cursor: pointer;
     gap: 15px;
     transition: background-color 0.3s;
+    text-decoration: none;
 }
 
 .nav_bar_side_bottom {
