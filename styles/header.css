@@ -1,0 +1,15 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    margin-left: 230px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    height: 96px;
+}
+
+#page_title {
+    font-size: 24px;
+    padding-left: 64px;
+}

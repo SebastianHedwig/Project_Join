@@ -8,18 +8,18 @@
         <title>Kanban Board</title>
         <link rel="icon" href="#" type="image/x-icon">
 
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="./styles/login.css">
+        <link rel="stylesheet" href="/style.css">
+        <link rel="stylesheet" href="/styles/login.css">
 
-        <link rel="stylesheet" href="./styles/header.css">
-        <link rel="stylesheet" href="./styles/navigation.css">
-        <link rel="stylesheet" href="./styles/board.css">
-        <link rel="stylesheet" href="./styles/add_task.css">
-        <link rel="stylesheet" href="./styles/dialog_add_contact.css">
-        <link rel="stylesheet" href="./styles/contacts.css">
-        <link rel="stylesheet" href="./styles/summary.css">
-        <link rel="stylesheet" href="./styles/data_privacy.css">
-        <link rel="stylesheet" href="./styles/legal_notes.css">
+        <link rel="stylesheet" href="/styles/header.css">
+        <link rel="stylesheet" href="/styles/navigation.css">
+        <link rel="stylesheet" href="/styles/board.css">
+        <link rel="stylesheet" href="/styles/add_task.css">
+        <link rel="stylesheet" href="/styles/dialog_add_contact.css">
+        <link rel="stylesheet" href="/styles/contacts.css">
+        <link rel="stylesheet" href="/styles/summary.css">
+        <link rel="stylesheet" href="/styles/data_privacy.css">
+        <link rel="stylesheet" href="/styles/legal_notes.css">
     </head>
 
     <body>
@@ -27,9 +27,23 @@
         <header id="header">
             <span id="page_title">Kanban Project Management Tool</span>
             <div id="info_container">
-                <img id="help_img" src="#" alt="Help auestion mark">
+                <img id="help_img" src="/img/help.svg" alt="Help auestion mark">
                 <img src="#" alt="User picture">
             </div>
+        </header>
+        <section class="nav_bar_side">
+            <img id="logo" src="/img/logo.png" alt="Join Logo">
+            <div>
+            <button class="nav_bar_side_btn"><img src="/img/summary.svg" alt="Summary">Summary</button>
+            <button class="nav_bar_side_btn"><img src="/img/add-task.svg" alt="Add Task">Add Task</button>
+            <button class="nav_bar_side_btn"><img src="/img/board.svg" alt="Board">Board</button>
+            <button class="nav_bar_side_btn"><img src="/img/contacts.svg" alt="Contacts">Contacts</button>
+            </div>
+            <div class="nav_bar_side_bottom">
+                <button class="nav_bar_side_btn">Privacy Policy</button>
+                <button class="nav_bar_side_btn">Legal notice</button>
+            </div>
+        </section>
         </header>
 
         <main id="task_page_container">
