@@ -19,6 +19,7 @@ body {
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
 }
 
 :root {
@@ -33,4 +34,10 @@ body {
     max-width: 1920px;
     margin: 0 auto;
     padding: 0 1rem;
+}
+
+h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-black);
 }
