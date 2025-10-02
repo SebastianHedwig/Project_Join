@@ -79,7 +79,7 @@ main {
     height: 100vh;
 }
 
-.form {
+.login-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -92,7 +92,7 @@ main {
     height: fit-content;
 }
 
-.form__heading {
+.login-form__heading {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -101,7 +101,7 @@ main {
     gap: 16px;
 }
 
-.form__heading__h1 {
+.login-form__heading h1 {
     width: 100%;
     text-align: center;
 }
