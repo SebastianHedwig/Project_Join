@@ -1,3 +1,16 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+header {display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-background);
+    width: 100%;
+}
+
 main {
     display: flex;
     justify-content: center;
@@ -7,9 +20,6 @@ main {
 }
 
 .joinlogo {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100px;
     height: 122px;
 }
@@ -20,7 +30,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: 35px;
-    width: 279px;
+    width: fit-content;
     height: 49px;
 }
 
@@ -86,7 +96,6 @@ form {
     justify-content: center;
     align-items: center;
     width: 100%;
-    position: relative;
     max-width: 1920px;
     margin: 0 auto;
     padding: 0 1rem;

@@ -10,12 +10,6 @@
     --color-background: #F6F7F8;
 }
 
-/* Verwendungsbeispiel: 
-body {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-} */
-
 * {
   margin: 0;
   box-sizing: border-box;
