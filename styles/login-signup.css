@@ -1,5 +1,6 @@
 html {
     line-height: 1.2;
+    background-color: var(--color-background);
 }
 
 body {
@@ -27,7 +28,7 @@ body {
     width: 100%;
 }
 
-.header__logoAndSignup {
+.header__logo-and-signup {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -101,10 +102,6 @@ main {
 }
 
 .form__heading__h1 {
-    font-weight: 700;
-    font-size: 61px;
-    font-weight: bold;
-    color: var(--color-black);
     width: 100%;
     text-align: center;
 }
