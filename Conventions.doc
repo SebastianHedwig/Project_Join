@@ -129,3 +129,9 @@ Namenskonventionen CSS / HTML:
 | **Utility-Klasse**            | .d-none, .text-center, .max-w-1920          | Universelle Helfer, beschreiben direkt das Layout/Styling, **kebab-case**                                                |
 | **ID**                        | #main-content, #user-profile                | Einzigartig pro Seite, am besten **kebab-case**                                                                          |
 | **JS-Hook-Klasse** (optional) | .js-modal-trigger                           | Wenn du Klassen nur für JS brauchst, Prefix "js-" verwenden, damit klar ist, dass sie **nicht für Styling** gedacht sind |
+
+__________________________________________________
+
+Namenskonvention JavaScript:
+
+Bennenung Funktionen immer CamelCase.
