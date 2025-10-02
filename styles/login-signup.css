@@ -123,7 +123,12 @@ main {
     gap: 32px;
 }
 
-.form__inputfields__email-wrapper {
+.form__inputfield__input {
+    width: 90%;
+    height: 24px;
+}
+
+.form__inputfield__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -131,18 +136,6 @@ main {
     border-radius: 10px;
     padding: 12px 21px;
     width: 422px;
-}
-
-.form__inputfields__email-input {
-    width: 90%;
-    height: 24px;
-    padding: 0px;
-    padding-top: 2px;
-}
-
-.form__inputfields__password-input {
-    width: 90%;
-    height: 24px;
 }
 
 input::placeholder {
@@ -151,24 +144,9 @@ input::placeholder {
     color: var(--color-lightgrey);
 }
 
-.form__inputfields__password-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid var(--color-lightgrey);
-    border-radius: 10px;
-    padding: 12px 21px;
-    width: 422px;
-}
-
-.form__inputfields__icon__mail {
-    height: 16px;
-    width: 20px;
-}
-
-.form__inputfields__icon__lock {
-    height: 21px;
-    width: 16px;
+.form__inputfields__icon {
+    height: 24px;
+    width: 24px;
 }
 
 .form__btnholder {
