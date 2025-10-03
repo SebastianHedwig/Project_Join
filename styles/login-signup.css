@@ -166,7 +166,7 @@ input::placeholder {
 .useraccess-form__privacy-policy {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     gap: 3px;
 }
 
@@ -184,6 +184,7 @@ input::placeholder {
 .useraccess-form__privacy-policy__link {
     text-decoration: none;
     color: var(--color-lightblue);
+    cursor: pointer;
 }
 
 .footer {
