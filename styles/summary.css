@@ -95,7 +95,3 @@
 .summary-content__metrics__row__box:hover span {
     color: var(--color-white);
 }
-
-.summary-btn {
-    background-color: var(--color-navhover) !important;
-}
