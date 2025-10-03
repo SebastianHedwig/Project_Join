@@ -4,28 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Kanban Board</title>
     <link rel="icon" href="#" type="image/x-icon">
-
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../styles/login-signup.css">
-
 </head>
 
 <body>
-    <header class="header">
+    <header class="header content-wrapper">
         <div class="header__logo-and-signup">
             <img src="../assets/img/logo-black.png" alt="the word: join with a big J with a blue dot on the left side,"
                 class="header__joinlogo">
         </div>
         </div>
     </header>
-    <main>
-        <div class="content-wrapper">
 
+    <main class="content-wrapper">
             <form class="useraccess-form">
-                    <img class="useraccess-form__arrowicon" src="../assets/img/arrow-left.svg" alt="blue arrow that points to the left">
+                    <img class="useraccess-form__arrowicon" src="../assets/img/arrow-left-blue.svg" alt="blue arrow that points to the left">
                     <div class="useraccess-form__heading">
                         <h1 class="useraccess-form__heading__h1">Sign up</h1>
                         <div class="useraccess-form__heading__bluestrip"></div>
@@ -48,25 +44,20 @@
                             placeholder="Confirm Password">
                         <img class="useraccess-form__inputfields__icon" src="../assets/img/lock.svg" alt="icon of a lock">
                     </div>
-                    <p><input type="checkbox"><span>I accept the <a href="">Privacy Policy</a></span></p>
+                    <p class="useraccess-form__privacy-policy"><img src="/assets/img/checkbtn-unchecked.svg" class="useraccess-form__privacy-policy__checkbox"><span class="useraccess-form__privacy-policy__infotext">I accept the <a href="" class="useraccess-form__privacy-policy__link">Privacy Policy</a></span></p>
                 </div>
                 <div class="useraccess-form__btnholder">
                     <button class="loginBtn">Sign up</button>
                 </div>
             </form>
-
-        </div>
     </main>
 
-    <footer class="footer">
-        <div class="content-wrapper">
+    <footer class="footer content-wrapper">
             <div class="footer__privacy-legal-box">
-                <a href="" class="footer__privacy-legal-box__link-to-privacy">Privacy Policy</a>
-                <a href="" class="footer__privacy-legal-box__link-to-legal">Legal notice</a>
+                <a href="" class="footer__privacy-legal-box__links">Privacy Policy</a>
+                <a href="" class="footer__privacy-legal-box__links">Legal notice</a>
             </div>
-        </div>
     </footer>
 
 </body>
-
 </html>
