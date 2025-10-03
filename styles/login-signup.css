@@ -16,8 +16,6 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 1920px;
-    margin: 0 auto;
 }
 
 .header {
@@ -79,7 +77,7 @@ main {
     height: 100vh;
 }
 
-.login-form {
+.useraccess-form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -93,7 +91,7 @@ main {
     position: relative;
 }
 
-.form__arrowicon {
+.useraccess-form__arrowicon {
     height: 32px;
     position: absolute;
     left: 48px;
@@ -101,14 +99,14 @@ main {
     width: 32px;
 }
 
-.form__arrow-h1 {
+h1 {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 
-.login-form__heading {
+.useraccess-form__heading {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,12 +115,12 @@ main {
     gap: 16px;
 }
 
-.login-form__heading h1 {
+h1 {
     width: 100%;
     text-align: center;
 }
 
-.form__heading__bluestrip {
+.useraccess-form__heading__bluestrip {
     width: 150px;
     height: 0px;
     border-top: 3px solid;
@@ -130,7 +128,7 @@ main {
     border-radius: 3px;
 }
 
-.form__inputfields {
+.useraccess-form__inputfields {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,12 +137,12 @@ main {
     gap: 32px;
 }
 
-.form__inputfield__input {
+.useraccess-form__inputfield__input {
     width: 90%;
     height: 24px;
 }
 
-.form__inputfield__wrapper {
+.useraccess-form__inputfield__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -165,7 +163,7 @@ input::placeholder {
     width: 24px;
 }
 
-.form__btnholder {
+.useraccess-form__btnholder {
     display: flex;
     flex-direction: row;
     justify-content: center;
