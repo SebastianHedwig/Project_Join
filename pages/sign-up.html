@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban Board</title>
-    <link rel="icon" href="/assets/img/logo-black.png" type="image/x-icon">
+    <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../styles/login-signup.css">
 </head>
@@ -20,44 +20,54 @@
     </header>
 
     <main class="content-wrapper">
-            <form class="useraccess-form">
-                    <img class="useraccess-form__arrowicon" src="../assets/img/arrow-left-blue.svg" alt="blue arrow that points to the left">
-                    <div class="useraccess-form__heading">
-                        <h1 class="useraccess-form__heading__h1">Sign up</h1>
-                        <div class="useraccess-form__heading__bluestrip"></div>
-                    </div>
-                <div class="useraccess-form__inputfields">
-                    <div class="useraccess-form__inputfield__wrapper">
-                        <input class="useraccess-form__inputfield__input" id="name" type="text" placeholder="Name">
-                        <img class="useraccess-form__inputfields__icon" src="../assets/img/person.svg" alt="icon of an person">
-                    </div>
-                    <div class="useraccess-form__inputfield__wrapper">
-                        <input class="useraccess-form__inputfield__input" id="email" type="email" placeholder="Email">
-                        <img class="useraccess-form__inputfields__icon" src="../assets/img/mail.svg" alt="icon of an email">
-                    </div>
-                    <div class="useraccess-form__inputfield__wrapper">
-                        <input class="useraccess-form__inputfield__input" id="password" type="password" placeholder="Password">
-                        <img class="useraccess-form__inputfields__icon" src="../assets/img/lock.svg" alt="icon of a lock">
-                    </div>
-                    <div class="useraccess-form__inputfield__wrapper">
-                        <input class="useraccess-form__inputfield__input" id="confirm-password" type="password"
-                            placeholder="Confirm Password">
-                        <img class="useraccess-form__inputfields__icon" src="../assets/img/lock.svg" alt="icon of a lock">
-                    </div>
-                    <p class="useraccess-form__privacy-policy"><img src="/assets/img/checkbtn-unchecked.svg" class="useraccess-form__privacy-policy__checkbox"><span class="useraccess-form__privacy-policy__infotext">I accept the <a href="" class="useraccess-form__privacy-policy__link">Privacy Policy</a></span></p>
+        <form class="useraccess-form">
+            <img class="useraccess-form__arrowicon" src="../assets/img/arrow-left-blue.svg"
+                alt="blue arrow that points to the left" onclick="location.href='../index.html'">
+            <div class="useraccess-form__heading">
+                <h1>Sign up</h1>
+                <div class="useraccess-form__heading__bluestrip"></div>
+            </div>
+            <div class="useraccess-form__inputfields">
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="name" type="text" placeholder="Name">
+                    <img class="useraccess-form__inputfields__icon" src="../assets/img/person.svg"
+                        alt="icon of an person">
                 </div>
-                <div class="useraccess-form__btnholder">
-                    <button class="btn">Sign up</button>
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="email" type="email" placeholder="Email">
+                    <img class="useraccess-form__inputfields__icon" src="../assets/img/mail.svg" alt="icon of an email">
                 </div>
-            </form>
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="password" type="password"
+                        placeholder="Password">
+                    <img class="useraccess-form__inputfields__icon" src="../assets/img/lock.svg" alt="icon of a lock">
+                </div>
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="confirm-password" type="password"
+                        placeholder="Confirm Password">
+                    <img class="useraccess-form__inputfields__icon" src="../assets/img/lock.svg" alt="icon of a lock">
+                </div>
+                <p class="useraccess-form__privacy-policy">
+                    <img src="../assets/img/checkbtn-unchecked.svg" class="useraccess-form__privacy-policy__checkbox">
+                    <span class="useraccess-form__privacy-policy__infotext">I accept the
+                        <a href="/pages/privacy-policy.html" class="useraccess-form__privacy-policy__link">Privacy
+                            Policy</a>
+                    </span>
+                </p>
+            </div>
+            <div class="useraccess-form__btnholder">
+                <button class="btn">Sign up</button>
+            </div>
+        </form>
     </main>
 
     <footer class="footer content-wrapper">
-            <div class="footer__privacy-legal-box">
-                <a href="" class="footer__privacy-legal-box__links">Privacy Policy</a>
-                <a href="" class="footer__privacy-legal-box__links">Legal notice</a>
-            </div>
+        <div class="footer__privacy-legal-box">
+            <a href="/pages/privacy-policy.html" class="footer__privacy-legal-box__links">Privacy Policy</a>
+            <a href="/pages/legal-notice.html" class="footer__privacy-legal-box__links">Legal notice</a>
+        </div>
     </footer>
 
 </body>
+
 </html>

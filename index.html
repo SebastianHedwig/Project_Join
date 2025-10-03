@@ -1,60 +1,58 @@
 <!DOCTYPE html>
 <html lang="de">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Kanban Board</title>
-        <link rel="icon" href="#" type="image/x-icon">
 
-        <link rel="stylesheet" href="./style.css">
-        <link rel="stylesheet" href="./styles/login.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="icon" href="/assets/img/logo-black.png" type="image/x-icon">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/styles/login-signup.css">
+</head>
 
-        <link rel="stylesheet" href="./styles/header.css">
-        <link rel="stylesheet" href="./styles/navigation.css">
-        <link rel="stylesheet" href="./styles/board.css">
-        <link rel="stylesheet" href="./styles/add_task.css">
-        <link rel="stylesheet" href="./styles/dialog_add_contact.css">
-        <link rel="stylesheet" href="./styles/contacts.css">
-        <link rel="stylesheet" href="./styles/summary.css">
-        <link rel="stylesheet" href="./styles/data_privacy.css">
-        <link rel="stylesheet" href="./styles/legal_notes.css">
-    </head>
-
-    <body>
-
-        <header id="header_start">
-            <img id="logo" src="./img/logo.png" alt="Join Logo">
-            <div>
-                <span>Not a Join User?</span>
-                <button id="sign_up_btn"></button>
+<body>
+    <header class="header content-wrapper">
+        <div class="header__logo-and-signup">
+            <img src="/assets/img/logo-black.png" alt="the word: join with a big J with a blue dot on the left side,"
+                class="header__joinlogo">
+            <div class="header__signup">
+                <span class="header__signup__message">Not a Join user?</span>
+                <button class="btn header__signup__signupBtn" onclick="location.href='/pages/sign-up.html'">Sign up</button>
             </div>
+        </div>
+    </header>
 
-        </header>
-        
-        <div id="login_form_container"></div>
+    <main class="content-wrapper">
+        <form class="useraccess-form">
+            <div class="useraccess-form__heading">
+                <h1>Log in</h1>
+                <div class="useraccess-form__heading__bluestrip"></div>
+            </div>
+            <div class="useraccess-form__inputfields">
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="email" type="email" placeholder="Email">
+                    <img class="useraccess-form__inputfields__icon" src="/assets/img/mail.svg" alt="icon of an email">
+                </div>
+                <div class="useraccess-form__inputfield__wrapper">
+                    <input class="useraccess-form__inputfield__input" id="password" type="password"
+                        placeholder="Password">
+                    <img class="useraccess-form__inputfields__icon" src="/assets/img/lock.svg" alt="icon of a lock">
+                </div>
+            </div>
+            <div class="useraccess-form__btnholder">
+                <button class="btn">Log in</button>
+                <button class="btn guest">Guest Log in</button>
+            </div>
+        </form>
+    </main>
 
-        <script src="./script.js"></script>
-        <script src="./scripts/login.js"></script>
-        <script src="./scripts/main.js"></script>
-        <script src="./scripts/navigation.js"></script>
+    <footer class="footer content-wrapper">
+        <div class="footer__privacy-legal-box">
+            <a href="/pages/privacy-policy.html" class="footer__privacy-legal-box__links">Privacy Policy</a>
+            <a href="/pages/legal-notice.html" class="footer__privacy-legal-box__links">Legal notice</a>
+        </div>
+    </footer>
 
-        <script src="./scripts/board.js"></script>
-        <script src="./scripts/drag_and_drop.js"></script>
-        <script src="./scripts/ticket.js"></script>
-
-        <script src="./scripts/add_task.js"></script>
-        <script src="./scripts/dialog_add_contact.js"></script>
-        <script src="./scripts/contacts.js"></script>
-        <script src="./scripts/greetings.js"></script>
-        <script src="./scripts/summary.js"></script>
-
-        <script src="./templates/tpl_login.js"></script>
-        <script src="./templates/tpl_ticket.js"></script>
-        <script src="./templates/tpl_navigation.js"></script>
-        <script src="./templates/tpl_board.js"></script>
-        <script src="./templates/tpl_add_task.js"></script>
-        <script src="./templates/tpl_summary.js"></script>
-    </body>
+</body>
 
 </html>
