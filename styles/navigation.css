@@ -1,4 +1,4 @@
-#nav_menu {
+#nav-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@
     padding-bottom: 128px;
 }
 
-#nav_menu a {
+#nav-menu a {
     display: flex;
     align-items: center;
     width: 100%;
