@@ -30,6 +30,14 @@
     text-decoration: none;
 }
 
+.nav-menu__all-buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 300px;
+}
+
 .nav-menu-bottom-button {
     display: flex;
     flex-direction: column;
