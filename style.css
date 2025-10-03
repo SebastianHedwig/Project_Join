@@ -35,7 +35,8 @@
 }
 
 body {
-  width: 100vw;
+  width: 100%;
+  height: 100vh;
   background-color: var(--color-background);
 }
 
@@ -70,8 +71,14 @@ h2 {
   color: var(--color-black);
 }
 
-#blue-seperator {
+.blue_seperator {
   width: 4px;
   height: 3.75rem;
   background-color: var(--color-lightblue);
+}
+
+.grey_seperator {
+  width: 4px;
+  height: 6rem;
+  background-color: var(--color-lightgrey);
 }

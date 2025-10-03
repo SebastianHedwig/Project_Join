@@ -54,21 +54,70 @@
             <section id="summary-content">
                 <div class="summary_content__header content-wrapper">
                     <h1>Join 360</h1>
-                    <div id="blue-seperator"></div>
+                    <div class="blue_seperator"></div>
                     <span>Key Metrics at a Glance</span>
                 </div>
                 <!--Summary Content will be loaded here dynamically--> 
                 <div class="summary-content__metrics content-wrapper">
                     <div class="summary-content__metrics__row">
-                        <button>To-do</button>  <!-- Ich würde hier keine buttons verwenden. buttons haben von html eigene eigenschaften. besser eine divbox. Lässt sich später auch besser bearbeiten für das carddesign. Hier müssen ja noch ein img rein, dann ne weitere box mit 2 span. Der anzahl der to dos und der bezeichnung to-do. ähnlich würde ich auch bei den anderen vorgehen. ausser du hast da andere erfahrungen gemacht. bin da immer offen =) -->
-                        <button>Done</button>
+
+                        <div class="summary-content__metrics__row__box">
+                            <img src="/assets/img/to-do.png" alt="To-do Image">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>To-do</span>
+                            </div>
+                        </div>
+
+                        <div class="summary-content__metrics__row__box">
+                            <img src="/assets/img/done.png" alt="To-do Image">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>To-do</span>
+                            </div>
+                        </div>
+
                     </div>
+
                     <div class="summary-content__metrics__row">
-                        <button>Prority</button></div>
+                        
+                        <div class="summary-content__metrics__row__box">
+                            
+                            <img src="/assets/img/priority-urgent.svg" alt="To-do Image">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>Urgent</span>
+                            </div>
+                        
+                            <div class="grey_seperator"></div>
+                            <div class="summary-content__metrics__row__box__text">
+                                <span>Date</span>
+                                <span>Upcoming Deadline</span>
+                            </div>
+                        </div>
+                    </div>
+                   
                     <div class="summary-content__metrics__row">
-                        <button>Tasks in Board</button>
-                        <button>Tasks In Progress</button>
-                        <button>Awaiting Feedback</button>
+                        <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>Tasks In <br>Board</span>
+                            </div>
+                        </div>
+                        <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>Tasks In <br>Progress</span>
+                            </div>
+                        </div>
+                        <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
+                            <div class="summary-content__metrics__row__box__text">
+                                <span class="metric-number">1</span>
+                                <span>Awaiting <br>Feedback</span>
+                            </div>
+                        </div>
+                         
+                        
                     </div>
                 </div>
             </section>

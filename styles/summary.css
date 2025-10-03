@@ -18,3 +18,40 @@
     flex-direction: row;
     gap: 32px;
 }
+
+.summary-content__metrics__row__box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 38px 58px;
+    background-color: var(--color-white);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--color-black);
+}
+
+.summary-content__metrics__row__box img {
+    width: 4rem;
+    height: 4rem;
+    gap: 10px;
+}
+
+.summary-content__metrics__row__box__bottom {
+    padding : 38px 38px
+}
+
+.summary-content__metrics__row__box__text {
+    color: var(--color-menu);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.metric-number {
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--color-black);
+}
