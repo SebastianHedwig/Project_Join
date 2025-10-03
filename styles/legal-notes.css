@@ -1,0 +1,15 @@
+#legal-content {
+    margin-top: 8rem;
+}
+
+#legal-content h1 {
+    margin-bottom: 2rem;
+}
+
+#legal-content h2 {
+    font-size: 1.688rem;
+}
+
+#legal-content a {
+    text-decoration: none;
+}

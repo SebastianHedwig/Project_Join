@@ -54,7 +54,7 @@ main {
 
 .content-wrapper {
   max-width: 1920px;
-  padding: 0 1rem;
+  padding: 0 1rem 0 6rem;
 }
 
 h1 {
