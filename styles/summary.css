@@ -7,7 +7,7 @@
 }
 
 .summary-content__left {
-    width: 500px;
+    width: 600px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -71,4 +71,19 @@
     font-size: 4rem;
     font-weight: 600;
     color: var(--color-black);
+}
+
+.summary-content__right span {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--color-lightblue);
+}
+
+.summary-content__metrics__row__box:hover {
+    background-color: var(--color-maincolor);
+    cursor: pointer;
+}
+
+.summary-content__metrics__row__box:hover span {
+    color: var(--color-white);
 }
