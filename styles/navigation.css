@@ -5,6 +5,7 @@
     width: 230px;
     height: 100vh;
     background-color: #2a3647;
+    flex: 0 0 230px;
 }
 
 #logo {
@@ -15,6 +16,7 @@
 #nav-menu a {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     width: 100%;
     padding: 12px 20px;
     background: none;
@@ -33,4 +35,8 @@
     flex-direction: column;
     padding-top: 243px;
     gap: 4px;
+}
+
+.nav-menu__buttons-container{
+    width: 100%;
 }

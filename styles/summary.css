@@ -7,7 +7,7 @@
 }
 
 .summary-content__left {
-    width: 600px;
+    width: 550px;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -44,8 +44,16 @@
     color: var(--color-black);
 }
 
+.summary-content__metrics__row__box__left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
 .summary-content__metrics__row__box__middle {
     width: 100%;
+    gap: 64px;
 }
 
 .summary-content__metrics__row__box img {
@@ -86,4 +94,8 @@
 
 .summary-content__metrics__row__box:hover span {
     color: var(--color-white);
+}
+
+.summary-btn {
+    background-color: var(--color-navhover) !important;
 }
