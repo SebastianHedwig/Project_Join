@@ -1,13 +1,10 @@
-html {
-    line-height: 1.2;
-    background-color: var(--color-background);
-}
-
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    line-height: 1.2;
+    background-color: var(--color-background);
 }
 
 .content-wrapper {
@@ -22,19 +19,16 @@ body {
     background-color: var(--color-maincolor);
     border-radius: 8px;
     padding: 15px 24px;
-    font-size: 21px;
+    font-size: 1.31rem;
     font-weight: bold;
     color: var(--color-white);
     height: 56px;
     width: auto;
 }
 
-.header__logo-and-signup {
-    display: flex;
+.header {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    width: 100%;
     padding: 67px 122px 0px 77px;
 }
 
@@ -56,7 +50,7 @@ body {
 }
 
 .header__signup__message {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
     color: var(--color-black);
 }
@@ -96,7 +90,7 @@ h1 {
     text-align: center;
 }
 
-.useraccess-form__heading {
+.useraccess-form__header {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,7 +99,7 @@ h1 {
     gap: 16px;
 }
 
-.useraccess-form__heading__bluestrip {
+.useraccess-form__header__bluestrip {
     width: 150px;
     height: 0px;
     border-top: 3px solid;
@@ -122,6 +116,18 @@ h1 {
     gap: 32px;
 }
 
+/* ######### Hover classes for .useraccess-form__inputfield__wrapper ###########  */
+
+.typing {
+    border: 1px solid var(--color-lightblue);
+}
+
+.error {
+    border: 1px solid var(--color-error);
+}
+
+/* ############################################ */
+
 .useraccess-form__inputfield__wrapper {
     display: flex;
     align-items: center;
@@ -132,15 +138,22 @@ h1 {
     width: 422px;
 }
 
-.useraccess-form__inputfield__input {
-    width: 90%;
-    height: 24px;
+input:focus {
+    outline: none;
+    border: none;
 }
 
 input::placeholder {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--color-lightgrey);
+}
+
+.useraccess-form__inputfield__wrapper input {
+    width: 90%;
+    height: 24px;
+    font-size: 1.25rem;
+    font-weight: 400;
 }
 
 .form__inputfields__icon {
@@ -176,7 +189,6 @@ input::placeholder {
     cursor: pointer;
 }
 
-
 .useraccess-form__privacy-policy__infotext {
     color: var(--color-greyicons);
 }
@@ -185,10 +197,6 @@ input::placeholder {
     text-decoration: none;
     color: var(--color-lightblue);
     cursor: pointer;
-}
-
-.footer {
-    width: 100%;
 }
 
 .footer__privacy-legal-box {
@@ -203,7 +211,7 @@ input::placeholder {
     text-decoration: none;
     color: var(--color-greyicons);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .footer__privacy-legal-box__links:hover {
@@ -212,3 +220,4 @@ input::placeholder {
     font-weight: bold;
     cursor: pointer;
 }
+

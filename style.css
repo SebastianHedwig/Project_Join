@@ -25,6 +25,7 @@
   scroll-behavior: smooth;
   --color-black: #000000;
   --color-white: #FFFFFF;
+  --color-error: #E60026;
   --color-menu: #42526E;
   --color-lightblue: #29ABE2;
   --color-maincolor: #2A3647;
@@ -33,6 +34,7 @@
   --color-darkgrey: #CDCDCD;
   --color-background: #F6F7F8;
   --color-navhover: #091931;
+  
 }
 
 body {
