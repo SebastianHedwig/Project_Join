@@ -24,6 +24,7 @@ body {
     color: var(--color-white);
     height: 56px;
     width: auto;
+    transition: all var(--transition-slow) ease;
 }
 
 .btn:hover {
@@ -32,7 +33,7 @@ body {
 }
 
 .btn:active {
-    background-color: var(--color-navhover);
+    background-color: var(--color-navselected);
     box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
@@ -184,6 +185,7 @@ input::placeholder {
     background-color: var(--color-white);
     color: var(--color-maincolor);
     border: 1px solid var(--color-maincolor);
+    transition: all var(--transition-slow) ease;
 }
 
 .guest:hover {
@@ -194,9 +196,9 @@ input::placeholder {
 }
 
 .guest:active {
-    color: var(--color-navhover);
+    color: var(--color-navselected);
     box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
-    border: 1px solid var(--color-navhover);
+    border: 1px solid var(--color-navselected);
 }
 
 .useraccess-form__privacy-policy {

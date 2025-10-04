@@ -39,7 +39,6 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 12px;
     padding: 38px 58px;
     background-color: var(--color-white);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
@@ -47,7 +46,7 @@
     font-size: 18px;
     font-weight: 600;
     color: var(--color-black);
-    transition: transform 0.3s ease;
+    transition: transform var(--transition-slow) ease;
 }
 
 .summary-content__metrics__row__box__top {
@@ -94,6 +93,7 @@
 .metric-txt {
     font-size: 1.25rem;
     font-weight: 400;
+    text-align: center;
 }
 
 .metric-txt-middle {
