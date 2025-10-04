@@ -112,6 +112,13 @@
     transform: scale(1.1);
     cursor: pointer;
 }
+.summary-content__metrics__row__box__top__img__to-do:hover img{
+    content: url("../assets/img/to-do-hover.svg");
+}
+
+.summary-content__metrics__row__box__top__img__done:hover img{
+    content: url("../assets/img/done-hover.svg");
+}
 
 .summary-content__metrics__row__box:hover span {
     color: var(--color-white);
