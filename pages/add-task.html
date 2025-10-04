@@ -61,12 +61,48 @@
                 </div>
                 <div class="task_content__container content-wrapper">
                     <div class="task_content__container__left">
-                        <div class="add-task-content-fields">Title <input type="text" placeholder="Enter a title"></div>
-                        <div class="add-task-content-fields">Description <textarea name="Add Task Description" id="task-descrition-area"></textarea></div>
-                        <div class="add-task-content-fields">Due date <input type="date" placeholder="dd/mm/yyyy"></div>
+                        <div class="add-task-content-fields">
+                            <label for="title" class="required">Title</label>
+                            <input type="text" placeholder="Enter a title" required>
+                        </div>
+                        <div class="add-task-content-fields">
+                            <label for="description">Description</label>
+                            <textarea name="Add Task Description" id="task-descrition-area"></textarea>
+                        </div>
+                        <div class="add-task-content-fields">
+                            <label for="due date" class="required">Due date</label>
+                            <input type="date" placeholder="dd/mm/yyyy" required>
+                        </div>
                     </div>
                     <div class="grey_seperator"></div>
-                    <div class="task_content__container__right">Right Content</div>
+                    <div class="task_content__container__right">
+                        <div class="add-task-content-fields">
+                            <label for="priority">Priority</label>
+                            <div class="priority_options">
+                                <div class="priority_options__btn">Urgent <img src="../assets/img/priority-urgent.svg" alt="urgent"></div>
+                                <div class="priority_options__btn">Medium <img src="../assets/img/priority-medium.svg" alt="medium"></div>
+                                <div class="priority_options__btn">Low <img src="../assets/img/priority-low.svg" alt="low"></div>
+                            </div>
+                        </div>
+                        <div class="add-task-content-fields">
+                            <label for="assigned to">Assigned to</label>
+                            <select name="assigned to" id="assigned-to">
+                                <option value="1">Option1</option>
+                                <option value="2">Option2</option>
+                            </select>
+                        </div>
+                        <div class="add-task-content-fields">
+                            <label for="category" class="required">Category</label>
+                            <select name="category" id="category" required>
+                                <option value="1">Option1</option>
+                                <option value="2">Option2</option>
+                            </select>
+                        </div>
+                        <div class="add-task-content-fields">
+                            <label for="subtasks">Subtasks</label>
+                            <input type="subtasks" placeholder="Add new subtask">
+                        </div>
+                    </div>
                 </div>
                 
 
