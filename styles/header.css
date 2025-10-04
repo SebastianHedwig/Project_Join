@@ -11,6 +11,55 @@ header {
     align-items: center;
 }
 
-#page_title {
-    font-size: 24px;
+.info-container {
+    display: flex;
+    gap: 24px;
+}
+
+#help-img {
+    cursor: pointer;
+    transition: tranform 0.3s ease;
+}
+
+#help-img:hover {
+    transform: scale(1.2);
+}
+
+.header__content__user-info {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+}
+
+.header__content__user-info img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: block;
+    cursor: pointer;
+}
+
+.header__content__user-info span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-lightblue); 
+    font-weight: 600;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.header__content__user-info:hover img {
+    background-color: var(--color-headerhover);
+}
+
+.header__content__user-info:hover span {
+    background-color: var(--color-headerhover);
+}
+
+#page-title {
+    font-size: 1.25rem;
+    font-weight: 400;
 }

@@ -6,6 +6,11 @@
     gap: 24px;
 }
 
+.summary_content__header span {
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
 .summary-content__left {
     width: 550px;
     height: fit-content;
@@ -42,6 +47,10 @@
     font-size: 18px;
     font-weight: 600;
     color: var(--color-black);
+}
+
+.summary-content__metrics__row__box__top {
+    gap: 28px;
 }
 
 .summary-content__metrics__row__box__left {
