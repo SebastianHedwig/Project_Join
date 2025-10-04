@@ -26,6 +26,16 @@ body {
     width: auto;
 }
 
+.btn:hover {
+    background-color: var(--color-lightblue);
+    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+}
+
+.btn:active {
+    background-color: var(--color-navhover);
+    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+}
+
 .header {
     flex-direction: row;
     justify-content: space-between;
@@ -116,7 +126,7 @@ h1 {
     gap: 32px;
 }
 
-/* ######### Hover classes for .useraccess-form__inputfield__wrapper ###########  */
+/* ######### Hover classes JS .useraccess-form__inputfield__wrapper ###########  */
 
 .typing {
     border: 1px solid var(--color-lightblue);
@@ -176,6 +186,19 @@ input::placeholder {
     border: 1px solid var(--color-maincolor);
 }
 
+.guest:hover {
+    background-color: var(--color-white);
+    color: var(--color-lightblue);
+    border: 2px solid var(--color-lightblue);
+    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+}
+
+.guest:active {
+    color: var(--color-navhover);
+    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+    border: 1px solid var(--color-navhover);
+}
+
 .useraccess-form__privacy-policy {
     display: flex;
     flex-direction: row;
@@ -220,4 +243,3 @@ input::placeholder {
     font-weight: bold;
     cursor: pointer;
 }
-
