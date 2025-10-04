@@ -47,10 +47,11 @@
     font-size: 18px;
     font-weight: 600;
     color: var(--color-black);
+    transition: transform 0.3s ease;
 }
 
 .summary-content__metrics__row__box__top {
-    gap: 28px;
+    gap: 24px;
 }
 
 .summary-content__metrics__row__box__left {
@@ -90,6 +91,16 @@
     color: var(--color-black);
 }
 
+.metric-txt {
+    font-size: 1.25rem;
+    font-weight: 400;
+}
+
+.metric-txt-middle {
+    font-size: 1rem;
+    font-weight: 400;
+}
+
 .summary-content__right span {
     font-size: 4rem;
     font-weight: 700;
@@ -98,6 +109,7 @@
 
 .summary-content__metrics__row__box:hover {
     background-color: var(--color-maincolor);
+    transform: scale(1.1);
     cursor: pointer;
 }
 
