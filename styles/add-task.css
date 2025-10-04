@@ -4,7 +4,12 @@
     margin-bottom: 24px;
 }
 
-.required::after {
+.required--after::after {
+    content: "*";
+    color: var(--color-error);
+}
+
+.required--before::before {
     content: "*";
     color: var(--color-error);
 }
@@ -86,4 +91,35 @@
   width: 2px;
   height: 20rem;
   background-color: var(--color-lightgrey);
+}
+
+.task_content__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 40px;
+    padding-right: 6rem;
+}
+
+.task_content__footer__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.task_content__footer__buttons__btn-cancel {
+    border: 1px solid var(--color-maincolor);
+    color: var(--color-maincolor);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.task_content__footer__buttons__btn-create {
+    background-color: var(--color-maincolor);
+    color: var(--color-white);
+    border-radius: 10px;
+    padding: 10px;
+    cursor: pointer;
 }
