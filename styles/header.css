@@ -11,7 +11,7 @@ header {
     align-items: center;
 }
 
-.info-container {
+#info-container {
     display: flex;
     gap: 24px;
 }
