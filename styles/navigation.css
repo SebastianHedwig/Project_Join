@@ -1,13 +1,11 @@
 #nav-menu {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100vh;
     background-color: #2a3647;
-    flex: 0 0 230px;
+    flex: 0 0 15rem;
     padding-bottom: 32px;
     padding-top: 64px;
+    min-height: 100vh;
 }
 
 #nav-menu a {
@@ -15,16 +13,25 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    padding: 12px 20px;
+    padding: 0.6rem 1rem 0.6rem 3.5rem;
     background: none;
     border: none;
     color: white;
     font-size: 16px;
     text-align: left;
     cursor: pointer;
-    gap: 15px;
+    gap: 1.2rem;
     transition: background-color 0.3s;
     text-decoration: none;
+}
+
+.nav-menu__buttons-container a img {
+  width: 1.5rem;
+  object-fit: contain;
+}
+
+#nav-menu img {
+    align-self: center;
 }
 
 .nav-menu__buttons-container a:hover {
@@ -34,7 +41,7 @@
 .nav-menu-bottom-button {
     display: flex;
     flex-direction: column;
-    padding-top: 243px;
+    padding-top: 20rem;
     gap: 4px;
     transition: background-color 0.3s;
 }
@@ -45,7 +52,14 @@
 }
 
 .nav-menu__buttons-container{
-    width: 100%;
+  margin-top: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  gap: 1rem;
+  font-size: 18px;
+  font-weight: 400;
 }
 
 .nav-button-selected {
