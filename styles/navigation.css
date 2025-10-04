@@ -1,16 +1,14 @@
 #nav-menu {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     width: 230px;
     height: 100vh;
     background-color: #2a3647;
     flex: 0 0 230px;
-}
-
-#logo {
+    padding-bottom: 32px;
     padding-top: 64px;
-    padding-bottom: 128px;
 }
 
 #nav-menu a {
@@ -28,15 +26,6 @@
     gap: 15px;
     transition: background-color 0.3s;
     text-decoration: none;
-}
-
-.nav-menu__all-buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 300px;
-    width: 100%;
 }
 
 .nav-menu-bottom-button {
