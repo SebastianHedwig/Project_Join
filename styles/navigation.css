@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 230px;
     height: 100vh;
     background-color: #2a3647;
     flex: 0 0 230px;
@@ -51,4 +50,16 @@
 
 .nav-button-selected {
     background-color: var(--color-navselected)!important;
+}
+
+.blue_seperator {
+  width: 4px;
+  height: 3.75rem;
+  background-color: var(--color-lightblue);
+}
+
+.grey_seperator {
+  width: 4px;
+  height: 6rem;
+  background-color: var(--color-lightgrey);
 }
