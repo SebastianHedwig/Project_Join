@@ -39,6 +39,6 @@
     width: 100%;
 }
 
-.nav-button-hover {
+.nav-button-selected {
     background-color: var(--color-navhover)!important;
 }
