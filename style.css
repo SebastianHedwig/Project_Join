@@ -33,7 +33,8 @@
   --color-lightgrey: #D1D1D1;
   --color-darkgrey: #CDCDCD;
   --color-background: #F6F7F8;
-  --color-navhover: #091931;
+  --color-navselected: #091931;
+  --color-navhover: #3b5987;
   --color-headerhover: #e2e6ec;
   
 }

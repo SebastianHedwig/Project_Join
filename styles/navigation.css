@@ -28,11 +28,21 @@
     text-decoration: none;
 }
 
+.nav-menu__buttons-container a:hover {
+    background-color: var(--color-navhover)!important;
+}
+
 .nav-menu-bottom-button {
     display: flex;
     flex-direction: column;
     padding-top: 243px;
     gap: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-menu-bottom-button a:hover {
+    color: var(--color-lightblue)!important;
+    transform: scale(1.05);
 }
 
 .nav-menu__buttons-container{
@@ -40,5 +50,5 @@
 }
 
 .nav-button-selected {
-    background-color: var(--color-navhover)!important;
+    background-color: var(--color-navselected)!important;
 }
