@@ -25,15 +25,15 @@
 
     <main>
 
-            <nav id="nav-menu">
+            <nav id="nav-menu" class="nav-menu">
                 <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
-                <div class="nav-menu__buttons-container">
-                    <a class="nav-button-selected" href="summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
+                <div class="nav-menu__buttons--container">
+                    <a class="nav-button__selected" href="summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
                     <a href="add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
                     <a href="board.html"><img src="../assets/img/board.svg" alt="Board">Board</a>
                     <a href="contacts.html"><img src="../assets/img/contacts.svg" alt="Contacts">Contacts</a>
                 </div>
-                <div class="nav-menu-bottom-button">
+                <div class="nav-menu__bottom--button">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="legal-notice.html">Legal notice</a>
                 </div>
@@ -43,9 +43,9 @@
                 <header id="header">
                     <div class="header__content content-wrapper">
                         <span id="page-title">Kanban Project Management Tool</span>
-                        <div id="info-container">
-                            <img id="help-img" src="../assets/img/help.svg" alt="Help auestion mark">
-                            <div class="header__content__user-info">
+                        <div id="info-container" class="info-container">
+                            <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
+                            <div class="header__content--user-info">
                                 <img src="../assets/img/user-ellipse.svg" alt="User picture">
                                 <span>SM</span>
                             </div>
@@ -55,7 +55,7 @@
 
 
             <section id="summary-content">
-                <div class="summary_content__header content-wrapper">
+                <div class="summary-content__header content-wrapper">
                     <h1>Join 360</h1>
                     <div class="blue_seperator"></div>
                     <span>Key Metrics at a Glance</span>
@@ -63,21 +63,21 @@
                 <!--Summary Content will be loaded here dynamically-->
                 <div class="summary-content__metrics content-wrapper">
                     <div class="summary-content__left">
-                        <div class="summary-content__metrics__row">
+                        <div class="summary-content__metrics--row">
 
                             <div
-                                class="summary-content__metrics__row__box summary-content__metrics__row__box__top summary-content__metrics__row__box__top__img__to-do">
-                                <img class="" src="/assets/img/to-do.svg" alt="To-do Image">
-                                <div class="summary-content__metrics__row__box__text">
+                                class="metrics__box metrics__box--top metrics__icon--todo">
+                                <img class="" src="../assets/img/to-do.svg" alt="To-do Image">
+                                <div class="metrics__box--text">
                                     <span class="metric-number">1</span>
                                     <span class="metric-txt">To-do</span>
                                 </div>
                             </div>
 
-                            <div class="summary-content__metrics__row__box summary-content__metrics__row__box__top
-                            summary-content__metrics__row__box__top__img__done">
-                                <img src="/assets/img/done.png" alt="To-do Image">
-                                <div class="summary-content__metrics__row__box__text">
+                            <div class="metrics__box metrics__box--top
+                            metrics__icon--done">
+                                <img src="../assets/img/done.png" alt="To-do Image">
+                                <div class="metrics__box--text">
                                     <span class="metric-number">1</span>
                                     <span class="metric-txt">Done</span>
                                 </div>
@@ -85,39 +85,39 @@
 
                         </div>
 
-                        <div class="summary-content__metrics__row">
+                        <div class="summary-content__metrics--row">
 
-                            <div class="summary-content__metrics__row__box summary-content__metrics__row__box__middle">
-                                <div class="summary-content__metrics__row__box__left">
-                                    <img src="/assets/img/urgent-summary.png" alt="To-do Image">
-                                    <div class="summary-content__metrics__row__box__text">
+                            <div class="metrics__box metrics__box--middle">
+                                <div class="metrics__box--left">
+                                    <img src="../assets/img/urgent-summary.png" alt="To-do Image">
+                                    <div class="metrics__box--text">
                                         <span class="metric-number">1</span>
                                         <span class="metric-txt-middle">Urgent</span>
                                     </div>
                                 </div>
                                 <div class="grey_seperator"></div>
-                                <div class="summary-content__metrics__row__box__text">
+                                <div class="metrics__box--text">
                                     <span>Date</span>
                                     <span>Upcoming Deadline</span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="summary-content__metrics__row">
-                            <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
-                                <div class="summary-content__metrics__row__box__text">
+                        <div class="summary-content__metrics--row">
+                            <div class="metrics__box metrics__box--bottom">
+                                <div class="metrics__box--text">
                                     <span class="metric-number">1</span>
                                     <span class="metric-txt">Tasks In <br>Board</span>
                                 </div>
                             </div>
-                            <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
-                                <div class="summary-content__metrics__row__box__text">
+                            <div class="metrics__box metrics__box--bottom">
+                                <div class="metrics__box--text">
                                     <span class="metric-number">1</span>
                                     <span class="metric-txt">Tasks In <br>Progress</span>
                                 </div>
                             </div>
-                            <div class="summary-content__metrics__row__box summary-content__metrics__row__box__bottom">
-                                <div class="summary-content__metrics__row__box__text">
+                            <div class="metrics__box metrics__box--bottom">
+                                <div class="metrics__box--text">
                                     <span class="metric-number">1</span>
                                     <span class="metric-txt">Awaiting <br>Feedback</span>
                                 </div>

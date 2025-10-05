@@ -1,4 +1,4 @@
-#nav-menu {
+.nav-menu {
     display: flex;
     flex-direction: column;
     background-color: #2a3647;
@@ -8,7 +8,7 @@
     min-height: 100vh;
 }
 
-#nav-menu a {
+.nav-menu a {
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -25,20 +25,20 @@
     text-decoration: none;
 }
 
-.nav-menu__buttons-container a img {
+.nav-menu__buttons--container a img {
   width: 1.5rem;
   object-fit: contain;
 }
 
-#nav-menu img {
+.nav-menu img {
     align-self: center;
 }
 
-.nav-menu__buttons-container a:hover {
+.nav-menu__buttons--container a:hover {
     background-color: var(--color-navhover)!important;
 }
 
-.nav-menu-bottom-button {
+.nav-menu__bottom--button {
     display: flex;
     flex-direction: column;
     padding-top: 20rem;
@@ -46,12 +46,12 @@
     transition: background-color 0.3s;
 }
 
-.nav-menu-bottom-button a:hover {
+.nav-menu__bottom--button a:hover {
     color: var(--color-lightblue)!important;
     transform: scale(1.05);
 }
 
-.nav-menu__buttons-container{
+.nav-menu__buttons--container{
   margin-top: 20rem;
   display: flex;
   flex-direction: column;
@@ -62,18 +62,6 @@
   font-weight: 400;
 }
 
-.nav-button-selected {
+.nav-button__selected {
     background-color: var(--color-navselected)!important;
-}
-
-.blue_seperator {
-  width: 4px;
-  height: 3.75rem;
-  background-color: var(--color-lightblue);
-}
-
-.grey_seperator {
-  width: 4px;
-  height: 6rem;
-  background-color: var(--color-lightgrey);
 }
