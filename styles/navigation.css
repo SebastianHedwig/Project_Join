@@ -34,8 +34,8 @@
     align-self: center;
 }
 
-.nav-menu__buttons--container a:hover {
-    background-color: var(--color-navhover)!important;
+.nav-menu__buttons--container a:not(.deactivated):hover {
+  background-color: var(--color-navhover);
 }
 
 .nav-menu__bottom__buttons {
@@ -64,4 +64,9 @@
 
 .nav-button--selected {
     background-color: var(--color-navselected)!important;
+}
+
+.nav-menu a.deactivated {
+  cursor: default; 
+  pointer-events: none; 
 }
