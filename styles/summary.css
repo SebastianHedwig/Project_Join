@@ -47,6 +47,7 @@
     font-weight: 600;
     color: var(--color-black);
     transition: transform var(--transition-slow) ease;
+    text-decoration: none;
 }
 
 .metrics__box--top {
