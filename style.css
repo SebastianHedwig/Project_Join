@@ -72,6 +72,16 @@ main {
   padding: 0 4rem 0 6rem;
 }
 
+.blue-btn {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-maincolor);
+  color: var(--color-white);
+  border-radius: 0.625rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
 h1{
   font-size: 1.25rem;
   font-weight: 400;

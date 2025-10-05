@@ -8,21 +8,21 @@
         <title>Kanban Board</title>
         <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
 
-        <link rel="stylesheet" href="/style.css">
-        <link rel="stylesheet" href="/styles/header.css">
-        <link rel="stylesheet" href="/styles/navigation.css">
-        <link rel="stylesheet" href="/styles/board.css">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../styles/header.css">
+        <link rel="stylesheet" href="../styles/navigation.css">
+        <link rel="stylesheet" href="../styles/board.css">
 
-        <script src="./script.js">defer</script>
-        <script src="./scripts/navigation.js">defer</script>
-        <script src="./scripts/board.js">defer</script>
-        <script src="./scripts/drag_and_drop.js">defer</script>
-        <script src="./scripts/ticket.js">defer</script>
-        <script src="./scripts/add_task.js">defer</script>
-        <script src="./scripts/dialog_add_contact.js">defer</script>
-        <script src="./templates/tpl_ticket.js">defer</script>
-        <script src="./templates/tpl_board.js">defer</script>
-        <script src="./templates/tpl_add_task.js">defer</script>
+        <script src="../script.js">defer</script>
+        <script src="../scripts/navigation.js">defer</script>
+        <script src="../scripts/board.js">defer</script>
+        <script src="../scripts/drag_and_drop.js">defer</script>
+        <script src="../scripts/ticket.js">defer</script>
+        <script src="../scripts/add_task.js">defer</script>
+        <script src="../scripts/dialog_add_contact.js">defer</script>
+        <script src="../templates/tpl_ticket.js">defer</script>
+        <script src="../templates/tpl_board.js">defer</script>
+        <script src="../templates/tpl_add_task.js">defer</script>
 
     </head>
 
@@ -65,37 +65,37 @@
                         <div class="task-search-and-add">
                             <div class="board__head__searchbox">
                                 <input type="search" placeholder="Find Task">
-                                <img src="../assets/img/search.svg" alt="">
+                                <img src="../assets/img/search.svg" alt="icon of an magnifying glass for better descripe of the search field">
                             </div>
-                            <span id="add-task-btn"> Add Task
+                            <span id="add-task-btn" class="blue-btn">Add Task
                                 <img src="../assets/img/add.svg" alt="Add Task Button">
                             </span>
                         </div>
                     </div>
 
                     <div id="board-table" class="board__table">
-                        <div class="column">
-                        <span><h3>To do</h3> <img src="../assets/img/add.svg" alt="add task to 'to do'"></span>
-                        <div class="task">Task A</div>
-                        <div class="task">Task E</div>
+                        <div class="board__table__column">
+                            <span><h3>To do</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'to do'"></span>
+                            <div class="task">Task A</div>
+                            <div class="task">Task E</div>
                         </div>
 
-                        <div class="column">
-                        <span><h3>In progress</h3> <img src="../assets/img/add.svg" alt="add task to 'in progress'"></span>
-                        <div class="task">Task B</div>
-                        <div class="task">Task F</div>
+                        <div class="board__table__column">
+                            <span><h3>In progress</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'"></span>
+                            <div class="task">Task B</div>
+                            <div class="task">Task F</div>
                         </div>
 
-                        <div class="column">
-                        <span><h3>Await feedback</h3> <img src="../assets/img/add.svg" alt="add task to 'await feedback'"></span>
-                        <div class="task">Task C</div>
-                        <div class="task">Task G</div>
+                        <div class="board__table__column">
+                            <span><h3>Await feedback</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'"></span>
+                            <div class="task">Task C</div>
+                            <div class="task">Task G</div>
                         </div>
 
-                        <div class="column">
-                        <h3>Done</h3>
-                        <div class="task">Task D</div>
-                        <div class="task">Task H</div>
+                        <div class="board__table__column">
+                            <h3>Done</h3>
+                            <div class="task">Task D</div>
+                            <div class="task">Task H</div>
                         </div>
                     </div>
 

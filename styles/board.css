@@ -1,3 +1,44 @@
 .board-content {
     margin-top: 8rem;
 }
+
+.board__head {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.task-search-and-add {
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.board__table {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem; 
+}
+
+.board__table span {
+    display: flex;
+    justify-content: space-between;
+}
+
+.board__table h3 {
+    color: var(--color-menu);
+}
+
+.blue-btn {
+    height: 3rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    gap: 0.4rem;
+}
+
+.blue-btn img {
+    vertical-align: middle;
+    height: 1.2rem;
+}
