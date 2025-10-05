@@ -43,7 +43,7 @@
         </nav>
        
         <main>
-            <div id="summary_page_content" class="content">
+            <div id="board-page-content" class="content">
                 <header id="header">
                     <div class="header__content content-wrapper">
                         <h1 id="page-title">Kanban Project Management Tool</h1>
@@ -57,7 +57,46 @@
                     </div>
                 </header>
             
-                <section id="summary_content">
+                <section id="board" class="board-content content-wrapper">
+                    <div id="board-head" class="board__head">
+                        <h2>Board</h2>
+                        <div class="task-search-and-add">
+                            <div class="board__head__searchbox">
+                                <input type="search" placeholder="Find Task">
+                                <img src="../assets/img/search.svg" alt="">
+                            </div>
+                            <span id="add-task-btn"> Add Task
+                                <img src="../assets/img/add.svg" alt="Add Task Button">
+                            </span>
+                        </div>
+                    </div>
+
+                    <div id="board-table" class="board__table">
+                        <div class="column">
+                        <span><h3>To do</h3> <img src="../assets/img/add.svg" alt="add task to 'to do'"></span>
+                        <div class="task">Task A</div>
+                        <div class="task">Task E</div>
+                        </div>
+
+                        <div class="column">
+                        <span><h3>In progress</h3> <img src="../assets/img/add.svg" alt="add task to 'in progress'"></span>
+                        <div class="task">Task B</div>
+                        <div class="task">Task F</div>
+                        </div>
+
+                        <div class="column">
+                        <span><h3>Await feedback</h3> <img src="../assets/img/add.svg" alt="add task to 'await feedback'"></span>
+                        <div class="task">Task C</div>
+                        <div class="task">Task G</div>
+                        </div>
+
+                        <div class="column">
+                        <h3>Done</h3>
+                        <div class="task">Task D</div>
+                        <div class="task">Task H</div>
+                        </div>
+                    </div>
+
 
                 </section>
             </div>
