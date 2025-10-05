@@ -25,7 +25,7 @@ header {
     transform: scale(1.2);
 }
 
-.header__content--user-info {
+.header__user-info {
     position: relative;
     display: inline-block;
     width: 50px;
