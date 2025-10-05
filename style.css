@@ -60,6 +60,7 @@ main {
 
 .content {
   width: 100%;
+  margin-bottom: 2rem;
 }
 
 .d-none {
