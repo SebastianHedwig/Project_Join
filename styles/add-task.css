@@ -25,6 +25,7 @@
 .task-content__container {
     display: flex;
     flex-direction: row;
+    margin-top: 64px;
 }
 
 .add-task__left-column{
@@ -32,6 +33,11 @@
     padding-right: 20px;
 }
 
+.task-content__container label {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
 
 .task-content__container input,
 .task-content__container select {
@@ -116,10 +122,24 @@
     padding: 10px;
 }
 
+.task-content__footer-button--cancel:hover {
+    border: 1px solid var(--color-lightblue);
+    color: var(--color-lightblue);
+}
+
+.task-content__footer-button--cancel:hover img {
+    content: url('../assets/img/close-hover.svg');
+}    
+
 .task-content__footer-button--create {
     background-color: var(--color-maincolor);
     color: var(--color-white);
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
+}
+
+.task-content__footer-button--create:hover {
+    background-color: var(--color-lightblue);
+    transition: background-color var(--transition-fast) ease;
 }
