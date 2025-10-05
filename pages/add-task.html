@@ -19,13 +19,13 @@
     <body>
         <nav id="nav-menu" class="nav-menu">
             <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
-            <div class="nav-menu__buttons--container">
+            <div class="nav-menu__btn-container">
                 <a href="./summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
-                <a class="nav-button--selected deactivated" href="./add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
+                <a class="nav-btn--selected deactivated" href="./add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
                 <a href="./board.html"><img src="../assets/img/board.svg" alt="Board">Board</a>
                 <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="Contacts">Contacts</a>
             </div>
-            <div class="nav-menu__bottom__buttons">
+            <div class="nav-menu__bottom__btn">
                 <a href="./privacy-policy.html">Privacy Policy</a>
                 <a href="./legal-notice.html">Legal Notice</a>
             </div>
@@ -56,7 +56,7 @@
                 <div class="task-content__container content-wrapper">
                     <div class="add-task__left-column">
                         <div class="add-task__field">
-                            <label for="title" class="required required--after">Title</label>
+                            <label for="title" class="required--after">Title</label>
                             <input type="text" placeholder="Enter a title" required>
                         </div>
                         <div class="add-task__field">
@@ -86,7 +86,7 @@
                             </select>
                         </div>
                         <div class="add-task__field">
-                            <label for="category" class="required required--after">Category</label>
+                            <label for="category" class="required--after">Category</label>
                             <select name="category" id="category" required>
                                 <option value="1">Option1</option>
                                 <option value="2">Option2</option>
@@ -100,12 +100,12 @@
                 </div>
                 
                 <div class="task-content__footer content-wrapper">
-                    <span class="required required--before">This field is required</span>
-                    <div class="task-content__footer-buttons">
-                        <div class="task-content__footer-button--cancel">Clear 
+                    <span class="required required--before"> This field is required</span>
+                    <div class="task-content__footer-btn">
+                        <div class="task-content__footer-btn-clear">Clear 
                             <img src="../assets/img/close.svg" alt="close icon">
                         </div>
-                        <div class="task-content__footer-button--create">Create Task <img src="../assets/img/done.svg" alt="done icon"></div>
+                        <div class="task-content__footer-btn-create">Create Task <img src="../assets/img/done.svg" alt="done icon"></div>
                     </div>
 
             </section>

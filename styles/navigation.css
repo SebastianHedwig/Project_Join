@@ -25,7 +25,7 @@
     text-decoration: none;
 }
 
-.nav-menu__buttons--container a img {
+.nav-menu__btn-container a img {
   width: 1.5rem;
   object-fit: contain;
 }
@@ -34,11 +34,11 @@
     align-self: center;
 }
 
-.nav-menu__buttons--container a:not(.deactivated):hover {
+.nav-menu__btn-container a:not(.deactivated):hover {
   background-color: var(--color-navhover);
 }
 
-.nav-menu__bottom__buttons {
+.nav-menu__bottom__btn {
     display: flex;
     flex-direction: column;
     padding-top: 20rem;
@@ -46,12 +46,12 @@
     transition: background-color 0.3s;
 }
 
-.nav-menu__bottom--button a:hover {
+.nav-menu__bottom-btn a:hover {
     color: var(--color-lightblue)!important;
     transform: scale(1.05);
 }
 
-.nav-menu__buttons--container{
+.nav-menu__btn-container{
   margin-top: 20rem;
   display: flex;
   flex-direction: column;
@@ -62,7 +62,7 @@
   font-weight: 400;
 }
 
-.nav-button--selected {
+.nav-btn--selected {
     background-color: var(--color-navselected)!important;
 }
 
