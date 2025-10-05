@@ -1,4 +1,4 @@
-.add-task-content-fields {
+.add-task__field {
     display: flex;
     flex-direction: column;
     margin-bottom: 24px;
@@ -14,7 +14,7 @@
     color: var(--color-error);
 }
 
-.task_content__header {
+.task-content__header {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -22,19 +22,19 @@
     gap: 24px;
 }
 
-.task_content__container {
+.task-content__container {
     display: flex;
     flex-direction: row;
 }
 
-.task_content__container__left {
+.add-task__left-column{
     width: 50%;
     padding-right: 20px;
 }
 
 
-.task_content__container input,
-.task_content__container select {
+.task-content__container input,
+.task-content__container select {
     width: 100%;
     height: 40px;
     border-radius: 8px;
@@ -43,7 +43,7 @@
     font-size: 1rem;
 }
 
-#task-descrition-area {
+#task-description-area {
     width: 100%;
     min-height: 100px;
     border-radius: 8px;
@@ -53,19 +53,19 @@
     field-sizing: content;
 }
 
-.task_content__container__right {
+.add-task__right-column {
     width: 50%;
     padding-left: 20px;
 }
 
-.priority_options {
+.priority-options {
     display: flex;
     flex-direction: row;
     gap: 10px;
     margin-top: 8px;
 }
 
-.priority_options__btn {
+.priority-options__btn {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -81,19 +81,19 @@
     gap: 12px;
 }
 
-.priority_options__btn:hover {
+.priority-options__btn:hover {
     transform: scale(1.05);
     box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
-.grey_seperator {
+.grey-seperator {
   width: 2px;
   height: 20rem;
   background-color: var(--color-lightgrey);
 }
 
-.task_content__footer {
+.task-content__footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -102,24 +102,24 @@
     padding-right: 6rem;
 }
 
-.task_content__footer__buttons {
+.task-content__footer-buttons {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 16px;    
 }
 
-.task_content__footer__buttons__btn-cancel {
+.task-content__footer-button--cancel {
     border: 1px solid var(--color-maincolor);
     color: var(--color-maincolor);
     border-radius: 10px;
-    padding: 10px;
     cursor: pointer;
+    padding: 10px;
 }
 
-.task_content__footer__buttons__btn-create {
+.task-content__footer-button--create {
     background-color: var(--color-maincolor);
     color: var(--color-white);
     border-radius: 10px;
-    padding: 10px;
     cursor: pointer;
+    padding: 10px;
 }

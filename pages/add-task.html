@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="../styles/add-task.css">
     <link rel="stylesheet" href="../styles/dialog_add_contact.css">
     <link rel="stylesheet" href="../styles/contacts.css">
-    <link rel="stylesheet" href="../styles/summary.css">
     <link rel="stylesheet" href="../styles/data_privacy.css">
     <link rel="stylesheet" href="../styles/legal_notes.css">
 </head>
@@ -38,7 +37,7 @@
         <main>
 
         
-        <div id="summary-page-container" class="content">
+        <div class="content">
                      <header id="header">
                     <div class="header__content content-wrapper">
                         <h1 id="page-title">Kanban Project Management Tool</h1>
@@ -55,60 +54,60 @@
 
             
             <section id="task-content">
-                <div class="task_content__header content-wrapper">
+                <div class="task-content__header content-wrapper">
                     <h2>Add Task</h2>
                 </div>
-                <div class="task_content__container content-wrapper">
-                    <div class="task_content__container__left">
-                        <div class="add-task-content-fields">
+                <div class="task-content__container content-wrapper">
+                    <div class="add-task__left-column">
+                        <div class="add-task__field">
                             <label for="title" class="required required--after">Title</label>
                             <input type="text" placeholder="Enter a title" required>
                         </div>
-                        <div class="add-task-content-fields">
+                        <div class="add-task__field">
                             <label for="description">Description</label>
-                            <textarea name="Add Task Description" id="task-descrition-area"></textarea>
+                            <textarea name="Add Task Description" id="task-description-area"></textarea>
                         </div>
-                        <div class="add-task-content-fields">
+                        <div class="add-task__field">
                             <label for="due date" class="required required--after">Due date</label>
                             <input type="date" placeholder="dd/mm/yyyy" required>
                         </div>
                     </div>
-                    <div class="grey_seperator"></div>
-                    <div class="task_content__container__right">
-                        <div class="add-task-content-fields">
+                    <div class="grey-seperator"></div>
+                    <div class="add-task__right-column">
+                        <div class="add-task__field">
                             <label for="priority">Priority</label>
-                            <div class="priority_options">
-                                <div class="priority_options__btn">Urgent <img src="../assets/img/priority-urgent.svg" alt="urgent"></div>
-                                <div class="priority_options__btn">Medium <img src="../assets/img/priority-medium.svg" alt="medium"></div>
-                                <div class="priority_options__btn">Low <img src="../assets/img/priority-low.svg" alt="low"></div>
+                            <div class="priority-options">
+                                <div class="priority-options__btn">Urgent <img src="../assets/img/priority-urgent.svg" alt="urgent"></div>
+                                <div class="priority-options__btn">Medium <img src="../assets/img/priority-medium.svg" alt="medium"></div>
+                                <div class="priority-options__btn">Low <img src="../assets/img/priority-low.svg" alt="low"></div>
                             </div>
                         </div>
-                        <div class="add-task-content-fields">
+                        <div class="add-task__field">
                             <label for="assigned to">Assigned to</label>
                             <select name="assigned to" id="assigned-to">
                                 <option value="1">Option1</option>
                                 <option value="2">Option2</option>
                             </select>
                         </div>
-                        <div class="add-task-content-fields">
+                        <div class="add-task__field">
                             <label for="category" class="required required--after">Category</label>
                             <select name="category" id="category" required>
                                 <option value="1">Option1</option>
                                 <option value="2">Option2</option>
                             </select>
                         </div>
-                        <div class="add-task-content-fields">
+                        <div class="add-task__field">
                             <label for="subtasks">Subtasks</label>
                             <input type="subtasks" placeholder="Add new subtask">
                         </div>
                     </div>
                 </div>
                 
-                <div class="task_content__footer content-wrapper">
+                <div class="task-content__footer content-wrapper">
                     <span class="required required--before">This field is required</span>
-                    <div class="task_content__footer__buttons">
-                        <div class="task_content__footer__buttons__btn-cancel">Clear</div>
-                        <div class="task_content__footer__buttons__btn-create">Create Task</div>
+                    <div class="task-content__footer-buttons">
+                        <div class="task-content__footer-button--cancel">Clear</div>
+                        <div class="task-content__footer-button--create">Create Task</div>
                     </div>
 
             </section>
