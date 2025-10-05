@@ -38,7 +38,7 @@
     background-color: var(--color-navhover)!important;
 }
 
-.nav-menu__bottom--button {
+.nav-menu__bottom__buttons {
     display: flex;
     flex-direction: column;
     padding-top: 20rem;
@@ -62,6 +62,6 @@
   font-weight: 400;
 }
 
-.nav-button__selected {
+.nav-button--selected {
     background-color: var(--color-navselected)!important;
 }
