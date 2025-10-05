@@ -25,3 +25,11 @@
 .data-privacy-content p {
     margin-bottom: 1rem;
 }
+
+.data-privacy-content ul {
+    padding-bottom: 1rem;
+}
+
+.data-privacy-content li {
+    padding: 0.25rem 0;
+}
