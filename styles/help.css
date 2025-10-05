@@ -3,6 +3,10 @@
   margin-top: 8rem;
 }
 
+.help-content h2 {
+  margin-bottom: 2rem;
+}
+
 .help-content h3 {
   margin: 1.5rem 0;
   font-size: 1.688rem;

@@ -77,25 +77,29 @@
                     <div id="board-table" class="board__table">
                         <div id="task-to-do" class="board__table__column">
                             <span><h3>To do</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'to do'"></span>
-                            <div class="no-task">No active tasks</div>
+                            <div class="tasks">
+                                <div class="no-task">No active tasks</div>
+                            </div>
                         </div>
 
                         <div id="task-in-progress" class="board__table__column">
                             <span><h3>In Progress</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'"></span>
-                            <div class="task">Task A
-                                <span class="task_epic">User Story</span>
-                                <span class="taskt_title">Kochwelt bla BLubb!</span>
-                                <span class="task_description">Rezepte und son kram</span>
-                                <div class="task_subtasks-and-progressbar-box">
-                                    <span class="task_progressbar">progressbar</span>
-                                    <span class="task_subtasks"> 1/3 Subtasks</span>
-                                </div>
-                                <div class="task_assignment-and-priority-box">
-                                    <div class="task_assignments">
-                                        <img id="${user.id}" src="#" alt="">
-                                        <img id="${user.id}" src="#" alt="">
-                                        <img id="${user.id}" src="#" alt="">
-                                        <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
+                            <div class="tasks">
+                                <div class="task">
+                                    <span class="task_epic">User Story</span>
+                                    <span class="taskt_title">Kochwelt bla BLubb!</span>
+                                    <span class="task_description">Rezepte und son kram</span>
+                                    <div class="task_subtasks-and-progressbar-box">
+                                        <span class="task_progressbar">progressbar</span>
+                                        <span class="task_subtasks"> 1/3 Subtasks</span>
+                                    </div>
+                                    <div class="task_assignment-and-priority-box">
+                                        <div class="task_assignments">
+                                            <img id="${user.id}" src="#" alt="member initials">
+                                            <img id="${user.id}" src="#" alt="member initials">
+                                            <img id="${user.id}" src="#" alt="member initials">
+                                            <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,14 +107,18 @@
 
                         <div id="task-await-feedback" class="board__table__column">
                             <span><h3>Await Feedback</h3> <img src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'"></span>
-                            <div class="task">Task B</div>
-                            <div class="task">Task C</div>
+                            <div class="tasks"> 
+                                <div class="task">Task B</div>
+                                <div class="task">Task C</div>
+                            </div>
                         </div>
 
                         <div id="task-done" class="board__table__column">
                             <h3>Done</h3>
-                            <div class="task">Task D</div>
-                            <div class="task">Task E</div>
+                            <div class="tasks">
+                                <div class="task">Task D</div>
+                                <div class="task">Task E</div>
+                            </div>
                         </div>
                     </div>
 
