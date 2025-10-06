@@ -105,7 +105,6 @@ main {
   color: var(--color-white);
   border-radius: 0.625rem;
   padding: 1rem;
-  cursor: pointer;
 }
 
 h1 {
@@ -147,36 +146,44 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
 .filled-btn {
-    background-color: var(--color-maincolor);
-    color: var(--color-white);
-    transition: all var(--transition-normal) ease;
+  background-color: var(--color-maincolor);
+  color: var(--color-white);
+  transition: all var(--transition-normal) ease;
 }
 
 .filled-btn:hover {
-    background-color: var(--color-lightblue);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+  background-color: var(--color-lightblue);
+  box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
 .filled-btn:active {
-    background-color: var(--color-navselected);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
-} 
+  background-color: var(--color-navselected);
+  box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+}
 
 .empty-btn {
-    color: var(--color-maincolor);
-    border: 1px solid var(--color-maincolor);
-    transition: all var(--transition-normal) ease;
+  color: var(--color-maincolor);
+  border: 1px solid var(--color-maincolor);
+  transition: all var(--transition-normal) ease;
 }
 
 .empty-btn:hover {
-    color: var(--color-lightblue);
-    border: 2px solid var(--color-lightblue);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+  color: var(--color-lightblue);
+  border: 2px solid var(--color-lightblue);
+  box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
 .empty-btn:active {
-    color: var(--color-navselected);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
-    border: 1px solid var(--color-navselected);
+  color: var(--color-navselected);
+  box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+  border: 1px solid var(--color-navselected);
 }
