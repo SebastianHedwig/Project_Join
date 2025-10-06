@@ -123,7 +123,28 @@ input::placeholder {
     color: var(--color-lightgrey);
 }
 
-/* ### Noch zu diskutieren ### */
+/* colors for contacts:
+
+:root {
+  --color-1: #FF7A00;
+  --color-2: #FF5EB3;
+  --color-3: #6E52FF;
+  --color-4: #9327FF;
+  --color-5: #00BEE8;
+  --color-6: #1FD7C1;
+  --color-7: #FF745E;
+  --color-8: #FFA35E;
+  --color-9: #FC71FF;
+  --color-10: #FFC701;
+  --color-11: #0038FF;
+  --color-12: #C3FF2B;
+  --color-13: #FFE62B;
+  --color-14: #FF4646;
+  --color-15: #FFBB2B;
+} */
+
+
+/* # Noch zu diskutieren # */
 
 /* .filled-btn {
     background-color: var(--color-maincolor);

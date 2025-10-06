@@ -70,3 +70,8 @@
   cursor: default; 
   pointer-events: none; 
 }
+
+.nav-menu__bottom__btn a:hover {
+    color: var(--color-lightblue);
+    font-weight: 700;
+}
