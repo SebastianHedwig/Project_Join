@@ -29,7 +29,6 @@
 }
 
 .board__head__searchbox input {
-    color: var(--color-lightgrey);
     font-size: 1.35rem;
     width: 100%;
     height: 2rem;
