@@ -22,7 +22,6 @@
     cursor: pointer;
     gap: 1.2rem;
     transition: background-color 0.3s;
-    text-decoration: none;
 }
 
 .nav-menu__btn-container a img {

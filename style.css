@@ -22,7 +22,6 @@
 }
 
 :root {
-  scroll-behavior: smooth;
   --color-black: #000000;
   --color-white: #FFFFFF;
   --color-error: #E60026;
@@ -36,13 +35,34 @@
   --color-navselected: #091931;
   --color-navhover: #3b5987;
   --color-headerhover: #e2e6ec;
-  
+}
+
+:root {
+  --color-1: #FF7A00;
+  --color-2: #FF5EB3;
+  --color-3: #6E52FF;
+  --color-4: #9327FF;
+  --color-5: #00BEE8;
+  --color-6: #1FD7C1;
+  --color-7: #FF745E;
+  --color-8: #FFA35E;
+  --color-9: #FC71FF;
+  --color-10: #FFC701;
+  --color-11: #0038FF;
+  --color-12: #C3FF2B;
+  --color-13: #FFE62B;
+  --color-14: #FF4646;
+  --color-15: #FFBB2B;
 }
 
 :root {
   --transition-fast: 75ms;
   --transition-normal: 100ms;
   --transition-slow: 125ms;
+}
+
+:root {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -56,7 +76,8 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  flex: 1;  min-width: 0;
+  flex: 1;
+  min-width: 0;
 }
 
 .content {
@@ -83,7 +104,7 @@ main {
   cursor: pointer;
 }
 
-h1{
+h1 {
   font-size: 1.25rem;
   font-weight: 400;
 }
@@ -108,40 +129,21 @@ h4 {
 }
 
 input:focus {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 input::placeholder {
-    font-weight: 400;
-    font-size: 1.25rem;
-    color: var(--color-lightgrey);
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--color-lightgrey);
 }
 
-/* colors for contacts:
+a {
+  text-decoration: none;
+}
 
-:root {
-  --color-1: #FF7A00;
-  --color-2: #FF5EB3;
-  --color-3: #6E52FF;
-  --color-4: #9327FF;
-  --color-5: #00BEE8;
-  --color-6: #1FD7C1;
-  --color-7: #FF745E;
-  --color-8: #FFA35E;
-  --color-9: #FC71FF;
-  --color-10: #FFC701;
-  --color-11: #0038FF;
-  --color-12: #C3FF2B;
-  --color-13: #FFE62B;
-  --color-14: #FF4646;
-  --color-15: #FFBB2B;
-} */
-
-
-/* # Noch zu diskutieren # */
-
-/* .filled-btn {
+.filled-btn {
     background-color: var(--color-maincolor);
     color: var(--color-white);
     transition: all var(--transition-normal) ease;
@@ -155,9 +157,9 @@ input::placeholder {
 .filled-btn:active {
     background-color: var(--color-navselected);
     box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
-} */
+} 
 
-/* .empty-btn {
+.empty-btn {
     color: var(--color-maincolor);
     border: 1px solid var(--color-maincolor);
     transition: all var(--transition-normal) ease;
@@ -173,4 +175,4 @@ input::placeholder {
     color: var(--color-navselected);
     box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
     border: 1px solid var(--color-navselected);
-} */
+}
