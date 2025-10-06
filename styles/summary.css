@@ -73,7 +73,7 @@
 }
 
 .metrics__box--bottom {
-    padding : 38px 38px;
+    padding: 38px 38px;
     height: 174px;
     width: 174px;
 }
@@ -113,11 +113,12 @@
     transform: scale(1.1);
     cursor: pointer;
 }
-.metrics__icon--todo:hover img{
+
+.metrics__icon--todo:hover img {
     content: url("../assets/img/to-do-hover.svg");
 }
 
-.metrics__icon--done:hover img{
+.metrics__icon--done:hover img {
     content: url("../assets/img/done-hover.svg");
 }
 
@@ -126,13 +127,13 @@
 }
 
 .blue_seperator {
-  width: 4px;
-  height: 3.75rem;
-  background-color: var(--color-lightblue);
+    width: 4px;
+    height: 3.75rem;
+    background-color: var(--color-lightblue);
 }
 
 .grey_seperator {
-  width: 4px;
-  height: 6rem;
-  background-color: var(--color-lightgrey);
+    width: 4px;
+    height: 6rem;
+    background-color: var(--color-lightgrey);
 }

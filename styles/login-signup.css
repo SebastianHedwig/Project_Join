@@ -2,8 +2,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
-    line-height: 1.2;
     background-color: var(--color-background);
 }
 
@@ -17,36 +15,36 @@ body {
 
 .btn {
     background-color: var(--color-maincolor);
-    border-radius: 8px;
-    padding: 15px 24px;
+    border-radius: 0.5rem;
+    padding: 0.9375rem 1.5rem;
     font-size: 1.31rem;
     font-weight: bold;
     color: var(--color-white);
-    height: 56px;
+    height: 3.5rem;
     width: auto;
     transition: all var(--transition-slow) ease;
 }
 
 .btn:hover {
     background-color: var(--color-lightblue);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+    box-shadow: 0 0.25rem 0.25rem color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
 .btn:active {
     background-color: var(--color-navselected);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+    box-shadow: 0 0.25rem 0.25rem color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
 .header {
     flex-direction: row;
     justify-content: space-between;
-    padding: 67px 122px 0px 77px;
+    padding: 4.1875rem 7.625rem 0 4.8125rem;
 }
 
 .header__joinlogo {
-    width: 100px;
-    height: 122px;
-    margin-top: 13px;
+    width: 6.25rem;
+    height: 7.625rem;
+    margin-top: 0.8125rem;
 }
 
 .header__signup {
@@ -54,9 +52,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 2.1875rem;
     width: fit-content;
-    height: 49px;
+    height: 3.0625rem;
     align-self: flex-start;
 }
 
@@ -67,7 +65,7 @@ body {
 }
 
 .header__signup__signupBtn {
-    padding: 15px 16px;
+    padding: 0.9375rem 1rem;
 }
 
 main {
@@ -80,25 +78,27 @@ main {
     justify-content: center;
     align-items: center;
     background-color: var(--color-white);
-    border-radius: 30px;
-    padding: 48px 115px;
-    gap: 32px;
+    border-radius: 1.875rem;
+    padding: 3rem 7.1875rem;
+    gap: 2rem;
     width: fit-content;
     height: fit-content;
     position: relative;
 }
 
 .useraccess-form__arrowicon {
-    height: 32px;
+    height: 2rem;
     position: absolute;
-    left: 48px;
-    top: 64px;
-    width: 32px;
+    left: 3rem;
+    top: 4rem;
+    width: 2rem;
 }
 
 h1 {
     width: 100%;
     text-align: center;
+    font-weight: bold;
+    font-size: 3.813rem;
 }
 
 .useraccess-form__header {
@@ -107,15 +107,15 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .useraccess-form__header__bluestrip {
-    width: 150px;
-    height: 0px;
-    border-top: 3px solid;
+    width: 9.375rem;
+    height: 0;
+    border-top: 0.1875rem solid;
     border-color: var(--color-lightblue);
-    border-radius: 3px;
+    border-radius: 0.1875rem;
 }
 
 .useraccess-form__inputfields {
@@ -124,10 +124,10 @@ h1 {
     justify-content: center;
     align-items: center;
     width: 100%;
-    gap: 32px;
+    gap: 2rem;
 }
 
-/* ######### Hover classes JS .useraccess-form__inputfield__wrapper ###########  */
+/* ######### Hover classes input borders ########### */
 
 .typing {
     border: 1px solid var(--color-lightblue);
@@ -137,39 +137,28 @@ h1 {
     border: 1px solid var(--color-error);
 }
 
-/* ############################################ */
+/* ################################### */
 
 .useraccess-form__inputfield__wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     border: 1px solid var(--color-lightgrey);
-    border-radius: 10px;
-    padding: 12px 21px;
-    width: 422px;
-}
-
-input:focus {
-    outline: none;
-    border: none;
-}
-
-input::placeholder {
-    font-weight: 400;
-    font-size: 1.25rem;
-    color: var(--color-lightgrey);
+    border-radius: 0.625rem;
+    padding: 0.75rem 1.3125rem;
+    width: 26.375rem;
 }
 
 .useraccess-form__inputfield__wrapper input {
     width: 90%;
-    height: 24px;
+    height: 1.5rem;
     font-size: 1.25rem;
     font-weight: 400;
 }
 
 .form__inputfields__icon {
-    height: 24px;
-    width: 24px;
+    height: 1.5rem;
+    width: 1.5rem;
 }
 
 .useraccess-form__btnholder {
@@ -177,7 +166,7 @@ input::placeholder {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 35px;
+    gap: 2.1875rem;
     width: 100%;
 }
 
@@ -191,13 +180,13 @@ input::placeholder {
 .guest:hover {
     background-color: var(--color-white);
     color: var(--color-lightblue);
-    border: 2px solid var(--color-lightblue);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+    border: 0.125rem solid var(--color-lightblue);
+    box-shadow: 0 0.25rem 0.25rem color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
 .guest:active {
     color: var(--color-navselected);
-    box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
+    box-shadow: 0 0.25rem 0.25rem color-mix(in srgb, var(--color-black) 25%, transparent);
     border: 1px solid var(--color-navselected);
 }
 
@@ -205,12 +194,12 @@ input::placeholder {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 3px;
+    gap: 0.1875rem;
 }
 
 .useraccess-form__privacy-policy__checkbox {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     cursor: pointer;
 }
 
@@ -227,8 +216,8 @@ input::placeholder {
 .footer__privacy-legal-box {
     display: flex;
     flex-direction: row;
-    padding-bottom: 40px;
-    gap: 16px;
+    padding-bottom: 2.5rem;
+    gap: 1rem;
 }
 
 .footer__privacy-legal-box__links {
@@ -242,6 +231,5 @@ input::placeholder {
 .footer__privacy-legal-box__links:hover {
     color: var(--color-lightblue);
     font-weight: 700;
-    font-weight: bold;
     cursor: pointer;
 }

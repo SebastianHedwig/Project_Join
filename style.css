@@ -50,6 +50,7 @@ body {
   width: 100%;
   min-height: 100vh;
   background-color: var(--color-background);
+  line-height: 1.2;
 }
 
 main {
@@ -104,6 +105,17 @@ h4 {
   font-size: 2.9rem;
   font-weight: 500;
   color: var(--color-black);
+}
+
+input:focus {
+    outline: none;
+    border: none;
+}
+
+input::placeholder {
+    font-weight: 400;
+    font-size: 1.25rem;
+    color: var(--color-lightgrey);
 }
 
 /* ### Noch zu diskutieren ### */
