@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/help.css">
 
-    <script src="../script.js">defer</script>
-    <script src="../scripts/navigation.js">defer</script>
+    <script src="../script.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
 </head>
 
 <body>
@@ -55,8 +55,10 @@
             </nav>
 
             <section id="help-content" class="help-content content-wrapper">
+              <div class="help-content_head-container">
                 <h2>Help</h2>
-
+                <img class="go-back-arrow" src="../assets/img/arrow-left-blue.svg" onclick="history.back()" alt="go back arrow">
+              </div> 
                 <p>
                     Welcome to the help page for <strong>Join</strong>, your guide to using our kanban project
                     management tool.
