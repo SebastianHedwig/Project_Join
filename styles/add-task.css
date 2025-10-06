@@ -143,11 +143,3 @@
     background-color: var(--color-lightblue);
     transition: background-color var(--transition-fast) ease;
 }
-
-.submenu {
-    background-color: var(--color-maincolor);
-    height: 50px;
-    width: 50px;
-    display: flex;
-    margin-left: auto;
-}

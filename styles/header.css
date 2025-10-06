@@ -56,3 +56,34 @@ header {
 .header__user-info:hover span {
     background-color: var(--color-headerhover);
 }
+
+.submenu {
+    flex-direction: column;
+    background-color: var(--color-maincolor);
+    height: 9.87rem;
+    width: 9.37rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-left: auto;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    list-style: none;
+    padding: 0;
+    margin-right: 1rem;
+    position: absolute;
+    right: 0;
+    z-index: 100;
+}
+.submenu a {
+    color: var(--color-white);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 1rem; 
+    padding: 8px; 
+}
+
+.submenu a:hover {
+    background-color: var(--color-navhover);
+}
