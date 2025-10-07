@@ -21,6 +21,7 @@
 
 .summary-content__metrics {
     display: flex;
+    flex-wrap: wrap-reverse;
     flex-direction: row;
     align-items: center;
     margin-top: 4rem;

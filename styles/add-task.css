@@ -66,6 +66,7 @@
 
 .priority-options {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     gap: 0.625rem;
     margin-top: 0.5rem;
