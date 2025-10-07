@@ -81,6 +81,7 @@
                         </div>
 
                         <div id="board-table" class="board__table">
+
                             <div id=to-do-container class="board__table__column">
                                 <span>
                                     <h2>To do</h2>
@@ -97,32 +98,27 @@
                                     <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'">
                                 </span>
                                 <div id="in-progress-tasks" class="tasks">
-
-
                                     <div class="task">
-                                        <span class="task_epic">User Story</span>
+                                        <span class="task_category">${task.category}</span>
                                         <div class="task_content-metadata-box">
-                                            <span class="task_title">Kochwelt bla BLubb!</span>
-                                            <span class="task_description">Rezepte und son kram</span>
+                                            <span class="task_title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
+                                            <span class="task_description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
                                         </div>
                                         <div class="task_subtasks-and-progressbar-box">
                                             <span class="task_progressbar" style="--progress: 33.3333%;"></span>
-                                            <span class="task_subtasks"> 1/3 Subtasks</span>
+                                            <span class="task_subtasks"> 1 / 3 Subtasks</span>
                                         </div>
                                         <div class="task_assignment-and-priority-box">
-                                            <div class="task_assignments">
-                                                <img class="user-img" id="${user.id}" src="#" alt="User Image or initials">
-                                                <img class="user-img" id="${user.id}" src="#" alt="User Image or initials">
-                                                <img class="user-img" id="${user.id}" src="#" alt="User Imare or initials">
+                                             <div class="task_assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
                                             </div>
                                             <div class="task_priority">
                                                 <img class="user-img" id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
                                             </div>
                                         </div>
                                     </div>
-
-
-
                                 </div>
                             </div>
 
@@ -130,18 +126,30 @@
                                 <span><h2>Await Feedback</h2> 
                                     <img src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'">
                                 </span>
-                                <div id="await-feedback-tasks" class="tasks"> 
-                                    <div class="task">Task B</div>
-                                    <div class="task">Task C</div>
+                                <div id="await-feedback-tasks" class="tasks">
+                                    <div class="task">
+                                        <span class="task_category2">${task.category}</span>
+                                        <div class="task_content-metadata-box">
+                                            <span class="task_title">Und noch so ein Ding mit anderer Prio!</span>
+                                            <span class="task_description">Aber dieses mal ohne Subtasks und ohne progressbar. Aber trotzdem genauso viel Text =P</span>
+                                        </div>
+                                        <div class="task_assignment-and-priority-box">
+                                             <div class="task_assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                                                <img class="user-img" id="${user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+                                            </div>
+                                            <div class="task_priority">
+                                                <img class="user-img" id="priority" class="task_priority" src="../assets/img/priority-low.svg" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div id="done-container" class="board__table__column">
                                 <h2>Done</h2>
-                                <div id="done-tasks" class="tasks">
-                                    <div class="task">Task D</div>
-                                    <div class="task">Task E</div>
-                                </div>
+                                <div id="done-tasks" class="tasks"></div>
                             </div>
                         </div>
                     </section>
