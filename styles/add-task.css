@@ -95,7 +95,7 @@
 
 .grey-seperator {
     width: 2px;
-    height: 20rem;
+    height: 100%;
     background-color: var(--color-lightgrey);
 }
 
@@ -103,15 +103,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 16px;
-    margin-top: 40px;
+    gap: 1rem;
+    margin-top: 2.5rem;
     padding-right: 6rem;
 }
 
 .task-content__footer-btn {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+    gap: 1rem;
 }
 
 .empty-btn {

@@ -27,7 +27,7 @@
     gap: 4rem;
 }
 
-.summary-content__metrics--row {
+.summary-content__metrics-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,18 +49,18 @@
     transition: transform var(--transition-slow) ease;
 }
 
-.metrics__box--top {
+.metrics__box-top {
     gap: 1.5rem;
 }
 
-.metrics__box--left {
+.metrics__box-left {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.625rem;
 }
 
-.metrics__box--middle {
+.metrics__box-middle {
     width: 100%;
     gap: 4rem;
 }
@@ -71,13 +71,13 @@
     gap: 0.625rem;
 }
 
-.metrics__box--bottom {
+.metrics__box-bottom {
     padding: 2.375rem 2.375rem;
     height: 10.875rem;
     width: 10.875rem;
 }
 
-.metrics__box--text {
+.metrics__box-text {
     color: var(--color-menu);
     display: flex;
     flex-direction: column;
@@ -117,19 +117,19 @@
     background-color: var(--color-white);
 }
 
-.metrics__icon--todo:hover img {
+.metrics__icon-todo:hover img {
     content: url("../assets/img/to-do-hover.svg");
 }
 
-.metrics__icon--todo:active img {
+.metrics__icon-todo:active img {
     content: url("../assets/img/to-do.png");
 }
 
-.metrics__icon--done:hover img {
+.metrics__icon-done:hover img {
     content: url("../assets/img/done-hover.svg");
 }
 
-.metrics__icon--done:active img {
+.metrics__icon-done:active img {
     content: url("../assets/img/done.png");
 }
 
