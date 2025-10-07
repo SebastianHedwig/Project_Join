@@ -12,13 +12,13 @@
         <link rel="stylesheet" href="../styles/header.css">
         <link rel="stylesheet" href="../styles/navigation.css">
         <link rel="stylesheet" href="../styles/board.css">
-        <link rel="stylesheet" href="../styles/ticket.css">
+        <link rel="stylesheet" href="../styles/task-card.css">
 
         <script src="../script.js" defer></script>
         <script src="../scripts/navigation.js" defer></script>
         <script src="../scripts/board.js" defer></script>
         <script src="../scripts/drag_and_drop.js" defer></script>
-        <script src="../scripts/ticket.js" defer></script>
+        <script src="../scripts/task-card.js" defer></script>
         <script src="../scripts/add_task.js" defer></script>
         <script src="../scripts/dialog_add_contact.js" defer></script>
         <script src="../templates/tpl_ticket.js" defer></script>
@@ -40,8 +40,8 @@
             </div>
         </nav>
 
-        <nav aria-label="submenu" class="content-wrapper d-none"> 
-            <ul class="submenu ">
+        <nav id="submenu" class="d-none" aria-label="submenu"> 
+            <ul class="submenu">
                 <li><a href="./legal-notice.html">Legal Notice</a></li>
                 <li><a href="./privacy-policy.html">Privacy Policy</a></li>
                 <li><a href="#">Log Out</a></li>
@@ -72,9 +72,9 @@
                             <div class="task-search-and-add">
                                 <div class="board__head__searchbox">
                                     <input type="search" placeholder="Find Task">
-                                    <img src="../assets/img/search.svg" alt="icon of an magnifying glass for better descripe of the search field">
+                                    <img class="search-btn" src="../assets/img/search.svg" onclick="focusInput()" alt="icon of an magnifying glass for better descripe of the search field">
                                 </div>
-                                <span id="add-task-btn" class="blue-btn">Add Task
+                                <span id="add-task-btn" class="add-task-btn filled-btn">Add Task
                                     <img src="../assets/img/add.svg" alt="Add Task Button">
                                 </span>
                             </div>
@@ -87,7 +87,7 @@
                                     <img src="../assets/img/add-btn-border.svg" alt="add task to 'to do'">
                                 </span>
                                 <div id="to-do-tasks" class="tasks">
-                                    <div class="no-task">No active tasks</div>
+                                    <div class="no-tasks-placeholder">No active tasks</div>
                                 </div>
                             </div>
 
@@ -97,12 +97,16 @@
                                     <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'">
                                 </span>
                                 <div id="in-progress-tasks" class="tasks">
+
+
                                     <div class="task">
                                         <span class="task_epic">User Story</span>
-                                        <span class="task_title">Kochwelt bla BLubb!</span>
-                                        <span class="task_description">Rezepte und son kram</span>
+                                        <div class="task_content-metadata-box">
+                                            <span class="task_title">Kochwelt bla BLubb!</span>
+                                            <span class="task_description">Rezepte und son kram</span>
+                                        </div>
                                         <div class="task_subtasks-and-progressbar-box">
-                                            <span class="task_progressbar">progressbar</span>
+                                            <span class="task_progressbar" style="--progress: 33.3333%;"></span>
                                             <span class="task_subtasks"> 1/3 Subtasks</span>
                                         </div>
                                         <div class="task_assignment-and-priority-box">
@@ -114,6 +118,9 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+
                                 </div>
                             </div>
 

@@ -1,0 +1,56 @@
+.task {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background-color: var(--color-white);
+  box-shadow: 0 0 0.625rem 0.188rem rgba(0, 0, 0, 0.1);
+  border-radius: 1.5rem;
+  color: var(--color-black);
+}
+
+.task_epic {
+  width: fit-content;
+  align-items: center;
+  color: var(--color-white);
+  background-color: var(--color-11);
+  border-radius: 0.5rem;
+  padding: 0.25rem 1rem;
+}
+
+.task_content-metadata-box {
+  margin: 1.5rem 0;
+}
+
+.task_title {
+  color: var(--color-maincolor);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.task_description {
+  color: var(--color-greyicons);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.task_subtasks-and-progressbar-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.task_progressbar {
+  --progress: 0%;
+  height: 0.5rem;
+  border-radius: 10px;
+  background: linear-gradient(to right, #4589ff 0%, #00bee8 var(--progress), #eee var(--progress), #eee 100%);
+  flex: 1;
+  transition: background 0.5s ease-in-out;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.task_assignment-and-priority-box {
+  margin-top: 1.5rem;
+}

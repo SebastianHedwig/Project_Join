@@ -99,15 +99,6 @@ main {
   padding: 0 4rem 0 6rem;
 }
 
-.blue-btn {
-  display: inline-flex;
-  align-items: center;
-  background-color: var(--color-maincolor);
-  color: var(--color-white);
-  border-radius: 0.625rem;
-  padding: 1rem;
-}
-
 h1 {
   font-size: 1.25rem;
   font-weight: 400;
@@ -156,6 +147,11 @@ button:hover {
 }
 
 .filled-btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.625rem;
+  padding: 1rem;
+  cursor: pointer;
   background-color: var(--color-maincolor);
   color: var(--color-white);
   transition: all var(--transition-normal) ease;
@@ -172,6 +168,11 @@ button:hover {
 }
 
 .empty-btn {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.625rem;
+  padding: 1rem;
+  cursor: pointer;
   color: var(--color-maincolor);
   border: 1px solid var(--color-maincolor);
   transition: all var(--transition-normal) ease;
