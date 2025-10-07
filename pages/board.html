@@ -13,8 +13,8 @@
         <link rel="stylesheet" href="../styles/navigation.css">
         <link rel="stylesheet" href="../styles/board.css">
         <link rel="stylesheet" href="../styles/task-card.css">
-        <link rel="stylesheet" href="../styles/dialog-task-info.css">
-        <link rel="stylesheet" href="../styles/dialog-add-task.css">
+        <link rel="stylesheet" href="../styles/dlg-task-info.css">
+        <link rel="stylesheet" href="../styles/dlg-add-task.css">
 
         <script src="../script.js" defer></script>
         <script src="../scripts/navigation.js" defer></script>
@@ -159,31 +159,44 @@
                 </div>
             </main>
         </div>
-    <dialog class="dlg">
+
+    <div id="overlay" class="overlay d-none"></div>
+    <dialog class="dlg d-none">
         <header class="dlg_header">
            <span class="dlg_header_task-category">${task.category}</span>
            <img class="dlg_close-btn" src="../assets/img/close-delete-cross.svg" alt=""> 
         </header>
         <main class="dlg_main">
+            <span class="dlg_main_task-title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
             <span class="dlg_main_task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
-            <span class="dlg_main_task-date"></span>
-            <div class="dlg_main_task-priority">
+            <span class="dlg_main_task-date">Datum und so</span>
+            <div class="dlg_main_task-priority"> Priority: 
                 <img id="priority" class="dlg_main_task-priority" src="../assets/img/priority-low.svg" alt="image of prioritylevel">
             </div>
-            <div class="dlg_main_task-assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
-                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
-                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
-                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+            <div class="dlg_main_task-assignments">
+                <span class="dlg_main_assignments-title">Assigned to:</span>
+                <div class="dlg_user-box">  <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
+                    <span class="dlg-user-name">User 1</span>
+                </div>
+                <div class="dlg_user-box">    
+                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                    <span class="dlg-user-name">User 2</span>
+                </div>
+                <div class="dlg_user-box">
+                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+                    <span class="dlg-user-name">User 3</span>
+                </div>
             </div>
-            <div class="dlg_main_task-subtask">
-                <span><img src="#" alt="checkbox">Subtask Text</span>
+            <div class="dlg_main_task-subtask-box">
+                <span class="dlg_main_task-subtask-title">Subtasks:</span>
+                <span class="dlg_main_task-subtask"><img src="#" alt="checkbox">Subtask Text</span>
             </div>
-
         </main>
         <footer class="dlg_footer">
             <div class="dlg_footer_options-box">
                 <span class="delete-btn"><img src="../assets/img/delete.svg" alt="image of an Garbage can"> Delete</span>
-                <span class="seperator"></span>
+                <span class="separator"></span>
                 <span class="edit-btn"><img src="../assets/img/edit.svg" alt="image of an pencil"> Edit</span>
             </div>
         </footer>
