@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 128px;
-    gap: 24px;
+    margin-top: 8rem;
+    gap: 1.5rem;
 }
 
 .summary-content__header span {
@@ -12,26 +12,26 @@
 }
 
 .summary-content__left {
-    width: 550px;
+    width: 34.375rem;
     height: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
 }
 
 .summary-content__metrics {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-top: 64px;
-    gap: 64px;
+    margin-top: 4rem;
+    gap: 4rem;
 }
 
 .summary-content__metrics--row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    gap: 32px;
+    gap: 2rem;
 }
 
 .metrics__box {
@@ -39,42 +39,42 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 38px 58px;
+    padding: 2.375rem 3.625rem;
     background-color: var(--color-white);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
-    font-size: 18px;
+    box-shadow: 0rem 0.25rem 0.25rem rgba(0, 0, 0, 0.1);
+    border-radius: 1.875rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: var(--color-black);
     transition: transform var(--transition-slow) ease;
 }
 
 .metrics__box--top {
-    gap: 24px;
+    gap: 1.5rem;
 }
 
 .metrics__box--left {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .metrics__box--middle {
     width: 100%;
-    gap: 64px;
+    gap: 4rem;
 }
 
 .metrics__box img {
     width: 4rem;
     height: 4rem;
-    gap: 10px;
+    gap: 0.625rem;
 }
 
 .metrics__box--bottom {
-    padding: 38px 38px;
-    height: 174px;
-    width: 174px;
+    padding: 2.375rem 2.375rem;
+    height: 10.875rem;
+    width: 10.875rem;
 }
 
 .metrics__box--text {
@@ -126,13 +126,13 @@
 }
 
 .blue_seperator {
-    width: 4px;
+    width: 0.25rem;
     height: 3.75rem;
     background-color: var(--color-lightblue);
 }
 
 .grey_seperator {
-    width: 4px;
+    width: 0.25rem;
     height: 6rem;
     background-color: var(--color-lightgrey);
 }

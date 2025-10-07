@@ -35,6 +35,8 @@
   --color-navselected: #091931;
   --color-navhover: #3b5987;
   --color-headerhover: #e2e6ec;
+  --color-iconbackground: #EEEEEE;
+  --color-checkboxbackground: #EDF2FA;
 }
 
 :root {
@@ -138,11 +140,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
-  cursor: pointer;
-}
-
-button:hover {
+a:hover, button:hover, input:hover {
   cursor: pointer;
 }
 
