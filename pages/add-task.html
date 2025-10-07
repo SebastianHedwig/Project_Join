@@ -30,97 +30,96 @@
                 <a href="./legal-notice.html">Legal Notice</a>
             </div>
         </nav>
-        <main>
 
-        
-        <div class="content">
-                     <header id="header">
-                    <div class="header__content content-wrapper">
-                        <h1 id="page-title">Kanban Project Management Tool</h1>
-                        <div id="info-container" class="info-container">
-                            <a href="./help.html">
-                                <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
-                            </a>
-                            <div class="header__user-info">
-                                <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                                <span>SM</span>
+        <nav aria-label="submenu" class="content-wrapper d-none"> 
+            <ul class="submenu ">
+                <li><a href="./legal-notice.html">Legal Notice</a></li>
+                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </nav>
+
+        <div class="site-wrapper">
+            <header id="header">
+                <div class="header__content content-wrapper">
+                    <h1 id="page-title">Kanban Project Management Tool</h1>
+                    <div id="info-container" class="info-container">
+                        <a href="./help.html">
+                            <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
+                        </a>
+                        <div class="header__user-info">
+                            <img src="../assets/img/user-ellipse.svg" alt="User picture">
+                            <span>SM</span>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main>
+                <div class="content">
+                    <section id="task-content">
+                        <div class="task-content__header content-wrapper">
+                            <h2>Add Task</h2>
+                        </div>
+                        <div class="task-content__container content-wrapper">
+                            <div class="add-task__left-column">
+                                <div class="add-task__field">
+                                    <label for="title" class="required--after">Title</label>
+                                    <input type="text" placeholder="Enter a title" required>
+                                </div>
+                                <div class="add-task__field">
+                                    <label for="description">Description</label>
+                                    <textarea name="Add Task Description" id="task-description-area"></textarea>
+                                </div>
+                                <div class="add-task__field">
+                                    <label for="due date" class="required required--after">Due date</label>
+                                    <input type="date" placeholder="dd/mm/yyyy" required>
+                                </div>
+                            </div>
+                            <div class="grey-seperator"></div>
+                            <div class="add-task__right-column">
+                                <div class="add-task__field">
+                                    <label for="priority">Priority</label>
+                                    <div class="priority-options">
+                                        <div class="priority-options__btn">Urgent <img src="../assets/img/priority-urgent.svg" alt="urgent"></div>
+                                        <div class="priority-options__btn">Medium <img src="../assets/img/priority-medium.svg" alt="medium"></div>
+                                        <div class="priority-options__btn">Low <img src="../assets/img/priority-low.svg" alt="low"></div>
+                                    </div>
+                                </div>
+                                <div class="add-task__field">
+                                    <label for="assigned to">Assigned to</label>
+                                    <select name="assigned to" id="assigned-to">
+                                        <option value="1">Option1</option>
+                                        <option value="2">Option2</option>
+                                    </select>
+                                </div>
+                                <div class="add-task__field">
+                                    <label for="category" class="required--after">Category</label>
+                                    <select name="category" id="category" required>
+                                        <option value="1">Option1</option>
+                                        <option value="2">Option2</option>
+                                    </select>
+                                </div>
+                                <div class="add-task__field">
+                                    <label for="subtasks">Subtasks</label>
+                                    <input type="subtasks" placeholder="Add new subtask">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </header>
-
-            <nav aria-label="submenu" class="content-wrapper d-none"> 
-                 <ul class="submenu ">
-                    <li><a href="./legal-notice.html">Legal Notice</a></li>
-                    <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                    <li><a href="#">Log Out</a></li>
-                </ul>
-            </nav>
-
-            
-            <section id="task-content">
-                <div class="task-content__header content-wrapper">
-                    <h2>Add Task</h2>
-                </div>
-                <div class="task-content__container content-wrapper">
-                    <div class="add-task__left-column">
-                        <div class="add-task__field">
-                            <label for="title" class="required--after">Title</label>
-                            <input type="text" placeholder="Enter a title" required>
-                        </div>
-                        <div class="add-task__field">
-                            <label for="description">Description</label>
-                            <textarea name="Add Task Description" id="task-description-area"></textarea>
-                        </div>
-                        <div class="add-task__field">
-                            <label for="due date" class="required required--after">Due date</label>
-                            <input type="date" placeholder="dd/mm/yyyy" required>
-                        </div>
-                    </div>
-                    <div class="grey-seperator"></div>
-                    <div class="add-task__right-column">
-                        <div class="add-task__field">
-                            <label for="priority">Priority</label>
-                            <div class="priority-options">
-                                <div class="priority-options__btn">Urgent <img src="../assets/img/priority-urgent.svg" alt="urgent"></div>
-                                <div class="priority-options__btn">Medium <img src="../assets/img/priority-medium.svg" alt="medium"></div>
-                                <div class="priority-options__btn">Low <img src="../assets/img/priority-low.svg" alt="low"></div>
+                        
+                        <div class="task-content__footer content-wrapper">
+                            <span class="required required--before"> This field is required</span>
+                            <div class="task-content__footer-btn">
+                                <div class="task-content__footer-btn-clear">Clear 
+                                    <img src="../assets/img/close.svg" alt="close icon">
+                                </div>
+                                <div class="task-content__footer-btn-create">Create Task <img src="../assets/img/done.svg" alt="done icon"></div>
                             </div>
                         </div>
-                        <div class="add-task__field">
-                            <label for="assigned to">Assigned to</label>
-                            <select name="assigned to" id="assigned-to">
-                                <option value="1">Option1</option>
-                                <option value="2">Option2</option>
-                            </select>
-                        </div>
-                        <div class="add-task__field">
-                            <label for="category" class="required--after">Category</label>
-                            <select name="category" id="category" required>
-                                <option value="1">Option1</option>
-                                <option value="2">Option2</option>
-                            </select>
-                        </div>
-                        <div class="add-task__field">
-                            <label for="subtasks">Subtasks</label>
-                            <input type="subtasks" placeholder="Add new subtask">
-                        </div>
-                    </div>
+                    </section>
                 </div>
-                
-                <div class="task-content__footer content-wrapper">
-                    <span class="required required--before"> This field is required</span>
-                    <div class="task-content__footer-btn">
-                        <div class="task-content__footer-btn-clear">Clear 
-                            <img src="../assets/img/close.svg" alt="close icon">
-                        </div>
-                        <div class="task-content__footer-btn-create">Create Task <img src="../assets/img/done.svg" alt="done icon"></div>
-                    </div>
-                </div>
-            </section>
-
-        </main>
-
+            </main>
+        </div>
         <script src="./script.js"></script>
         <script src="./scripts/login.js"></script>
         <script src="./scripts/main.js"></script>

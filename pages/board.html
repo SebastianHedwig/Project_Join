@@ -14,20 +14,17 @@
         <link rel="stylesheet" href="../styles/board.css">
         <link rel="stylesheet" href="../styles/ticket.css">
 
-        <script src="../script.js">defer</script>
-        <script src="../scripts/navigation.js">defer</script>
-        <script src="../scripts/board.js">defer</script>
-        <script src="../scripts/drag_and_drop.js">defer</script>
-        <script src="../scripts/ticket.js">defer</script>
-        <script src="../scripts/add_task.js">defer</script>
-        <script src="../scripts/dialog_add_contact.js">defer</script>
-        <script src="../templates/tpl_ticket.js">defer</script>
-        <script src="../templates/tpl_board.js">defer</script>
-        <script src="../templates/tpl_add_task.js">defer</script>
-
+        <script src="../script.js" defer></script>
+        <script src="../scripts/navigation.js" defer></script>
+        <script src="../scripts/board.js" defer></script>
+        <script src="../scripts/drag_and_drop.js" defer></script>
+        <script src="../scripts/ticket.js" defer></script>
+        <script src="../scripts/add_task.js" defer></script>
+        <script src="../scripts/dialog_add_contact.js" defer></script>
+        <script src="../templates/tpl_ticket.js" defer></script>
+        <script src="../templates/tpl_board.js" defer></script>
+        <script src="../templates/tpl_add_task.js" defer></script>
     </head>
-
-    <body>
 
         <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
             <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
@@ -42,103 +39,105 @@
                 <a href="./legal-notice.html">Legal Notice</a>
             </div>
         </nav>
+
+        <nav aria-label="submenu" class="content-wrapper d-none"> 
+            <ul class="submenu ">
+                <li><a href="./legal-notice.html">Legal Notice</a></li>
+                <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                <li><a href="#">Log Out</a></li>
+            </ul>
+        </nav>
        
-        <main>
-            <div id="board-page-content" class="content">
-                <header id="header">
-                    <div class="header__content content-wrapper">
-                        <h1 id="page-title">Kanban Project Management Tool</h1>
-                        <div id="info-container" class="info-container">
-                            <a href="./help.html">
-                                <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
-                            </a>
-                            <div class="header__user-info">
-                                <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                                <span>SM</span>
-                            </div>
+        <div class="site-wrapper">
+            <header id="header">
+                <div class="header__content content-wrapper">
+                    <h1 id="page-title">Kanban Project Management Tool</h1>
+                    <div id="info-container" class="info-container">
+                        <a href="./help.html">
+                            <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
+                        </a>
+                        <div class="header__user-info">
+                            <img src="../assets/img/user-ellipse.svg" alt="User picture">
+                            <span>SM</span>
                         </div>
                     </div>
-                </header>
+                </div>
+            </header>
 
-                <nav aria-label="submenu" class="content-wrapper d-none"> 
-                    <ul class="submenu ">
-                        <li><a href="./legal-notice.html">Legal Notice</a></li>
-                        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="#">Log Out</a></li>
-                    </ul>
-                </nav>
-            
-                <section id="board" class="board-content content-wrapper">
-                    <div id="board-head" class="board__head">
-                        <h2>Board</h2>
-                        <div class="task-search-and-add">
-                            <div class="board__head__searchbox">
-                                <input type="search" placeholder="Find Task">
-                                <img src="../assets/img/search.svg" alt="icon of an magnifying glass for better descripe of the search field">
-                            </div>
-                            <span id="add-task-btn" class="blue-btn">Add Task
-                                <img src="../assets/img/add.svg" alt="Add Task Button">
-                            </span>
-                        </div>
-                    </div>
-
-                    <div id="board-table" class="board__table">
-                        <div id=to-do-container class="board__table__column">
-                            <span>
-                                <h3>To do</h3>
-                                <img src="../assets/img/add-btn-border.svg" alt="add task to 'to do'">
-                            </span>
-                            <div id="to-do-tasks" class="tasks">
-                                <div class="no-task">No active tasks</div>
+            <main>
+                <div id="board-page-content" class="content">
+                    <section id="board" class="board-content content-wrapper">
+                        <div id="board-head" class="board__head">
+                            <h2>Board</h2>
+                            <div class="task-search-and-add">
+                                <div class="board__head__searchbox">
+                                    <input type="search" placeholder="Find Task">
+                                    <img src="../assets/img/search.svg" alt="icon of an magnifying glass for better descripe of the search field">
+                                </div>
+                                <span id="add-task-btn" class="blue-btn">Add Task
+                                    <img src="../assets/img/add.svg" alt="Add Task Button">
+                                </span>
                             </div>
                         </div>
 
-                        <div id="in-progress-container" class="board__table__column">
-                            <span>
-                                <h3>In Progress</h3>
-                                <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'">
-                            </span>
-                            <div id="in-progress-tasks" class="tasks">
-                                <div class="task">
-                                    <span class="task_epic">User Story</span>
-                                    <span class="taskt_title">Kochwelt bla BLubb!</span>
-                                    <span class="task_description">Rezepte und son kram</span>
-                                    <div class="task_subtasks-and-progressbar-box">
-                                        <span class="task_progressbar">progressbar</span>
-                                        <span class="task_subtasks"> 1/3 Subtasks</span>
-                                    </div>
-                                    <div class="task_assignment-and-priority-box">
-                                        <div class="task_assignments">
-                                            <img id="${user.id}" src="#" alt="member initials">
-                                            <img id="${user.id}" src="#" alt="member initials">
-                                            <img id="${user.id}" src="#" alt="member initials">
-                                            <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
+                        <div id="board-table" class="board__table">
+                            <div id=to-do-container class="board__table__column">
+                                <span>
+                                    <h3>To do</h3>
+                                    <img src="../assets/img/add-btn-border.svg" alt="add task to 'to do'">
+                                </span>
+                                <div id="to-do-tasks" class="tasks">
+                                    <div class="no-task">No active tasks</div>
+                                </div>
+                            </div>
+
+                            <div id="in-progress-container" class="board__table__column">
+                                <span>
+                                    <h3>In Progress</h3>
+                                    <img src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'">
+                                </span>
+                                <div id="in-progress-tasks" class="tasks">
+                                    <div class="task">
+                                        <span class="task_epic">User Story</span>
+                                        <span class="task_title">Kochwelt bla BLubb!</span>
+                                        <span class="task_description">Rezepte und son kram</span>
+                                        <div class="task_subtasks-and-progressbar-box">
+                                            <span class="task_progressbar">progressbar</span>
+                                            <span class="task_subtasks"> 1/3 Subtasks</span>
+                                        </div>
+                                        <div class="task_assignment-and-priority-box">
+                                            <div class="task_assignments">
+                                                <img id="${user.id}" src="#" alt="member initials">
+                                                <img id="${user.id}" src="#" alt="member initials">
+                                                <img id="${user.id}" src="#" alt="member initials">
+                                                <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div id="await-feedback-container" class="board__table__column">
-                            <span><h3>Await Feedback</h3> 
-                                <img src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'">
-                            </span>
-                            <div id="await-feedback-tasks" class="tasks"> 
-                                <div class="task">Task B</div>
-                                <div class="task">Task C</div>
+                            <div id="await-feedback-container" class="board__table__column">
+                                <span><h3>Await Feedback</h3> 
+                                    <img src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'">
+                                </span>
+                                <div id="await-feedback-tasks" class="tasks"> 
+                                    <div class="task">Task B</div>
+                                    <div class="task">Task C</div>
+                                </div>
+                            </div>
+
+                            <div id="done-container" class="board__table__column">
+                                <h3>Done</h3>
+                                <div id="done-tasks" class="tasks">
+                                    <div class="task">Task D</div>
+                                    <div class="task">Task E</div>
+                                </div>
                             </div>
                         </div>
-
-                        <div id="done-container" class="board__table__column">
-                            <h3>Done</h3>
-                            <div id="done-tasks" class="tasks">
-                                <div class="task">Task D</div>
-                                <div class="task">Task E</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-        </main>
+                    </section>
+                </div>
+            </main>
+        </div>    
     </body>
 </html>

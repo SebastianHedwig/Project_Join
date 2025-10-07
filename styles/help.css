@@ -3,10 +3,6 @@
   margin-top: 8rem;
 }
 
-.help-content h2 {
-  margin-bottom: 2rem;
-}
-
 .help-content h3 {
   margin: 1.5rem 0;
   font-size: 1.688rem;
@@ -15,7 +11,6 @@
 .help-content p {
     margin: 0.5rem 0;
 }
-
 
 .help-content ol {
   list-style: none;
@@ -38,6 +33,24 @@
   text-align: left;
   min-width: 1.5rem;
   margin-right: 2.2rem;
+}
+
+.help-content_head-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.help-content_head-container img {
+  height: 2rem;
+  display: inline-flex;
+  justify-content: flex-end;
+}
+
+.go-back-arrow:hover {
+  content: url("../assets/img/arrow-left-blue-hover.svg");
+  cursor: pointer;
 }
 
 .help-content .list-content {
