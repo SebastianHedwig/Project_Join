@@ -3,7 +3,7 @@
   margin-top: 8rem;
 }
 
-.help-content h3 {
+.help-content h2 {
   margin: 1.5rem 0;
   font-size: 1.688rem;
 }
@@ -58,7 +58,7 @@
   flex-direction: column;
 }
 
-.help-content .list-content h4 {
+.help-content .list-content h3 {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 700;

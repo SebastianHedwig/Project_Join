@@ -3,15 +3,15 @@
     margin-top: 8rem;
 }
 
-.legal-content h2 {
+.legal-content h1 {
     margin-bottom: 2rem;
 }
 
-.legal-content h3 {
+.legal-content h2 {
     font-size: 1.688rem;
 }
 
-.legal-content h4 {
+.legal-content h3 {
     font-size: 1.25rem;
     font-weight: 700 ;
 }
