@@ -20,45 +20,47 @@
     <script src="../templates/tpl_summary.js" defer></script>
 </head>
 
-    <body>
-        <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
-            <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
-            <div class="nav-menu__btn-container">
-                <a class="nav-btn--selected deactivated" href="./summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
-                <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
-                <a href="./board.html"><img src="../assets/img/board.svg" alt="Board">Board</a>
-                <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="Contacts">Contacts</a>
+<body>
+    <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
+        <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
+        <div class="nav-menu__btn-container">
+            <a class="nav-btn--selected deactivated" href="./summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
+            <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
+            <a href="./board.html"><img src="../assets/img/board.svg" alt="Board">Board</a>
+            <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="Contacts">Contacts</a>
+        </div>
+        <div class="nav-menu__bottom__btn">
+            <a href="./privacy-policy.html">Privacy Policy</a>
+            <a href="./legal-notice.html">Legal Notice</a>
+        </div>
+    </nav>
+
+    <nav aria-label="submenu" class="content-wrapper d-none"> 
+        <ul class="submenu ">
+            <li><a href="./legal-notice.html">Legal Notice</a></li>
+            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+            <li><a href="#">Log Out</a></li>
+        </ul>
+    </nav>
+
+    <div class="site-wrapper">
+        <header id="header">
+            <div class="header__content content-wrapper">
+                <h1 id="page-title">Kanban Project Management Tool</h1>
+                <div id="info-container" class="info-container">
+                    <a href="./help.html">
+                    <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
+                    </a>
+                    <div class="header__user-info">
+                        <img src="../assets/img/user-ellipse.svg" alt="User picture">
+                        <span>SM</span>
+                    </div>
+                </div>
             </div>
-            <div class="nav-menu__bottom__btn">
-                <a href="./privacy-policy.html">Privacy Policy</a>
-                <a href="./legal-notice.html">Legal Notice</a>
-            </div>
-        </nav>
+        </header>
+
         <main>
             <div id="summary-page-container" class="content">
-                    <header id="header">
-                        <div class="header__content content-wrapper">
-                            <h1 id="page-title">Kanban Project Management Tool</h1>
-                            <div id="info-container" class="info-container">
-                                <a href="./help.html">
-                                <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
-                                </a>
-                                <div class="header__user-info">
-                                    <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                                    <span>SM</span>
-                                </div>
-                            </div>
-                        </div>
-                    </header>
-
-                    <nav aria-label="submenu" class="content-wrapper d-none"> 
-                        <ul class="submenu ">
-                            <li><a href="./legal-notice.html">Legal Notice</a></li>
-                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </nav>
-
                 <section id="summary-content">
                     <div class="summary-content__header content-wrapper">
                         <h2>Join 360</h2>
@@ -139,6 +141,7 @@
                 </section>
             </div>
         </main>
-    </body>
+    </div>
+</body>
 
 </html>
