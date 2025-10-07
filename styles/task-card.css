@@ -52,5 +52,12 @@
 }
 
 .task_assignment-and-priority-box {
+  display: flex;
+  align-items: center;
   margin-top: 1.5rem;
+}
+
+.task_assignments {
+  display: flex;
+  flex: 1;
 }
