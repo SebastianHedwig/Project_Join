@@ -114,32 +114,18 @@
     gap: 16px;
 }
 
-.task-content__footer-btn-clear {
-    border: 1px solid var(--color-maincolor);
-    color: var(--color-maincolor);
+.empty-btn {
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
 }
 
-.task-content__footer-btn-clear:hover {
-    border: 1px solid var(--color-lightblue);
-    color: var(--color-lightblue);
-}
-
-.task-content__footer-btn-clear:hover img {
+.empty-btn:hover img {
     content: url('../assets/img/close-hover.svg');
 }
 
-.task-content__footer-btn-create {
-    background-color: var(--color-maincolor);
-    color: var(--color-white);
+.filled-btn {
     border-radius: 10px;
     cursor: pointer;
     padding: 10px;
-}
-
-.task-content__footer-btn-create:hover {
-    background-color: var(--color-lightblue);
-    transition: background-color var(--transition-fast) ease;
 }

@@ -113,16 +113,32 @@
     cursor: pointer;
 }
 
+.metrics__box:active {
+    background-color: var(--color-white);
+}
+
 .metrics__icon--todo:hover img {
     content: url("../assets/img/to-do-hover.svg");
+}
+
+.metrics__icon--todo:active img {
+    content: url("../assets/img/to-do.png");
 }
 
 .metrics__icon--done:hover img {
     content: url("../assets/img/done-hover.svg");
 }
 
+.metrics__icon--done:active img {
+    content: url("../assets/img/done.png");
+}
+
 .metrics__box:hover span {
     color: var(--color-white);
+}
+
+.metrics__box:active span {
+    color: var(--color-black);
 }
 
 .blue_seperator {
