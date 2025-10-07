@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="../styles/navigation.css">
         <link rel="stylesheet" href="../styles/board.css">
         <link rel="stylesheet" href="../styles/task-card.css">
+        <link rel="stylesheet" href="../styles/dialog-task-info.css">
+        <link rel="stylesheet" href="../styles/dialog-add-task.css">
 
         <script src="../script.js" defer></script>
         <script src="../scripts/navigation.js" defer></script>
@@ -41,8 +43,7 @@
         </nav>
        
         <div class="site-wrapper">
-            <div class="site-wrapper">
-            <header id="header">
+            <header class="header" id="header">
                 <div class="header-wrapper">
                     <div class="header__content content-wrapper">
                         <span id="page-title">Kanban Project Management Tool</span>
@@ -117,7 +118,7 @@
                                                 <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
                                             </div>
                                             <div class="task_priority">
-                                                <img class="user-img" id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="">
+                                                <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="image of prioritylevel">
                                             </div>
                                         </div>
                                     </div>
@@ -142,7 +143,7 @@
                                                 <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
                                             </div>
                                             <div class="task_priority">
-                                                <img class="user-img" id="priority" class="task_priority" src="../assets/img/priority-low.svg" alt="">
+                                                <img id="priority" class="task_priority" src="../assets/img/priority-low.svg" alt="image of prioritylevel">
                                             </div>
                                         </div>
                                     </div>
@@ -158,8 +159,34 @@
                 </div>
             </main>
         </div>
-    <dialog>
-        
+    <dialog class="dlg">
+        <header class="dlg_header">
+           <span class="dlg_header_task-category">${task.category}</span>
+           <img class="dlg_close-btn" src="../assets/img/close-delete-cross.svg" alt=""> 
+        </header>
+        <main class="dlg_main">
+            <span class="dlg_main_task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
+            <span class="dlg_main_task-date"></span>
+            <div class="dlg_main_task-priority">
+                <img id="priority" class="dlg_main_task-priority" src="../assets/img/priority-low.svg" alt="image of prioritylevel">
+            </div>
+            <div class="dlg_main_task-assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
+                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+            </div>
+            <div class="dlg_main_task-subtask">
+                <span><img src="#" alt="checkbox">Subtask Text</span>
+            </div>
+
+        </main>
+        <footer class="dlg_footer">
+            <div class="dlg_footer_options-box">
+                <span class="delete-btn"><img src="../assets/img/delete.svg" alt="image of an Garbage can"> Delete</span>
+                <span class="seperator"></span>
+                <span class="edit-btn"><img src="../assets/img/edit.svg" alt="image of an pencil"> Edit</span>
+            </div>
+        </footer>
     </dialog>    
     </body>
 </html>
