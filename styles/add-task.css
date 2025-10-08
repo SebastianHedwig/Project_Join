@@ -25,12 +25,16 @@
 .task-content__container {
     display: flex;
     flex-direction: row;
+    align-items: stretch;
     margin-top: 4rem;
 }
 
 .add-task__left-column {
     width: 50%;
     padding-right: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.125rem;
 }
 
 .task-content__container label {
@@ -96,7 +100,6 @@
 
 .grey-seperator {
     width: 0.125rem;
-    height: 100%;
     background-color: var(--color-lightgrey);
 }
 
