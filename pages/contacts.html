@@ -33,7 +33,7 @@
 
     <div class="site-wrapper">
         <div class="site-wrapper">
-            <header id="header">
+            <header id="header" class="header">
                 <div class="header-wrapper">
                     <div class="header__content content-wrapper">
                         <span id="page-title">Kanban Project Management Tool</span>
@@ -63,11 +63,12 @@
                     <section id="contacts_content">
 
                         <div class="content-left">
-                            <div class="button-holder">
-                                <button class="filled-btn">Add new contact<img src="../assets/img/person-add.svg"
-                                    alt="icon of a person with a plus-symbol"></button>
+                            <div class="content-left__button-holder">
+                                <button class="filled-btn" id="add-new-contact-btn">Add new contact<img
+                                        src="../assets/img/person-add.svg"
+                                        alt="icon of a person with a plus-symbol"></button>
                             </div>
-                            
+
                             <div class="contact-list">
                                 <!-- Hier werden später die Kontake reingerendert -->
                                 <div>
@@ -239,7 +240,7 @@
                                 <p class="info-header">Contact Information</p>
                                 <div class="contact-details">
                                     <p><strong>Email</strong></p>
-                                    <p>max.mustermann@web.de</p>
+                                    <p class="contact-details__email">max.mustermann@web.de</p>
                                     <p><strong>Phone</strong></p>
                                     <p>+49 1111 111 111</p>
                                 </div>
@@ -248,8 +249,71 @@
                         </div>
                     </section>
                 </div>
+
             </main>
         </div>
+        <dialog class="add-contact__overlay">
+
+            <div class="overlay-left">
+                <img src="../assets/img/logo-white.png"
+                    alt="the word: join with a big J with a blue dot on the left side">
+                <h1>Add contact</h1>
+                <p>Tasks are better with a team!</p>
+                <div class="content-left__bluestrip"></div>
+            </div>
+
+            <div class="overlay-right">
+                <div class="close-button__wrapper" id="overlay-close-btn">
+                    <img src="../assets/img/close.svg" alt="icon of the letter X">
+                </div>
+                <div class="content-right__wrapper">
+                    <div class="img-wrapper">
+                        <img src="../assets/img/unknownuser.png"
+                            alt="a grey circle with a white outline of a person in the middle">
+                    </div>
+                    <div class="width-div">
+                        <div class="form__inputfields">
+                            <div class="inputfield__wrapper">
+                                <input type="text" placeholder="Name" aria-label="name">
+                                <img src="../assets/img/person.svg" alt="icon of an person">
+                            </div>
+
+                            <div class="inputfield__wrapper">
+                                <input type="email" placeholder="Email" aria-label="email">
+                                <img src="../assets/img/mail.svg" alt="icon of an email">
+                            </div>
+
+                            <div class="inputfield__wrapper">
+                                <input type="tel" placeholder="Phone" aria-label="Phone">
+                                <img src="../assets/img/call.svg" alt="icon of an phone">
+                            </div>
+                            <div class="overlay-right__button-holder">
+                                <button class="empty-btn">Cancel<img src="../assets/img/close.svg"
+                                        alt="icon of the letter X"></button>
+                                <button class="filled-btn">Create contact<img src="../assets/img/done.svg"
+                                        alt="icon of a checkmark"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </dialog>
+        <!-- ############### Nur um zu sehen ob Backdrop funktioniert und Overlay nicht immer da ist########## -->
+        <script>
+            const dialog = document.querySelector(".add-contact__overlay");
+            const showButton = document.getElementById("add-new-contact-btn");
+            const closeButton = document.getElementById("overlay-close-btn");
+
+            showButton.addEventListener("click", () => {
+                dialog.showModal();
+                document.querySelector(".add-contact__overlay").style.visibility = "visible";
+            });
+
+            closeButton.addEventListener("click", () => {
+                dialog.close();
+                document.querySelector(".add-contact__overlay").style.visibility = "hidden";
+            });
+        </script>
 </body>
 
 </html>

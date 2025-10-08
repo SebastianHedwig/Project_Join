@@ -152,6 +152,8 @@ a:hover, button:hover, input:hover {
   border-radius: 0.625rem;
   padding: 1rem;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1.313rem;
   background-color: var(--color-maincolor);
   color: var(--color-white);
   transition: all var(--transition-normal) ease;
@@ -172,6 +174,7 @@ a:hover, button:hover, input:hover {
   align-items: center;
   border-radius: 0.625rem;
   padding: 1rem;
+  font-size: 1rem;
   cursor: pointer;
   color: var(--color-maincolor);
   border: 1px solid var(--color-maincolor);

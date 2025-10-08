@@ -6,9 +6,13 @@
     gap: 1.5rem;
 }
 
+h3 {
+    color: var(--color-maincolor);
+}
 .summary-content__header span {
     font-size: 1.5rem;
     font-weight: 400;
+    color: var(--color-maincolor);
 }
 
 .summary-content__left {
