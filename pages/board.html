@@ -160,8 +160,8 @@
             </main>
         </div>
 
-    <div id="overlay" class="overlay d-none"></div>
-    <dialog class="dlg d-none">
+    <div id="overlay" class="overlay"></div>
+    <dialog class="dlg">
         <header class="dlg_header">
            <span class="dlg_header_task-category">${task.category}</span>
            <img class="dlg_close-btn" src="../assets/img/close-delete-cross.svg" alt=""> 
@@ -169,9 +169,12 @@
         <main class="dlg_main">
             <span class="dlg_main_task-title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
             <span class="dlg_main_task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
-            <span class="dlg_main_task-date">Datum und so</span>
+            <div class="dlg_main_task__due-date">
+                <span class="dlg_main_task__due-date-label">Due date:</span>
+                <span class="dlg_main_task__due-date-value">10/10/2025</span>
+            </div>
             <div class="dlg_main_task-priority"> Priority: 
-                <img id="priority" class="dlg_main_task-priority" src="../assets/img/priority-low.svg" alt="image of prioritylevel">
+                <img id="priority" class="dlg_main_task-priority" src="../assets/img/task-priority-medium.svg" alt="image of prioritylevel">
             </div>
             <div class="dlg_main_task-assignments">
                 <span class="dlg_main_assignments-title">Assigned to:</span>
@@ -190,14 +193,17 @@
             </div>
             <div class="dlg_main_task-subtask-box">
                 <span class="dlg_main_task-subtask-title">Subtasks:</span>
-                <span class="dlg_main_task-subtask"><img src="#" alt="checkbox">Subtask Text</span>
+                <div></div>
+                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
+                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
+                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
             </div>
         </main>
         <footer class="dlg_footer">
             <div class="dlg_footer_options-box">
-                <span class="delete-btn"><img src="../assets/img/delete.svg" alt="image of an Garbage can"> Delete</span>
+                <img class="delete-btn" src="../assets/img/delete-with-text.svg" alt="image of an Garbage can">
                 <span class="separator"></span>
-                <span class="edit-btn"><img src="../assets/img/edit.svg" alt="image of an pencil"> Edit</span>
+                <img class="edit-btn" src="../assets/img/edit-with-text.svg" alt="image of an pencil">
             </div>
         </footer>
     </dialog>    

@@ -21,6 +21,11 @@ dialog {
   align-items: center;
 }
 
+.dlg_close-btn:hover {
+    content: url(../assets/img/close-delete-cross-hover.svg);
+    cursor: pointer;
+}
+
 .dlg_main {
     gap: 1.5rem;
 }
@@ -39,6 +44,19 @@ dialog {
   font-size: 3.75rem;
   font-weight: 700;
 }
+
+.dlg_main_task__due-date,
+.dlg_main_task-priority {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+.dlg_main_task__due-date-label,
+.dlg_main_task-priority {
+    color: var(--color-maincolor);
+}
+
+
 .dlg_main_task-assignments {
     display: flex;
     flex-direction: column;
@@ -47,6 +65,7 @@ dialog {
 
 .dlg_main_assignments-title,
 .dlg_main_task-subtask-title {
+    color: var(--color-maincolor);
     display: flex;
     padding: 0.25rem 0;
 }
@@ -65,6 +84,16 @@ dialog {
     gap: 0.5rem;
 }
 
+.dlg_main_task-subtask:hover {
+    background-color: rgb(230, 230, 230);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.dlg_main_task-subtask:hover img {
+    content: url(../assets/img/checkbox-checked-hover.svg);
+}
+
 .separator {
     display: flex;
     height: 100%;
@@ -79,11 +108,26 @@ dialog {
 
 .dlg_footer_options-box {
     display: flex;
-    gap: 1rem;
 }
 
-.dlg_footer_options-box span {
-    display: inline flex;
-    align-items: center;
-    gap: 0.5rem;
+.dlg_footer_options-box img {
+    margin: 0 0.5rem;
+}
+
+.delete-btn {
+    width: 5.125rem;
+}
+
+.edit-btn {
+    width: 3.875rem;
+}
+
+.delete-btn:hover {
+    content: url(../assets/img/delete-with-text-hover.svg);
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    content: url(../assets/img/edit-with-text-hover.svg);
+    cursor: pointer;
 }
