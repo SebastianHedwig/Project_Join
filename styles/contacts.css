@@ -1,4 +1,6 @@
 section {
+
+/* grip draus machen */
     display: flex;
     flex-direction: row;
 }
@@ -143,7 +145,7 @@ main {
     flex-wrap: wrap;
 }
 
-.rendered-card__header img {
+.header__user-profil-img {
     width: 120px;
     height: 120px;
 
@@ -166,18 +168,18 @@ main {
     width: 62px;
 }
 
-.action__delete img {
+.action__delete {
     height: 24px;
     width: 81px;
 }
 
-.action__edit:hover img {
+.action__edit:hover {
     content: url('../assets/img/edit-with-text-hover.svg');
     cursor: pointer;
 }
 
 
-.action__delete:hover img {
+.action__delete:hover {
     content: url('../assets/img/delete-with-text-hover.svg');
     cursor: pointer;
 }
