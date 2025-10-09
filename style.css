@@ -149,6 +149,7 @@ a:hover, button:hover, input:hover {
 .filled-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-radius: 0.625rem;
   padding: 1rem;
   cursor: pointer;
@@ -172,6 +173,7 @@ a:hover, button:hover, input:hover {
 .empty-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   border-radius: 0.625rem;
   padding: 1rem;
   font-size: 1rem;

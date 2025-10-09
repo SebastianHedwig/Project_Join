@@ -1,6 +1,6 @@
 section {
 
-/* grip draus machen */
+    /* grip draus machen '''''''''''''''''''''''''''''*/
     display: flex;
     flex-direction: row;
 }
@@ -41,6 +41,25 @@ main {
     overflow-y: scroll;
 }
 
+.content-left::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Handle */
+.content-left::-webkit-scrollbar-thumb {
+    background: var(--color-lightgrey);
+}
+
+/* Handle on hover */
+.content-left::-webkit-scrollbar-thumb:hover {
+    background: var(--color-maincolor);
+}
+
+/* Track */
+.content-left::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
 .content-left__button-holder {
     position: sticky;
     top: 0px;
@@ -55,6 +74,10 @@ main {
     font-size: 21px;
     font-weight: 700;
     justify-content: center;
+}
+
+.filled-btn {
+    width: 100%;
 }
 
 .button-holder button img {
@@ -184,7 +207,7 @@ main {
     cursor: pointer;
 }
 
-.contact-info__header{
+.contact-info__header {
     font-size: 20px;
     margin-bottom: 40px;
 }
@@ -198,6 +221,3 @@ main {
 .details__email {
     color: var(--color-email);
 }
-
-
-
