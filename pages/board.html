@@ -1,211 +1,238 @@
 <!DOCTYPE html>
 <html lang="de">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <title>Kanban Board</title>
-        <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="../styles/header.css">
-        <link rel="stylesheet" href="../styles/navigation.css">
-        <link rel="stylesheet" href="../styles/board.css">
-        <link rel="stylesheet" href="../styles/task-card.css">
-        <link rel="stylesheet" href="../styles/dlg-task-info.css">
-        <link rel="stylesheet" href="../styles/dlg-add-task.css">
+    <title>Kanban Board</title>
+    <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
 
-        <script src="../script.js" defer></script>
-        <script src="../scripts/navigation.js" defer></script>
-        <script src="../scripts/board.js" defer></script>
-        <script src="../scripts/drag_and_drop.js" defer></script>
-        <script src="../scripts/task-card.js" defer></script>
-        <script src="../scripts/add_task.js" defer></script>
-        <script src="../scripts/dialog_add_contact.js" defer></script>
-        <script src="../templates/tpl_ticket.js" defer></script>
-        <script src="../templates/tpl_board.js" defer></script>
-        <script src="../templates/tpl_add_task.js" defer></script>
-    </head>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <link rel="stylesheet" href="../styles/board.css">
+    <link rel="stylesheet" href="../styles/task-card.css">
+    <link rel="stylesheet" href="../styles/dlg-task-info.css">
+    <link rel="stylesheet" href="../styles/dlg-add-task.css">
 
-        <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
-            <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
-            <div class="nav-menu__btn-container">
-                <a href="./summary.html"><img src="../assets/img/summary.svg" alt="Summary">Summary</a>
-                <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="Add Task">Add Task</a>
-                <a class="nav-btn--selected deactivated" href="./board.html"><img src="../assets/img/board.svg" alt="Board">Board</a>
-                <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="Contacts">Contacts</a>
+    <script src="../script.js" defer></script>
+    <script src="../scripts/navigation.js" defer></script>
+    <script src="../scripts/board.js" defer></script>
+    <script src="../scripts/drag_and_drop.js" defer></script>
+    <script src="../scripts/task-card.js" defer></script>
+    <script src="../scripts/add_task.js" defer></script>
+    <script src="../scripts/dialog_add_contact.js" defer></script>
+    <script src="../templates/tpl_ticket.js" defer></script>
+    <script src="../templates/tpl_board.js" defer></script>
+    <script src="../templates/tpl_add_task.js" defer></script>
+</head>
+
+<nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
+    <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
+    <div class="nav-menu__btn-container">
+        <a href="./summary.html"><img src="../assets/img/summary.svg" alt="go to Summary-page">Summary</a>
+        <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="go to Add-Task-page">Add Task</a>
+        <a href="./board.html"><img src="../assets/img/board.svg" alt="go to Board-page">Board</a>
+        <a class="nav-btn--selected deactivated" href="./contacts.html"><img src="../assets/img/contacts.svg"
+                alt="go to Contacts-page">Contacts</a>
+    </div>
+    <div class="nav-menu__bottom__btn">
+        <a href="./privacy-policy.html">Privacy Policy</a>
+        <a href="./legal-notice.html">Legal Notice</a>
+    </div>
+</nav>
+
+<div class="site-wrapper">
+    <header class="header" id="header">
+        <div class="header-wrapper">
+            <div class="header__content content-wrapper">
+                <span id="page-title">Kanban Project Management Tool</span>
+                <div id="info-container" class="info-container">
+                    <a href="./help.html">
+                        <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
+                    </a>
+                    <div class="header__user-info">
+                        <img src="../assets/img/user-ellipse.svg" alt="User picture">
+                        <span>SM</span>
+                    </div>
+                </div>
             </div>
-            <div class="nav-menu__bottom__btn">
-                <a href="./privacy-policy.html">Privacy Policy</a>
-                <a href="./legal-notice.html">Legal Notice</a>
-            </div>
-        </nav>
-       
-        <div class="site-wrapper">
-            <header class="header" id="header">
-                <div class="header-wrapper">
-                    <div class="header__content content-wrapper">
-                        <span id="page-title">Kanban Project Management Tool</span>
-                        <div id="info-container" class="info-container">
-                            <a href="./help.html">
-                                <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
-                            </a>
-                            <div class="header__user-info">
-                                <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                                <span>SM</span>
+            <nav aria-label="user drop down menu" class="d-none">
+                <ul class="user-drop-down-menu">
+                    <li><a href="./legal-notice.html">Legal Notice</a></li>
+                    <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="#">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="board-page-content" class="content">
+            <section id="board" class="board-content content-wrapper">
+                <div id="board-head" class="board__head">
+                    <h1>Board</h1>
+                    <div class="task-search-and-add">
+                        <div class="board__head__searchbox">
+                            <input type="search" placeholder="Find Task">
+                            <img class="search-btn" src="../assets/img/search.svg" onclick="focusInput()"
+                                alt="icon of an magnifying glass for better descripe of the search field">
+                        </div>
+                        <span id="add-task-btn" class="add-task-btn filled-btn">Add Task
+                            <img src="../assets/img/add.svg" alt="Add Task Button">
+                        </span>
+                    </div>
+                </div>
+
+                <div id="board-table" class="board__table">
+
+                    <div id=to-do-container class="board__table__column">
+                        <span>
+                            <h2>To do</h2>
+                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                alt="add task to 'to do'">
+                        </span>
+                        <div id="to-do-tasks" class="tasks">
+                            <div class="no-tasks-placeholder">No active tasks</div>
+                        </div>
+                    </div>
+
+                    <div id="in-progress-container" class="board__table__column">
+                        <span>
+                            <h2>In Progress</h2>
+                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                alt="add task to 'in progress'">
+                        </span>
+                        <div id="in-progress-tasks" class="tasks">
+                            <div class="task">
+                                <span class="task_category">${task.category}</span>
+                                <div class="task_content-metadata-box">
+                                    <span class="task_title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
+                                    <span class="task_description">Rezepte und son kram und noch bissel mehr Text, damit
+                                        sich das Ticket auch lohnt</span>
+                                </div>
+                                <div class="task_subtasks-and-progressbar-box">
+                                    <span class="task_progressbar" style="--progress: 33.3333%;"></span>
+                                    <span class="task_subtasks"> 1 / 3 Subtasks</span>
+                                </div>
+                                <div class="task_assignment-and-priority-box">
+                                    <div class="task_assignments">
+                                        <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                                        <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg"
+                                            alt="User Image or initials">
+                                        <img class="user-img" id="${task.user.id}"
+                                            src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                                        <img class="user-img" id="${task.user.id}"
+                                            src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+                                    </div>
+                                    <div class="task_priority">
+                                        <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg"
+                                            alt="image of prioritylevel">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <nav aria-label="user drop down menu" class="d-none"> 
-                        <ul class="user-drop-down-menu">
-                            <li><a href="./legal-notice.html">Legal Notice</a></li>
-                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="#">Log Out</a></li>
-                        </ul>
-                    </nav>
-                </div>
-            </header>
 
-            <main>
-                <div id="board-page-content" class="content">
-                    <section id="board" class="board-content content-wrapper">
-                        <div id="board-head" class="board__head">
-                            <h1>Board</h1>
-                            <div class="task-search-and-add">
-                                <div class="board__head__searchbox">
-                                    <input type="search" placeholder="Find Task">
-                                    <img class="search-btn" src="../assets/img/search.svg" onclick="focusInput()" alt="icon of an magnifying glass for better descripe of the search field">
+                    <div id="await-feedback-container" class="board__table__column">
+                        <span>
+                            <h2>Await Feedback</h2>
+                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                alt="add task to 'await feedback'">
+                        </span>
+                        <div id="await-feedback-tasks" class="tasks">
+                            <div class="task">
+                                <span class="task_category2">${task.category}</span>
+                                <div class="task_content-metadata-box">
+                                    <span class="task_title">Und noch so ein Ding mit anderer Prio!</span>
+                                    <span class="task_description">Aber dieses mal ohne Subtasks und ohne progressbar.
+                                        Aber trotzdem genauso viel Text =P</span>
                                 </div>
-                                <span id="add-task-btn" class="add-task-btn filled-btn">Add Task
-                                    <img src="../assets/img/add.svg" alt="Add Task Button">
-                                </span>
-                            </div>
-                        </div>
-
-                        <div id="board-table" class="board__table">
-
-                            <div id=to-do-container class="board__table__column">
-                                <span>
-                                    <h2>To do</h2>
-                                    <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'to do'">
-                                </span>
-                                <div id="to-do-tasks" class="tasks">
-                                    <div class="no-tasks-placeholder">No active tasks</div>
-                                </div>
-                            </div>
-
-                            <div id="in-progress-container" class="board__table__column">
-                                <span>
-                                    <h2>In Progress</h2>
-                                    <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'">
-                                </span>
-                                <div id="in-progress-tasks" class="tasks">
-                                    <div class="task">
-                                        <span class="task_category">${task.category}</span>
-                                        <div class="task_content-metadata-box">
-                                            <span class="task_title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
-                                            <span class="task_description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
-                                        </div>
-                                        <div class="task_subtasks-and-progressbar-box">
-                                            <span class="task_progressbar" style="--progress: 33.3333%;"></span>
-                                            <span class="task_subtasks"> 1 / 3 Subtasks</span>
-                                        </div>
-                                        <div class="task_assignment-and-priority-box">
-                                             <div class="task_assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
-                                            </div>
-                                            <div class="task_priority">
-                                                <img id="priority" class="task_priority" src="../assets/img/priority-medium.svg" alt="image of prioritylevel">
-                                            </div>
-                                        </div>
+                                <div class="task_assignment-and-priority-box">
+                                    <div class="task_assignments">
+                                        <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                                        <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg"
+                                            alt="User Image or initials">
+                                        <img class="user-img" id="${task.user.id}"
+                                            src="../assets/img/user-img-david.svg" alt="User Image or initials">
+                                        <img class="user-img" id="${task.user.id}"
+                                            src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
+                                    </div>
+                                    <div class="task_priority">
+                                        <img id="priority" class="task_priority" src="../assets/img/priority-low.svg"
+                                            alt="image of prioritylevel">
                                     </div>
                                 </div>
                             </div>
-
-                            <div id="await-feedback-container" class="board__table__column">
-                                <span><h2>Await Feedback</h2> 
-                                    <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'">
-                                </span>
-                                <div id="await-feedback-tasks" class="tasks">
-                                    <div class="task">
-                                        <span class="task_category2">${task.category}</span>
-                                        <div class="task_content-metadata-box">
-                                            <span class="task_title">Und noch so ein Ding mit anderer Prio!</span>
-                                            <span class="task_description">Aber dieses mal ohne Subtasks und ohne progressbar. Aber trotzdem genauso viel Text =P</span>
-                                        </div>
-                                        <div class="task_assignment-and-priority-box">
-                                             <div class="task_assignments"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
-                                                <img class="user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
-                                            </div>
-                                            <div class="task_priority">
-                                                <img id="priority" class="task_priority" src="../assets/img/priority-low.svg" alt="image of prioritylevel">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="done-container" class="board__table__column">
-                                <h2>Done</h2>
-                                <div id="done-tasks" class="tasks"></div>
-                            </div>
                         </div>
-                    </section>
+                    </div>
+
+                    <div id="done-container" class="board__table__column">
+                        <h2>Done</h2>
+                        <div id="done-tasks" class="tasks"></div>
+                    </div>
                 </div>
-            </main>
+            </section>
         </div>
+    </main>
+</div>
 
-    <div id="overlay" class="overlay d-none"></div>
-    <dialog class="dlg d-none">
-        <header class="dlg_header">
-           <span class="dlg_header_task-category">${task.category}</span>
-           <img class="dlg_close-btn" src="../assets/img/close-delete-cross.svg" alt=""> 
-        </header>
-        <main class="dlg_main">
-            <span class="dlg_main_task-title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
-            <span class="dlg_main_task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket auch lohnt</span>
-            <div class="dlg_main_task__due-date">
-                <span class="dlg_main_task__due-date-label">Due date:</span>
-                <span class="dlg_main_task__due-date-value">10/10/2025</span>
+<div id="overlay" class="overlay d-none"></div>
+<dialog class="dlg d-none">
+    <header class="dlg_header">
+        <span class="dlg_header_task-category">${task.category}</span>
+        <img class="dlg_close-btn" src="../assets/img/close-delete-cross.svg" alt="">
+    </header>
+    <main class="dlg_main">
+        <span class="dlg_main_task-title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
+        <span class="dlg_main_task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket
+            auch lohnt</span>
+        <div class="dlg_main_task__due-date">
+            <span class="dlg_main_task__due-date-label">Due date:</span>
+            <span class="dlg_main_task__due-date-value">10/10/2025</span>
+        </div>
+        <div class="dlg_main_task-priority"> Priority:
+            <img id="priority" class="dlg_main_task-priority" src="../assets/img/task-priority-medium.svg"
+                alt="image of prioritylevel">
+        </div>
+        <div class="dlg_main_task-assignments">
+            <span class="dlg_main_assignments-title">Assigned to:</span>
+            <div class="dlg_user-box"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
+                <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg"
+                    alt="User Image or initials">
+                <span class="dlg-user-name">User 1</span>
             </div>
-            <div class="dlg_main_task-priority"> Priority: 
-                <img id="priority" class="dlg_main_task-priority" src="../assets/img/task-priority-medium.svg" alt="image of prioritylevel">
+            <div class="dlg_user-box">
+                <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg"
+                    alt="User Image or initials">
+                <span class="dlg-user-name">User 2</span>
             </div>
-            <div class="dlg_main_task-assignments">
-                <span class="dlg_main_assignments-title">Assigned to:</span>
-                <div class="dlg_user-box">  <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
-                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
-                    <span class="dlg-user-name">User 1</span>
-                </div>
-                <div class="dlg_user-box">    
-                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-david.svg" alt="User Image or initials">
-                    <span class="dlg-user-name">User 2</span>
-                </div>
-                <div class="dlg_user-box">
-                    <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
-                    <span class="dlg-user-name">User 3</span>
-                </div>
+            <div class="dlg_user-box">
+                <img class="dlg-user-img" id="${task.user.id}" src="../assets/img/user-img-sofia.svg"
+                    alt="User Imare or initials">
+                <span class="dlg-user-name">User 3</span>
             </div>
-            <div class="dlg_main_task-subtask-box">
-                <span class="dlg_main_task-subtask-title">Subtasks:</span>
-                <div></div>
-                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
-                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
-                <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask Text</span>
-            </div>
-        </main>
-        <footer class="dlg_footer">
-            <div class="dlg_footer_options-box">
-                <img class="delete-btn" src="../assets/img/delete-with-text.svg" alt="image of an Garbage can">
-                <span class="separator"></span>
-                <img class="edit-btn" src="../assets/img/edit-with-text.svg" alt="image of an pencil">
-            </div>
-        </footer>
-    </dialog>    
-    </body>
+        </div>
+        <div class="dlg_main_task-subtask-box">
+            <span class="dlg_main_task-subtask-title">Subtasks:</span>
+            <div></div>
+            <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
+                Text</span>
+            <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
+                Text</span>
+            <span class="dlg_main_task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
+                Text</span>
+        </div>
+    </main>
+    <footer class="dlg_footer">
+        <div class="dlg_footer_options-box">
+            <img class="delete-btn" src="../assets/img/delete-with-text.svg" alt="image of an Garbage can">
+            <span class="separator"></span>
+            <img class="edit-btn" src="../assets/img/edit-with-text.svg" alt="image of an pencil">
+        </div>
+    </footer>
+</dialog>
+</body>
+
 </html>

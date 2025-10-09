@@ -149,60 +149,51 @@ main {
 
 }
 
-.header__display-contact {
+.manage-contact__header {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-.manage-contact {
+.manage-contact__actions {
     display: flex;
     flex-direction: row;
     gap: 16px;
 }
 
-.manage-contact span {
-    display: flex;
-    align-items: center;
-    height: fit-content;
-    color: var(--color-maincolor);
-    font-weight: 400;
-    font-size: 1rem;
+.action__edit {
+    height: 24px;
+    width: 62px;
 }
 
-.manage-contact span:hover {
-    color: var(--color-lightblue);
-    font-weight: 700;
+.action__delete img {
+    height: 24px;
+    width: 81px;
+}
+
+.action__edit:hover img {
+    content: url('../assets/img/edit-with-text-hover.svg');
     cursor: pointer;
 }
 
-.manage-contact img {
-    height: 18px;
-    width: 18px;
-    margin-right: 8px;
+
+.action__delete:hover img {
+    content: url('../assets/img/delete-with-text-hover.svg');
+    cursor: pointer;
 }
 
-.manage-contact__edit:hover img {
-    content: url('../assets/img/edit-blue.svg');
-}
-
-
-.manage-contact__delete:hover img {
-    content: url('../assets/img/delete-blue.svg');
-}
-
-.info-header {
+.contact-info__header{
     font-size: 20px;
     margin-bottom: 40px;
 }
 
-.contact-details {
+.contact-info__details {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.contact-details__email {
+.details__email {
     color: var(--color-email);
 }
 
