@@ -15,22 +15,22 @@ dialog {
   z-index: 1000;
 }
 
-.dlg_header {
+.dlg__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.dlg_close-btn:hover {
+.dlg__close-btn:hover {
     content: url(../assets/img/close-delete-cross-hover.svg);
     cursor: pointer;
 }
 
-.dlg_main {
+.dlg__main {
     gap: 1.5rem;
 }
 
-.dlg_header_task-category {
+.dlg__header_task-category {
   display: inline-flex;
   align-items: center;
   width: fit-content;
@@ -40,57 +40,56 @@ dialog {
   padding: 0.25rem 1.5rem;
 }
 
-.dlg_main_task-title {
+.dlg__main__task-title {
   font-size: 3.75rem;
   font-weight: 700;
 }
 
-.dlg_main_task__due-date,
-.dlg_main_task-priority {
+.dlg__main__task__due-date,
+.dlg__main_task-priority {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
-.dlg_main_task__due-date-label,
-.dlg_main_task-priority {
+.dlg__main__task__due-date-label,
+.dlg__main__task-priority {
     color: var(--color-maincolor);
 }
 
-
-.dlg_main_task-assignments {
+.dlg__main__task-assignments {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
 }
 
-.dlg_main_assignments-title,
-.dlg_main_task-subtask-title {
+.dlg__main__assignments-title,
+.dlg__main__task-subtask-title {
     color: var(--color-maincolor);
     display: flex;
     padding: 0.25rem 0;
 }
 
-.dlg_user-box,
-.dlg_main_task-subtask {
+.dlg__user-box,
+.dlg__main__task-subtask {
     display: flex;
     align-items: center;
     gap: 1rem;
     padding: 0.5rem 1rem;
 }
 
-.dlg_main_task-subtask-box {
+.dlg__main__task-subtask-box {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.dlg_main_task-subtask:hover {
+.dlg__main__task-subtask:hover {
     background-color: rgb(230, 230, 230);
     border-radius: 0.5rem;
     cursor: pointer;
 }
 
-.dlg_main_task-subtask:hover img {
+.dlg__main__task-subtask:hover img {
     content: url(../assets/img/checkbox-checked-hover.svg);
 }
 
@@ -100,17 +99,17 @@ dialog {
     border: 1px solid var(--color-lightgrey);
 }
 
-.dlg_footer {
+.dlg__footer {
     display: flex;
     justify-content: flex-end;
     color: var(--color-maincolor);
 }
 
-.dlg_footer_options-box {
+.dlg__footer__options-box {
     display: flex;
 }
 
-.dlg_footer_options-box img {
+.dlg__footer__options-box img {
     margin: 0 0.5rem;
 }
 
