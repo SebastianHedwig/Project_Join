@@ -78,7 +78,7 @@
 body {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   background-color: var(--color-background);
   line-height: 1.2;
 }
@@ -193,4 +193,10 @@ a:hover, button:hover, input:hover {
   color: var(--color-navselected);
   box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
   border: 1px solid var(--color-navselected);
+}
+
+.overflow-y {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  height: 80vh;
 }
