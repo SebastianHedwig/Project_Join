@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/contacts.css">
     <link rel="stylesheet" href="../styles/dlg-add-contact.css">
+    <script src="../scripts/contacts.js" defer></script>
+    <script src="../templates/tpl-add-edit-contact.js" defer></script>
 
 </head>
 
@@ -61,13 +63,13 @@
 
             <main>
                 <div id="contacts_page_container" class="content">
-                    <section id="contacts_content">
+                    <section id="contacts-content">
 
                         <div class="content-left">
                             <div class="content-left__button-holder">
-                                <button class="filled-btn" id="add-new-contact-btn">Add new contact<img
+                                <div class="filled-btn" id="add-new-contact-btn" onclick="displayAddContactDlg()">Add new contact<img
                                         src="../assets/img/person-add.svg"
-                                        alt="icon of a person with a plus-symbol"></button>
+                                        alt="icon of a person with a plus-symbol"></div>
                             </div>
 
                             <div class="contact-list">
@@ -78,320 +80,16 @@
                                         <img src="../assets/img/user-img-anna.svg"
                                             alt="colored circle with starting letters of name and surname">
                                         <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
+                                            <p class="contact-name">Max Mustermann</p>
+                                            <p class="contact-email">max.mustermann@web.de</p>
                                         </div>
                                     </div>
                                     <div class="contact-list__item">
                                         <img src="../assets/img/user-img-anna.svg"
                                             alt="colored circle with starting letters of name and surname">
                                         <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
-                                        </div>
-                                    </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p id="contact-name">Max Mustermann</p>
-                                            <p id="contact-email">max.mustermann@web.de</p>
+                                            <p class="contact-name">Maxi Musterfrau</p>
+                                            <p class="contact-email">maxi.musterfrau@web.de</p>
                                         </div>
                                     </div>
                                 </div>
@@ -405,15 +103,17 @@
                                 <span>Better with a team</span>
                             </div>
 
-                            <div class="content-right__rendered-card">
-                                <div class="rendered-card__header">
-                                    <img class="header__user-profil-img" src="../assets/img/user-img-anna.svg"
+                            <div class="content-right__contact-info-card">
+                                <div class="contact-info-card__header">
+                                    <img id ="contact-profil-img" class="header__contact-profil-img" src="../assets/img/user-img-anna.svg"
                                         alt="colored circle with starting letters of name and surname">
                                     <div class="manage-contact__header">
-                                        <h3>Max Mustermann</h3>
+                                        <h3 id="contact-name">Max Mustermann</h3>
                                         <div class="manage-contact__actions">
-                                                <img class ="action__edit" src="../assets/img/edit-with-text.svg" alt="a grey pencil">
-                                                <img class="action__delete" src="../assets/img/delete-with-text.svg" alt="a grey trashbin">
+                                            <img class="action__edit" src="../assets/img/edit-with-text.svg"
+                                                alt="a grey pencil" onclick="displayEditContactDlg()">
+                                            <img class="action__delete" src="../assets/img/delete-with-text.svg"
+                                                alt="a grey trashbin">
                                         </div>
                                     </div>
                                 </div>
@@ -421,80 +121,18 @@
                                 <p class="contact-info__header">Contact Information</p>
                                 <div class="contact-info__details">
                                     <p><strong>Email</strong></p>
-                                    <p class="details__email">max.mustermann@web.de</p>
+                                    <p id="contact-email" class="details__email">max.mustermann@web.de</p>
                                     <p><strong>Phone</strong></p>
-                                    <p>+49 1111 111 111</p>
+                                    <p id="contact-phone">+49 1111 111 111</p>
                                 </div>
 
                             </div>
                         </div>
                     </section>
                 </div>
-
+                <dialog class="add-contact__dialog" id="add-contact-dialog"></dialog>
             </main>
         </div>
-        <dialog class="add-contact__dialog">
-
-            <div class="dialog-left">
-                <img src="../assets/img/logo-white.png"
-                    alt="the word: join with a big J with a blue dot on the left side">
-                <h1>Add contact</h1>
-                <p>Tasks are better with a team!</p>
-                <div class="content-left__bluestrip"></div>
-            </div>
-
-            <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn">
-                    <img src="../assets/img/close.svg" alt="icon of the letter X">
-                </div>
-                <div class="content-right__wrapper">
-                    <div class="profil-img__wrapper">
-                        <img src="../assets/img/unknownuser.png"
-                            alt="a grey circle with a white outline of a person in the middle">
-                    </div>
-                    <div class="width-div">
-                        <div class="inputfields">
-                            <div class="inputfield__wrapper">
-                                <input type="text" placeholder="Name" aria-label="name">
-                                <img src="../assets/img/person.svg" alt="icon of an person">
-                            </div>
-
-                            <div class="inputfield__wrapper">
-                                <input type="email" placeholder="Email" aria-label="email">
-                                <img src="../assets/img/mail.svg" alt="icon of an email">
-                            </div>
-
-                            <div class="inputfield__wrapper">
-                                <input type="tel" placeholder="Phone" aria-label="Phone">
-                                <img src="../assets/img/call.svg" alt="icon of an phone">
-                            </div>
-                            <div class="inputfields__button-holder">
-                                <button class="empty-btn">Cancel<img src="../assets/img/close.svg"
-                                        alt="icon of the letter X"></button>
-                                <button class="filled-btn">Create contact<img src="../assets/img/done.svg"
-                                        alt="icon of a checkmark"></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </dialog>
-        <!-- ############### Nur um zu sehen ob Backdrop funktioniert und dialog nicht immer da ist########## -->
-        <script>
-            const dialog = document.querySelector(".add-contact__dialog");
-            const showButton = document.getElementById("add-new-contact-btn");
-            const closeButton = document.getElementById("dialog-close-btn");
-
-            showButton.addEventListener("click", () => {
-                dialog.showModal();
-                document.querySelector(".add-contact__dialog").style.visibility = "visible";
-            });
-
-            closeButton.addEventListener("click", () => {
-                dialog.close();
-                document.querySelector(".add-contact__dialog").style.visibility = "hidden";
-            });
-        </script>
 </body>
 
 </html>

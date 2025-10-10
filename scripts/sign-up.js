@@ -8,8 +8,8 @@ function enableSignUpBtn(){
 function showSuccessfulSignUpMessage() {
     const body = document.querySelector('body');
     body.innerHTML += renderSuccessMessage();
-    const dialog = document.getElementById('success-dialog');
-    dialog.showModal();
+    const successDlg = document.getElementById('success-dialog');
+    successDlg.showModal();
     moveUserBacktoLogin();
 }
 

@@ -17,6 +17,8 @@ body {
     padding: 0.9375rem 1.5rem;
     font-size: 1.31rem;
     font-weight: bold;
+    display: inline-flex;
+    align-items: center;
     width: auto;
 }
 
