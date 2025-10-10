@@ -46,10 +46,6 @@
     height: 2rem;
 }
 
-::-webkit-search-cancel-button {
-    cursor: pointer;
-}
-
 .task-search-and-add {
     width: 50%;
     display: flex;

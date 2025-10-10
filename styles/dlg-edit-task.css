@@ -1,0 +1,89 @@
+.overflow-y {
+    scrollbar-width: thin;
+}
+
+.dlg-edit__main {
+    gap: 2rem;
+    padding: 0 0.5rem;
+}
+
+.dlg-edit__header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dlg-edit__close-btn:hover {
+    content: url(../assets/img/close-delete-cross-hover.svg);
+    cursor: pointer;
+}
+
+.dlg-edit__main__title-box,
+.dlg-edit__main__description-box,
+.dlg-edit__main__due-date-box,
+.dlg-edit__main__task-priority-options-box,
+.dlg-edit__main__task-assignments-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.dlg-edit__main__task-title,
+.dlg-edit__main__task-description,
+.dlg-edit__main__due-date-title,
+.dlg-edit__main__task-priority-title,
+.dlg-edit__main__assignments-title {
+    color: var(--color-maincolor);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.dlg-edit__main__task-priority-title.bold {
+    font-weight: 700;
+}
+
+.dlg-edit_input-text {
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-lightgrey);
+    padding: 0.75rem 1.25rem;
+    font-size: 1.25rem;
+}
+
+.dlg-edit_textarea{
+    height: 7.5rem;
+    width: 100%;
+    resize: none;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-lightgrey);
+    padding: 0.75rem 1.25rem;
+    font-size: 1.25rem;
+}
+
+.dlg-edit__main__task-priority-btn-box {
+    display: flex;
+    justify-content: space-around;
+}
+
+.priority-options-btn {
+    width: 8.5rem;
+}
+
+.dlg-edit__main__task-assignments-box select {
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.5rem;
+    border: 0.063rem solid var(--color-lightgrey);
+    padding: 0 1rem;
+    font-size: 1.5rem;
+    justify-content: center;
+}
+
+.dlg-edit__main__assigned-user-container {
+    display: flex;
+    margin-top: 0.5rem;
+}
+
+
+
+.dlg__footer__ok-btn {
+    width: 6.5rem ;
+    height: 3.5rem;
+}
