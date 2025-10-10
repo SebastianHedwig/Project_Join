@@ -37,7 +37,8 @@
     gap: 1.125rem;
 }
 
-.task-content__container label {
+.task-content__container label,
+.task-content__container span {
     font-size: 1.25rem;
     font-weight: 400;
     margin-bottom: 0.5rem;
@@ -53,7 +54,7 @@
     font-size: 1rem;
 }
 
-#task-description-area {
+.task-content__container textarea {
     width: 100%;
     min-height: 6.25rem;
     border-radius: 0.5rem;

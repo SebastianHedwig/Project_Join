@@ -39,7 +39,7 @@
 .nav-menu__bottom__btn {
     display: flex;
     flex-direction: column;
-    padding-top: 20rem;
+    margin-top: auto;
     gap: 0.25rem;
     transition: background-color 0.3s;
 }
@@ -50,7 +50,7 @@
 }
 
 .nav-menu__btn-container {
-    margin-top: 20rem;
+    margin-top: 15rem;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -67,22 +67,23 @@
                         <div class="add-task__left-column">
                             <div class="add-task__field">
                                 <label for="title" class="required--after">Title</label>
-                                <input type="text" placeholder="Enter a title" required>
+                                <input type="text" id="title" placeholder="Enter a title" required>
                             </div>
                             <div class="add-task__field">
                                 <label for="description">Description</label>
-                                <textarea name="Add Task Description" id="task-description-area"></textarea>
+                                <textarea name="Add Task Description" id="description" 
+                                            placeholder="Enter a Description"></textarea>
                             </div>
                             <div class="add-task__field">
-                                <label for="due date" class="required required--after">Due date</label>
-                                <input type="date" placeholder="dd/mm/yyyy" required>
+                                <label for="due-date" class="required required--after">Due date</label>
+                                <input type="date" id="due-date" placeholder="dd/mm/yyyy" required>
                             </div>
                         </div>
                         <div class="grey-seperator"></div>
                         <div class="add-task__right-column">
                             <div class="add-task__field">
-                                <label for="priority">Priority</label>
-                                <div class="priority-options">
+                                <span for="priority">Priority</span>
+                                <div class="priority-options" id="priority">
                                     <div class="priority-options__btn">Urgent <img
                                             src="../assets/img/priority-urgent.svg" alt="urgent"></div>
                                     <div class="priority-options__btn">Medium <img
@@ -92,8 +93,8 @@
                                 </div>
                             </div>
                             <div class="add-task__field">
-                                <label for="assigned to">Assigned to</label>
-                                <select name="assigned to" id="assigned-to">
+                                <label for="assigned-to">Assigned to</label>
+                                <select name="assigned-to" id="assigned-to">
                                     <option value="1">Option1</option>
                                     <option value="2">Option2</option>
                                 </select>
@@ -107,7 +108,7 @@
                             </div>
                             <div class="add-task__field subtasks__input--border-color">
                                 <label for="subtasks">Subtasks</label>
-                                <input type="subtasks" placeholder="Add new subtask">
+                                <input type="subtasks" id="subtasks" placeholder="Add new subtask">
                             </div>
                         </div>
                     </div>
