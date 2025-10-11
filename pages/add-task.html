@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/add-task.css">
 
+    <script src="../script.js" defer></script>
+    <script src="../scripts/add-task.js" defer></script>
+
 </head>
 
 <body>
@@ -84,11 +87,21 @@
                             <div class="add-task__field">
                                 <span for="priority">Priority</span>
                                 <div class="priority-options" id="priority">
-                                    <div class="priority-options-btn">Urgent <img
-                                            src="../assets/img/priority-urgent.svg" alt="urgent"></div>
-                                    <div class="priority-options-btn">Medium <img
-                                            src="../assets/img/priority-medium.svg" alt="medium"></div>
-                                    <div class="priority-options-btn">Low <img src="../assets/img/priority-low.svg"
+                                    <div class="priority-options-btn" id="urgent" 
+                                        onclick="changePriorityBtn(this)">Urgent <img
+                                            src="../assets/img/priority-urgent.svg"
+                                            data-default="../assets/img/priority-urgent.svg"
+                                            data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></div>
+                                    <div class="priority-options-btn" id="medium"
+                                        onclick="changePriorityBtn(this)">Medium <img
+                                            src="../assets/img/priority-medium.svg"
+                                            data-default="../assets/img/priority-medium.svg"
+                                            data-selected="../assets/img/priority-medium-active.svg" alt="medium"></div>
+                                    <div class="priority-options-btn" id="low"
+                                        onclick="changePriorityBtn(this)">Low <img 
+                                            src="../assets/img/priority-low.svg"
+                                            data-default="../assets/img/priority-low.svg"
+                                            data-selected="../assets/img/priority-low-active.svg"
                                             alt="low"></div>
                                 </div>
                             </div>
@@ -128,27 +141,7 @@
             </div>
         </main>
     </div>
-    <script src="./script.js"></script>
-    <script src="./scripts/login.js"></script>
-    <script src="./scripts/main.js"></script>
-    <script src="./scripts/navigation.js"></script>
-
-    <script src="./scripts/board.js"></script>
-    <script src="./scripts/drag_and_drop.js"></script>
-    <script src="./scripts/ticket.js"></script>
-
-    <script src="./scripts/add_task.js"></script>
-    <script src="./scripts/dialog_add_contact.js"></script>
-    <script src="./scripts/contacts.js"></script>
-    <script src="./scripts/greetings.js"></script>
-    <script src="./scripts/summary.js"></script>
-
-    <script src="./templates/tpl_login.js"></script>
-    <script src="./templates/tpl_ticket.js"></script>
-    <script src="./templates/tpl_navigation.js"></script>
-    <script src="./templates/tpl_board.js"></script>
-    <script src="./templates/tpl_add_task.js"></script>
-    <script src="./templates/tpl_summary.js"></script>
+    
 </body>
 
 </html>
