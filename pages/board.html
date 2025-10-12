@@ -294,19 +294,39 @@
                     </div>
                 </div>
             </div>
-            <div class="dlg__main__task-subtask-box">
-                <span class="dlg__main__task-subtask-title">Subtasks:</span>
-                <div></div>
-                <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                    Text</span>
-                <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                    Text</span>
-                <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                    Text</span>
+            <div class="dlg-edit__main__subtasks-box">
+                <div class="dlg-edit__main__add-subtask-box" >
+                    <label class="dlg-edit__main__subtask-title">Subtasks</label>
+                    <input class="dlg-edit_input-text" type="text" placeholder="Add new Subtask">
+                </div>
+                    <ul class="dlg-edit__subtask-list">
+                    <li class="dlg-edit__main__subtask">• Subtask Text                          
+                        <div class="subtask-edit-box d-none">
+                            <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
+                            <div class="separator"></div>
+                            <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
+                        </div>
+                    </li>
+                    <li class="dlg-edit__main__subtask">• Subtask Text                          
+                        <div class="subtask-edit-box d-none">
+                            <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
+                            <div class="separator"></div>
+                            <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
+                        </div>
+                    </li>
+                    <li class="dlg-edit__main__subtask">• Subtask Text                          
+                        <div class="subtask-edit-box d-none">
+                            <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
+                            <div class="separator"></div>
+                            <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
+                        </div>
+                    </li>
+
+                    </ul>
             </div>
         </main>
-        <footer class="dlg__footer">
-            <div class="dlg__footer__ok-btn filled-btn">SAVE</div>
+        <footer class="dlg-edit__footer">
+            <div class="dlg-edit__footer__ok-btn filled-btn">SAVE</div>
         </footer>
     </dialog>
     </body>
