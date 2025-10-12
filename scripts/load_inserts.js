@@ -105,7 +105,7 @@ const InsertLoader = (() => {
     } catch (error) {
       console.error(error);
       if (insertElement)
-        insertElement.innerHTML = `<div style="color:red;">Fehler beim Laden von "${url}"</div>`;
+        insertElement.innerHTML = /*html*/ `<div style="color:red;">Fehler beim Laden von "${url}"</div>`;
     }
   }
 
