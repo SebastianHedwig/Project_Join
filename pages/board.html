@@ -13,10 +13,12 @@
         <link rel="stylesheet" href="../styles/navigation.css">
         <link rel="stylesheet" href="../styles/board.css">
         <link rel="stylesheet" href="../styles/task-card.css">
+        <link rel="stylesheet" href="../styles/add-task.css">
         <link rel="stylesheet" href="../styles/dlg-task-info.css">
         <link rel="stylesheet" href="../styles/dlg-edit-task.css">
         <link rel="stylesheet" href="../styles/dlg-add-task.css">
 
+        <script src="../scripts/load_inserts.js"></script>
         <!-- <script src="../script.js" defer></script>
         <script src="../scripts/navigation.js" defer></script>
         <script src="../scripts/board.js" defer></script>
@@ -327,6 +329,10 @@
         <footer class="dlg-edit__footer">
             <div class="dlg-edit__footer__ok-btn filled-btn">SAVE</div>
         </footer>
+    </dialog>
+    <!-- add-task-Dialog als insert: -->
+    <dialog id="dlg-box" class="dlg-add-task d-none">
+        <div data-insert="add-task-insert.html"></div>
     </dialog>
     </body>
 

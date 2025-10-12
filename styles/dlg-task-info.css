@@ -1,12 +1,12 @@
-dialog {
+.dlg {
   display: flex;
   flex-direction: column;
   position: absolute;
   align-self: center;
+  justify-self: center;
   font-size: 1.25rem;
   font-weight: 400;
   gap: 1.5rem;
-  left: 40%;
   height: 80%;
   width: 33rem;
   padding: 3rem 2rem;
