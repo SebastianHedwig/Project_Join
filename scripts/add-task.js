@@ -27,3 +27,8 @@ function changePriorityBtnIcon(btn) {
     const selectedBtnIcon = document.getElementById(btn).querySelector('img');
         selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('due-date').setAttribute('min', today);
+});
