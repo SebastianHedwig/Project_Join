@@ -19,6 +19,7 @@
         <link rel="stylesheet" href="../styles/dlg-add-task.css">
 
         <script src="../scripts/load_inserts.js"></script>
+        <script src="../scripts/add-task.js"></script>
         <!-- <script src="../script.js" defer></script>
         <script src="../scripts/navigation.js" defer></script>
         <script src="../scripts/board.js" defer></script>
@@ -249,27 +250,36 @@
         <main class="dlg-edit__main overflow-y">
             <div class="dlg-edit__main__title-box">
                 <label class="dlg-edit__main__task-title">Title</label>
-                <input class="dlg-edit_input-text" type="text" placeholder="Enter a Title">
+                <input class="dlg-edit__input-text" type="text" placeholder="Enter a Title">
             </div>
             <div class="dlg-edit__main__description-box">
                 <label class="dlg-edit__main__task-description">Description</label>
-                <textarea class="dlg-edit_textarea" type="text" placeholder="Enter a Description"></textarea>
+                <textarea class="dlg-edit__textarea" type="text" placeholder="Enter a Description"></textarea>
             </div>
             <div class="dlg-edit__main__due-date-box">
                 <label class="dlg-edit__main__due-date-title">Due Date</label>
-                <input class="dlg-edit_input-text" type="date">
+                <input class="dlg-edit__input-text" type="date">
             </div>
             <div class="dlg-edit__main__task-priority-options-box">
                 <label class="dlg-edit__main__task-priority-title bold">Priority</label>
                 <div class="dlg-edit__main__task-priority-btn-box">
-                    <div class="priority-options-btn">Urgent 
-                        <img src="../assets/img/priority-urgent.svg" alt="urgent">
+                    <div class="priority-options-btn" id="urgent" onclick="changePriorityBtn(this)">Urgent 
+                        <img src="../assets/img/priority-urgent.svg"
+                            data-default="../assets/img/priority-urgent.svg"
+                            data-selected="../assets/img/priority-urgent-active.svg"
+                            alt="urgent">
                     </div>
-                    <div class="priority-options-btn">Medium 
-                        <img src="../assets/img/priority-medium.svg" alt="medium">
+                    <div class="priority-options-btn" id="medium" onclick="changePriorityBtn(this)">Medium 
+                        <img src="../assets/img/priority-medium.svg"
+                            data-default="../assets/img/priority-medium.svg"
+                            data-selected="../assets/img/priority-medium-active.svg"
+                            alt="medium">
                     </div>
-                    <div class="priority-options-btn">Low 
-                        <img src="../assets/img/priority-low.svg" alt="low">
+                    <div class="priority-options-btn" id="low" onclick="changePriorityBtn(this)">Low 
+                        <img src="../assets/img/priority-low.svg"
+                            data-default="../assets/img/priority-low.svg"
+                            data-selected="../assets/img/priority-low-active.svg"
+                            alt="low">
                     </div>
                 </div>
             </div>
@@ -299,7 +309,7 @@
             <div class="dlg-edit__main__subtasks-box">
                 <div class="dlg-edit__main__add-subtask-box" >
                     <label class="dlg-edit__main__subtask-title">Subtasks</label>
-                    <input class="dlg-edit_input-text" type="text" placeholder="Add new Subtask">
+                    <input class="dlg-edit__input-text" type="text" placeholder="Add new Subtask">
                 </div>
                     <ul class="dlg-edit__subtask-list">
                         <li class="dlg-edit__main__subtask">• Subtask Text                          
@@ -330,6 +340,7 @@
             <div class="dlg-edit__footer__ok-btn filled-btn">SAVE</div>
         </footer>
     </dialog>
+
     <!-- add-task-Dialog als insert: -->
     <dialog id="dlg-box" class="dlg-add-task d-none">
         <div data-insert="add-task-insert.html"></div>

@@ -61,14 +61,14 @@
   font-weight: 700;
 }
 
-.dlg-edit_input-text {
+.dlg-edit__input-text {
   border-radius: 0.5rem;
   border: 1px solid var(--color-lightgrey);
   padding: 0.75rem 1.25rem;
   font-size: 1.25rem;
 }
 
-.dlg-edit_textarea {
+.dlg-edit__textarea {
   height: 7.5rem;
   width: 100%;
   resize: none;
@@ -144,7 +144,7 @@
   gap: 0.5rem;
 }
 
-.dlg-edit__main__subtask:hover .subtask-edit-box{
+.dlg-edit__main__subtask:hover .subtask-edit-box {
   display: flex;
 }
 
@@ -157,4 +157,16 @@
   display: flex;
   height: 100%;
   border: 1px solid var(--color-lightgrey);
+}
+
+.dlg-edit__input-text:focus {
+  border: 2px solid var(--color-lightblue);
+  outline: none;
+}
+
+.dlg-edit__main__description-box textarea:focus,
+.dlg-edit__main__task-assignments-box select:invalid,
+.dlg-edit__main__task-assignments-box select:focus {
+  border: 2px solid var(--color-lightblue);
+  outline: none;
 }
