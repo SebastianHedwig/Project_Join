@@ -122,9 +122,18 @@
 }
 
 .subtask-edit-box {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
+}
+
+.dlg-edit__main__subtask:hover .subtask-edit-box{
+  display: flex;
+}
+
+.subtask-edit-box__edit-img:hover,
+.subtask-edit-box__delete-img:hover {
+  transform: scale(1.1);
 }
 
 .separator {
