@@ -1,6 +1,14 @@
+
+async function init() {
+    await getData();
+    assignedTo();
+    setMinDueDate()
+}
+
+
 function changePriorityBtn(priorityBtn) {
     changePriorityBtnColor(priorityBtn.id);
-    changePriorityBtnIcon(priorityBtn.id);
+    changePriorityBtnIcon(priorityBtn.id);  
 }
 
 
@@ -28,7 +36,19 @@ function changePriorityBtnIcon(btn) {
         selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+
+function setMinDueDate() {
   const today = new Date().toISOString().split('T')[0];
   document.getElementById('due-date').setAttribute('min', today);
-});
+};
+
+function assignedTo() {
+    let select = document.getElementById('assigned-to');
+
+    users.forEach(u =>{
+        let opt = document.createElement('option');
+        opt.value = u.id;
+        opt.textContent= `${u.firstName} ${u.lastName}`;
+        select.appendChild(opt);
+    });
+}

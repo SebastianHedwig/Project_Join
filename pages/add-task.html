@@ -21,7 +21,7 @@
 
 </head>
 
-<body>
+<body onload="init()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
         <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
         <div class="nav-menu__btn-container">
@@ -64,6 +64,82 @@
 
         <main>
             <div class="content">
+                <section id="task-content">
+                    <div class="task-content__header content-wrapper">
+                        <h1>Add Task</h1>
+                    </div>
+                    <div class="task-content__container content-wrapper">
+                        <div class="add-task__left-column">
+                            <div class="add-task__field">
+                                <label for="title" class="required--after">Title</label>
+                                <input type="text" id="title" placeholder="Enter a title" required>
+                            </div>
+                            <div class="add-task__field">
+                                <label for="description">Description</label>
+                                <textarea name="Add Task Description" id="description" 
+                                            placeholder="Enter a Description"></textarea>
+                            </div>
+                            <div class="add-task__field">
+                                <label for="due-date" class="required required--after">Due date</label>
+                                <input type="date" id="due-date" placeholder="dd/mm/yyyy" required>
+                            </div>
+                        </div>
+                        <div class="grey-seperator"></div>
+                        <div class="add-task__right-column">
+                            <div class="add-task__field">
+                                <span for="priority">Priority</span>
+                                <div class="priority-options" id="priority">
+                                    <div class="priority-options-btn" id="urgent" 
+                                        onclick="changePriorityBtn(this)">Urgent <img
+                                            src="../assets/img/priority-urgent.svg"
+                                            data-default="../assets/img/priority-urgent.svg"
+                                            data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></div>
+                                    <div class="priority-options-btn" id="medium"
+                                        onclick="changePriorityBtn(this)">Medium <img
+                                            src="../assets/img/priority-medium.svg"
+                                            data-default="../assets/img/priority-medium.svg"
+                                            data-selected="../assets/img/priority-medium-active.svg" alt="medium"></div>
+                                    <div class="priority-options-btn" id="low"
+                                        onclick="changePriorityBtn(this)">Low <img 
+                                            src="../assets/img/priority-low.svg"
+                                            data-default="../assets/img/priority-low.svg"
+                                            data-selected="../assets/img/priority-low-active.svg"
+                                            alt="low"></div>
+                                </div>
+                            </div>
+                            <div class="add-task__field">
+                                <label for="assigned-to">Assigned to</label>
+                                <select name="assigned-to" id="assigned-to">
+                                    <option value="" disabled selected hidden>Select contacts to assign</option>
+                                </select>
+                            </div>
+                            <div class="add-task__field">
+                                <label for="category" class="required--after">Category</label>
+                                <select name="category" id="category" required>
+                                    <option value="" disabled selected hidden>Select task category</option>
+                                    <option value="1">Tecnical Task</option>
+                                    <option value="2">User Story</option>
+                                </select>
+                            </div>
+                            <div class="add-task__field subtasks__input--border-color">
+                                <label for="subtasks">Subtasks</label>
+                                <input type="subtasks" id="subtasks" placeholder="Add new subtask">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="task-content__footer content-wrapper">
+                        <span class="required required--before"> This field is required</span>
+                        <div class="task-content__footer-btn">
+                            <div class="empty-btn">Clear
+                                <img src="../assets/img/close.svg" alt="close icon">
+                            </div>
+                            <div class="filled-btn">Create Task
+                                <img src="../assets/img/done.svg" alt="done icon">
+                            </div>
+                        </div>
+                    </div>
+                </section>
                 <div data-insert="add-task-insert.html"></div>
             </div>
         </main>
