@@ -1,5 +1,5 @@
 function renderAddContactDlg() {
-    return `
+    return /*html*/`
                 <div class="dialog-left">
                 <img src="../assets/img/logo-white.png"
                     alt="the word: join with a big J with a blue dot on the left side">
@@ -47,7 +47,7 @@ function renderAddContactDlg() {
 }
 
 function renderEditContactDlg() {
-    return `
+    return /*html*/`
                 <div class="dialog-left">
                 <img src="../assets/img/logo-white.png"
                     alt="the word: join with a big J with a blue dot on the left side">

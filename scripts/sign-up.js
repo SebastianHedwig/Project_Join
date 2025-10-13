@@ -6,10 +6,11 @@ function enableSignUpBtn(){
 
 
 function showSuccessfulSignUpMessage() {
-    const body = document.querySelector('body');
+    let body = document.querySelector('body');
     body.innerHTML += renderSuccessMessage();
-    const successDlg = document.getElementById('success-dialog');
+    let successDlg = document.getElementById('success-message');
     successDlg.showModal();
+    successDlg.classList.remove('startposition');
     moveUserBacktoLogin();
 }
 

@@ -6,6 +6,7 @@ let contactName = document.getElementById('contact-name');
 let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 
+let contacts = [];
 
 function openDlg() {
     addContactDlg.showModal();
