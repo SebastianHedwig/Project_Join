@@ -4,21 +4,51 @@ const contactInfoCard = document.querySelector('.content-right__contact-info-car
 let contactName = document.getElementById('contact-name');
 let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
-let contactProfilImg = document.querySelector('header__contact-profil-img');
+let contactProfilImg = document.querySelector('.header__contact-profil-img');
+
+function getInitialLetters() {
+    let initialLetters = [];
+    users.forEach(user => {
+        let userNameInitialLetter = user.name[0];
+        initialLetters.push(userNameInitialLetter);
+    })
+    initialLetters.sort();
+    let uniqueLetters = [...new Set(initialLetters)];
+    return uniqueLetters
+}
+
+function renderInitialLettersSections(initialLettersArray) {
+    let initialLetterSections = "";
+    initialLettersArray.forEach(letter => {
+        initialLetterSections += getUserInitialLetterSectionTpl(letter);
+    })
+    return initialLetterSections
+}
 
 
-async function renderContactList(){
+function renderContactsIntoSections(initialLettersArray) {
+    initialLettersArray.forEach(letter => {
+        let section = document.querySelector(`#initial-letter__wrapper-${letter}`);
+        let filteredUsers = users.filter(user => user.name[0] === letter);
+        filteredUsers.forEach(user => {
+            let userName = user.name;
+            let email = user.email;
+            let profilImgColor = user.profilImgColor;
+            let userInitals = getUserNameInitials(userName);
+            let userImg = getSmallUserProfilImg(profilImgColor, userInitals);
+            let userHTML = getUserContactListItemTpl(userName, email, userImg);
+            section.insertAdjacentHTML("beforeend", userHTML);
+        })
+    })
+}
+
+
+async function renderContactList() {
     await getData();
     contactList.innerHTML = "";
-    let list = "";
-    for (let index = 2; index < users.length; index++) {
-        let user = users[index];
-        let username = user.name;
-        let email = user.email;
-        let profilImgColor = user.profilImgColor;
-        list += getUserContactListItemTpl(username, email, profilImgColor);
-    }
-    contactList.innerHTML = list;
+    let initialLettersArray = getInitialLetters();
+    contactList.innerHTML += renderInitialLettersSections(initialLettersArray);
+    renderContactsIntoSections(initialLettersArray);
 }
 
 function renderAddContactDlg() {
@@ -28,10 +58,13 @@ function renderAddContactDlg() {
 
 function renderEditContactDlg() {
     dialog.innerHTML = getEditContactDlgTpl();
-    document.getElementById("contact-dlg-profil-img").src = contactProfilImg.src;
     document.getElementById("contact-dlg-name-input").value = contactName.innerHTML;
     document.getElementById("contact-dlg-email-input").value = contactMail.innerHTML;
     document.getElementById("contact-dlg-phone-input").value = contactPhone.innerHTML;
+    let userName = contactName.innerHTML;
+    let profilImgColor = document.getElementById('colored-circle').getAttribute('fill');
+    let userInitals = getUserNameInitials(userName);
+    document.querySelector('.profil-img__wrapper').innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
     displayDlg();
 }
 
@@ -50,31 +83,19 @@ function showContactDetailsinCard(selectedContact) {
 }
 
 function getContactInfofromContactlistandDB(contactElement) {
-    let name = contactElement.querySelector('.contact-name').innerText;
+    let userName = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
-    let selectedUser = users.find(user => user.name === name);
+    let selectedUser = users.find(user => user.name === userName);
     let phone = selectedUser.phone;
     let profilImgColor = selectedUser.profilImgColor;
-    return {name, email, phone, profilImgColor};
+    return { userName, email, phone, profilImgColor };
 }
 
-function setContactInfoIntoCard({name, email, phone, profilImgColor}) {
-    contactProfilImg.innerHTML = getBigUserProfilImg();
-    contactName.innerText = name;
+function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
+    contactName.innerText = userName;
     contactMail.innerText = email;
     contactPhone.innerText = phone;
-    document.getElementById('user-initials').textContent = getUserNameInitials(name);
-    document.getElementById('colored-circle').setAttribute('fill', profilImgColor)
+    let userInitals = getUserNameInitials(userName);
+    contactProfilImg.innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
 }
 
-function getUserNameInitials(userName) {
-    return userName
-        .split(' ')                 
-        .filter(Boolean)            
-        .map(word => word[0].toUpperCase()) 
-        .join('');                  
-}
-
-function insertUserProfilImg(element) {
-    document.querySelector('.contact-info-card__header').innerHTML += getUserProfilImg();
-}
