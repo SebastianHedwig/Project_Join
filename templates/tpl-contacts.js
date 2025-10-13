@@ -62,8 +62,6 @@ function getEditContactDlgTpl() {
                 </div>
                 <div class="content-right__wrapper">
                     <div class="profil-img__wrapper">
-                        <img id="contact-dlg-profil-img" src="../assets/img/unknownuser.png"
-                            alt="a grey circle with a white outline of a person in the middle">
                     </div>
                     <div class="width-div">
                         <div class="inputfields">
