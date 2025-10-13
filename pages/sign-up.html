@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../styles/login-signup.css">
     <script src="../scripts/sign-up.js" defer></script>
     <script src="../templates/tpl-sign-up.js" defer></script>
+    <script src="../scripts/mail-tld-validator.js" defer></script>
     <script src="../script.js" defer></script>
 </head>
 
@@ -34,8 +35,9 @@
                     <img src="../assets/img/person.svg" alt="icon of an person">
                 </div>
 
-                <div class="inputfield__wrapper">
-                    <input type="email" placeholder="Email" aria-label="email">
+                <div id="valid-email" class="inputfield__wrapper">
+                    <input id="email" type="email" placeholder="E-Mail" />
+                    <small id="msg" style="color: crimson; display:none; width: 12rem;"> ❌ invalid E-Mail</small>
                     <img src="../assets/img/mail.svg" alt="icon of an email">
                 </div>
 
