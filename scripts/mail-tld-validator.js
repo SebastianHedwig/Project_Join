@@ -16,9 +16,9 @@ const FALLBACK_TLDS = ["com", "net", "org", "de", "io", "app"];
  */
 async function fetchTlds() {
   try {
-    const res = await fetch(IANA_URL);
-    if (!res.ok) throw new Error("IANA fetch failed");
-    const text = await res.text();
+    const response = await fetch(IANA_URL);
+    if (!response.ok) throw new Error("IANA fetch failed");
+    const text = await response.text();
     return text
       .split("\n")
       .filter(line => line && !line.startsWith("#"))
@@ -55,9 +55,9 @@ function getCachedTlds() {
 async function loadTlds() {
   const cached = getCachedTlds();
   if (cached) return cached;
-  const fresh = await fetchTlds();
-  saveTldsToCache(fresh);
-  return fresh;
+  const latestTlds = await fetchTlds();
+  saveTldsToCache(latestTlds);
+  return latestTlds;
 }
 
 /**
