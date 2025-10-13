@@ -7,12 +7,12 @@ function changePriorityBtn(priorityBtn) {
 function changePriorityBtnColor(btn) {
     const colors = {
         urgent: '#FF3D00',
-        medium: '#FFA800',
+        medium: '#FFA700',
         low: '#7AE229'
     };
-    ['urgent', 'medium', 'low'].forEach(id => {
-        document.getElementById(id).style.backgroundColor = "#FFFFFF";
-        document.getElementById(id).style.color = "#000000";
+    ['urgent', 'medium', 'low'].forEach(btn => {
+        document.getElementById(btn).style.backgroundColor = "#FFFFFF";
+        document.getElementById(btn).style.color = "#000000";
     });
        const selectedBtn = document.getElementById(btn);
          selectedBtn.style.backgroundColor = colors[selectedBtn.id];
@@ -27,3 +27,8 @@ function changePriorityBtnIcon(btn) {
     const selectedBtnIcon = document.getElementById(btn).querySelector('img');
         selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('due-date').setAttribute('min', today);
+});

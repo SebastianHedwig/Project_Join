@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/summary.css">
 
+    <script src="../scripts/db.js" defer></script>
     <script src="../script.js" defer></script>
     <script src="../scripts/main.js" defer></script>
     <script src="../scripts/navigation.js" defer></script>
@@ -20,7 +21,7 @@
     <script src="../templates/tpl_summary.js" defer></script>
 </head>
 
-<body>
+<body onload="init()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
         <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
         <div class="nav-menu__btn-container">
@@ -107,7 +108,7 @@
                                     </div>
                                     <div class="grey_seperator"></div>
                                     <div class="metrics__box-text">
-                                        <span>Date</span>
+                                        <span class="metrics__box-date" id="current-date">Date</span>
                                         <span>Upcoming Deadline</span>
                                     </div>
                                 </a>
@@ -136,8 +137,8 @@
                             </div>
                         </div>
                         <div class="summary-content__right">
-                            <h3>Good morning!</h3>
-                            <span>Hier Name (nur wenn Eingeloggt, sonst leer)</span> <!--Soll je nach Tageszeit wechseln-->
+                            <h3 id="greeting-header"></h3>
+                            <span id="greeting-name"></span>
                         </div>
                     </div>    
                 </section>

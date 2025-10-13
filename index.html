@@ -8,10 +8,11 @@
     <link rel="icon" href="./assets/img/logo-black.png" type="image/x-icon">
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./styles/login-signup.css">
+    <script src="../scripts/db.js" defer></script>
     <script src="/scripts/login.js" defer></script>
 </head>
 
-<body>
+<body onload="getData()">
     <header class="content-wrapper header">
         <img id="joinlogo" class="header__joinlogo start" src="./assets/img/logo-black.png"
             alt="the word: join with a big J with a blue dot on the left side,">
