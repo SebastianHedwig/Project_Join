@@ -152,7 +152,8 @@ a {
 a:hover,
 button:hover,
 input:hover,
-::-webkit-search-cancel-button {
+::-webkit-search-cancel-button,
+select {
   cursor: pointer;
 }
 

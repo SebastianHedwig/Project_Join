@@ -170,3 +170,53 @@
   border: 2px solid var(--color-lightblue);
   outline: none;
 }
+
+
+
+
+/* Just a Try */
+
+.contacts-selection {
+  position: relative;
+  width: 100%;
+}
+
+.select-box {
+  display: flex;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+
+.select-box:hover {
+  border-color: #666;
+}
+
+.select-contacts {
+  display: none;
+  position: absolute;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+  background: white;
+  z-index: 10;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  padding: 6px 8px;
+}
+
+.select-contacts label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+}
+
+.select-contacts label:hover {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+

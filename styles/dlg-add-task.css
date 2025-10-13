@@ -1,16 +1,15 @@
 .dlg-add-task {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  align-self: center;
-  justify-self: center;
-  font-size: 1.25rem;
-  font-weight: 400;
-  gap: 1.5rem;
-  height: 70%;
+  padding-top: 4rem;
+  height: fit-content;
   width: 50%;
-  padding: 3rem 2rem;
-  border-radius: 1.875rem;
-  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.16);
-  z-index: 1000;
+}
+
+.task-content__header {
+  margin-top: unset;
+}
+
+.dlg-add-task-header {
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
 }

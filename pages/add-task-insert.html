@@ -1,23 +1,22 @@
 <script src="../scripts/add-task.js" defer></script>
 
-<section id="task-content">
-    <div class="task-content__header content-wrapper">
+<section id="task-content" class="content-wrapper">
+    <div class="task-content__header">
         <h1>Add Task</h1>
     </div>
-    <div class="task-content__container content-wrapper">
+    <div class="task-content__container">
         <div class="add-task__left-column">
             <div class="add-task__field">
                 <label for="title" class="required--after">Title</label>
-                <input type="text" id="title" placeholder="Enter a title" required>
+                <input class="input--validation-modifier" type="text" id="title" placeholder="Enter a title" required>
             </div>
             <div class="add-task__field">
                 <label for="description">Description</label>
-                <textarea name="Add Task Description" id="description" 
-                            placeholder="Enter a Description"></textarea>
+                <textarea name="Add Task Description" id="description" placeholder="Enter a Description"></textarea>
             </div>
             <div class="add-task__field">
                 <label for="due-date" class="required required--after">Due date</label>
-                <input type="date" id="due-date" placeholder="dd/mm/yyyy" required>
+                <input class="input--validation-modifier" type="date" id="due-date" placeholder="dd/mm/yyyy" required>
             </div>
         </div>
         <div class="grey-seperator"></div>
@@ -65,7 +64,7 @@
         </div>
     </div>
 
-    <div class="task-content__footer content-wrapper">
+    <div class="task-content__footer">
         <span class="required required--before"> This field is required</span>
         <div class="task-content__footer-btn">
             <div class="empty-btn">Clear
