@@ -1,73 +1,80 @@
-const addContactDlg = document.getElementById('add-contact-dialog');
-const contactListItems = document.querySelectorAll('.contact-list__item');
+const dialog = document.getElementById('dlg-box');
+const contactList = document.querySelector('.contact-list');
 const contactInfoCard = document.querySelector('.content-right__contact-info-card');
-let contactProfilImg = document.getElementById('contact-profil-img');
 let contactName = document.getElementById('contact-name');
 let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
+let contactProfilImg = document.querySelector('header__contact-profil-img');
 
-let contacts = [];
 
-function openDlg() {
-    addContactDlg.showModal();
-    addContactDlg.style.visibility = "visible";
-    
+async function renderContactList(){
+    await getData();
+    contactList.innerHTML = "";
+    let list = "";
+    for (let index = 2; index < users.length; index++) {
+        let user = users[index];
+        let username = user.name;
+        let email = user.email;
+        let profilImgColor = user.profilImgColor;
+        list += getUserContactListItemTpl(username, email, profilImgColor);
+    }
+    contactList.innerHTML = list;
 }
 
-function closeDlg() {
-    addContactDlg.close();
-    addContactDlg.style.visibility = "hidden";
+function renderAddContactDlg() {
+    dialog.innerHTML = getAddContactDlgTpl();
+    displayDlg();
 }
 
-function displayAddContactDlg() {
-    addContactDlg.innerHTML = renderAddContactDlg();
-    openDlg();
-}
-
-function displayEditContactDlg() {
-    addContactDlg.innerHTML = renderEditContactDlg();
+function renderEditContactDlg() {
+    dialog.innerHTML = getEditContactDlgTpl();
     document.getElementById("contact-dlg-profil-img").src = contactProfilImg.src;
     document.getElementById("contact-dlg-name-input").value = contactName.innerHTML;
     document.getElementById("contact-dlg-email-input").value = contactMail.innerHTML;
     document.getElementById("contact-dlg-phone-input").value = contactPhone.innerHTML;
-    openDlg();
+    displayDlg();
 }
 
 function setContactCardtoVisible() {
     contactInfoCard.style.visibility = "visible";
 }
 
-function clearContactInfoCard() {
-    contactProfilImg.src = "../assets/img/unknownuser.png";
-    contactName.innerText = "";
-    contactMail.innerText = "";
-    contactPhone.innerText = "";
+function setContactCardtoInvisible() {
+    contactInfoCard.style.visibility = "hidden";
 }
 
 function showContactDetailsinCard(selectedContact) {
     let contactInfo = getContactInfofromContactlistandDB(selectedContact);
-    clearContactInfoCard(); // vlt nicht nötig
     setContactInfoIntoCard(contactInfo);
     setContactCardtoVisible();
 }
 
 function getContactInfofromContactlistandDB(contactElement) {
-    let img = contactElement.querySelector('img').src;
     let name = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
-    // fetch phone form DB
-    // let phone = call fetching function
-    // add phone to return
-    return { img, name, email };
+    let selectedUser = users.find(user => user.name === name);
+    let phone = selectedUser.phone;
+    let profilImgColor = selectedUser.profilImgColor;
+    return {name, email, phone, profilImgColor};
 }
 
-function setContactInfoIntoCard({ img, name, email, phone }) {
-    contactProfilImg.src = img;
+function setContactInfoIntoCard({name, email, phone, profilImgColor}) {
+    contactProfilImg.innerHTML = getBigUserProfilImg();
     contactName.innerText = name;
     contactMail.innerText = email;
-    // contactPhone.innerText = phone;
+    contactPhone.innerText = phone;
+    document.getElementById('user-initials').textContent = getUserNameInitials(name);
+    document.getElementById('colored-circle').setAttribute('fill', profilImgColor)
 }
 
-contactListItems.forEach(item => {
-    item.addEventListener('click', (event) => showContactDetailsinCard(event.currentTarget));
-});
+function getUserNameInitials(userName) {
+    return userName
+        .split(' ')                 
+        .filter(Boolean)            
+        .map(word => word[0].toUpperCase()) 
+        .join('');                  
+}
+
+function insertUserProfilImg(element) {
+    document.querySelector('.contact-info-card__header').innerHTML += getUserProfilImg();
+}

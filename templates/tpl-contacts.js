@@ -1,4 +1,4 @@
-function renderAddContactDlg() {
+function getAddContactDlgTpl() {
     return /*html*/`
                 <div class="dialog-left">
                 <img src="../assets/img/logo-white.png"
@@ -9,7 +9,7 @@ function renderAddContactDlg() {
             </div>
 
             <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn" onclick="closeDlg()">
+                <div class="close-button__wrapper" id="dialog-close-btn" onclick="hideDlg()">
                     <img src="../assets/img/close.svg" alt="icon of the letter X">
                 </div>
                 <div class="content-right__wrapper">
@@ -34,7 +34,7 @@ function renderAddContactDlg() {
                                 <img src="../assets/img/call.svg" alt="icon of an phone">
                             </div>
                             <div class="inputfields__button-holder">
-                                <button class="empty-btn">Cancel<img src="../assets/img/close.svg"
+                                <button class="empty-btn" onclick="hideDlg()">Cancel<img src="../assets/img/close.svg"
                                         alt="icon of the letter X"></button>
                                 <button class="filled-btn">Create contact<img src="../assets/img/done.svg"
                                         alt="icon of a checkmark"></button>
@@ -46,7 +46,7 @@ function renderAddContactDlg() {
     `
 }
 
-function renderEditContactDlg() {
+function getEditContactDlgTpl() {
     return /*html*/`
                 <div class="dialog-left">
                 <img src="../assets/img/logo-white.png"
@@ -57,7 +57,7 @@ function renderEditContactDlg() {
             </div>
 
             <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn" onclick="closeDlg()">
+                <div class="close-button__wrapper" id="dialog-close-btn" onclick="hideDlg()">
                     <img src="../assets/img/close.svg" alt="icon of the letter X">
                 </div>
                 <div class="content-right__wrapper">
@@ -82,7 +82,7 @@ function renderEditContactDlg() {
                                 <img src="../assets/img/call.svg" alt="icon of an phone">
                             </div>
                             <div class="inputfields__button-holder">
-                                <button class="empty-btn">Cancel<img src="../assets/img/close.svg"
+                                <button class="empty-btn" onclick="hideDlg()">Cancel<img src="../assets/img/close.svg"
                                         alt="icon of the letter X"></button>
                                 <button class="filled-btn">Save<img src="../assets/img/done.svg"
                                         alt="icon of a checkmark"></button>

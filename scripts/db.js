@@ -10,7 +10,7 @@ async function getData() {
     }
 
     const result = await response.json();
-    console.log("Fetched users:", result);
+    // console.log("Fetched users:", result);
 
     if (!result) {
       console.warn("No users found in database.");
@@ -19,11 +19,11 @@ async function getData() {
 
     Object.values(result).forEach(user => users.push(user));
 
-    console.log("Users array:", users);
+    // console.log("Users array:", users);
 
   } catch (error) {
     console.error("Error fetching users:", error.message);
   }
-  console.log(users);
+  // console.log(users);
   
 }

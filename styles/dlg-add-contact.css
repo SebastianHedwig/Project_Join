@@ -1,5 +1,4 @@
 .add-contact__dialog {
-    visibility: hidden;
     display: flex;
     flex-direction: row;
     position: absolute;
@@ -14,10 +13,6 @@
     border-radius: 1.875rem;
     background-color: var(--color-white);
     padding: 0rem;
-}
-
-.add-contact__dialog::backdrop {
-    background-color: color-mix(in srgb, var(--color-maincolor) 50%, transparent);
 }
 
 .dialog-left {

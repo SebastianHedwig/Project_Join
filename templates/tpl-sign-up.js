@@ -1,5 +1,5 @@
 function renderSuccessMessage() {
-    return `<dialog id="success-message" class="signup__success-message startposition">
+    return `<dialog id="dlg-box" class="signup__success-message startposition d-none">
                     You Signed Up successfully
             </dialog>`
 }

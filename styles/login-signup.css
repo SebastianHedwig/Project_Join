@@ -250,16 +250,14 @@ input[type="checkbox"]:checked+label:hover {
     font-weight: 700;
 }
 
-.invisible {
-    visibility: hidden;
-}
-
 .disabled {
     pointer-events: none;
 }
 
 .signup__success-message {
+    display: flex;
     position: fixed;
+    text-align: center;
     top: 55%;
     left: 50%;
     border: 10px solid var(--color-maincolor);
@@ -272,15 +270,10 @@ input[type="checkbox"]:checked+label:hover {
     transform: translate(-50%, -50%);
     z-index: 4;
     box-shadow: 0px 0px 4px color-mix(in srgb, var(--color-black) 100%, transparent);
-    transition: top 200ms ease-in-out;
+    transition: top 300ms ease-in-out;
     outline: none;
 }
 
-.signup__success-message.startposition {
+.startposition {
     top: 150%;
-}
-
-
-.signup__success-message::backdrop {
-    background-color: color-mix(in srgb, var(--color-maincolor) 30%, transparent);
 }

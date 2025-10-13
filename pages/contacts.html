@@ -13,12 +13,17 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/contacts.css">
     <link rel="stylesheet" href="../styles/dlg-add-contact.css">
+    <script src="../scripts/db.js"></script>
     <script src="../scripts/contacts.js" defer></script>
-    <script src="../templates/tpl-add-edit-contact.js" defer></script>
+    <script src="../templates/tpl-contacts.js" defer></script>
+    <script src="../script.js" defer></script>
+    <script src="../templates/tpl-userprofil.js" defer></script>
+    <script src="../scripts/render-user-img.js" defer></script>
+
 
 </head>
 
-<body>
+<body onload="renderContactList()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
         <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
         <div class="nav-menu__btn-container">
@@ -67,84 +72,50 @@
 
                         <div class="content-left">
                             <div class="content-left__button-holder">
-                                <div class="filled-btn" id="add-new-contact-btn" onclick="displayAddContactDlg()">Add
+                                <div class="filled-btn" id="add-new-contact-btn" onclick="renderAddContactDlg()">Add
                                     new contact<img src="../assets/img/person-add.svg"
                                         alt="icon of a person with a plus-symbol"></div>
                             </div>
 
                             <div class="contact-list">
                                 <!-- Hier werden später die Kontake reingerendert -->
-                                <div>
-                                    <p class="contact-list__initial-letter">M</p>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p class="contact-name">Max Mustermann</p>
-                                            <p class="contact-email">max.mustermann@web.de</p>
+
+                            </div>
+                        </div >
+
+                            <div class="content-right">
+                                <div class="content-right__header">
+                                    <h1>Contacts</h1>
+                                    <div class="header__bluestrip"></div>
+                                    <span>Better with a team</span>
+                                </div>
+
+                                <div class="content-right__contact-info-card">
+                                    <div class="contact-info-card__header">
+                                        <div class="header__contact-profil-img"></div>
+                                        <div class="manage-contact__header">
+                                            <h3 id="contact-name">Name</h3>
+                                            <div class="manage-contact__actions">
+                                                <img class="action__edit" src="../assets/img/edit-with-text.svg"
+                                                    alt="a grey pencil" onclick="renderEditContactDlg()">
+                                                <img class="action__delete" src="../assets/img/delete-with-text.svg"
+                                                    alt="a grey trashbin">
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="contact-list__item">
-                                        <img src="../assets/img/user-img-anna.svg"
-                                            alt="colored circle with starting letters of name and surname">
-                                        <div>
-                                            <p class="contact-name">Maxi Musterfrau</p>
-                                            <p class="contact-email">maxi.musterfrau@web.de</p>
-                                        </div>
+
+                                    <p class="contact-info__header">Contact Information</p>
+                                    <div class="contact-info__details">
+                                        <p><strong>Email</strong></p>
+                                        <p id="contact-email" class="details__email">max.mustermann@web.de</p>
+                                        <p><strong>Phone</strong></p>
+                                        <p id="contact-phone">+49 1111 111 111</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="content-right">
-                            <div class="content-right__header">
-                                <h1>Contacts</h1>
-                                <div class="header__bluestrip"></div>
-                                <span>Better with a team</span>
-                            </div>
-
-                            <div class="content-right__contact-info-card">
-                                <div class="contact-info-card__header">
-                                    <img id="contact-profil-img" class="header__contact-profil-img"
-                                        src="../assets/img/user-img-anna.svg"
-                                        alt="colored circle with starting letters of name and surname">
-                                    <div class="manage-contact__header">
-                                        <h3 id="contact-name">Max Mustermann</h3>
-                                        <div class="manage-contact__actions">
-                                            <img class="action__edit" src="../assets/img/edit-with-text.svg"
-                                                alt="a grey pencil" onclick="displayEditContactDlg()">
-                                            <img class="action__delete" src="../assets/img/delete-with-text.svg"
-                                                alt="a grey trashbin">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <p class="contact-info__header">Contact Information</p>
-                                <div class="contact-info__details">
-                                    <p><strong>Email</strong></p>
-                                    <p id="contact-email" class="details__email">max.mustermann@web.de</p>
-                                    <p><strong>Phone</strong></p>
-                                    <p id="contact-phone">+49 1111 111 111</p>
-                                </div>
-
-                                <svg width="200" height="200">
-                                    <!-- Circle -->
-                                    <circle cx="100" cy="100" r="50" fill="lightblue" stroke="var(--color-white)" stroke-width="2" />
-
-                                    <!-- Text centered in the circle -->
-                                    <text x="100" y="100" text-anchor="middle" dominant-baseline="middle" font-size="20"
-                                        fill="var(--color-white)">
-                                        Hello
-                                    </text>
-                                </svg>
-
-
-
-                            </div>
-                        </div>
                     </section>
                 </div>
-                <dialog class="add-contact__dialog" id="add-contact-dialog"></dialog>
+                <dialog id="dlg-box" class="add-contact__dialog d-none"></dialog>
             </main>
         </div>
 </body>
