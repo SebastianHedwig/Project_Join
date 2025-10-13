@@ -52,3 +52,14 @@ function assignedTo() {
         select.appendChild(opt);
     });
 }
+
+
+function createTask() {
+    let newTask = {
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+    };
+    tasks.push(newTask);
+    console.log(tasks);
+    
+}
