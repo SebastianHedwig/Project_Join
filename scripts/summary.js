@@ -41,15 +41,13 @@ function greetingHeader() {
 function currentDate() {
     const months = [
     "January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
+    "July", "August", "September", "October", "November", "December"];
     let date = document.getElementById('current-date');
     let currentDate = new Date();
+        let day = currentDate.getDate();
+        let month = months[currentDate.getMonth()];
+        let year = currentDate.getFullYear();
 
-    let day = currentDate.getDate();
-    let month = months[currentDate.getMonth()];
-    let year = currentDate.getFullYear();
-
-    let completeDate = `${month} ${day} , ${year}`;
+    let completeDate = `${month} ${day}, ${year}`;
     date.textContent = completeDate;
 }
