@@ -1,14 +1,20 @@
 
+let chosenPriority = "";
+
+
 async function init() {
     await getData();
     assignedTo();
-    setMinDueDate()
+    setMinDueDate();
 }
 
 
 function changePriorityBtn(priorityBtn) {
     changePriorityBtnColor(priorityBtn.id);
-    changePriorityBtnIcon(priorityBtn.id);  
+    changePriorityBtnIcon(priorityBtn.id);
+    chosenPriority = priorityBtn.id
+    console.log(chosenPriority);
+    
 }
 
 
@@ -42,9 +48,9 @@ function setMinDueDate() {
   document.getElementById('due-date').setAttribute('min', today);
 };
 
+
 function assignedTo() {
     let select = document.getElementById('assigned-to');
-
     users.forEach(u =>{
         let opt = document.createElement('option');
         opt.value = u.id;
@@ -55,11 +61,17 @@ function assignedTo() {
 
 
 function createTask() {
+    let categorySelected = document.getElementById('category');
+    let selectedCategoryText = categorySelected.options[categorySelected.selectedIndex].text;
     let newTask = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
+        dueDate: document.getElementById('due-date').value,
+        assignedContacts: {user:'assignedUser'},
+        category: selectedCategoryText,
+        subtasks: document.getElementById('subtasks').value,
+        priority: chosenPriority
     };
     tasks.push(newTask);
     console.log(tasks);
-    
 }
