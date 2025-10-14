@@ -136,17 +136,21 @@
   border-radius: 0.5rem;
 }
 
+.contact-options li {
+  margin: 0.1rem 0;
+}
+
 .contact-options li:hover {
   background: var(--color-lightergrey);
 }
 
 .contact-options li.active {
-  background: rgb(from var(--color-navselected) r g b / 0.8);
+  background: rgba(from var(--color-navselected) r g b / 0.8);
+  color: var(--color-white);
 }
 
 .contact-options li.active:hover {
   background: var(--color-navselected);
-  color: var(--color-white);
 }
 
 .user-selection-field {
