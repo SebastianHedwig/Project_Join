@@ -87,14 +87,83 @@
   width: 8.5rem;
 }
 
-.dlg-edit__main__task-assignments-box select {
-  width: 100%;
-  height: 3rem;
-  border-radius: 0.5rem;
-  border: 0.063rem solid var(--color-lightgrey);
-  padding: 0 1rem;
+.contacts-selection {
+  position: relative;
+  user-select: none;
   font-size: 1.5rem;
-  justify-content: center;
+}
+
+.selector {
+  width: 100%;
+  border: 1px solid var(--color-lightgrey);
+  border-radius: 0.5rem;
+  padding: 0.6rem 2.5rem 0.6rem 1rem;
+  background: var(--color-white)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%23888' stroke-width='2' viewBox='0 0 24 24'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E")
+    no-repeat right 1rem center;
+  background-size: 1rem;
+  cursor: text;
+  outline: none;
+  font: inherit;
+  color: var(--color-black);
+}
+
+.contact-options {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  max-height: 12.5rem;
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: var(--color-white);
+  border: 1px solid var(--color-lightgrey);
+  border-radius: 0 0 0.5rem 0.5rem;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  padding: 0;
+  z-index: 10;
+}
+
+.contact-options li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.contact-options li:hover {
+  background: var(--color-lightergrey);
+}
+
+.contact-options li.active {
+  background: var(--color-navselected);
+  color: var(--color-white);
+}
+
+.contact-options li.active:hover {
+  background: var(--color-navhover);
+}
+
+.user-selection-field {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkbox {
+  width: 1.5rem;
+  height: 1.5rem;
+  transition: transform 0.15s ease;
+  cursor: pointer;
+}
+
+.contact-options li:hover .checkbox {
+  transform: scale(1.1);
 }
 
 .dlg-edit__main__assigned-user-container {
@@ -134,7 +203,7 @@
 }
 
 .dlg-edit__main__subtask:hover {
-  background-color: rgb(230, 230, 230);
+  background-color: var(--color-lightergrey);
   cursor: pointer;
 }
 
@@ -159,64 +228,10 @@
   border: 1px solid var(--color-lightgrey);
 }
 
-.dlg-edit__input-text:focus {
-  border: 2px solid var(--color-lightblue);
-  outline: none;
-}
-
+.dlg-edit__input-text:focus,
 .dlg-edit__main__description-box textarea:focus,
-.dlg-edit__main__task-assignments-box select:invalid,
-.dlg-edit__main__task-assignments-box select:focus {
-  border: 2px solid var(--color-lightblue);
+.dlg-edit__main__task-assignments-box input:focus,
+.dlg-edit__main__task-assignments-box input:invalid {
+  border: 1px solid var(--color-lightblue);
   outline: none;
 }
-
-
-
-
-/* Just a Try */
-
-.contacts-selection {
-  position: relative;
-  width: 100%;
-}
-
-.select-box {
-  display: flex;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  padding: 0.75rem 1.25rem;
-  background-color: #fff;
-  cursor: pointer;
-  user-select: none;
-}
-
-.select-box:hover {
-  border-color: #666;
-}
-
-.select-contacts {
-  display: none;
-  position: absolute;
-  width: 100%;
-  border: 1px solid #aaa;
-  border-radius: 6px;
-  background: white;
-  z-index: 10;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  padding: 6px 8px;
-}
-
-.select-contacts label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.25rem 0.75rem;
-  cursor: pointer;
-}
-
-.select-contacts label:hover {
-  background: #f0f0f0;
-  border-radius: 4px;
-}
-
