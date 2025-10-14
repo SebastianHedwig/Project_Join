@@ -30,7 +30,7 @@ function changePriorityBtnColor(btn) {
        const selectedBtn = document.getElementById(btn);
          selectedBtn.style.backgroundColor = colors[selectedBtn.id];
          selectedBtn.style.color = "#FFFFFF";
-    }
+}
 
 
 function changePriorityBtnIcon(btn) {
