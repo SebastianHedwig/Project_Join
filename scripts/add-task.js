@@ -13,8 +13,7 @@ function changePriorityBtn(priorityBtn) {
     changePriorityBtnColor(priorityBtn.id);
     changePriorityBtnIcon(priorityBtn.id);
     chosenPriority = priorityBtn.id
-    console.log(chosenPriority);
-    
+    console.log(chosenPriority); 
 }
 
 
