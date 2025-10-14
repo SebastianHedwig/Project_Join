@@ -17,6 +17,7 @@ section {
 .site-wrapper {
     max-height: 100vh;
     overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 main {
@@ -91,12 +92,19 @@ main {
     flex-direction: row;
     gap: 2.1875rem;
     padding: 0.9375rem 1.5rem;
+    border-radius: 0.625rem;
 }
 
-.contact-list__item:hover {
+.contact-list__item.selected {
+    background-color: var(--color-maincolor);
+    cursor: pointer;
+}
+
+.contact-list__item:not(.selected):hover {
     background: linear-gradient(to bottom, #F9F9F9, #F0F0F0);
     cursor: pointer;
 }
+
 
 .contact-list__item div {
     display: flex;
@@ -122,7 +130,7 @@ main {
 }
 
 .contact-email {
-    color: var(--color-email);
+    color: var(--color-email) !important;
 }
 
 .content-right {
@@ -157,6 +165,11 @@ main {
 
 .content-right__contact-info-card {
     visibility: hidden;
+    transition: transform 300ms ease-in-out;
+}
+
+.content-right__contact-info-card.invisible {
+    transform: translate(200vw, 0px);
 }
 
 .contact-info-card__header {

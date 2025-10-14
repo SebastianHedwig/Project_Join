@@ -196,7 +196,8 @@ select {
 
 .empty-btn:hover {
   color: var(--color-lightblue);
-  border: 2px solid var(--color-lightblue);
+  outline: 2px solid var(--color-lightblue);
+  border: hidden;
   box-shadow: 0px 4px 4px color-mix(in srgb, var(--color-black) 25%, transparent);
 }
 
@@ -207,23 +208,59 @@ select {
 }
 
 .priority-options-btn {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 1.125rem 1.75rem;
-    background-color: var(--color-white);
-    box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
-    border-radius: 0.625rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--color-black);
-    transition: transform var(--transition-slow) ease;
-    gap: 0.75rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 1.125rem 1.75rem;
+  background-color: var(--color-white);
+  box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.1);
+  border-radius: 0.625rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-black);
+  transition: transform var(--transition-slow) ease;
+  gap: 0.75rem;
 }
 
 .priority-options-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 0.375rem 0.375rem rgba(0, 0, 0, 0.15);
-    cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0px 0.375rem 0.375rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.svg__wrapper {
+  width: 32px;
+  height: 32px;
+}
+
+.svg__wrapper.medium {
+  width: 42px;
+  height: 42px;
+}
+
+.svg__wrapper.big {
+  width: 120px;
+  height: 120px;
+}
+
+.colored-circle__selected {
+  stroke: var(--color-white);
+  stroke-width: 2px;
+}
+
+.user-initials {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 12px;
+  font-weight: 400;
+  fill: var(--color-white);
+}
+
+.user-initials.big {
+  text-anchor: middle;
+  dominant-baseline: middle;
+  font-size: 47px;
+  font-weight: 500;
+  fill: var(--color-white);
 }

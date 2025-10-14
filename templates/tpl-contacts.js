@@ -91,3 +91,26 @@ function getEditContactDlgTpl() {
             </div>
     `
 }
+
+function getUserInitialLetterSectionTpl(letter) {
+        return /*html*/ `
+    <div id="initial-letter__wrapper-${letter}">
+        <p class="contact-list__initial-letter">${letter}</p>
+    </div>
+    `
+}
+
+function getUserContactListItemTpl(username, email, userImg) {
+    return /*html*/ `
+    <div class="contact-list__item" onclick="showContactDetailsinCard(event.currentTarget)">
+        <div id="user-profil-img__wrapper">${userImg}
+        </div>
+            <div>
+                <p class="contact-name">${username}</p>
+                <p class="contact-email">${email}</p>
+            </div>
+    </div>
+    `
+    
+}
+

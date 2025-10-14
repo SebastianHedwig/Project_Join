@@ -6,6 +6,7 @@ let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 let contactProfilImg = document.querySelector('.header__contact-profil-img');
 
+
 function getInitialLetters() {
     let initialLetters = [];
     users.forEach(user => {
@@ -35,7 +36,7 @@ function renderContactsIntoSections(initialLettersArray) {
             let email = user.email;
             let profilImgColor = user.profilImgColor;
             let userInitals = getUserNameInitials(userName);
-            let userImg = getSmallUserProfilImg(profilImgColor, userInitals);
+            let userImg = getMediumUserProfilImg(profilImgColor, userInitals);
             let userHTML = getUserContactListItemTpl(userName, email, userImg);
             section.insertAdjacentHTML("beforeend", userHTML);
         })
@@ -49,6 +50,22 @@ async function renderContactList() {
     let initialLettersArray = getInitialLetters();
     contactList.innerHTML += renderInitialLettersSections(initialLettersArray);
     renderContactsIntoSections(initialLettersArray);
+    // __________________________________________________________________________________auslagern
+    let contactListItems = document.querySelectorAll('.contact-list__item');
+
+    contactListItems.forEach(item => {
+        item.addEventListener('click', () => {
+            contactListItems.forEach(i => {
+                i.classList.remove('selected');
+                i.querySelector('.contact-name').style.color = 'var(--color-black)';
+                i.querySelector('circle').classList.remove('colored-circle__selected');
+            });
+            item.classList.add('selected');
+            let contactName = item.querySelector('.contact-name');
+            contactName.style.color = 'var(--color-white)';
+            item.querySelector('circle').classList.add('colored-circle__selected');
+        })
+    })
 }
 
 function renderAddContactDlg() {
@@ -69,14 +86,16 @@ function renderEditContactDlg() {
 }
 
 function setContactCardtoVisible() {
-    contactInfoCard.style.visibility = "visible";
+    contactInfoCard.classList.remove('invisible');
+    contactInfoCard.style.visibility = 'visible';
 }
 
 function setContactCardtoInvisible() {
-    contactInfoCard.style.visibility = "hidden";
+    contactInfoCard.classList.add('invisible');
 }
 
 function showContactDetailsinCard(selectedContact) {
+
     let contactInfo = getContactInfofromContactlistandDB(selectedContact);
     setContactInfoIntoCard(contactInfo);
     setContactCardtoVisible();

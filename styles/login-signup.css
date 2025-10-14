@@ -275,5 +275,9 @@ input[type="checkbox"]:checked+label:hover {
 }
 
 .startposition {
-    top: 150%;
+    top: 150vh;
+}
+
+.invisible {
+    visibility: hidden;
 }
