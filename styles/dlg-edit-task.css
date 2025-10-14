@@ -141,12 +141,12 @@
 }
 
 .contact-options li.active {
-  background: var(--color-navselected);
-  color: var(--color-white);
+  background: rgb(from var(--color-navselected) r g b / 0.8);
 }
 
 .contact-options li.active:hover {
-  background: var(--color-navhover);
+  background: var(--color-navselected);
+  color: var(--color-white);
 }
 
 .user-selection-field {
