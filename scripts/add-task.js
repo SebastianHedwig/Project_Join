@@ -1,5 +1,5 @@
 
-let chosenPriority = "";
+let chosenPriority = "medium";
 
 
 async function init() {
