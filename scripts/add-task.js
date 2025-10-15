@@ -32,6 +32,16 @@ function changePriorityBtnColor(btn) {
          selectedBtn.style.color = "#FFFFFF";
 }
 
+function resetPriorityButtons() {
+    ['urgent', 'medium', 'low'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.style.backgroundColor = "#FFFFFF";
+        btn.style.color = "#000000";
+        btn.querySelector('img').src = btn.querySelector('img').dataset.default;
+    });
+    chosenPriority = "medium";
+}
+
 
 function changePriorityBtnIcon(btn) {
         document.querySelectorAll('.priority-options-btn img').forEach(img => {
@@ -71,6 +81,9 @@ window.handleCreateTask = function handleCreateTask(event) {
   }
 
   createTask();
+  form.reset();
+  resetPriorityButtons();
+  alert('You added a new task!');
 }
 
 
@@ -88,4 +101,11 @@ function createTask() {
     };
     tasks.push(newTask);
     console.log(tasks);
+}
+
+
+function clearTask() {
+  const form = document.getElementById('task-form');
+  form.reset();
+  resetPriorityButtons();
 }
