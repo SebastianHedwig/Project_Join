@@ -5,6 +5,7 @@
     <div class="task-content__header">
         <h1>Add Task</h1>
     </div>
+    <form id="task-form" onsubmit="handleCreateTask(event)">
     <div class="task-content__container">
         <div class="add-task__left-column">
             <div class="add-task__field">
@@ -68,12 +69,13 @@
     <div class="task-content__footer">
         <span class="required required--before"> This field is required</span>
         <div class="task-content__footer-btn">
-            <div class="empty-btn">Clear
+            <button class="empty-btn">Clear
                 <img src="../assets/img/close.svg" alt="close icon">
-            </div>
-            <div onclick="createTask()" class="filled-btn">Create Task
+            </button>
+            <button type="submit" class="filled-btn">Create Task
                 <img src="../assets/img/done.svg" alt="done icon">
-            </div>
+            </button>
         </div>
     </div>
+    </form>
 </section>

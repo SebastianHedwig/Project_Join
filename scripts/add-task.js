@@ -59,6 +59,21 @@ function assignedTo() {
 }
 
 
+window.handleCreateTask = function handleCreateTask(event) {
+  event.preventDefault(); // Browser-Reload verhindern
+
+  const form = event.target;
+
+  // Prüft alle required-Felder (title, due-date, category)
+  if (!form.checkValidity()) {
+    form.reportValidity(); // Zeigt native Fehlermeldungen an
+    return;
+  }
+
+  createTask();
+}
+
+
 function createTask() {
     let categorySelected = document.getElementById('category');
     let selectedCategoryText = categorySelected.options[categorySelected.selectedIndex].text;
