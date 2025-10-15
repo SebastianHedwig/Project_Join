@@ -117,4 +117,3 @@ function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
     let userInitals = getUserNameInitials(userName);
     contactProfilImg.innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
 }
-

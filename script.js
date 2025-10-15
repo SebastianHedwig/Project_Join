@@ -1,9 +1,11 @@
 function displayDlg() {
     document.getElementById('dlg-box').classList.remove('d-none');
+    document.getElementById('overlay').classList.remove('d-none');
 }
 
 function hideDlg() {
     document.getElementById('dlg-box').classList.add('d-none');
+    document.getElementById('overlay').classList.add('d-none');
 }
 
 function getUserNameInitials(userName) {
