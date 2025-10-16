@@ -52,12 +52,6 @@ function changePriorityBtnIcon(btn) {
 }
 
 
-function setMinDueDate() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('due-date').setAttribute('min', today);
-};
-
-
 function assignedTo() {
     let select = document.getElementById('assigned-to');
     users.forEach(u =>{
