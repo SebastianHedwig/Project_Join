@@ -1,7 +1,7 @@
-const select = document.getElementById("contact-select");
-const searchInput = document.getElementById("contact-search");
-const options = select.querySelector(".contact-options");
-const listItems = options.querySelectorAll("li");
+const selectRef = document.getElementById("contact-select");
+const searchInputRef = document.getElementById("contact-search");
+const optionsRef = selectRef.querySelector("contact-options");
+const listItemsRef = optionsRef.querySelectorAll("li");
 
 let isDropdownOpen = false;
 
@@ -15,7 +15,7 @@ function toggleDropdown(forceState) {
   } else {
     isDropdownOpen = !isDropdownOpen;
   }
-  options.style.display = isDropdownOpen ? "flex" : "none";
+  optionsRef.style.display = isDropdownOpen ? "flex" : "none";
 }
 
 /**
@@ -23,7 +23,7 @@ function toggleDropdown(forceState) {
  * @param {string} term - Der aktuelle Suchbegriff (kleingeschrieben)
  */
 function filterContacts(term) {
-  listItems.forEach((listItem) => {
+  listItemsRef.forEach((listItem) => {
     const name = listItem.querySelector(".username").textContent.toLowerCase();
     listItem.style.display = name.includes(term) ? "flex" : "none";
   });
@@ -54,7 +54,7 @@ function updateCheckboxVisual(checkbox, isChecked, isHovering) {
  *   und markiert die Zeile per .active.
  */
 function initCheckboxHandlers() {
-  listItems.forEach((listItem) => {
+  listItemsRef.forEach((listItem) => {
     const checkbox = listItem.querySelector(".checkbox");
 
     listItem.addEventListener("mouseenter", () => {
@@ -80,13 +80,13 @@ function initCheckboxHandlers() {
  */
 function initDropdownHandlers() {
   // Klick toggelt Dropdown
-  searchInput.addEventListener("click", (event) => {
+  searchInputRef.addEventListener("click", (event) => {
     event.stopPropagation();
     toggleDropdown();
   });
 
   // Eingabe öffnet Dropdown und filtert Ergebnisse
-  searchInput.addEventListener("input", (event) => {
+  searchInputRef.addEventListener("input", (event) => {
     const searchTerm = event.target.value.toLowerCase();
     if (!isDropdownOpen) toggleDropdown(true);
     filterContacts(searchTerm);
@@ -94,7 +94,7 @@ function initDropdownHandlers() {
 
   // Klick außerhalb schließt Dropdown
   document.addEventListener("click", (event) => {
-    if (!select.contains(event.target)) toggleDropdown(false);
+    if (!selectRef.contains(event.target)) toggleDropdown(false);
   });
 }
 
