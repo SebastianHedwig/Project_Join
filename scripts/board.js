@@ -12,6 +12,7 @@ function renderTaskEditDlg() {
     // hier muss erst noch ein Fetch rein
     taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
     displayDlg();
+    contactAssign.init();
 }
 
 async function renderAddTaskDlg() {

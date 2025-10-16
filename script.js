@@ -1,10 +1,14 @@
 function displayDlg() {
-    document.getElementById('dlg-box').classList.remove('d-none');
-    document.getElementById('overlay').classList.remove('d-none');
+    const dlg = document.getElementById('dlg-box');
+    const overlay = document.getElementById('overlay');
+    dlg.classList.remove('d-none');
+    overlay.classList.remove('d-none');
 }
 
 function hideDlg() {
-    document.getElementById('dlg-box').classList.add('d-none');
+    const dlg = document.getElementById('dlg-box');
+    dlg.classList.add('d-none');
+    dlg.classList.remove('dlg-add-task');
     document.getElementById('overlay').classList.add('d-none');
 }
 

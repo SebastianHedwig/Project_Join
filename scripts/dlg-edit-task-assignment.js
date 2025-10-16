@@ -1,103 +1,94 @@
-const selectRef = document.getElementById("contact-select");
-const searchInputRef = document.getElementById("contact-search");
-const optionsRef = selectRef.querySelector("contact-options");
-const listItemsRef = optionsRef.querySelectorAll("li");
+const contactAssign = (() => {
+  let selectRef, searchInputRef, optionsRef, listItemsRef;
+  let isDropdownOpen = false;
 
-let isDropdownOpen = false;
-
-/**
- * Öffnet oder schließt das Dropdown-Menü.
- * @param {boolean} [forceState] - Optionaler Zustand (true = öffnen, false = schließen)
- */
-function toggleDropdown(forceState) {
-  if (typeof forceState === "boolean") {
-    isDropdownOpen = forceState;
-  } else {
-    isDropdownOpen = !isDropdownOpen;
+  function toggleDropdown(forceState) {
+    if (typeof forceState === "boolean") {
+      isDropdownOpen = forceState;
+    } else {
+      isDropdownOpen = !isDropdownOpen;
+    }
+    if (optionsRef) {
+      optionsRef.style.display = isDropdownOpen ? "flex" : "none";
+    }
   }
-  optionsRef.style.display = isDropdownOpen ? "flex" : "none";
-}
 
-/**
- * Filtert die angezeigten Kontakte basierend auf dem Suchbegriff.
- * @param {string} term - Der aktuelle Suchbegriff (kleingeschrieben)
- */
-function filterContacts(term) {
-  listItemsRef.forEach((listItem) => {
-    const name = listItem.querySelector(".username").textContent.toLowerCase();
-    listItem.style.display = name.includes(term) ? "flex" : "none";
-  });
-}
-
-/**
- * Aktualisiert die Checkbox-Grafik beim Hover.
- * @param {HTMLImageElement} checkbox - Das Checkbox-Image-Element
- * @param {boolean} isChecked - Aktueller Check-Zustand
- * @param {boolean} isHovering - True, wenn sich Maus über Element befindet
- */
-function updateCheckboxVisual(checkbox, isChecked, isHovering) {
-  if (isHovering) {
-    checkbox.src = isChecked
-      ? "../assets/img/checkbox-unchecked-hover.svg"
-      : "../assets/img/checkbox-checked-hover.svg";
-  } else {
-    checkbox.src = isChecked
-      ? "../assets/img/checkbox-checked-white.svg"
-      : "../assets/img/checkbox-unchecked.svg";
+  function filterContacts(term) {
+    listItemsRef.forEach((listItem) => {
+      const name = listItem.querySelector(".username").textContent.toLowerCase();
+      listItem.style.display = name.includes(term) ? "flex" : "none";
+    });
   }
-}
 
-/**
- * Initialisiert alle Checkbox-Events für Hover- und Click-Interaktionen.
- * - Hover zeigt Vorschau-Icon (was passieren würde).
- * - Klick toggelt den Checked-Status, aktualisiert das Icon
- *   und markiert die Zeile per .active.
- */
-function initCheckboxHandlers() {
-  listItemsRef.forEach((listItem) => {
-    const checkbox = listItem.querySelector(".checkbox");
+  function updateCheckboxVisual(checkbox, isChecked, isHovering) {
+    if (isHovering) {
+      checkbox.src = isChecked
+        ? "../assets/img/checkbox-unchecked-hover.svg"
+        : "../assets/img/checkbox-checked-hover.svg";
+    } else {
+      checkbox.src = isChecked
+        ? "../assets/img/checkbox-checked-white.svg"
+        : "../assets/img/checkbox-unchecked.svg";
+    }
+  }
 
-    listItem.addEventListener("mouseenter", () => {
-      updateCheckboxVisual(checkbox, checkbox.dataset.checked === "true", true);
+  function initCheckboxHandlers() {
+    listItemsRef.forEach((listItem) => {
+      const checkbox = listItem.querySelector(".checkbox");
+
+      listItem.addEventListener("mouseenter", () => {
+        updateCheckboxVisual(checkbox, checkbox.dataset.checked === "true", true);
+      });
+
+      listItem.addEventListener("mouseleave", () => {
+        updateCheckboxVisual(checkbox, checkbox.dataset.checked === "true", false);
+      });
+
+      listItem.addEventListener("click", (event) => {
+        event.stopPropagation();
+        const isChecked = checkbox.dataset.checked === "true";
+        checkbox.dataset.checked = (!isChecked).toString();
+        updateCheckboxVisual(checkbox, !isChecked, false);
+        listItem.classList.toggle("active", !isChecked);
+      });
     });
+  }
 
-    listItem.addEventListener("mouseleave", () => {
-      updateCheckboxVisual(checkbox, checkbox.dataset.checked === "true", false);
-    });
-
-    listItem.addEventListener("click", (event) => {
+  function initDropdownHandlers() {
+    searchInputRef.addEventListener("click", (event) => {
       event.stopPropagation();
-      const isChecked = checkbox.dataset.checked === "true";
-      checkbox.dataset.checked = !isChecked;
-      updateCheckboxVisual(checkbox, !isChecked, false);
-      listItem.classList.toggle("active", !isChecked);
+      toggleDropdown();
     });
-  });
-}
 
-/**
- * Initialisiert alle Events für Suchfeld & Dropdown-Steuerung.
- */
-function initDropdownHandlers() {
-  // Klick toggelt Dropdown
-  searchInputRef.addEventListener("click", (event) => {
-    event.stopPropagation();
-    toggleDropdown();
-  });
+    searchInputRef.addEventListener("input", (event) => {
+      const searchTerm = event.target.value.toLowerCase();
+      if (!isDropdownOpen) toggleDropdown(true);
+      filterContacts(searchTerm);
+    });
 
-  // Eingabe öffnet Dropdown und filtert Ergebnisse
-  searchInputRef.addEventListener("input", (event) => {
-    const searchTerm = event.target.value.toLowerCase();
-    if (!isDropdownOpen) toggleDropdown(true);
-    filterContacts(searchTerm);
-  });
+    document.addEventListener("click", (event) => {
+      if (!selectRef.contains(event.target)) toggleDropdown(false);
+    });
+  }
 
-  // Klick außerhalb schließt Dropdown
-  document.addEventListener("click", (event) => {
-    if (!selectRef.contains(event.target)) toggleDropdown(false);
-  });
-}
+  /**
+   * Initialisiert das Dropdown + Checkbox-System.
+   * Muss nach dem Einfügen des Dialogs in den DOM aufgerufen werden.
+   */
+  function init() {
+    selectRef = document.getElementById("contact-select");
+    searchInputRef = document.getElementById("contact-search");
+    optionsRef = selectRef?.querySelector(".contact-options");
+    listItemsRef = optionsRef?.querySelectorAll("li") || [];
 
-// Initialisierung
-initDropdownHandlers();
-initCheckboxHandlers();
+    if (!selectRef || !searchInputRef || !optionsRef || listItemsRef.length === 0) {
+      console.warn("ContactAssign: Not initialized – required elements missing");
+      return;
+    }
+
+    initDropdownHandlers();
+    initCheckboxHandlers();
+  }
+
+  return { init };
+})();
