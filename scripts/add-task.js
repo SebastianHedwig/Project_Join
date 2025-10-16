@@ -63,7 +63,7 @@ function assignedTo() {
     users.forEach(u =>{
         let opt = document.createElement('option');
         opt.value = u.id;
-        opt.textContent= `${u.firstName} ${u.lastName}`;
+        opt.textContent= `${u.name}`;
         select.appendChild(opt);
     });
 }
