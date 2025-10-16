@@ -24,12 +24,9 @@ function validateNameInput(element) {
 
 function validateAndStyleInput(element) {
     let validInput = validateNameInput(element);
-    console.log(validInput);
-    
     if (element.value === "") {
         nameWrapper.classList.remove('error', 'valid-input')
     } else { toggleWrapperColor(validInput, nameWrapper) }
-
 }
 
 function toggleWrapperColor(validInput, elementById) {
@@ -98,8 +95,22 @@ function moveUserBacktoLogin() {
 }
 
 function checkIfEverythingIsFilledIn() {
+    // funktioniert bisher nur wenn checkbox als letztes gedrückt wird ---------------------
+
     if (checkbox.checked &&
         validateNameInput(nameInput) &&
-        checkMatchingPasswords()
+        checkMatchingPasswords() &&
+        document.getElementById("valid-email").style.border == "1px solid var(--color-success)"
     ) { enableSignUpBtn() } else { disableSignUpBtn() }
 }
+
+function setPasswordVisibility(clickedElement) {
+    let wrapper = clickedElement.parentElement;
+    let passwordInput = wrapper.querySelector('input');
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    clickedElement.src =
+        passwordInput.type === 'password'
+            ? '../assets/img/pw-not-visible.svg'
+            : '../assets/img/pw-visible.svg';
+}
+

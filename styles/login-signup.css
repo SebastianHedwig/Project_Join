@@ -178,6 +178,14 @@ h1 {
     width: 1.5rem;
 }
 
+.pw-icon--visible {
+    content: url('../assets/img/pw-visible.svg');
+}
+
+.pw-icon--invisible {
+    content: url('../assets/img/pw-not-visible.svg')
+} 
+
 .guest {
     background-color: var(--color-white);
     color: var(--color-maincolor);
@@ -303,4 +311,3 @@ input[type="checkbox"]:checked+label:hover {
     font-size: 14px;
     color: var(--color-error)
 }
-
