@@ -1,4 +1,3 @@
-
 window.addEventListener('load', () => {
     const logo = document.getElementById('joinlogo');
     const headerSignup = document.querySelector('.header__signup');

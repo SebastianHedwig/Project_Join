@@ -30,8 +30,8 @@
             </div>
 
             <div class="form__inputfields">
-                <div class="inputfield__wrapper">
-                    <input type="text" placeholder="Name" aria-label="name">
+                <div id="name__wrapper" class="inputfield__wrapper" title="Initial Letters Upper Case">
+                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="validateAndStyleInput(this)">
                     <img src="../assets/img/person.svg" alt="icon of an person">
                 </div>
 
@@ -41,24 +41,29 @@
                     <img src="../assets/img/mail.svg" alt="icon of an email">
                 </div>
 
-                <div class="inputfield__wrapper">
-                    <input type="password" placeholder="Password" aria-label="password">
+                <div id="password__wrapper" class="inputfield__wrapper">
+                    <input id="password" type="password" placeholder="Password" aria-label="password" onkeyup="detectChange(this)">
                     <img src="../assets/img/lock.svg" alt="icon of a lock">
                 </div>
 
-                <div class="inputfield__wrapper">
-                    <input type="password" placeholder="Confirm Password" aria-label="confirm password">
+                <div id="confirm-pw__wrapper" class="inputfield__wrapper">
+                    <input id="confirm-password" type="password" placeholder="Confirm Password"
+                        aria-label="confirm password" onkeyup="checkMatchingPasswords()">
                     <img src="../assets/img/lock.svg" alt="icon of a lock">
+                    <p id="pw-error-warning" class="confirm-password__err-warning">Your passwords don't match. Please
+                        try again.</p>
                 </div>
+
+
 
                 <p class="useraccess-form__privacy-policy">
-                    <input type="checkbox" id="check" />
+                    <input type="checkbox" id="check" onclick="checkIfEverythingIsFilledIn()"/>
                     <label for="check"></label>
                     <span>I accept the <a href="/pages/privacy-policy.html">Privacy Policy</a>
                     </span>
                 </p>
             </div>
-            <div class="btn filled-btn" onclick="showSuccessfulSignUpMessage()">Sign up</div>
+            <div id="sign-up-btn" role="button" aria-disabled="true" class="btn filled-btn disabled" onclick="showSuccessfulSignUpMessage()">Sign up</div>
         </form>
     </main>
 
@@ -72,4 +77,3 @@
 </body>
 
 </html>
-

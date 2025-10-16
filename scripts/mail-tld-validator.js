@@ -98,8 +98,8 @@ function initEmailValidation() {
     // Prüfe E-Mail, wenn Text vorhanden
     const valid = await isValidEmail(value);
     validEmail.style.border = valid
-      ? "2px solid limegreen"
-      : "2px solid crimson";
+      ? "1px solid var(--color-success)"
+      : "1px solid var(--color-error)";
     msg.style.display = valid ? "none" : "inline";
   });
 }
