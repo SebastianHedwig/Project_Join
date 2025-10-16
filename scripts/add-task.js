@@ -5,7 +5,6 @@ let chosenPriority = "medium";
 async function init() {
     await getData();
     assignedTo();
-    setMinDueDate();
 }
 
 
