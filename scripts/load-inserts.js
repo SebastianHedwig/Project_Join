@@ -186,8 +186,21 @@ const InsertLoader = (() => {
     console.info("InsertLoader: Cache gelöscht");
   }
 
-  // Öffentliche Funktionen
-  return { loadInserts, clearCache };
+  /**
+   * Lädt ein bestimmtes Insert-Element anhand des data-insert-Attributs.
+   * @async
+   * @param {HTMLElement} insertElement - Das Element mit data-insert
+   * @returns {Promise<void>}
+   */
+  async function loadInsertByElement(insertElement) {
+    const url = insertElement.getAttribute("data-insert");
+    if (url) {
+      await fetchInsert(url, insertElement);
+    }
+  }
+
+  // Öffentliche Funktionen - jederzeit manuell und global abrufbar
+  return { loadInserts, clearCache, loadInsertByElement };
 })();
 
 // Startet automatisch, sobald der DOM geladen ist

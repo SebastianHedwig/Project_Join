@@ -1,5 +1,5 @@
 
-let chosenPriority = "";
+let chosenPriority = "medium";
 
 
 async function init() {
@@ -30,7 +30,17 @@ function changePriorityBtnColor(btn) {
        const selectedBtn = document.getElementById(btn);
          selectedBtn.style.backgroundColor = colors[selectedBtn.id];
          selectedBtn.style.color = "#FFFFFF";
-    }
+}
+
+function resetPriorityButtons() {
+    ['urgent', 'medium', 'low'].forEach(id => {
+        const btn = document.getElementById(id);
+        btn.style.backgroundColor = "#FFFFFF";
+        btn.style.color = "#000000";
+        btn.querySelector('img').src = btn.querySelector('img').dataset.default;
+    });
+    chosenPriority = "medium";
+}
 
 
 function changePriorityBtnIcon(btn) {
@@ -59,6 +69,24 @@ function assignedTo() {
 }
 
 
+window.handleCreateTask = function handleCreateTask(event) {
+  event.preventDefault(); // Browser-Reload verhindern
+
+  const form = event.target;
+
+  // Prüft alle required-Felder (title, due-date, category)
+  if (!form.checkValidity()) {
+    form.reportValidity(); // Zeigt native Fehlermeldungen an
+    return;
+  }
+
+  createTask();
+  form.reset();
+  resetPriorityButtons();
+  alert('You added a new task!');
+}
+
+
 function createTask() {
     let categorySelected = document.getElementById('category');
     let selectedCategoryText = categorySelected.options[categorySelected.selectedIndex].text;
@@ -73,4 +101,11 @@ function createTask() {
     };
     tasks.push(newTask);
     console.log(tasks);
+}
+
+
+function clearTask() {
+  const form = document.getElementById('task-form');
+  form.reset();
+  resetPriorityButtons();
 }

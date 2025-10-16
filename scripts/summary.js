@@ -17,7 +17,7 @@ function greetingName() {
    greetingName.innerHTML = "";
    if (users.length > 0) {
     let userName = users[0]
-    greetingName.innerHTML = `${userName.firstName} ${userName.lastName}` 
+    greetingName.innerHTML = `${userName.name}` 
    }
 }
 
