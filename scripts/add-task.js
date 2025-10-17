@@ -5,7 +5,6 @@ let chosenPriority = "medium";
 async function init() {
     await getData();
     assignedTo();
-    setMinDueDate();
 }
 
 
@@ -52,12 +51,6 @@ function changePriorityBtnIcon(btn) {
 }
 
 
-function setMinDueDate() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('due-date').setAttribute('min', today);
-};
-
-
 function assignedTo() {
     let select = document.getElementById('assigned-to');
     users.forEach(u =>{
@@ -94,7 +87,7 @@ function createTask() {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         dueDate: document.getElementById('due-date').value,
-        assignedContacts: {user:'assignedUser'},
+        assignedContacts: {id},
         category: selectedCategoryText,
         subtasks: document.getElementById('subtasks').value,
         priority: chosenPriority

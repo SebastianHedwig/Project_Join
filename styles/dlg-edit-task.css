@@ -113,13 +113,10 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 0.75rem;
+  margin: 0.05rem 0;
   cursor: pointer;
   transition: background 0.2s ease;
   border-radius: 0.5rem;
-}
-
-.contact-options li {
-  margin: 0.1rem 0;
 }
 
 .contact-options li:hover {

@@ -13,6 +13,7 @@
     border-radius: 1.875rem;
     background-color: var(--color-white);
     padding: 0rem;
+    z-index: 1000;
 }
 
 .dialog-left {
