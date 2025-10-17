@@ -43,7 +43,7 @@ body {
 
 .header__signup {
     display: flex;
-    visibility: visible;
+    opacity: 1;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -51,6 +51,8 @@ body {
     width: fit-content;
     height: 3.0625rem;
     align-self: flex-start;
+    pointer-events: auto;
+        transition: opacity 0.4s ease-in-out;
 }
 
 .header__signup span {
@@ -66,6 +68,9 @@ body {
 
 main {
     height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
+        transition: opacity 0.4s ease-in-out;
 }
 
 .useraccess-form {
@@ -130,7 +135,7 @@ h1 {
 .useraccess-form__btnholder {
     display: flex;
     flex-direction: row;
-    gap: 35px;
+    gap: 2.188rem;
     height: 3.875rem;
 }
 
@@ -184,7 +189,7 @@ h1 {
 
 .pw-icon--invisible {
     content: url('../assets/img/pw-not-visible.svg')
-} 
+}
 
 .guest {
     background-color: var(--color-white);
@@ -221,8 +226,8 @@ input[type="checkbox"] {
 
 label {
     display: inline-block;
-    width: 1rem;
-    height: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
     background: url('../assets/img/checkbox-unchecked.svg') no-repeat center / contain;
     cursor: pointer;
 }
@@ -281,16 +286,16 @@ input[type="checkbox"]:checked+label:hover {
     text-align: center;
     top: 55%;
     left: 50%;
-    border: 10px solid var(--color-maincolor);
-    font-size: 20px;
+    border: 0.625rem solid var(--color-maincolor);
+    font-size: 1.25rem;
     color: var(--color-white);
     background-color: var(--color-maincolor);
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 1.25rem;
+    padding: 1.5625rem;
     width: fit-content;
     transform: translate(-50%, -50%);
     z-index: 4;
-    box-shadow: 0px 0px 4px color-mix(in srgb, var(--color-black) 100%, transparent);
+    box-shadow: 0 0 0.25rem color-mix(in srgb, var(--color-black) 100%, transparent);
     transition: top 300ms ease-in-out;
     outline: none;
 }
@@ -300,14 +305,15 @@ input[type="checkbox"]:checked+label:hover {
 }
 
 .invisible {
-    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .confirm-password__err-warning {
     visibility: hidden;
     position: absolute;
-    left: 0px;
-    top: 58px;
-    font-size: 14px;
-    color: var(--color-error)
+    left: 0;
+    top: 3.625rem;
+    font-size: 0.875rem;
+    color: var(--color-error);
 }

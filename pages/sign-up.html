@@ -30,8 +30,8 @@
             </div>
 
             <div class="form__inputfields">
-                <div id="name__wrapper" class="inputfield__wrapper" title="Initial Letters Upper Case">
-                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="validateAndStyleInput(this)">
+                <div id="name__wrapper" class="inputfield__wrapper">
+                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="validateAndStyleNameInput(this)">
                     <img src="../assets/img/person.svg" alt="icon of an person">
                 </div>
 
@@ -43,7 +43,7 @@
 
                 <div id="password__wrapper" class="inputfield__wrapper">
                     <input id="password" type="password" placeholder="Password" aria-label="password" onkeyup="detectChange(this)">
-                    <img class="password-icon--state" src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
+                    <img src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
                 </div>
 
                 <div id="confirm-pw__wrapper" class="inputfield__wrapper">
@@ -57,7 +57,7 @@
 
 
                 <p class="useraccess-form__privacy-policy">
-                    <input type="checkbox" id="check" onclick="checkIfEverythingIsFilledIn()"/>
+                    <input type="checkbox" id="check"/>
                     <label for="check"></label>
                     <span>I accept the <a href="/pages/privacy-policy.html">Privacy Policy</a>
                     </span>

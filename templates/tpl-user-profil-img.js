@@ -7,8 +7,8 @@
 function getBigUserProfilImg(profilImgColor, userInitals) {
     return /*html*/ `
     <svg class="svg__wrapper big">
-        <circle id="colored-circle" fill="${profilImgColor}" cx="60" cy="60" r="59"/>
-        <text id="user-initials" class="user-initials big" x="60" y="60">${userInitals}</text>
+        <circle id="colored-circle__big" fill="${profilImgColor}" cx="60" cy="60" r="59"/>
+        <text id="user-initials" class="user-initials big" x="60" y="63">${userInitals}</text>
     </svg>
     `
 }

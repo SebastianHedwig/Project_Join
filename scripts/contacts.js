@@ -79,7 +79,7 @@ function renderEditContactDlg() {
     document.getElementById("contact-dlg-email-input").value = contactMail.innerHTML;
     document.getElementById("contact-dlg-phone-input").value = contactPhone.innerHTML;
     let userName = contactName.innerHTML;
-    let profilImgColor = document.getElementById('colored-circle').getAttribute('fill');
+    let profilImgColor = document.getElementById('colored-circle__big').getAttribute('fill');
     let userInitals = getUserNameInitials(userName);
     document.querySelector('.profil-img__wrapper').innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
     displayDlg();

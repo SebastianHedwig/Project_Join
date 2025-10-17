@@ -1,14 +1,41 @@
-const nameInputRegex = /^[A-ZÄÖÜ][a-zäöüß]{1,}(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?\s[A-ZÄÖÜ][a-zäöüß]{2,}(?:[-'][A-ZÄÖÜ][a-zäöüß]+)?$/;
+const nameInputRegex = /^[A-Za-zÄÖÜäöüß]+\s+[A-Za-zÄÖÜäöüß]+$/;
 
-let nameInput = document.getElementById('name');
-let nameWrapper = document.getElementById('name__wrapper');
-let missmatchWarning = document.getElementById('pw-error-warning');
-let pwWrapper = document.getElementById('password__wrapper');
-let confirmPwWrapper = document.getElementById('confirm-pw__wrapper');
-let password = document.getElementById('password');
-let confirmPassword = document.getElementById('confirm-password');
-let signUpBtn = document.getElementById('sign-up-btn');
-let checkbox = document.getElementById('check');
+const nameInput = document.getElementById('name');
+const nameWrapper = document.getElementById('name__wrapper');
+const missmatchWarning = document.getElementById('pw-error-warning');
+const pwWrapper = document.getElementById('password__wrapper');
+const confirmPwWrapper = document.getElementById('confirm-pw__wrapper');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const signUpBtn = document.getElementById('sign-up-btn');
+const checkbox = document.getElementById('check');
+const email = document.getElementById("email");
+
+password.addEventListener('click', setLockToNotVisible);
+confirmPassword.addEventListener('click', setLockToNotVisible);
+
+password.addEventListener('keyup', setLockIcon);
+confirmPassword.addEventListener('keyup', setLockIcon);
+
+let correctName = false;
+let correctEmail = false;
+let matchingPasswords = checkMatchingPasswords();
+let checkboxChecked = false;
+
+function setLockToNotVisible(event) {
+    let passwordIcon = event.target.parentElement.querySelector('img');
+    passwordIcon.src = '../assets/img/pw-not-visible.svg';
+}
+
+function setLockIcon(event) {
+    if (event.target.value === "") {
+        let passwordIcon = event.target.parentElement.querySelector('img');
+        passwordIcon.src = "../assets/img/lock.svg";
+    } else {
+        setLockToNotVisible(event);
+    }
+
+}
 
 function detectChange(element) {
     if (confirmPassword.value !== "") {
@@ -22,11 +49,13 @@ function validateNameInput(element) {
     return test
 }
 
-function validateAndStyleInput(element) {
+function validateAndStyleNameInput(element) {
     let validInput = validateNameInput(element);
     if (element.value === "") {
-        nameWrapper.classList.remove('error', 'valid-input')
-    } else { toggleWrapperColor(validInput, nameWrapper) }
+        nameWrapper.classList.remove('error', 'valid-input');
+    } else {
+        toggleWrapperColor(validInput, nameWrapper);
+    }
 }
 
 function toggleWrapperColor(validInput, elementById) {
@@ -95,12 +124,12 @@ function moveUserBacktoLogin() {
 }
 
 function checkIfEverythingIsFilledIn() {
-    // funktioniert bisher nur wenn checkbox als letztes gedrückt wird ---------------------
 
+    console.log(isValidEmail(email));
     if (checkbox.checked &&
         validateNameInput(nameInput) &&
         checkMatchingPasswords() &&
-        document.getElementById("valid-email").style.border == "1px solid var(--color-success)"
+        isValidEmail(email)
     ) { enableSignUpBtn() } else { disableSignUpBtn() }
 }
 
