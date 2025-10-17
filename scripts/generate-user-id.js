@@ -2,7 +2,7 @@ function generateUserId(name) {
     const parts = name.trim().split(" ").filter(Boolean);
     let initials = parts.map(p => p.charAt(0).toUpperCase()).slice(0,2).join("");
     const randomNumbers = Math.floor(100 + Math.random() * 900);
-    return `${inititals}${randomNumbers}`;
+    return `${initials}${randomNumbers}`;
 }
 
 function registerUser() {
