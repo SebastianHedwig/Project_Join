@@ -81,13 +81,18 @@ window.handleCreateTask = function handleCreateTask(event) {
 
 
 function createTask() {
-    let categorySelected = document.getElementById('category');
+    const categorySelected = document.getElementById('category');
+    const select = document.getElementById('assigned-to');
+    const selectedUserIds = Array.from(select.selectedOptions).map(opt => opt.value);
+
+    const selectedUsers = users.filter(u => selectedUserIds.includes(String(u.id)));
+
     let selectedCategoryText = categorySelected.options[categorySelected.selectedIndex].text;
     let newTask = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         dueDate: document.getElementById('due-date').value,
-        assignedContacts: {id},
+        assignedContacts: selectedUsers,
         category: selectedCategoryText,
         subtasks: document.getElementById('subtasks').value,
         priority: chosenPriority
