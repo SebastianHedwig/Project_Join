@@ -80,25 +80,39 @@ window.handleCreateTask = function handleCreateTask(event) {
 }
 
 
-function createTask() {
-    const categorySelected = document.getElementById('category');
-    const select = document.getElementById('assigned-to');
-    const selectedUserIds = Array.from(select.selectedOptions).map(opt => opt.value);
+async function createTask() {
 
-    const selectedUsers = users.filter(u => selectedUserIds.includes(String(u.id)));
-
-    let selectedCategoryText = categorySelected.options[categorySelected.selectedIndex].text;
     let newTask = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
         dueDate: document.getElementById('due-date').value,
-        assignedContacts: selectedUsers,
-        category: selectedCategoryText,
-        subtasks: document.getElementById('subtasks').value,
-        priority: chosenPriority
+        assignedContacts: getSelectedUserIds(),
+        category: getSelectedCategoryText(),
+        subtasks: buildSubtasksObject(),
+        priority: chosenPriority,
+        taskState: 'toDo'
     };
-    tasks.push(newTask);
+    const key = await getNextTaskKey();
+    await saveTaskToFirebase(newTask, key);
+    
     console.log(tasks);
+}
+
+function getSelectedUserIds(selectId = 'assigned-to') {
+  return Array.from(document.getElementById(selectId).selectedOptions).map(o => o.value);
+}
+
+function getSelectedCategoryText(selId = 'category') {
+  const el = document.getElementById(selId);
+  return el.options[el.selectedIndex].text;
+}
+
+function buildSubtasksObject(inputId = 'subtasks') {
+  const inputValue = document.getElementById(inputId).value;
+  const arr = inputValue.split(',').map(t => t.trim()).filter(Boolean);
+  return Object.fromEntries(arr.map((task, i) => [
+    `subtask${i}`, { task, taskChecked: false }
+  ]));
 }
 
 
