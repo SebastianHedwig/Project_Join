@@ -21,6 +21,11 @@
     text-align: left;
     gap: 1.2rem;
     transition: background-color 0.3s;
+} 
+
+a:focus-visible {
+  border: 2px solid var(--color-lightblue);
+  
 }
 
 .nav-menu__btn-container a img {

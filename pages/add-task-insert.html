@@ -24,24 +24,24 @@
         <div class="grey-seperator"></div>
         <div class="add-task__right-column">
             <div class="add-task__field">
-                <span for="priority">Priority</span>
-                <div class="priority-options" id="priority">
-                    <div class="priority-options-btn" id="urgent" 
+                <span id="priority-label">Priority</span>
+                <div class="priority-options" role="group" aria-labelledby="priority-label">
+                    <button class="priority-options-btn" id="urgent" 
                         onclick="changePriorityBtn(this)">Urgent <img
                             src="../assets/img/priority-urgent.svg"
                             data-default="../assets/img/priority-urgent.svg"
-                            data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></div>
-                    <div class="priority-options-btn" id="medium"
+                            data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></button>
+                    <button class="priority-options-btn" id="medium"
                         onclick="changePriorityBtn(this)">Medium <img
                             src="../assets/img/priority-medium.svg"
                             data-default="../assets/img/priority-medium.svg"
-                            data-selected="../assets/img/priority-medium-active.svg" alt="medium"></div>
-                    <div class="priority-options-btn" id="low"
+                            data-selected="../assets/img/priority-medium-active.svg" alt="medium"></button>
+                    <button class="priority-options-btn" id="low"
                         onclick="changePriorityBtn(this)">Low <img 
                             src="../assets/img/priority-low.svg"
                             data-default="../assets/img/priority-low.svg"
                             data-selected="../assets/img/priority-low-active.svg"
-                            alt="low"></div>
+                            alt="low"></button>
                 </div>
             </div>
             <div class="add-task__field">
@@ -60,7 +60,7 @@
             </div>
             <div class="add-task__field subtasks__input--border-color">
                 <label for="subtasks">Subtasks</label>
-                <input type="subtasks" id="subtasks" placeholder="Add new subtask">
+                <input type="text" id="subtasks" placeholder="Add new subtask">
             </div>
         </div>
     </div>

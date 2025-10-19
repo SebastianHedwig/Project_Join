@@ -121,6 +121,15 @@
   border: 2px solid var(--color-error);
 }
 
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: none; /* entfernt Standardrahmen */
+  border: 2px solid var(--color-lightblue) !important;
+}
+
 .input--validation-modifier:valid {
   border: 2px solid var(--color-lightblue);
 }
@@ -128,3 +137,4 @@
 .subtasks__input--border-color input{
   border: 2px solid var(--color-lightgrey);
 }
+
