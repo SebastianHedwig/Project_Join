@@ -1,6 +1,6 @@
 
-async function init() {
-    await getData();
+async function initSummary() {
+   await getData();
     greetings();
     currentDate();
 }
