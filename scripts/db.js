@@ -57,3 +57,4 @@ async function getNextTaskKey() {
   const next = nums.length ? Math.max(...nums) + 1 : 0;
   return `task${next}`;
 }
+

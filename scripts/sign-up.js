@@ -9,32 +9,37 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 const signUpBtn = document.getElementById('sign-up-btn');
 const checkbox = document.getElementById('check');
-const email = document.getElementById("email");
-
-password.addEventListener('click', setLockToNotVisible);
-confirmPassword.addEventListener('click', setLockToNotVisible);
-
-password.addEventListener('keyup', setLockIcon);
-confirmPassword.addEventListener('keyup', setLockIcon);
+const email = document.getElementById('email');
 
 let correctName = false;
 let correctEmail = false;
-let matchingPasswords = checkMatchingPasswords();
+let matchingPasswords = false;
 let checkboxChecked = false;
 
-function setLockToNotVisible(event) {
-    let passwordIcon = event.target.parentElement.querySelector('img');
-    passwordIcon.src = '../assets/img/pw-not-visible.svg';
-}
 
-function setLockIcon(event) {
-    if (event.target.value === "") {
-        let passwordIcon = event.target.parentElement.querySelector('img');
-        passwordIcon.src = "../assets/img/lock.svg";
+password.addEventListener('keyup', updatePasswordIcons);
+confirmPassword.addEventListener('keyup', updatePasswordIcons);
+
+checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+        checkboxChecked = true;
     } else {
-        setLockToNotVisible(event);
+        checkboxChecked = false;
     }
+    checkIfEverythingIsFilledIn();
+});
 
+function updatePasswordIcons(event) {
+    let passwordIcon = event.target.parentElement.querySelector('img');
+    let type = event.target.type;
+    if (event.target.value === "") {
+        passwordIcon.src = "../assets/img/lock.svg";
+    }
+    else {
+        if (type === 'text') {
+            passwordIcon.src = '../assets/img/pw-visible.svg';
+        } else { passwordIcon.src = '../assets/img/pw-not-visible.svg'; }
+    }
 }
 
 function detectChange(element) {
@@ -49,51 +54,69 @@ function validateNameInput(element) {
     return test
 }
 
-function validateAndStyleNameInput(element) {
+function handleNameValidation(element) {
     let validInput = validateNameInput(element);
     if (element.value === "") {
         nameWrapper.classList.remove('error', 'valid-input');
     } else {
         toggleWrapperColor(validInput, nameWrapper);
     }
+    checkIfEverythingIsFilledIn();
 }
 
 function toggleWrapperColor(validInput, elementById) {
-    elementById.classList.toggle('error', !validInput);
-    elementById.classList.toggle('valid-input', validInput);
+    elementById.classList.remove('error', 'valid-input');
+    if (!validInput) {
+        elementById.classList.add('error');
+        correctName = false;
+    } else {
+        elementById.classList.add('valid-input');
+        correctName = true;
+    }
 }
 
 function checkMatchingPasswords() {
     if (confirmPassword.value === "") {
-        setPwInputsBack();
-        return false
+        resetPwStyles();
+        matchingPasswords = false
     } else if (password.value === confirmPassword.value) {
-        setPwInputstoSuccess();
-        return true
+        setPwSuccess();
+        matchingPasswords = true;
     }
     else {
-        setPwInputstoError();
-        return false
+        setPwError();
+        matchingPasswords = false;
     }
+    checkIfEverythingIsFilledIn();
 }
 
-function setPwInputsBack() {
+function resetPwStyles() {
     missmatchWarning.style.visibility = "hidden";
     pwWrapper.classList.remove('valid-input', 'error');
     confirmPwWrapper.classList.remove('valid-input', 'error');
 }
 
-function setPwInputstoSuccess() {
+function setPwSuccess() {
     missmatchWarning.style.visibility = "hidden";
     pwWrapper.classList.add('valid-input');
     confirmPwWrapper.classList.add('valid-input');
 }
 
-function setPwInputstoError() {
+function setPwError() {
     missmatchWarning.style.visibility = "visible";
     pwWrapper.classList.remove('valid-input');
     confirmPwWrapper.classList.remove('valid-input');
     confirmPwWrapper.classList.add('error');
+}
+
+function setPasswordVisibility(clickedElement) {
+    let wrapper = clickedElement.parentElement;
+    let passwordInput = wrapper.querySelector('input');
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    clickedElement.src =
+        passwordInput.type === 'password'
+            ? '../assets/img/pw-not-visible.svg'
+            : '../assets/img/pw-visible.svg';
 }
 
 function enableSignUpBtn() {
@@ -124,22 +147,10 @@ function moveUserBacktoLogin() {
 }
 
 function checkIfEverythingIsFilledIn() {
-
-    console.log(isValidEmail(email));
-    if (checkbox.checked &&
-        validateNameInput(nameInput) &&
-        checkMatchingPasswords() &&
-        isValidEmail(email)
-    ) { enableSignUpBtn() } else { disableSignUpBtn() }
-}
-
-function setPasswordVisibility(clickedElement) {
-    let wrapper = clickedElement.parentElement;
-    let passwordInput = wrapper.querySelector('input');
-    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-    clickedElement.src =
-        passwordInput.type === 'password'
-            ? '../assets/img/pw-not-visible.svg'
-            : '../assets/img/pw-visible.svg';
+    if (correctName &&
+        correctEmail &&
+        matchingPasswords &&
+        checkboxChecked) { enableSignUpBtn() }
+    else { disableSignUpBtn() }
 }
 

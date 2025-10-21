@@ -22,6 +22,6 @@ function getUserNameInitials(userName) {
 }
 
 function setMinDueDate() {
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('due-date').setAttribute('min', today);
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('due-date').setAttribute('min', today);
 };

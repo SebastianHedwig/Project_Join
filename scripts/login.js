@@ -11,3 +11,25 @@ window.addEventListener('load', () => {
     }, 200);
 });
 
+let DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/users/.json';
+
+async function getDataFromDB() {
+    try {
+        const response = await fetch(DB_URL);
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        console.error("Error fetching data:", error.message);
+    }
+}
+
+async function makeallthis() {
+    let email = document.getElementById('email');
+    // let password = document.getElementById('password');
+    let data = await getDataFromDB();
+    let obj = data.find(o => o.email === email);
+
+    console.log(obj);
+}

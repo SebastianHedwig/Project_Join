@@ -97,6 +97,8 @@ function initEmailValidation() {
 
     // Prüfe E-Mail, wenn Text vorhanden
     const valid = await isValidEmail(value);
+    correctEmail = valid;
+    checkIfEverythingIsFilledIn();
     validEmail.style.border = valid
       ? "1px solid var(--color-success)"
       : "1px solid var(--color-error)";
