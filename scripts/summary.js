@@ -1,5 +1,5 @@
 
-async function init() {
+async function initSummary() {
    await getData();
     greetings();
     currentDate();

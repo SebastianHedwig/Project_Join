@@ -2,7 +2,7 @@
 let chosenPriority = "medium";
 
 
-async function init() {
+async function initAddTask() {
     await getData();
     assignedTo();
 }
