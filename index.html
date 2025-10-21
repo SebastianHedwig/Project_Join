@@ -30,19 +30,20 @@
             </div>
 
             <div class="form__inputfields">
-                <div class="inputfield__wrapper">
+                <div id="email__wrapper" class="inputfield__wrapper">
                     <input id="email" type="email" placeholder="Email" aria-label="email">
                     <img src="./assets/img/mail.svg" alt="icon of an email">
                 </div>
 
-                <div class="inputfield__wrapper">
+                <div id="password__wrapper"  class="inputfield__wrapper">
                     <input id="password" type="password" placeholder="Password" aria-label="password">
-                    <img src="./assets/img/lock.svg" alt="icon of a lock">
+                    <img id="password-icon" src="./assets/img/lock.svg" alt="icon of a lock" onclick="changeInputType()">
+                    <p id="pw-error-warning" class="confirm-password__err-warning">Check your email and password. Please try again.</p>
                 </div>
             </div>
 
             <div class="useraccess-form__btnholder">
-                <div role="button" class="btn filled-btn" onclick="makeallthis()">Log in</div>
+                <div role="button" class="btn filled-btn" onclick="validateLoginData()">Log in</div>
                 <div role="button" class="btn guest">Guest Log in</div>
             </div>
         </form>

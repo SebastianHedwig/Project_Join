@@ -59,12 +59,12 @@ function handleNameValidation(element) {
     if (element.value === "") {
         nameWrapper.classList.remove('error', 'valid-input');
     } else {
-        toggleWrapperColor(validInput, nameWrapper);
+        setWrapperColor(validInput, nameWrapper);
     }
     checkIfEverythingIsFilledIn();
 }
 
-function toggleWrapperColor(validInput, elementById) {
+function setWrapperColor(validInput, elementById) {
     elementById.classList.remove('error', 'valid-input');
     if (!validInput) {
         elementById.classList.add('error');
