@@ -55,6 +55,8 @@ function sendSignupForm() {
   let path = generateUserId(nameInput.value);
   let data = createDataObject();
   pushDataToDB(path, data);
+  showSuccessfulSignUpMessage();
+  moveUserBacktoLogin();
 }
 
 

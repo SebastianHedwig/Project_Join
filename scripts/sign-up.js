@@ -137,13 +137,12 @@ function showSuccessfulSignUpMessage() {
     setTimeout(() => {
         successDlg.classList.remove('startposition');
     }, 10);
-    moveUserBacktoLogin();
 }
 
 function moveUserBacktoLogin() {
     setTimeout(() => {
         window.location.href = '../index.html'
-    }, 800);
+    }, 1500);
 }
 
 function checkIfEverythingIsFilledIn() {
