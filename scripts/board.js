@@ -37,6 +37,5 @@ function loadTasks() {
     
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById('to-do-tasks').innerHTML += getTasksTemplate(index);
-        
     }
 }
