@@ -12,6 +12,7 @@
     <script src="../templates/tpl-sign-up.js" defer></script>
     <script src="../scripts/mail-tld-validator.js" defer></script>
     <script src="../script.js" defer></script>
+    <script src="../scripts/generate-user-id.js"></script>
 </head>
 
 <body>
@@ -31,25 +32,25 @@
 
             <div class="form__inputfields">
                 <div id="name__wrapper" class="inputfield__wrapper">
-                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="validateAndStyleNameInput(this)">
+                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="handleNameValidation(this)">
                     <img src="../assets/img/person.svg" alt="icon of an person">
                 </div>
 
                 <div id="valid-email" class="inputfield__wrapper">
                     <input id="email" type="email" placeholder="E-Mail" />
-                    <small id="msg" style="color: crimson; display:none; width: 12rem;"> ❌ invalid E-Mail</small>
+                    <small id="msg" style="color: var(--color-error); display:none; width: 12rem;"> ❌ invalid E-Mail</small>
                     <img src="../assets/img/mail.svg" alt="icon of an email">
                 </div>
 
                 <div id="password__wrapper" class="inputfield__wrapper">
-                    <input id="password" type="password" placeholder="Password" aria-label="password" onkeyup="detectChange(this)">
-                    <img src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
+                    <input id="password" type="password" placeholder="Password" aria-label="password" onkeyup="handlePasswordInputChange(this)">
+                    <img id="password-icon" src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
                 </div>
 
                 <div id="confirm-pw__wrapper" class="inputfield__wrapper">
                     <input id="confirm-password" type="password" placeholder="Confirm Password"
-                        aria-label="confirm password" onkeyup="checkMatchingPasswords()">
-                    <img src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
+                        aria-label="confirm password" onkeyup="validatePasswordMatch()">
+                    <img id="confirm-password-icon" src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
                     <p id="pw-error-warning" class="confirm-password__err-warning">Your passwords don't match. Please
                         try again.</p>
                 </div>
@@ -57,13 +58,13 @@
 
 
                 <p class="useraccess-form__privacy-policy">
-                    <input type="checkbox" id="check"/>
+                    <input type="checkbox" id="check" onclick="evaluateFormValidity()"/>
                     <label for="check"></label>
                     <span>I accept the <a href="/pages/privacy-policy.html">Privacy Policy</a>
                     </span>
                 </p>
             </div>
-            <div id="sign-up-btn" role="button" aria-disabled="true" class="btn filled-btn disabled" onclick="showSuccessfulSignUpMessage()">Sign up</div>
+            <div id="sign-up-btn" role="button" aria-disabled="true" class="btn filled-btn disabled" onclick="sendSignupForm()">Sign up</div>
         </form>
     </main>
 

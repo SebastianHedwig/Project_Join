@@ -67,7 +67,7 @@ async function loadTlds() {
  */
 async function isValidEmail(email) {
   const tlds = await loadTlds();
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  const regex = /^[^\s@]+@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}$/;
   if (!regex.test(email)) return false;
   const tld = email.split(".").pop().toLowerCase();
   return tlds.includes(tld);
@@ -97,6 +97,8 @@ function initEmailValidation() {
 
     // Prüfe E-Mail, wenn Text vorhanden
     const valid = await isValidEmail(value);
+    formState.isEmailValid = valid;
+    evaluateFormValidity();
     validEmail.style.border = valid
       ? "1px solid var(--color-success)"
       : "1px solid var(--color-error)";

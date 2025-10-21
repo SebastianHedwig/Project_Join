@@ -1,0 +1,34 @@
+function getTasksTemplate(index) {
+  return `
+    <div class="task" onclick="renderTaskInfoDlg()">
+      <span class="task__category">${tasks[index].category}</span>
+      <div class="task__content-metadata-box">
+        <span class="task__title">${tasks[index].title}</span>
+        <span class="task__description">${tasks[index].description}</span>
+      </div>
+      <div class="task__subtasks-and-progressbar-box">
+        <span class="task__progressbar" style="--progress: 33.3333%;"></span>
+        <span class="task__subtasks">1 / 3 Subtasks</span>
+      </div>
+      <div class="task__assignment-and-priority-box">
+        <div class="task__assignments">
+          <img class="user-img" src="../assets/img/user-img-anna.svg" alt="User Image">
+          <img class="user-img" src="../assets/img/user-img-david.svg" alt="User Image">
+          <img class="user-img" src="../assets/img/user-img-sofia.svg" alt="User Image">
+        </div>
+        <div class="task__priority">
+          <img 
+            src="${
+              tasks[index].priority === 'urgent'
+                ? '../assets/img/priority-urgent.svg'
+                : tasks[index].priority === 'medium'
+                ? '../assets/img/priority-medium.svg'
+                : '../assets/img/priority-low.svg'
+            }"
+            alt="${tasks[index].priority} priority icon"
+          >
+        </div>
+      </div>
+    </div>
+  `;
+}

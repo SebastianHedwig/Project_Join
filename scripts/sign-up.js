@@ -9,91 +9,115 @@ const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 const signUpBtn = document.getElementById('sign-up-btn');
 const checkbox = document.getElementById('check');
-const email = document.getElementById("email");
+const email = document.getElementById('email');
 
-password.addEventListener('click', setLockToNotVisible);
-confirmPassword.addEventListener('click', setLockToNotVisible);
+let formState = {
+    isNameValid: false,
+    isEmailValid: false,
+    isPasswordMatch: false,
+    isCheckboxChecked: false
+};
 
-password.addEventListener('keyup', setLockIcon);
-confirmPassword.addEventListener('keyup', setLockIcon);
+password.addEventListener('keyup', updatePasswordIcon);
+confirmPassword.addEventListener('keyup', updatePasswordIcon);
 
-let correctName = false;
-let correctEmail = false;
-let matchingPasswords = checkMatchingPasswords();
-let checkboxChecked = false;
-
-function setLockToNotVisible(event) {
-    let passwordIcon = event.target.parentElement.querySelector('img');
-    passwordIcon.src = '../assets/img/pw-not-visible.svg';
-}
-
-function setLockIcon(event) {
-    if (event.target.value === "") {
-        let passwordIcon = event.target.parentElement.querySelector('img');
-        passwordIcon.src = "../assets/img/lock.svg";
+checkbox.addEventListener("change", () => {
+    if (checkbox.checked) {
+        formState.isCheckboxChecked = true;
     } else {
-        setLockToNotVisible(event);
+        formState.isCheckboxChecked = false;
     }
+    evaluateFormValidity();
+});
 
+function updatePasswordIcon(event) {
+    let passwordIcon = event.target.parentElement.querySelector('img');
+    let type = event.target.type;
+    if (event.target.value === "") {
+        passwordIcon.src = "../assets/img/lock.svg";
+    }
+    else {
+        if (type === 'text') {
+            passwordIcon.src = '../assets/img/pw-visible.svg';
+        } else { passwordIcon.src = '../assets/img/pw-not-visible.svg'; }
+    }
 }
 
-function detectChange(element) {
+function handlePasswordInputChange(element) {
     if (confirmPassword.value !== "") {
-        checkMatchingPasswords();
+        validatePasswordMatch();
     }
 }
 
-function validateNameInput(element) {
+function isValidFullName(element) {
     let inputName = element.value;
     let test = nameInputRegex.test(inputName);
     return test
 }
 
-function validateAndStyleNameInput(element) {
-    let validInput = validateNameInput(element);
+function handleNameValidation(element) {
+    let validInput = isValidFullName(element);
     if (element.value === "") {
         nameWrapper.classList.remove('error', 'valid-input');
     } else {
-        toggleWrapperColor(validInput, nameWrapper);
+        setWrapperColor(validInput, nameWrapper);
+    }
+    evaluateFormValidity();
+}
+
+function setWrapperColor(validInput, elementById) {
+    elementById.classList.remove('error', 'valid-input');
+    if (!validInput) {
+        elementById.classList.add('error');
+        formState.isNameValid = false;
+    } else {
+        elementById.classList.add('valid-input');
+        formState.isNameValid = true;
     }
 }
 
-function toggleWrapperColor(validInput, elementById) {
-    elementById.classList.toggle('error', !validInput);
-    elementById.classList.toggle('valid-input', validInput);
-}
-
-function checkMatchingPasswords() {
+function validatePasswordMatch() {
     if (confirmPassword.value === "") {
-        setPwInputsBack();
-        return false
+        resetPwStyles();
+        formState.isPasswordMatch = false
     } else if (password.value === confirmPassword.value) {
-        setPwInputstoSuccess();
-        return true
+        setPwSuccess();
+        formState.isPasswordMatch = true;
     }
     else {
-        setPwInputstoError();
-        return false
+        setPwError();
+        formState.isPasswordMatch = false;
     }
+    evaluateFormValidity();
 }
 
-function setPwInputsBack() {
+function resetPwStyles() {
     missmatchWarning.style.visibility = "hidden";
     pwWrapper.classList.remove('valid-input', 'error');
     confirmPwWrapper.classList.remove('valid-input', 'error');
 }
 
-function setPwInputstoSuccess() {
+function setPwSuccess() {
     missmatchWarning.style.visibility = "hidden";
     pwWrapper.classList.add('valid-input');
     confirmPwWrapper.classList.add('valid-input');
 }
 
-function setPwInputstoError() {
+function setPwError() {
     missmatchWarning.style.visibility = "visible";
     pwWrapper.classList.remove('valid-input');
     confirmPwWrapper.classList.remove('valid-input');
     confirmPwWrapper.classList.add('error');
+}
+
+function setPasswordVisibility(clickedElement) {
+    let wrapper = clickedElement.parentElement;
+    let passwordInput = wrapper.querySelector('input');
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    clickedElement.src =
+        passwordInput.type === 'password'
+            ? '../assets/img/pw-not-visible.svg'
+            : '../assets/img/pw-visible.svg';
 }
 
 function enableSignUpBtn() {
@@ -114,32 +138,16 @@ function showSuccessfulSignUpMessage() {
     setTimeout(() => {
         successDlg.classList.remove('startposition');
     }, 10);
-    moveUserBacktoLogin();
 }
 
-function moveUserBacktoLogin() {
+function redirectToLoginAfterDelay() {
     setTimeout(() => {
         window.location.href = '../index.html'
-    }, 800);
+    }, 1500);
 }
 
-function checkIfEverythingIsFilledIn() {
-
-    console.log(isValidEmail(email));
-    if (checkbox.checked &&
-        validateNameInput(nameInput) &&
-        checkMatchingPasswords() &&
-        isValidEmail(email)
-    ) { enableSignUpBtn() } else { disableSignUpBtn() }
-}
-
-function setPasswordVisibility(clickedElement) {
-    let wrapper = clickedElement.parentElement;
-    let passwordInput = wrapper.querySelector('input');
-    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-    clickedElement.src =
-        passwordInput.type === 'password'
-            ? '../assets/img/pw-not-visible.svg'
-            : '../assets/img/pw-visible.svg';
+function evaluateFormValidity() {
+    if (Object.values(formState).every(Boolean)) { enableSignUpBtn() }
+    else { disableSignUpBtn() }
 }
 

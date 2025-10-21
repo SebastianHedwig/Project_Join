@@ -2,7 +2,7 @@
 let chosenPriority = "medium";
 
 
-async function init() {
+async function initAddTask() {
     await getData();
     assignedTo();
 }
@@ -94,7 +94,7 @@ async function createTask() {
     };
     const key = await getNextTaskKey();
     await saveTaskToFirebase(newTask, key);
-    
+    window.location.reload();
     console.log(tasks);
 }
 

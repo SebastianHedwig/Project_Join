@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="../styles/dlg-edit-task.css">
         <link rel="stylesheet" href="../styles/dlg-add-task.css">
        
+        <script src="../scripts/db.js" defer></script>
         <script src="../script.js" defer></script>
         <script src="../scripts/board.js" defer></script>
         <script src="../scripts/add-task.js" defer></script>
@@ -26,10 +27,11 @@
         <script src="../scripts/dlg-add-task-subtask-handling.js" defer></script>
         <script src="../scripts/drag-and-drop.js" defer></script>
 
-        <script src="../templates/tpl-dialogs.js" defer></script>
+        <script src="../templates/tpl-dialogs.js"></script>
+        <script src="../templates/tpl-add-task.js" defer></script>
 
     </head>
-
+<body onload="initBoard()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
         <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
         <div class="nav-menu__btn-container">

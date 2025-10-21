@@ -1,3 +1,9 @@
+
+async function initBoard() {
+    await getData();
+    loadTasks();
+}
+
 function renderTaskInfoDlg() {
     const taskInfoDlgRef = document.getElementById("dlg-box");
     taskInfoDlgRef.innerHTML = "";
@@ -29,4 +35,11 @@ async function renderAddTaskDlg() {
     const insertElement = addTaskDlgRef.querySelector('[data-insert]');
     await InsertLoader.loadInsertByElement(insertElement);
     displayDlg();
+}
+
+function loadTasks() {
+    
+    for (let index = 0; index < tasks.length; index++) {
+        document.getElementById('to-do-tasks').innerHTML += getTasksTemplate(index);
+    }
 }
