@@ -56,7 +56,7 @@ function sendSignupForm() {
   let data = createDataObject();
   pushDataToDB(path, data);
   showSuccessfulSignUpMessage();
-  moveUserBacktoLogin();
+  redirectToLoginAfterDelay();
 }
 
 

@@ -37,13 +37,13 @@
 
                 <div id="password__wrapper"  class="inputfield__wrapper">
                     <input id="password" type="password" placeholder="Password" aria-label="password">
-                    <img id="password-icon" src="./assets/img/lock.svg" alt="icon of a lock" onclick="changeInputType()">
+                    <img id="password-icon" src="./assets/img/lock.svg" alt="icon of a lock" onclick="togglePasswordVisibility()">
                     <p id="pw-error-warning" class="confirm-password__err-warning">Check your email and password. Please try again.</p>
                 </div>
             </div>
 
             <div class="useraccess-form__btnholder">
-                <div role="button" class="btn filled-btn" onclick="validateLoginData()">Log in</div>
+                <div role="button" class="btn filled-btn" onclick="attemptLogin()">Log in</div>
                 <div role="button" class="btn guest" onclick="location.href='./pages/summary.html'">Guest Log in</div>
             </div>
         </form>

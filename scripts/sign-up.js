@@ -11,25 +11,26 @@ const signUpBtn = document.getElementById('sign-up-btn');
 const checkbox = document.getElementById('check');
 const email = document.getElementById('email');
 
-let correctName = false;
-let correctEmail = false;
-let matchingPasswords = false;
-let checkboxChecked = false;
+let formState = {
+    isNameValid: false,
+    isEmailValid: false,
+    isPasswordMatch: false,
+    isCheckboxChecked: false
+};
 
-
-password.addEventListener('keyup', updatePasswordIcons);
-confirmPassword.addEventListener('keyup', updatePasswordIcons);
+password.addEventListener('keyup', updatePasswordIcon);
+confirmPassword.addEventListener('keyup', updatePasswordIcon);
 
 checkbox.addEventListener("change", () => {
     if (checkbox.checked) {
-        checkboxChecked = true;
+        formState.isCheckboxChecked = true;
     } else {
-        checkboxChecked = false;
+        formState.isCheckboxChecked = false;
     }
-    checkIfEverythingIsFilledIn();
+    evaluateFormValidity();
 });
 
-function updatePasswordIcons(event) {
+function updatePasswordIcon(event) {
     let passwordIcon = event.target.parentElement.querySelector('img');
     let type = event.target.type;
     if (event.target.value === "") {
@@ -42,52 +43,52 @@ function updatePasswordIcons(event) {
     }
 }
 
-function detectChange(element) {
+function handlePasswordInputChange(element) {
     if (confirmPassword.value !== "") {
-        checkMatchingPasswords();
+        validatePasswordMatch();
     }
 }
 
-function validateNameInput(element) {
+function isValidFullName(element) {
     let inputName = element.value;
     let test = nameInputRegex.test(inputName);
     return test
 }
 
 function handleNameValidation(element) {
-    let validInput = validateNameInput(element);
+    let validInput = isValidFullName(element);
     if (element.value === "") {
         nameWrapper.classList.remove('error', 'valid-input');
     } else {
         setWrapperColor(validInput, nameWrapper);
     }
-    checkIfEverythingIsFilledIn();
+    evaluateFormValidity();
 }
 
 function setWrapperColor(validInput, elementById) {
     elementById.classList.remove('error', 'valid-input');
     if (!validInput) {
         elementById.classList.add('error');
-        correctName = false;
+        formState.isNameValid = false;
     } else {
         elementById.classList.add('valid-input');
-        correctName = true;
+        formState.isNameValid = true;
     }
 }
 
-function checkMatchingPasswords() {
+function validatePasswordMatch() {
     if (confirmPassword.value === "") {
         resetPwStyles();
-        matchingPasswords = false
+        formState.isPasswordMatch = false
     } else if (password.value === confirmPassword.value) {
         setPwSuccess();
-        matchingPasswords = true;
+        formState.isPasswordMatch = true;
     }
     else {
         setPwError();
-        matchingPasswords = false;
+        formState.isPasswordMatch = false;
     }
-    checkIfEverythingIsFilledIn();
+    evaluateFormValidity();
 }
 
 function resetPwStyles() {
@@ -139,17 +140,14 @@ function showSuccessfulSignUpMessage() {
     }, 10);
 }
 
-function moveUserBacktoLogin() {
+function redirectToLoginAfterDelay() {
     setTimeout(() => {
         window.location.href = '../index.html'
     }, 1500);
 }
 
-function checkIfEverythingIsFilledIn() {
-    if (correctName &&
-        correctEmail &&
-        matchingPasswords &&
-        checkboxChecked) { enableSignUpBtn() }
+function evaluateFormValidity() {
+    if (Object.values(formState).every(Boolean)) { enableSignUpBtn() }
     else { disableSignUpBtn() }
 }
 
