@@ -7,12 +7,16 @@ function renderTaskInfoDlg() {
 }
 
 function renderTaskEditDlg() {
-    const taskEditDlgRef = document.getElementById("dlg-box");
-    taskEditDlgRef.innerHTML = "";
-    // hier muss erst noch ein Fetch rein
-    taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
-    displayDlg();
-    contactAssign.init();
+  const taskEditDlgRef = document.getElementById("dlg-box");
+  taskEditDlgRef.innerHTML = "";
+  // hier muss erst noch ein Fetch rein
+  taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
+  
+  displayDlg();
+  contactAssign.init();
+  initSubtaskInput();
+  initSubtaskIconButtons();
+  initSubtaskHandlers();
 }
 
 async function renderAddTaskDlg() {
