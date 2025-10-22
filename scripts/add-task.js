@@ -7,14 +7,12 @@ async function initAddTask() {
     assignedTo();
 }
 
-
 function changePriorityBtn(priorityBtn) {
     changePriorityBtnColor(priorityBtn.id);
     changePriorityBtnIcon(priorityBtn.id);
     chosenPriority = priorityBtn.id
     console.log(chosenPriority); 
 }
-
 
 function changePriorityBtnColor(btn) {
     const colors = {
@@ -41,7 +39,6 @@ function resetPriorityButtons() {
     chosenPriority = "medium";
 }
 
-
 function changePriorityBtnIcon(btn) {
         document.querySelectorAll('.priority-options-btn img').forEach(img => {
             img.src = img.dataset.default;
@@ -49,7 +46,6 @@ function changePriorityBtnIcon(btn) {
     const selectedBtnIcon = document.getElementById(btn).querySelector('img');
         selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
-
 
 function assignedTo() {
     let select = document.getElementById('assigned-to');
@@ -61,15 +57,13 @@ function assignedTo() {
     });
 }
 
-
 window.handleCreateTask = function handleCreateTask(event) {
-  event.preventDefault(); // Browser-Reload verhindern
+  event.preventDefault();
 
   const form = event.target;
 
-  // Prüft alle required-Felder (title, due-date, category)
   if (!form.checkValidity()) {
-    form.reportValidity(); // Zeigt native Fehlermeldungen an
+    form.reportValidity();
     return;
   }
 
@@ -78,7 +72,6 @@ window.handleCreateTask = function handleCreateTask(event) {
   resetPriorityButtons();
   alert('You added a new task!');
 }
-
 
 async function createTask() {
 
@@ -90,7 +83,7 @@ async function createTask() {
         category: getSelectedCategoryText(),
         subtasks: buildSubtasksObject(),
         priority: chosenPriority,
-        taskState: 'toDo'
+        taskState: 'to-do'
     };
     const key = await getNextTaskKey();
     await saveTaskToFirebase(newTask, key);
@@ -114,7 +107,6 @@ function buildSubtasksObject(inputId = 'subtasks') {
     `subtask${i}`, { task, taskChecked: false }
   ]));
 }
-
 
 function clearTask() {
   const form = document.getElementById('task-form');

@@ -71,10 +71,6 @@ const contactAssign = (() => {
     });
   }
 
-  /**
-   * Initialisiert das Dropdown + Checkbox-System.
-   * Muss nach dem Einfügen des Dialogs in den DOM aufgerufen werden.
-   */
   function init() {
     selectRef = document.getElementById("contact-select");
     searchInputRef = document.getElementById("contact-search");

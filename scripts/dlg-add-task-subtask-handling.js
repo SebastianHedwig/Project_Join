@@ -115,7 +115,6 @@ function handleSubtaskEdit(event) {
   }
 }
 
-
 function handleSubtaskDelete(event) {
   const deleteBtn = event.target.closest('.subtask-edit-box__delete-img');
   if (!deleteBtn) return;
