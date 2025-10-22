@@ -2,6 +2,7 @@
 async function initBoard() {
     await getData();
     loadTasks();
+    updateAllPlaceholders();
 }
 
 function renderTaskInfoDlg() {
@@ -42,4 +43,27 @@ function loadTasks() {
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById('to-do-tasks').innerHTML += getTasksTemplate(index);
     }
+}
+
+function updateColumnPlaceholder(columnId) {
+  const column = document.getElementById(columnId);
+  if (!column) return;
+
+  const hasTasks = column.querySelector('.task');
+
+  const existingPlaceholder = column.querySelector('.no-tasks-placeholder');
+  if (hasTasks && existingPlaceholder) {
+    existingPlaceholder.remove();
+  }
+
+  if (!hasTasks && !existingPlaceholder) {
+    column.insertAdjacentHTML('beforeend', getPlaceholderTpl());
+  }
+}
+
+function updateAllPlaceholders() {
+  updateColumnPlaceholder('to-do-tasks');
+  updateColumnPlaceholder('in-progress-tasks');
+  updateColumnPlaceholder('await-feedback-tasks');
+  updateColumnPlaceholder('done-tasks');
 }
