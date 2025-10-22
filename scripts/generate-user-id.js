@@ -1,5 +1,3 @@
-// __________________________  über den aufbau von db.js nochmal sprechen        _____________________________________ >
-
 let DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
 
 function generateUserId(userName) {
@@ -60,22 +58,18 @@ function sendSignupForm() {
 }
 
 
+// _______________________________________ in DB.js umlagern
+async function getDatafromDB(path) {
+  try {
+    let response = await fetch(DB_URL + "users/" + path + ".json");
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
 
+    const data = await response.json();
+    console.log("Fetched data:", data);
 
-// function registerUser() {
-//   const name = document.getElementById("name").value.trim();
-//   if (!validateNameInput(name)) return; // bricht ab, wenn ungültig
-
-//   const email = document.getElementById("email").value.trim();
-//   const password = document.getElementById("password").value;
-
-//   const newUser = {
-//     id: generateUserId(name),
-//     name,
-//     email,
-//     password
-//   };
-
-//   users.push(newUser);
-//   console.log("Registriert:", newUser);
-// }
+  } catch (error) {
+    console.error("Error fetching data:", error.message);
+  }
+}

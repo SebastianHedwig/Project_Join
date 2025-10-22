@@ -134,6 +134,7 @@ function showSuccessfulSignUpMessage() {
     let body = document.querySelector('body');
     body.innerHTML += renderSuccessMessage();
     let successDlg = document.getElementById('dlg-box');
+    document.getElementById('overlay').classList.remove('d-none');
     successDlg.classList.remove('d-none');
     setTimeout(() => {
         successDlg.classList.remove('startposition');
@@ -143,7 +144,7 @@ function showSuccessfulSignUpMessage() {
 function redirectToLoginAfterDelay() {
     setTimeout(() => {
         window.location.href = '../index.html'
-    }, 1500);
+    }, 2000);
 }
 
 function evaluateFormValidity() {

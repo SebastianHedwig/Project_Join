@@ -13,7 +13,6 @@ function hideDlg() {
 }
 
 function getUserNameInitials(userName) {
-    // feature noch einbauen: nur erstes und letztes wort wählen
     return userName
         .split(' ')
         .filter(Boolean)

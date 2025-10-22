@@ -71,6 +71,13 @@ async function renderContactList() {
 function renderAddContactDlg() {
     dialog.innerHTML = getAddContactDlgTpl();
     displayDlg();
+    setTimeout(() => {
+        dialog.classList.add('show');
+    }, 100);
+}
+
+function removeAnimationClass() {
+    dialog.classList.remove('show');
 }
 
 function renderEditContactDlg() {

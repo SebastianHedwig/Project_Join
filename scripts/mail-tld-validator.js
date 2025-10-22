@@ -100,8 +100,8 @@ function initEmailValidation() {
     formState.isEmailValid = valid;
     evaluateFormValidity();
     validEmail.style.border = valid
-      ? "1px solid var(--color-success)"
-      : "1px solid var(--color-error)";
+      ? "2px solid var(--color-success)"
+      : "2px solid var(--color-error)";
     msg.style.display = valid ? "none" : "inline";
   });
 }
