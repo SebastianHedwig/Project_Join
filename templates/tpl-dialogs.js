@@ -188,47 +188,55 @@ function getTaskEditDlgTpl() {
                 </div>
             </div>
             <div class="dlg-edit__main__subtasks-box">
-                <div class="dlg-edit__main__add-subtask-box" >
+                <div class="dlg-edit__main__add-subtask-box">
                     <span class="dlg-edit__main__subtask-title">Subtasks</span>
-                    <input id="subtask-input" class="dlg-edit__input-text" type="text" placeholder="Add new Subtask">
+                    <div class="subtask-input-wrapper">
+                    <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text" placeholder="Add new Subtask" />
+                    <div class="subtask-input-icons">
+                        <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg" alt="Cancel Subtask" />
+                        <div class="separator"></div>
+                        <img class="subtask-input__confirm-img" src="../assets/img/check.svg" alt="Add Subtask" />
+                    </div>
+                    </div>
                 </div>
-                    <ul class="dlg-edit__subtask-list">
-                        <li class="dlg-edit__main__subtask">• Subtask Text                          
-                                <div class="subtask-edit-box">
-                                    <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
-                                    <div class="separator"></div>
-                                    <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
-                            </div>
-                        </li>
-                        <li class="dlg-edit__main__subtask">• Subtask Text                          
-                            <div class="subtask-edit-box">
-                                <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
-                                <div class="separator"></div>
-                                <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
-                            </div>
-                        </li>
-                        <li class="dlg-edit__main__subtask">• Subtask Text                          
-                            <div class="subtask-edit-box">
-                                <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg">
-                                <div class="separator"></div>
-                                <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg">
-                            </div>
-                        </li>
-                    </ul>
+                <ul class="dlg-edit__subtask-list"></ul>
             </div>
         </main>
         <footer class="dlg-edit__footer">
             <div class="dlg-edit__footer__discard-btn filled-btn" onclick="renderTaskInfoDlg()">Discard</div>
             <div class="dlg-edit__footer__save-btn filled-btn">SAVE</div>
-        </footer>
-    `
+        </footer>`
 }
+
+function getSubtaskTpl(value = '') {
+  return /*html*/ `
+    <li class="dlg-edit__main__subtask">• ${value}
+      <div class="subtask-edit-box">
+        <img class="subtask-edit-box__edit-img" src="../assets/img/edit.svg" alt="Edit Subtask">
+        <div class="separator"></div>
+        <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg" alt="Delete Subtask">
+      </div>
+    </li>`;
+}
+
+function getEditSubtaskTpl(value = '') {
+  return /*html*/ `
+    <li class="dlg-edit__main__subtask edit-mode">
+      <input type="text" class="dlg-edit__input-text edit-input" value="${value}" />
+      <div class="subtask-edit-box">
+        <img class="subtask-edit-box__delete-img" src="../assets/img/delete.svg" alt="Delete Subtask">
+        <div class="separator"></div>
+        <img class="subtask-edit-box__confirm-img" src="../assets/img/check.svg" alt="Confirm Edit">
+      </div>
+    </li>`;
+}
+
+
 
 function getAddTaskDlgTpl() {
     return /*html*/ `
         <header class="dlg-edit__header dlg-add-task-header">
             <img class="dlg-edit__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt=" small cross as close button">
         </header>
-        <div data-insert="add-task-insert.html"></div>
-    `
+        <div data-insert="add-task-insert.html"></div>`
 }

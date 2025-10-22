@@ -180,38 +180,43 @@
   margin: 0.5rem 0;
 }
 
-.dlg-edit__main__subtask:hover {
-  background-color: var(--color-lightergrey);
-  cursor: pointer;
+.subtask-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.subtask-edit-box {
+.subtask-input {
+  flex: 1;
+}
+
+.subtask-input-icons {
   display: none;
+  position: absolute;
+  right: 1rem;
+  height: 1.5rem;
   align-items: center;
   gap: 0.5rem;
 }
 
-.dlg-edit__main__subtask:hover .subtask-edit-box {
+.subtask-input__cancel-img,
+.subtask-input__confirm-img {
+  width: 1.5rem;
+  height: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.subtask-input__cancel-img:hover {
+  content: url('../assets/img/close-delete-cross-hover.svg');
+}
+
+.subtask-input__confirm-img:hover {
+  content: url('../assets/img/check-hover.svg');
+}
+
+.subtask-input:focus + .subtask-input-icons {
   display: flex;
-}
-
-.subtask-edit-box__edit-img:hover,
-.subtask-edit-box__delete-img:hover {
-  transform: scale(1.1);
-}
-
-.separator {
-  display: flex;
-  height: 100%;
-  border: 1px solid var(--color-lightgrey);
-}
-
-.dlg-edit__input-text:focus,
-.dlg-edit__main__description-box textarea:focus,
-.dlg-edit__main__task-assignments-box input:focus,
-.dlg-edit__main__task-assignments-box input:invalid {
-  border: 1px solid var(--color-lightblue);
-  outline: none;
 }
 
 .dlg-edit__footer {
@@ -232,4 +237,82 @@
 
 .dlg-edit__footer__save-btn {
   margin-right: 1rem;
+}
+
+.dlg-edit__main__subtask:hover:not(.edit-mode) {
+  background-color: var(--color-lightergrey);
+  cursor: pointer;
+}
+
+.subtask-edit-box {
+  display: none;
+  align-items: center;
+  height: 1.5rem;
+  gap: 0.5rem;
+}
+
+.edit-input:focus {
+  border: none !important;
+}
+
+.dlg-edit__main__subtask.edit-mode {
+  border-bottom: 2px solid var(--color-lightblue);
+  border-radius: 0;
+  align-items: center;
+  background-color: transparent;
+  cursor: text;
+}
+
+.dlg-edit__main__subtask.edit-mode .edit-input {
+  border: none;
+  outline: none;
+  box-shadow: none;
+  padding-left: 0;
+  background: transparent;
+}
+
+.dlg-edit__main__subtask.edit-mode .subtask-edit-box {
+  display: flex;
+  border: none;
+}
+
+.dlg-edit__main__subtask:hover .subtask-edit-box {
+  display: flex;
+}
+
+.subtask-edit-box__edit-img:hover,
+.subtask-edit-box__delete-img:hover,
+.subtask-edit-box__confirm-img:hover,
+.subtask-input__cancel-img:hover,
+.subtask-input__confirm-img:hover {
+  transform: scale(1.1);
+}
+
+.separator {
+  display: flex;
+  height: 100%;
+  border: 1px solid var(--color-lightgrey);
+}
+
+.dlg-edit__input-text:focus,
+.dlg-edit__main__description-box textarea:focus,
+.dlg-edit__main__task-assignments-box input:focus,
+.dlg-edit__main__task-assignments-box input:invalid {
+  border: 1px solid var(--color-lightblue);
+  outline: none;
+}
+
+.dlg-edit__main__subtask input.dlg-edit__input-text {
+  padding: 0.25rem 0.5rem;
+  font-size: 1rem;
+}
+
+.dlg-edit__main__subtask.edit-mode .subtask-edit-box__confirm-img:hover {
+  content: url('../assets/img/check-hover.svg');
+  cursor: pointer;
+}
+
+.dlg-edit__main__subtask.edit-mode .subtask-edit-box__delete-img:hover {
+  content: url('../assets/img/delete-hover.svg');
+  cursor: pointer;
 }

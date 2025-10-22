@@ -13,12 +13,16 @@ function renderTaskInfoDlg() {
 }
 
 function renderTaskEditDlg() {
-    const taskEditDlgRef = document.getElementById("dlg-box");
-    taskEditDlgRef.innerHTML = "";
-    // hier muss erst noch ein Fetch rein
-    taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
-    displayDlg();
-    contactAssign.init();
+  const taskEditDlgRef = document.getElementById("dlg-box");
+  taskEditDlgRef.innerHTML = "";
+  // hier muss erst noch ein Fetch rein
+  taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
+  
+  displayDlg();
+  contactAssign.init();
+  initSubtaskInput();
+  initSubtaskIconButtons();
+  initSubtaskHandlers();
 }
 
 async function renderAddTaskDlg() {
@@ -37,6 +41,5 @@ function loadTasks() {
     
     for (let index = 0; index < tasks.length; index++) {
         document.getElementById('to-do-tasks').innerHTML += getTasksTemplate(index);
-        
     }
 }
