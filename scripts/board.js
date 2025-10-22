@@ -11,11 +11,11 @@ async function initBoard() {
   updateAllPlaceholders();
 }
 
-function renderTaskInfoDlg() {
+function renderTaskInfoDlg(task) {
   const taskInfoDlgRef = document.getElementById("dlg-box");
   taskInfoDlgRef.innerHTML = "";
   // hier muss noch Firebase rein
-  taskInfoDlgRef.innerHTML = getTaskInfoDlgTpl();
+  taskInfoDlgRef.innerHTML = getTaskInfoDlgTpl(task);
   displayDlg();
 }
 
@@ -57,6 +57,27 @@ function loadTasks() {
   });
 
   updateAllPlaceholders();
+}
+
+async function deleteTask(taskId) {
+  try {
+    const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}.json`;
+    
+    const response = await fetch(url, {
+      method: 'DELETE'});
+
+    if (!response.ok) {
+      throw new Error(`Fehler beim Löschen: ${response.status}`)}
+
+    console.log(`Task ${taskId} erfolgreich gelöscht`);
+
+    await getData();
+    loadTasks();
+    updateAllPlaceholders();
+    hideDlg();
+
+  } catch (error) {
+    console.error('Fehler beim Löschen des Tasks:', error);}
 }
 
 function updateColumnPlaceholder(columnId) {

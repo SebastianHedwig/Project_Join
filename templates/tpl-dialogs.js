@@ -1,5 +1,5 @@
 
-function getTaskInfoDlgTpl() {
+function getTaskInfoDlgTpl(task) {
     return /*html*/ `
         <header class="dlg__header">
                 <span class="dlg__header_task-category">User Story</span>
@@ -49,9 +49,9 @@ function getTaskInfoDlgTpl() {
             </main>
             <footer class="dlg__footer">
                 <div class="dlg__footer__options-box">
-                    <img class="delete-btn" src="../assets/img/delete-with-text.svg" alt="image of an Garbage can">
+                    <img class="delete-btn" src="../assets/img/delete-with-text.svg" onclick="deleteTask('${task.id}')" alt="image of an Garbage can">
                     <span class="separator"></span>
-                    <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick="renderTaskEditDlg()" alt="image of an pencil">
+                    <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskInfoDlg(${JSON.stringify(task)})' alt="image of an pencil">
                 </div>
             </footer>
     `

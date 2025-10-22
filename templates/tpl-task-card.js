@@ -1,6 +1,6 @@
 function getTasksTemplate(task) {
   return /*html*/ `
-    <div class="task" draggable="true" ondragstart="startDragging('${task.id}')" onclick="renderTaskInfoDlg()">
+    <div class="task" draggable="true" ondragstart="startDragging('${task.id}')" onclick='renderTaskInfoDlg(${JSON.stringify(task)})'>
       <span class="task__category">${task.category}</span>
       <div class="task__content-metadata-box">
         <span class="task__title">${task.title}</span>
