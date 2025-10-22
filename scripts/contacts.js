@@ -6,13 +6,33 @@ let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 let contactProfilImg = document.querySelector('.header__contact-profil-img');
 
+let rawData;
+let userArrayGlobal = [];
+// ___________________________________________________________________________________ in DB.js umlagern
+const DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
+async function getDatafromDB() {
+    try {
+        let response = await fetch(DB_URL + "users/" + ".json");
+        if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+        }
+        let data = await response.json();
+        let userArray = Object.values(data);
+        userArrayGlobal = userArray;
+        rawData = data;
+        return userArray
+    } catch (error) {
+        console.error("Error fetching data:", error.message);
+    }
+}
+// ___________________________________________________________________________________ 
 
-function getInitialLetters() {
+function getInitialLetters(array) {
     let initialLetters = [];
-    users.forEach(user => {
-        let userNameInitialLetter = user.name[0];
+    for (let index = 0; index < array.length; index++) {
+        let userNameInitialLetter = array[index].name[0];
         initialLetters.push(userNameInitialLetter);
-    })
+    }
     initialLetters.sort();
     let uniqueLetters = [...new Set(initialLetters)];
     return uniqueLetters
@@ -27,10 +47,10 @@ function renderInitialLettersSections(initialLettersArray) {
 }
 
 
-function renderContactsIntoSections(initialLettersArray) {
+function renderContactsIntoSections(initialLettersArray, userArray) {
     initialLettersArray.forEach(letter => {
         let section = document.querySelector(`#initial-letter__wrapper-${letter}`);
-        let filteredUsers = users.filter(user => user.name[0] === letter);
+        let filteredUsers = userArray.filter(user => user.name[0] === letter);
         filteredUsers.forEach(user => {
             let userName = user.name;
             let email = user.email;
@@ -45,14 +65,16 @@ function renderContactsIntoSections(initialLettersArray) {
 
 
 async function renderContactList() {
-    await getData();
+    let userArray = await getDatafromDB();
     contactList.innerHTML = "";
-    let initialLettersArray = getInitialLetters();
+    let initialLettersArray = getInitialLetters(userArray);
     contactList.innerHTML += renderInitialLettersSections(initialLettersArray);
-    renderContactsIntoSections(initialLettersArray);
-    // __________________________________________________________________________________auslagern
-    let contactListItems = document.querySelectorAll('.contact-list__item');
+    renderContactsIntoSections(initialLettersArray, userArray);
+    setEventlistenerEveryContact();
+}
 
+function setEventlistenerEveryContact() {
+    let contactListItems = document.querySelectorAll('.contact-list__item');
     contactListItems.forEach(item => {
         item.addEventListener('click', () => {
             contactListItems.forEach(i => {
@@ -68,30 +90,6 @@ async function renderContactList() {
     })
 }
 
-function renderAddContactDlg() {
-    dialog.innerHTML = getAddContactDlgTpl();
-    displayDlg();
-    setTimeout(() => {
-        dialog.classList.add('show');
-    }, 100);
-}
-
-function removeAnimationClass() {
-    dialog.classList.remove('show');
-}
-
-function renderEditContactDlg() {
-    dialog.innerHTML = getEditContactDlgTpl();
-    document.getElementById("contact-dlg-name-input").value = contactName.innerHTML;
-    document.getElementById("contact-dlg-email-input").value = contactMail.innerHTML;
-    document.getElementById("contact-dlg-phone-input").value = contactPhone.innerHTML;
-    let userName = contactName.innerHTML;
-    let profilImgColor = document.getElementById('colored-circle__big').getAttribute('fill');
-    let userInitals = getUserNameInitials(userName);
-    document.querySelector('.profil-img__wrapper').innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
-    displayDlg();
-}
-
 function setContactCardtoVisible() {
     contactInfoCard.classList.remove('invisible');
     contactInfoCard.style.visibility = 'visible';
@@ -102,7 +100,6 @@ function setContactCardtoInvisible() {
 }
 
 function showContactDetailsinCard(selectedContact) {
-
     let contactInfo = getContactInfofromContactlistandDB(selectedContact);
     setContactInfoIntoCard(contactInfo);
     setContactCardtoVisible();
@@ -111,7 +108,7 @@ function showContactDetailsinCard(selectedContact) {
 function getContactInfofromContactlistandDB(contactElement) {
     let userName = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
-    let selectedUser = users.find(user => user.name === userName);
+    let selectedUser = userArrayGlobal.find(user => user.name === userName);
     let phone = selectedUser.phone;
     let profilImgColor = selectedUser.profilImgColor;
     return { userName, email, phone, profilImgColor };

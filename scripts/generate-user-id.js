@@ -58,18 +58,3 @@ function sendSignupForm() {
 }
 
 
-// _______________________________________ in DB.js umlagern
-async function getDatafromDB(path) {
-  try {
-    let response = await fetch(DB_URL + "users/" + path + ".json");
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Fetched data:", data);
-
-  } catch (error) {
-    console.error("Error fetching data:", error.message);
-  }
-}
