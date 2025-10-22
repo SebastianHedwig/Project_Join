@@ -9,7 +9,7 @@ function getAddContactDlgTpl() {
             </div>
 
             <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn" onclick="hideDlg(); removeAnimationClass()">
+                <div class="close-button__wrapper" id="dialog-close-btn" onclick="removeAnimationClass()">
                     <img src="../assets/img/close.svg" alt="icon of the letter X">
                 </div>
                 <div class="content-right__wrapper">
@@ -34,7 +34,7 @@ function getAddContactDlgTpl() {
                                 <img src="../assets/img/call.svg" alt="icon of an phone">
                             </div>
                             <div class="inputfields__button-holder">
-                                <button class="empty-btn" onclick="hideDlg()">Cancel<img src="../assets/img/close.svg"
+                                <button class="empty-btn" onclick="removeAnimationClass()">Cancel<img src="../assets/img/close.svg"
                                         alt="icon of the letter X"></button>
                                 <button class="filled-btn">Create contact<img src="../assets/img/done.svg"
                                         alt="icon of a checkmark"></button>
@@ -57,7 +57,7 @@ function getEditContactDlgTpl() {
             </div>
 
             <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn" onclick="hideDlg()">
+                <div class="close-button__wrapper" id="dialog-close-btn" onclick="removeAnimationClass()">
                     <img src="../assets/img/close.svg" alt="icon of the letter X">
                 </div>
                 <div class="content-right__wrapper">
@@ -80,9 +80,9 @@ function getEditContactDlgTpl() {
                                 <img src="../assets/img/call.svg" alt="icon of an phone">
                             </div>
                             <div class="inputfields__button-holder">
-                                <button class="empty-btn" onclick="hideDlg()">Cancel<img src="../assets/img/close.svg"
+                                <button class="empty-btn" onclick="removeAnimationClass()">Cancel<img src="../assets/img/close.svg"
                                         alt="icon of the letter X"></button>
-                                <button class="filled-btn">Save<img src="../assets/img/done.svg"
+                                <button class="filled-btn" onclick="closeDlgAndSaveData()">Save<img src="../assets/img/done.svg"
                                         alt="icon of a checkmark"></button>
                             </div>
                         </div>
