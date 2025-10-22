@@ -27,7 +27,8 @@
         <script src="../scripts/dlg-add-task-subtask-handling.js" defer></script>
         <script src="../scripts/drag-and-drop.js" defer></script>
 
-        <script src="../templates/tpl-dialogs.js"></script>
+        <script src="../templates/tpl-board.js" defer></script>
+        <script src="../templates/tpl-dialogs.js" defer></script>
         <script src="../templates/tpl-task-card.js" defer></script>
 
     </head>
@@ -96,9 +97,7 @@
                                 <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
                                     alt="add task to 'to do'">
                             </span>
-                            <div id="to-do-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)">
-                                <div class="no-tasks-placeholder">No active tasks</div>
-                            </div>
+                            <div id="to-do-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)"></div>
                         </div>
 
                         <div id="in-progress-container" class="board__table__column">
