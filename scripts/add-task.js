@@ -75,6 +75,8 @@ window.handleCreateTask = function handleCreateTask(event) {
 
 async function createTask() {
 
+    const taskStateRef = document.getElementById('task-state').value;
+
     let newTask = {
         title: document.getElementById('title').value,
         description: document.getElementById('description').value,
@@ -83,7 +85,7 @@ async function createTask() {
         category: getSelectedCategoryText(),
         subtasks: buildSubtasksObject(),
         priority: chosenPriority,
-        taskState: 'to-do'
+        taskState: taskStateRef
     };
     const key = await getNextTaskKey();
     await saveTaskToFirebase(newTask, key);

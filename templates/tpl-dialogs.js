@@ -51,13 +51,13 @@ function getTaskInfoDlgTpl(task) {
                 <div class="dlg__footer__options-box">
                     <img class="delete-btn" src="../assets/img/delete-with-text.svg" onclick="deleteTask('${task.id}')" alt="image of an Garbage can">
                     <span class="separator"></span>
-                    <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskInfoDlg(${JSON.stringify(task)})' alt="image of an pencil">
+                    <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskEditDlg(${JSON.stringify(task)})' alt="image of an pencil">
                 </div>
             </footer>
     `
 }
 
-function getTaskEditDlgTpl() {
+function getTaskEditDlgTpl(task) {
     return /*html*/ `
         <header class="dlg-edit__header">
             <img class="dlg-edit__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt=" small cross as close button">
@@ -203,7 +203,7 @@ function getTaskEditDlgTpl() {
             </div>
         </main>
         <footer class="dlg-edit__footer">
-            <div class="dlg-edit__footer__discard-btn filled-btn" onclick="renderTaskInfoDlg()">Discard</div>
+            <div class="dlg-edit__footer__discard-btn filled-btn" onclick='renderTaskInfoDlg(${JSON.stringify(task)})'>Discard</div>
             <div class="dlg-edit__footer__save-btn filled-btn">SAVE</div>
         </footer>`
 }
@@ -228,15 +228,17 @@ function getEditSubtaskTpl(value = '') {
         <div class="separator"></div>
         <img class="subtask-edit-box__confirm-img" src="../assets/img/check.svg" alt="Confirm Edit">
       </div>
-    </li>`;
+    </li>`
 }
 
 
 
-function getAddTaskDlgTpl() {
+function getAddTaskDlgTpl(defaultTaskState = "to-do") {
     return /*html*/ `
         <header class="dlg-edit__header dlg-add-task-header">
             <img class="dlg-edit__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt=" small cross as close button">
         </header>
-        <div data-insert="add-task-insert.html"></div>`
+        <input type="hidden" id="task-state" value="${defaultTaskState}">
+        <div data-insert="add-task-insert.html"></div>
+    `
 }

@@ -19,11 +19,11 @@ function renderTaskInfoDlg(task) {
   displayDlg();
 }
 
-function renderTaskEditDlg() {
+function renderTaskEditDlg(task) {
   const taskEditDlgRef = document.getElementById("dlg-box");
   taskEditDlgRef.innerHTML = "";
   // hier muss noch Firebase rein
-  taskEditDlgRef.innerHTML = getTaskEditDlgTpl();
+  taskEditDlgRef.innerHTML = getTaskEditDlgTpl(task);
 
   displayDlg();
   contactAssign.init();
