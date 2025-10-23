@@ -37,8 +37,8 @@ function createDataObject() {
   return data
 }
 
-async function pushDataToDB(path, data) {
-  let response = await fetch(DB_URL + "users/" + path + ".json", {
+async function pushDataToDB(key, data) {
+  let response = await fetch(DB_URL + "users/" + key + ".json", {
     method: "PUT",
     header: {
       "Content-Type": "application/json",
@@ -50,9 +50,9 @@ async function pushDataToDB(path, data) {
 }
 
 function sendSignupForm() {
-  let path = generateUserId(nameInput.value);
+  let key = generateUserId(nameInput.value);
   let data = createDataObject();
-  pushDataToDB(path, data);
+  pushDataToDB(key, data);
   showSuccessfulSignUpMessage();
   redirectToLoginAfterDelay();
 }

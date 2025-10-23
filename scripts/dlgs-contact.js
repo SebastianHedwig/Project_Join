@@ -1,4 +1,4 @@
-let currentUserEditId = "";
+let storedUserKey = "";
 
 function renderAddContactDlg() {
     dialog.innerHTML = getAddContactDlgTpl();
@@ -35,33 +35,66 @@ function removeAnimationClass() {
 function getAndStoreUserId(userName) {
     for (const key in rawData) {
         if (rawData[key].name === userName) {
-            currentUserEditId = key;
+            storedUserKey = key;
         }
     }
 }
 
-async function closeDlgAndSaveData(){
-    removeAnimationClass();
-    await saveChangesToFirebase();
-    renderContactList();
-}
-
-async function saveChangesToFirebase() {
-    let user = currentUserEditId;
-    let multipatch = {
-        "name": "Marvin Lenhart",
-        "email": "testtest.neu@example.com",
-        "phone": "69696969"
-    };
-
-    const response = await fetch(DB_URL + "users/" + user + ".json", {
+async function saveChangesToDB(multipatch) {
+    let user = storedUserKey;
+    let response = await fetch(DB_URL + "users/" + user + ".json", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(multipatch)
     });
-
-    const data = await response.json();
+    let data = await response.json();
     console.log('Gespeichert:', data);
+}
+
+function setMultipatch() {
+    let nameValue = document.getElementById("contact-dlg-name-input").value;
+    let emailValue = document.getElementById("contact-dlg-email-input").value;
+    let phoneValue = document.getElementById("contact-dlg-phone-input").value;
+    let multipatch = {
+        "name": nameValue,
+        "email": emailValue,
+        "phone": phoneValue
+    };
+    return multipatch
+}
+
+async function closeDlgAndSaveData() {
+    removeAnimationClass();
+    let multipatch = setMultipatch();
+    await saveChangesToDB(multipatch);
+    renderContactList();
+    setContactCardtoInvisible();
+}
+
+async function putNewContactToDB() {
+    let addUserName = document.getElementById('contact-dlg-name-input').value;
+    let addEmail = document.getElementById('contact-dlg-email-input').value;
+    let addPhone = document.getElementById('contact-dlg-phone-input').value;
+    let key = generateUserId(addUserName);
+    let data = createDataObjectAddContact(addUserName, addEmail, addPhone);
+    await pushDataToDB(key, data);
+    removeAnimationClass();
+    renderContactList();
+    setContactCardtoInvisible();
+}
+
+function createDataObjectAddContact(addUserName, addEmail, addPhone) {
+    let modifiedUserName = capitalizeInitials(addUserName)
+    let color = getRandomColor();
+    let data = {
+        name: modifiedUserName,
+        email: addEmail,
+        password: "",
+        phone: addPhone,
+        profilImgColor: color,
+        loggedIn: false,
+    }
+    return data
 }
 
 

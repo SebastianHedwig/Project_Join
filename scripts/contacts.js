@@ -9,7 +9,7 @@ let contactProfilImg = document.querySelector('.header__contact-profil-img');
 let rawData;
 let userArrayGlobal = [];
 // ___________________________________________________________________________________ in DB.js umlagern
-const DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
+// const DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
 async function getDatafromDB() {
     try {
         let response = await fetch(DB_URL + "users/" + ".json");
@@ -25,7 +25,29 @@ async function getDatafromDB() {
         console.error("Error fetching data:", error.message);
     }
 }
+
+async function deleteUser(userkeyToDelete) {
+    try {
+        const response = await fetch(DB_URL + "users/" + userkeyToDelete + ".json", {
+            method: "DELETE"
+        });
+        if (!response.ok) {
+            throw new Error(`Fehler beim Löschen: ${response.status}`);
+        }
+        console.log("User erfolgreich gelöscht!");
+    } catch (error) {
+        console.error(error);
+    }
+}
 // ___________________________________________________________________________________ 
+
+async function deleteUserFromDB(){
+    getAndStoreUserId(contactName.innerText);
+    console.log(storedUserKey);
+    await deleteUser(storedUserKey);
+    renderContactList();
+    setContactCardtoInvisible();
+}
 
 function getInitialLetters(array) {
     let initialLetters = [];
