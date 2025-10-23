@@ -97,8 +97,16 @@ function getSelectedUserIds(selectId = 'assigned-to') {
 
 function getSelectedCategoryText(selId = 'category') {
   const el = document.getElementById(selId);
-  return el.options[el.selectedIndex].text;
+  return el.options[el.selectedIndex].value;
 }
+
+
+function formatCategory(category) {
+  return category
+    .replace(/([A-Z])/g, ' $1')        // fügt Leerzeichen vor Großbuchstaben ein
+    .replace(/^./, str => str.toUpperCase()); // macht den ersten Buchstaben groß
+}
+
 
 function buildSubtasksObject(inputId = 'subtasks') {
   const inputValue = document.getElementById(inputId).value;
