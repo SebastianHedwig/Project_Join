@@ -73,15 +73,15 @@ function countToDos() {
 }
 
 function countingLoop(index, counters) {
-    if (tasks[index].taskState === "toDo") {
+    if (tasks[index].taskState === "to-do") {
             counters.toDos.innerHTML = Number(counters.toDos.innerHTML) +1;
         } if (tasks[index].taskState === "done") {
             counters.done.innerHTML = Number(counters.done.innerHTML) +1;
         } if (tasks[index].priority === "urgent") {
             counters.urgent.innerHTML = Number(counters.urgent.innerHTML) +1;
-        } if (tasks[index].taskState === "inProgress") {
+        } if (tasks[index].taskState === "in-progress") {
             counters.inProgress.innerHTML = Number(counters.inProgress.innerHTML) +1;
-        } if (tasks[index].taskState === "awaitingFeedback") {
+        } if (tasks[index].taskState === "await-feedback") {
             counters.awaitingFeedback.innerHTML = Number(counters.awaitingFeedback.innerHTML) +1;
         }   
 }
