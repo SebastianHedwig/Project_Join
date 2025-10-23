@@ -22,7 +22,6 @@ function renderTaskInfoDlg(task) {
 function renderTaskEditDlg(task) {
   const taskEditDlgRef = document.getElementById("dlg-box");
   taskEditDlgRef.innerHTML = "";
-  // hier muss noch Firebase rein
   taskEditDlgRef.innerHTML = getTaskEditDlgTpl(task);
 
   displayDlg();
@@ -30,6 +29,7 @@ function renderTaskEditDlg(task) {
   initSubtaskInput();
   initSubtaskIconButtons();
   initSubtaskHandlers();
+  fillEditFormWithTaskData(task);
 }
 
 async function renderAddTaskDlg(defaultTaskState = "to-do") {
@@ -45,11 +45,11 @@ async function renderAddTaskDlg(defaultTaskState = "to-do") {
 }
 
 function loadTasks() {
-  Object.values(columnMap).forEach((id) => {
-    document.getElementById(id).innerHTML = "";
+  Object.values(columnMap).forEach(id => {
+    document.getElementById(id).innerHTML = '';
   });
 
-  tasks.forEach((task) => {
+  tasks.forEach(task => {
     const columnId = columnMap[task.taskState];
     if (columnId) {
       document.getElementById(columnId).innerHTML += getTasksTemplate(task);
@@ -109,4 +109,17 @@ function updateAllPlaceholders() {
   updateColumnPlaceholder("in-progress-tasks");
   updateColumnPlaceholder("await-feedback-tasks");
   updateColumnPlaceholder("done-tasks");
+}
+
+function fillEditFormWithTaskData(task) {
+  document.getElementById('title-input').value = task.title || '';
+  document.getElementById('descriptions-input').value = task.description || '';
+  document.getElementById('due-date').value = task.dueDate || '';
+
+  const priorityBtn = document.getElementById(task.priority);
+  if (priorityBtn) {
+    changePriorityBtn(priorityBtn);
+  }
+  // den rest muss man dann hier noch einfügen,
+  // sobald mit firebase alles klappt bezüglich der subtasks und assignet usern.
 }

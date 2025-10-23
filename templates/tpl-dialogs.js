@@ -1,60 +1,42 @@
 
 function getTaskInfoDlgTpl(task) {
-    return /*html*/ `
-        <header class="dlg__header">
-                <span class="dlg__header_task-category">User Story</span>
-                <img class="dlg__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt="small cross as close button">
-            </header>
-            <main class="dlg__main">
-                <span class="dlg__main__task-title">Kochwelt bla Blubb! & noch mehr Rezepte</span>
-                <span class="dlg__main__task-description">Rezepte und son kram und noch bissel mehr Text, damit sich das Ticket
-                    auch lohnt</span>
-                <div class="dlg__main__task__due-date">
-                    <span class="dlg__main__task__due-date-span">Due date:</span>
-                    <span class="dlg__main__task__due-date-value">10/10/2025</span>
-                </div>
-                <div class="dlg__main_task-priority-box"> 
-                    <span class="dlg__main_task-priority-title">Priority:</span>
-                    <img id="priority" class="dlg_main_task-priority" src="../assets/img/task-priority-medium.svg"
-                        alt="image of prioritylevel">
-                </div>
-                <div class="dlg__main__task-assignments">
-                    <span class="dlg__main__assignments-title">Assigned to:</span>
-                    <div class="dlg__user-box"> <!-- user images nur zur veranschaulichung. wird später mit JS gerendert -->
-                        <img class="dlg__user-img" id="A" src="../assets/img/user-img-anna.svg"
-                            alt="User Image or initials">
-                        <span class="dlg__user-name">User 1</span>
-                    </div>
-                    <div class="dlg__user-box">
-                        <img class="dlg__user-img" id="B" src="../assets/img/user-img-david.svg"
-                            alt="User Image or initials">
-                        <span class="dlg__user-name">User 2</span>
-                    </div>
-                    <div class="dlg__user-box">
-                        <img class="dlg__user-img" id="C" src="../assets/img/user-img-sofia.svg"
-                            alt="User Imare or initials">
-                        <span class="dlg__user-name">User 3</span>
-                    </div>
-                </div>
-                <div class="dlg__main__task-subtask-box">
-                    <span class="dlg__main__task-subtask-title">Subtasks:</span>
-                    <div></div>
-                    <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                        Text</span>
-                    <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                        Text</span>
-                    <span class="dlg__main__task-subtask"><img src="../assets/img/checkbox-unchecked.svg" alt="checkbox">Subtask
-                        Text</span>
-                </div>
-            </main>
-            <footer class="dlg__footer">
-                <div class="dlg__footer__options-box">
-                    <img class="delete-btn" src="../assets/img/delete-with-text.svg" onclick="deleteTask('${task.id}')" alt="image of an Garbage can">
-                    <span class="separator"></span>
-                    <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskEditDlg(${JSON.stringify(task)})' alt="image of an pencil">
-                </div>
-            </footer>
-    `
+  return /*html*/ `
+    <header class="dlg__header">
+      <span class="dlg__header_task-category">${task.category || 'No category'}</span>
+      <img class="dlg__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt="small cross as close button">
+    </header>
+    <main class="dlg__main">
+      <span class="dlg__main__task-title">${task.title || 'Untitled Task'}</span>
+      <span class="dlg__main__task-description">${task.description || 'No description provided.'}</span>
+
+      <div class="dlg__main__task__due-date">
+        <span class="dlg__main__task__due-date-span">Due date:</span>
+        <span class="dlg__main__task__due-date-value">${task.dueDate || 'No date'}</span>
+      </div>
+
+      <div class="dlg__main_task-priority-box"> 
+        <span class="dlg__main_task-priority-title">Priority:</span>
+        <img id="priority" class="dlg_main_task-priority" src="${getPriorityImg(task.priority)}" alt="priority icon">
+      </div>
+
+      <div class="dlg__main__task-assignments">
+        <span class="dlg__main__assignments-title">Assigned to:</span>
+        ${renderAssignedUsers(task.assignedContacts)}
+      </div>
+
+      <div class="dlg__main__task-subtask-box">
+        <span class="dlg__main__task-subtask-title">Subtasks:</span>
+        ${renderSubtasks(task.subtasks)}
+      </div>
+    </main>
+    <footer class="dlg__footer">
+      <div class="dlg__footer__options-box">
+        <img class="delete-btn" src="../assets/img/delete-with-text.svg" onclick="deleteTask('${task.id}')" alt="image of a garbage can">
+        <span class="separator"></span>
+        <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskEditDlg(${JSON.stringify(task)})' alt="image of a pencil">
+      </div>
+    </footer>
+  `;
 }
 
 function getTaskEditDlgTpl(task) {
@@ -230,8 +212,6 @@ function getEditSubtaskTpl(value = '') {
       </div>
     </li>`
 }
-
-
 
 function getAddTaskDlgTpl(defaultTaskState = "to-do") {
     return /*html*/ `

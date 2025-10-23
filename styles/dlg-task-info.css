@@ -27,6 +27,7 @@
 .dlg__main__task-title {
   font-size: 3.75rem;
   font-weight: 700;
+  word-wrap: break-word;
 }
 
 .dlg__main__task__due-date,
