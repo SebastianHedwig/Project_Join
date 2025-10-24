@@ -49,34 +49,33 @@ function currentDate() {
 }
 
 function countToDos() {
-    let awaitingFeedback = document.getElementById('awaiting-feedback');
-    let inProgress = document.getElementById('in-progress-count');
-    let tasksInBoard = document.getElementById('tasks-count');
-    let done = document.getElementById('done-count');
-    let toDos = document.getElementById('to-do-count');
-    let urgent = document.getElementById('urgent-count');
-    toDos.innerHTML = "0";
-    done.innerHTML = "0";
-    urgent.innerHTML = "0";
-    tasksInBoard.innerHTML = "0";
-    inProgress.innerHTML = "0";
-    awaitingFeedback.innerHTML = "0";
+    const awaitingFeedback = document.getElementById('awaiting-feedback');
+    const inProgress = document.getElementById('in-progress-count');
+    const tasksInBoard = document.getElementById('tasks-count');
+    const done = document.getElementById('done-count');
+    const toDos = document.getElementById('to-do-count');
+    const urgent = document.getElementById('urgent-count');
+    [toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard].forEach(counter => counter.innerHTML = "0");
     for (let index = 0; index < tasks.length; index++) {
-        countingLoop(index, { toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard });
-        tasksInBoard.innerHTML = index + 1;
-    }
+        countingLoop(index, {toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard}, tasks);
+    }  
+    tasksInBoard.textContent = tasks.length;
 }
 
-function countingLoop(index, counters) {
-    if (tasks[index].taskState === "to-do") {
-        counters.toDos.innerHTML = Number(counters.toDos.innerHTML) + 1;
-    } if (tasks[index].taskState === "done") {
-        counters.done.innerHTML = Number(counters.done.innerHTML) + 1;
-    } if (tasks[index].priority === "urgent") {
-        counters.urgent.innerHTML = Number(counters.urgent.innerHTML) + 1;
-    } if (tasks[index].taskState === "in-progress") {
-        counters.inProgress.innerHTML = Number(counters.inProgress.innerHTML) + 1;
-    } if (tasks[index].taskState === "await-feedback") {
-        counters.awaitingFeedback.innerHTML = Number(counters.awaitingFeedback.innerHTML) + 1;
+function countingLoop(index, counters, tasks) {
+    const task = tasks[index];
+
+    const countRules = [
+    { field: 'taskState', match: 'to-do', counter: 'toDos' },
+    { field: 'taskState', match: 'done', counter: 'done' },
+    { field: 'taskState', match: 'in-progress', counter: 'inProgress' },
+    { field: 'taskState', match: 'await-feedback', counter: 'awaitingFeedback' },
+    { field: 'priority', match: 'urgent', counter: 'urgent' }
+  ];
+    countRules.forEach(rule => {
+        if (task[rule.field] === rule.match) {
+            counters[rule.counter].innerHTML = Number(counters[rule.counter].innerHTML) +1;
+        }
     }
+    );
 }
