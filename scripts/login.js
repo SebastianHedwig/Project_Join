@@ -7,22 +7,42 @@ const passwordIcon = document.getElementById('password-icon');
 const logo = document.getElementById('joinlogo');
 const headerSignup = document.querySelector('.header__signup');
 const main = document.querySelector('main');
-let rawData;
+const footer = document.querySelector('footer');
+const welcomeScreenBckgrnd = document.getElementById('welcomescreen-mobile');
+let headerAdded = false;
+
+window.addEventListener("resize", handleResizeScreen);
+window.addEventListener("load", handleResizeScreen);
 email.addEventListener('keyup', clearLoginError());
 password.addEventListener('keyup', () => {
     clearLoginError();
     updatePasswordLockIcon();
 });
-
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        main.classList.remove('invisible');
-        headerSignup.classList.remove('invisible');
-    }, 600);
+    if (window.innerWidth < 1024) {
+        setTimeout(() => {
+            welcomeScreenBckgrnd.classList.add('hidden');
+            fullsizeScreenWelcome();
+        }, 300);
+        setTimeout(() => {
+            logo.classList.remove('welcome-logo');
+        }, 400);
+    } else {
+        welcomeScreenBckgrnd.classList.add('d-none');
+        fullsizeScreenWelcome();
+    }
+});
+
+function fullsizeScreenWelcome() {
     setTimeout(() => {
         logo.classList.remove('start');
     }, 200);
-});
+    setTimeout(() => {
+        footer.classList.remove('invisible');
+        main.classList.remove('invisible');
+        headerSignup.classList.remove('invisible');
+    }, 600);
+}
 
 async function fetchData() {
     try {
@@ -42,24 +62,24 @@ async function attemptLogin() {
     let data = await fetchData();
     let dataArray = Object.values(data)
     let existingUser = dataArray.find(user => user.email === email.value);
-    if (existingUser == undefined) {
-        showLoginError();
-    }
-    else {
-        verifyPassword(existingUser);
+    let loginIsValid = validateLoginInputs(existingUser);
+    if (loginIsValid) {
         getAndStoreUserId(existingUser.name);
-        let multipatch = {
-            "loggedIn": true,
-        };
+        let multipatch = { "loggedIn": true };
         saveChangesToDB(multipatch);
         window.location.href = "./pages/summary.html"
     }
 }
 
-async function verifyPassword(existingUser) {
-    if (existingUser.password !== password.value) {
+function validateLoginInputs(existingUser) {
+    if (existingUser == undefined || verifyPassword(existingUser) == false) {
         showLoginError();
-    }
+        return false;
+    } else { return true }
+}
+
+function verifyPassword(existingUser) {
+    return existingUser.password === password.value;
 }
 
 function showLoginError() {
@@ -93,5 +113,23 @@ function togglePasswordIcon() {
     }
     else {
         passwordIcon.src = '../assets/img/pw-visible.svg';
+    }
+}
+
+function handleResizeScreen() {
+    if (window.innerWidth < 1024) {
+        document.getElementById('main').innerHTML += renderHeaderSignup();
+    }
+}
+
+function handleResizeScreen() {
+    let isSmallScreen = window.innerWidth < 1024;
+    if (isSmallScreen && !headerAdded) {
+        main.insertAdjacentHTML('beforeend', renderHeaderSignup());
+        headerAdded = true;
+    } else if (!isSmallScreen && headerAdded) {
+        let header = document.getElementById('header__mobile-signup');
+        if (header) header.remove();
+        headerAdded = false;
     }
 }

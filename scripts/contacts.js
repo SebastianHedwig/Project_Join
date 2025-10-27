@@ -6,7 +6,6 @@ let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 let contactProfilImg = document.querySelector('.header__contact-profil-img');
 
-let rawData;
 let userArrayGlobal = [];
 
 async function getDatafromFirebase() {

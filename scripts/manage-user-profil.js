@@ -35,10 +35,16 @@ async function renderUserAvatar() {
 }
 
 async function logOutUser() {
-    getAndStoreUserId(LOGGED_IN_USER);
+    let userKey = getAndStoreUserId(LOGGED_IN_USER);
     let multipatch = {
         "loggedIn": false,
     };
-    await saveChangesToDB(multipatch);
-    window.location.replace("../index.html");
+    if (userKey === undefined) {
+        window.location.replace("../index.html");
+    }
+    else {
+        await saveChangesToDB(multipatch);
+        window.location.replace("../index.html");
+    }
+
 }

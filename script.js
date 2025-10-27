@@ -4,6 +4,7 @@ let overlay = document.getElementById('overlay');
 let userAvatar = document.querySelector('.header__user-info');
 let LOGGED_IN_USER;
 let STORED_USER_KEY = "";
+let rawData;
 
 if (overlay) {
     overlay.addEventListener('click', hideDlg);
@@ -76,6 +77,7 @@ async function fetchAllUsers() {
             throw new Error(`Response status: ${response.status}`);
         }
         let data = await response.json();
+        rawData = data;
         let userArray = Object.values(data);
         return userArray
     } catch (error) {
