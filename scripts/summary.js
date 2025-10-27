@@ -3,6 +3,7 @@ let greetingName = document.getElementById('greeting-name');
 let greetingHeader = document.getElementById('greeting-header');
 
 async function initSummary() {
+    await getData();
     let users = await fetchAllUsers();
     let loggedInUser = extractActiveUserInfo(users);
     setGreetingHeader();
