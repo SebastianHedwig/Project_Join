@@ -9,17 +9,26 @@ function getPriorityImg(priority) {
   }
 }
 
-function renderAssignedUsers(contacts = []) {
-  if (!Array.isArray(contacts) || contacts.length === 0) {
-    return /*html*/ '<div class="dlg__user-box"><span class="dlg__user-name">No users assigned</span></div>';
+
+  function renderAssignedUsers(contacts = []) {
+  if (!Array.isArray(contacts)) contacts = [];
+
+  const validContacts = contacts.filter(id => id && id.trim() !== "");
+  if (validContacts.length === 0) {
+    return /*html*/ `
+      <div class="dlg__user-box"><span>No users assigned</span></div>`;
   }
 
-  return contacts.map(userId => /*html*/ `
-    <div class="dlg__user-box">
-      <img class="dlg__user-img" src="../assets/img/user-img-${userId}.svg" alt="User ${userId}">
-      <span class="dlg__user-name">${userId}</span>
+  return /*html*/ `
+    <div id="assigned-user-list">
+      ${contacts
+        .map(id => {
+          const name = getUserNameById(id);
+          return `<div class="assigned-user-entry">${name}</div>`;
+        })
+        .join('')}
     </div>
-  `).join('');
+  `;
 }
 
 function renderSubtasks(subtasks = []) {

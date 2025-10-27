@@ -123,3 +123,8 @@ function fillEditFormWithTaskData(task) {
   // den rest muss man dann hier noch einfügen,
   // sobald mit firebase alles klappt bezüglich der subtasks und assignet usern.
 }
+
+function getUserNameById(id) {
+  const user = users.find(u => u.id === id);
+  return user ? user.name : "Unknown User";
+}
