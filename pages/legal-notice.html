@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/legal-notice.css">
-
+    <script src="../scripts/manage-user-profil.js" defer></script>
     <script src="../script.js" defer></script>
     <script src="../scripts/navigation.js" defer></script>
 </head>
@@ -25,8 +25,7 @@
             <a href="./summary.html"><img src="../assets/img/summary.svg" alt="go to Summary-page">Summary</a>
             <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="go to Add-Task-page">Add Task</a>
             <a href="./board.html"><img src="../assets/img/board.svg" alt="go to Board-page">Board</a>
-            <a href="./contacts.html"><img src="../assets/img/contacts.svg"
-                    alt="go to Contacts-page">Contacts</a>
+            <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="go to Contacts-page">Contacts</a>
         </div>
         <div class="nav-menu__bottom__btn">
             <a href="./privacy-policy.html">Privacy Policy</a>
@@ -44,18 +43,16 @@
                             <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
                         </a>
                         <div class="header__user-info">
-                            <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                            <span>SM</span>
                         </div>
                     </div>
                 </div>
-                <nav aria-label="user drop down menu" class="d-none">
-                    <ul class="user-drop-down-menu">
-                        <li><a href="./legal-notice.html">Legal Notice</a></li>
-                        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="#">Log Out</a></li>
-                    </ul>
-                </nav>
+                <nav aria-label="user drop down menu" id="user-drop-down-menu" class="d-none">
+                        <ul class="user-drop-down-menu">
+                            <li><a href="./legal-notice.html">Legal Notice</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            <li onclick="logOutUser()"><a>Log Out</a ></li>
+                        </ul>
+                    </nav>
             </div>
         </header>
 

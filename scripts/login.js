@@ -1,4 +1,3 @@
-const DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/users/.json';
 const email = document.getElementById('email');
 const emailWrapper = document.getElementById('email__wrapper');
 const password = document.getElementById('password');
@@ -8,7 +7,7 @@ const passwordIcon = document.getElementById('password-icon');
 const logo = document.getElementById('joinlogo');
 const headerSignup = document.querySelector('.header__signup');
 const main = document.querySelector('main');
-
+let rawData;
 email.addEventListener('keyup', clearLoginError());
 password.addEventListener('keyup', () => {
     clearLoginError();
@@ -27,11 +26,12 @@ window.addEventListener('load', () => {
 
 async function fetchData() {
     try {
-        const response = await fetch(DB_URL);
+        const response = await fetch(DB_URL + "users/" + ".json");
         if (!response.ok) {
             throw new Error(`Response status: ${response.status}`);
         }
-        return await response.json();
+        rawData = await response.json();
+        return rawData
     } catch (error) {
         console.error("Error fetching data:", error.message);
         return null;
@@ -46,14 +46,18 @@ async function attemptLogin() {
         showLoginError();
     }
     else {
-        verifyPassword(existingUser)
+        verifyPassword(existingUser);
+        getAndStoreUserId(existingUser.name);
+        let multipatch = {
+            "loggedIn": true,
+        };
+        saveChangesToDB(multipatch);
+        window.location.href = "./pages/summary.html"
     }
 }
 
-function verifyPassword(existingUser) {
-    if (existingUser.password === password.value) {
-        window.location.href = "./pages/summary.html"
-    } else {
+async function verifyPassword(existingUser) {
+    if (existingUser.password !== password.value) {
         showLoginError();
     }
 }

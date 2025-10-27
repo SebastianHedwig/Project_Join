@@ -1,5 +1,3 @@
-let DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
-
 function generateUserId(userName) {
   let initials = getUserNameInitials(userName)
   const randomNumbers = Math.floor(100 + Math.random() * 900);

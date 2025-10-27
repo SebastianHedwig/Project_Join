@@ -3,58 +3,58 @@ let chosenPriority = "medium";
 
 
 async function initAddTask() {
-    await getData();
-    assignedTo();
+  await getData();
+  assignedTo();
 }
 
 function changePriorityBtn(priorityBtn) {
-    changePriorityBtnColor(priorityBtn.id);
-    changePriorityBtnIcon(priorityBtn.id);
-    chosenPriority = priorityBtn.id
-    console.log(chosenPriority); 
+  changePriorityBtnColor(priorityBtn.id);
+  changePriorityBtnIcon(priorityBtn.id);
+  chosenPriority = priorityBtn.id
+  console.log(chosenPriority);
 }
 
 function changePriorityBtnColor(btn) {
-    const colors = {
-        urgent: '#FF3D00',
-        medium: '#FFA700',
-        low: '#7AE229'
-    };
-    ['urgent', 'medium', 'low'].forEach(btn => {
-        document.getElementById(btn).style.backgroundColor = "#FFFFFF";
-        document.getElementById(btn).style.color = "#000000";
-    });
-       const selectedBtn = document.getElementById(btn);
-         selectedBtn.style.backgroundColor = colors[selectedBtn.id];
-         selectedBtn.style.color = "#FFFFFF";
+  const colors = {
+    urgent: '#FF3D00',
+    medium: '#FFA700',
+    low: '#7AE229'
+  };
+  ['urgent', 'medium', 'low'].forEach(btn => {
+    document.getElementById(btn).style.backgroundColor = "#FFFFFF";
+    document.getElementById(btn).style.color = "#000000";
+  });
+  const selectedBtn = document.getElementById(btn);
+  selectedBtn.style.backgroundColor = colors[selectedBtn.id];
+  selectedBtn.style.color = "#FFFFFF";
 }
 
 function resetPriorityButtons() {
-    ['urgent', 'medium', 'low'].forEach(id => {
-        const btn = document.getElementById(id);
-        btn.style.backgroundColor = "#FFFFFF";
-        btn.style.color = "#000000";
-        btn.querySelector('img').src = btn.querySelector('img').dataset.default;
-    });
-    chosenPriority = "medium";
+  ['urgent', 'medium', 'low'].forEach(id => {
+    const btn = document.getElementById(id);
+    btn.style.backgroundColor = "#FFFFFF";
+    btn.style.color = "#000000";
+    btn.querySelector('img').src = btn.querySelector('img').dataset.default;
+  });
+  chosenPriority = "medium";
 }
 
 function changePriorityBtnIcon(btn) {
-        document.querySelectorAll('.priority-options-btn img').forEach(img => {
-            img.src = img.dataset.default;
-        });
-    const selectedBtnIcon = document.getElementById(btn).querySelector('img');
-        selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
+  document.querySelectorAll('.priority-options-btn img').forEach(img => {
+    img.src = img.dataset.default;
+  });
+  const selectedBtnIcon = document.getElementById(btn).querySelector('img');
+  selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
 
 function assignedTo() {
-    let select = document.getElementById('assigned-to');
-    users.forEach(u =>{
-        let opt = document.createElement('option');
-        opt.value = u.id;
-        opt.textContent= `${u.name}`;
-        select.appendChild(opt);
-    });
+  let select = document.getElementById('assigned-to');
+  users.forEach(u => {
+    let opt = document.createElement('option');
+    opt.value = u.id;
+    opt.textContent = `${u.name}`;
+    select.appendChild(opt);
+  });
 }
 
 window.handleCreateTask = function handleCreateTask(event) {
@@ -75,22 +75,22 @@ window.handleCreateTask = function handleCreateTask(event) {
 
 async function createTask() {
 
-    const taskStateRef = document.getElementById('task-state').value;
+  const taskStateRef = document.getElementById('task-state').value;
 
-    let newTask = {
-        title: document.getElementById('title').value,
-        description: document.getElementById('description').value,
-        dueDate: document.getElementById('due-date').value,
-        assignedContacts: getSelectedUserIds(),
-        category: getSelectedCategoryText(),
-        subtasks: buildSubtasksObject(),
-        priority: chosenPriority,
-        taskState: taskStateRef
-    };
-    const key = await getNextTaskKey();
-    await saveTaskToFirebase(newTask, key);
-    window.location.reload();
-    console.log(tasks);
+  let newTask = {
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    dueDate: document.getElementById('due-date').value,
+    assignedContacts: getSelectedUserIds(),
+    category: getSelectedCategoryText(),
+    subtasks: buildSubtasksObject(),
+    priority: chosenPriority,
+    taskState: taskStateRef
+  };
+  const key = await getNextTaskKey();
+  await saveTaskToFirebase(newTask, key);
+  window.location.reload();
+  console.log(tasks);
 }
 
 function getSelectedUserIds(selectId = 'assigned-to') {

@@ -1,31 +1,18 @@
 
+let greetingName = document.getElementById('greeting-name');
+let greetingHeader = document.getElementById('greeting-header');
+
 async function initSummary() {
-   await getData();
-    greetings();
+    let users = await fetchAllUsers();
+    let loggedInUser = extractActiveUserInfo(users);
+    setGreetingHeader();
+    setGreetingName(loggedInUser);
     currentDate();
     countToDos();
 }
 
 
-function greetings() {
-    greetingHeader();
-    greetingName();
-}
-
-
-function greetingName() {
-    let greetingName = document.getElementById('greeting-name');
-    greetingName.innerHTML = "";
-    if (users.length > 0) {
-        let userName = users[0]
-        greetingName.innerHTML = `${userName.name}`
-    }
-}
-
-
-function greetingHeader() {
-    let greetingHeader = document.getElementById('greeting-header');
-
+function setGreetingHeader() {
     let hour = new Date().getHours();
     let greetingText = "";
     if (hour < 12) {
@@ -38,6 +25,14 @@ function greetingHeader() {
     greetingHeader.textContent = greetingText;
 }
 
+function setGreetingName(loggedInUser) {
+    if (loggedInUser !== null) {
+        greetingName.innerHTML = loggedInUser;
+    } else {
+        greetingName.innerHTML = "";
+        greetingHeader.textContent = greetingHeader.textContent.replace(',', '!');
+    }
+}
 
 function currentDate() {
     const months = [
@@ -67,21 +62,21 @@ function countToDos() {
     inProgress.innerHTML = "0";
     awaitingFeedback.innerHTML = "0";
     for (let index = 0; index < tasks.length; index++) {
-        countingLoop(index, {toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard});
-        tasksInBoard.innerHTML = index +1;
-    }  
+        countingLoop(index, { toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard });
+        tasksInBoard.innerHTML = index + 1;
+    }
 }
 
 function countingLoop(index, counters) {
     if (tasks[index].taskState === "to-do") {
-            counters.toDos.innerHTML = Number(counters.toDos.innerHTML) +1;
-        } if (tasks[index].taskState === "done") {
-            counters.done.innerHTML = Number(counters.done.innerHTML) +1;
-        } if (tasks[index].priority === "urgent") {
-            counters.urgent.innerHTML = Number(counters.urgent.innerHTML) +1;
-        } if (tasks[index].taskState === "in-progress") {
-            counters.inProgress.innerHTML = Number(counters.inProgress.innerHTML) +1;
-        } if (tasks[index].taskState === "await-feedback") {
-            counters.awaitingFeedback.innerHTML = Number(counters.awaitingFeedback.innerHTML) +1;
-        }   
+        counters.toDos.innerHTML = Number(counters.toDos.innerHTML) + 1;
+    } if (tasks[index].taskState === "done") {
+        counters.done.innerHTML = Number(counters.done.innerHTML) + 1;
+    } if (tasks[index].priority === "urgent") {
+        counters.urgent.innerHTML = Number(counters.urgent.innerHTML) + 1;
+    } if (tasks[index].taskState === "in-progress") {
+        counters.inProgress.innerHTML = Number(counters.inProgress.innerHTML) + 1;
+    } if (tasks[index].taskState === "await-feedback") {
+        counters.awaitingFeedback.innerHTML = Number(counters.awaitingFeedback.innerHTML) + 1;
+    }
 }

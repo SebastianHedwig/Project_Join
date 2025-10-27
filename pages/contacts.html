@@ -13,13 +13,13 @@
     <link rel="stylesheet" href="../styles/navigation.css">
     <link rel="stylesheet" href="../styles/contacts.css">
     <link rel="stylesheet" href="../styles/dlg-add-contact.css">
-    <script src="../scripts/db.js"></script>
     <script src="../scripts/contacts.js" defer></script>
     <script src="../templates/tpl-contacts.js" defer></script>
     <script src="../script.js" defer></script>
     <script src="../templates/tpl-user-profil-img.js" defer></script>
     <script src="../scripts/dlgs-contact.js"></script>
     <script src="../scripts/generate-user-id.js"></script>
+    <script src="../scripts/manage-user-profil.js" defer></script>
 </head>
 
 <body onload="renderContactList()">
@@ -50,16 +50,14 @@
                                     alt="Help question mark">
                             </a>
                             <div class="header__user-info">
-                                <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                                <span>SM</span>
                             </div>
                         </div>
                     </div>
-                    <nav aria-label="user drop down menu" class="d-none">
+                    <nav aria-label="user drop down menu" id="user-drop-down-menu" class="d-none">
                         <ul class="user-drop-down-menu">
                             <li><a href="./legal-notice.html">Legal Notice</a></li>
                             <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                            <li><a href="#">Log Out</a></li>
+                            <li onclick="logOutUser()"><a>Log Out</a ></li>
                         </ul>
                     </nav>
                 </div>

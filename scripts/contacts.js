@@ -8,9 +8,8 @@ let contactProfilImg = document.querySelector('.header__contact-profil-img');
 
 let rawData;
 let userArrayGlobal = [];
-// ___________________________________________________________________________________ in DB.js umlagern
-// const DB_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/';
-async function getDatafromDB() {
+
+async function getDatafromFirebase() {
     try {
         let response = await fetch(DB_URL + "users/" + ".json");
         if (!response.ok) {
@@ -39,12 +38,10 @@ async function deleteUser(userkeyToDelete) {
         console.error(error);
     }
 }
-// ___________________________________________________________________________________ 
 
 async function deleteUserFromDB(){
     getAndStoreUserId(contactName.innerText);
-    console.log(storedUserKey);
-    await deleteUser(storedUserKey);
+    await deleteUser(STORED_USER_KEY);
     renderContactList();
     setContactCardtoInvisible();
 }
@@ -87,7 +84,7 @@ function renderContactsIntoSections(initialLettersArray, userArray) {
 
 
 async function renderContactList() {
-    let userArray = await getDatafromDB();
+    let userArray = await getDatafromFirebase();
     contactList.innerHTML = "";
     let initialLettersArray = getInitialLetters(userArray);
     contactList.innerHTML += renderInitialLettersSections(initialLettersArray);
@@ -128,6 +125,8 @@ function showContactDetailsinCard(selectedContact) {
 }
 
 function getContactInfofromContactlistandDB(contactElement) {
+    console.log(userArrayGlobal);
+    
     let userName = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
     let selectedUser = userArrayGlobal.find(user => user.name === userName);

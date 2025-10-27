@@ -1,45 +1,47 @@
 <!DOCTYPE html>
 <html lang="de">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Kanban Board</title>
-        <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
+    <title>Kanban Board</title>
+    <link rel="icon" href="../assets/img/logo-black.png" type="image/x-icon">
 
-        <link rel="stylesheet" href="../style.css">
-        <link rel="stylesheet" href="../styles/header.css">
-        <link rel="stylesheet" href="../styles/navigation.css">
-        <link rel="stylesheet" href="../styles/board.css">
-        <link rel="stylesheet" href="../styles/task-card.css">
-        <link rel="stylesheet" href="../styles/add-task.css">
-        <link rel="stylesheet" href="../styles/dlg-task-info.css">
-        <link rel="stylesheet" href="../styles/dlg-edit-task.css">
-        <link rel="stylesheet" href="../styles/dlg-add-task.css">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/navigation.css">
+    <link rel="stylesheet" href="../styles/board.css">
+    <link rel="stylesheet" href="../styles/task-card.css">
+    <link rel="stylesheet" href="../styles/add-task.css">
+    <link rel="stylesheet" href="../styles/dlg-task-info.css">
+    <link rel="stylesheet" href="../styles/dlg-edit-task.css">
+    <link rel="stylesheet" href="../styles/dlg-add-task.css">
+    <script src="../scripts/db.js" defer></script>
+    <script src="../script.js" defer></script>
+    <script src="../scripts/board.js" defer></script>
+    <script src="../scripts/add-task.js" defer></script>
+    <script src="../scripts/load-inserts.js" defer></script>
+    <script src="../scripts/dlg-edit-task-assignment.js" defer></script>
+    <script src="../scripts/dlg-add-task-subtask-handling.js" defer></script>
+    <script src="../scripts/drag-and-drop.js" defer></script>
 
-        <script src="../scripts/db.js" defer></script>
-        <script src="../script.js" defer></script>
-        <script src="../scripts/board.js" defer></script>
-        <script src="../scripts/add-task.js" defer></script>
-        <script src="../scripts/load-inserts.js" defer></script>
-        <script src="../scripts/dlg-edit-task-assignment.js" defer></script>
-        <script src="../scripts/dlg-add-task-subtask-handling.js" defer></script>
-        <script src="../scripts/drag-and-drop.js" defer></script>
+    <script src="../templates/tpl-dlg-task-info-Helper.js" defer></script>
+    <script src="../templates/tpl-board.js" defer></script>
+    <script src="../templates/tpl-dialogs.js" defer></script>
+    <script src="../templates/tpl-task-card.js" defer></script>
+    <script src="../scripts/manage-user-profil.js" defer></script>
 
-        <script src="../templates/tpl-dlg-task-info-Helper.js" defer></script>
-        <script src="../templates/tpl-board.js" defer></script>
-        <script src="../templates/tpl-dialogs.js" defer></script>
-        <script src="../templates/tpl-task-card.js" defer></script>
+</head>
 
-    </head>
 <body onload="initBoard()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
         <img id="logo" src="../assets/img/logo-white.png" alt="Join Logo">
         <div class="nav-menu__btn-container">
             <a href="./summary.html"><img src="../assets/img/summary.svg" alt="go to Summary-page">Summary</a>
             <a href="./add-task.html"><img src="../assets/img/add-task.svg" alt="go to Add-Task-page">Add Task</a>
-            <a class="nav-btn--selected deactivated" href="./board.html"><img src="../assets/img/board.svg" alt="go to Board-page">Board</a>
+            <a class="nav-btn--selected deactivated" href="./board.html"><img src="../assets/img/board.svg"
+                    alt="go to Board-page">Board</a>
             <a href="./contacts.html"><img src="../assets/img/contacts.svg" alt="go to Contacts-page">Contacts</a>
         </div>
         <div class="nav-menu__bottom__btn">
@@ -58,18 +60,16 @@
                             <img id="help-img" class="help-img" src="../assets/img/help.svg" alt="Help question mark">
                         </a>
                         <div class="header__user-info">
-                            <img src="../assets/img/user-ellipse.svg" alt="User picture">
-                            <span>SM</span>
                         </div>
                     </div>
                 </div>
-                <nav aria-label="user drop down menu" class="d-none">
-                    <ul class="user-drop-down-menu">
-                        <li><a href="./legal-notice.html">Legal Notice</a></li>
-                        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="#">Log Out</a></li>
-                    </ul>
-                </nav>
+                <nav aria-label="user drop down menu" id="user-drop-down-menu" class="d-none">
+                        <ul class="user-drop-down-menu">
+                            <li><a href="./legal-notice.html">Legal Notice</a></li>
+                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                            <li onclick="logOutUser()"><a>Log Out</a ></li>
+                        </ul>
+                    </nav>
             </div>
         </header>
 
@@ -84,7 +84,8 @@
                                 <img class="search-btn" src="../assets/img/search.svg" onclick="focusInput()"
                                     alt="icon of an magnifying glass for better descripe of the search field">
                             </div>
-                            <span id="add-task-btn" class="add-task-btn filled-btn" onclick="renderAddTaskDlg()">Add Task
+                            <span id="add-task-btn" class="add-task-btn filled-btn" onclick="renderAddTaskDlg()">Add
+                                Task
                                 <img src="../assets/img/add.svg" alt="Add Task Button">
                             </span>
                         </div>
@@ -94,31 +95,38 @@
 
                         <div id="to-do-container" class="board__table__column">
                             <span>
-                            <h2>To do</h2>
-                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'to do'" onclick="renderAddTaskDlg('to-do')">
+                                <h2>To do</h2>
+                                <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                    alt="add task to 'to do'" onclick="renderAddTaskDlg('to-do')">
                             </span>
-                            <div id="to-do-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)"></div>
+                            <div id="to-do-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                            </div>
                         </div>
 
                         <div id="in-progress-container" class="board__table__column">
                             <span>
-                            <h2>In Progress</h2>
-                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'in progress'" onclick="renderAddTaskDlg('in-progress')">
+                                <h2>In Progress</h2>
+                                <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                    alt="add task to 'in progress'" onclick="renderAddTaskDlg('in-progress')">
                             </span>
-                            <div id="in-progress-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)"></div>
+                            <div id="in-progress-tasks" class="tasks" ondrop="moveTo(event)"
+                                ondragover="allowDrop(event)"></div>
                         </div>
 
                         <div id="await-feedback-container" class="board__table__column">
                             <span>
-                            <h2>Await Feedback</h2>
-                            <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg" alt="add task to 'await feedback'" onclick="renderAddTaskDlg('await-feedback')">
+                                <h2>Await Feedback</h2>
+                                <img class="add-task-to-btn" src="../assets/img/add-btn-border.svg"
+                                    alt="add task to 'await feedback'" onclick="renderAddTaskDlg('await-feedback')">
                             </span>
-                            <div id="await-feedback-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)"></div>
+                            <div id="await-feedback-tasks" class="tasks" ondrop="moveTo(event)"
+                                ondragover="allowDrop(event)"></div>
                         </div>
 
                         <div id="done-container" class="board__table__column">
                             <h2>Done</h2>
-                            <div id="done-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)"></div>
+                            <div id="done-tasks" class="tasks" ondrop="moveTo(event)" ondragover="allowDrop(event)">
+                            </div>
                         </div>
 
                     </div>
@@ -129,6 +137,6 @@
 
     <overlay id="overlay" class="overlay d-none"></overlay>
     <dialog id="dlg-box" class="dlg d-none"></dialog>
-    </body>
+</body>
 
 </html>

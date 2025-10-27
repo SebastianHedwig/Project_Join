@@ -1,4 +1,4 @@
-let storedUserKey = "";
+
 
 function renderAddContactDlg() {
     dialog.innerHTML = getAddContactDlgTpl();
@@ -30,25 +30,6 @@ function removeAnimationClass() {
     setTimeout(() => {
         hideDlg();
     }, 300);
-}
-
-function getAndStoreUserId(userName) {
-    for (const key in rawData) {
-        if (rawData[key].name === userName) {
-            storedUserKey = key;
-        }
-    }
-}
-
-async function saveChangesToDB(multipatch) {
-    let user = storedUserKey;
-    let response = await fetch(DB_URL + "users/" + user + ".json", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(multipatch)
-    });
-    let data = await response.json();
-    console.log('Gespeichert:', data);
 }
 
 function setMultipatch() {

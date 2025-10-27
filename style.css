@@ -235,37 +235,65 @@ select {
 }
 
 .svg__wrapper {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
+}
+
+.svg__wrapper.loggedIn {
+  width: 3.125rem;
+  height: 3.125rem;
+}
+
+.svg__wrapper.loggedIn:hover #colored-circle--loggedIn {
+  cursor: pointer;
+  fill: rgba(12, 46, 98, 0.12);
 }
 
 .svg__wrapper.medium {
-  width: 42px;
-  height: 42px;
+  width: 2.625rem;
+  height: 2.625rem;
 }
 
 .svg__wrapper.big {
-  width: 120px;
-  height: 120px;
+  width: 7.5rem;
+  height: 7.5rem;
 }
 
 .colored-circle__selected {
   stroke: var(--color-white);
-  stroke-width: 2px;
+  stroke-width: 0.125rem;
 }
 
 .user-initials {
   text-anchor: middle;
   dominant-baseline: middle;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 400;
   fill: var(--color-white);
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 .user-initials.big {
-  text-anchor: middle;
-  dominant-baseline: middle;
-  font-size: 47px;
+  font-size: 2.9375rem;
   font-weight: 500;
-  fill: var(--color-white);
+}
+
+.user-initials.loggedIn {
+  fill: var(--color-lightblue);
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 47px;
+  }
+
+  .filled-btn {
+    font-size: 16px;
+  }
 }

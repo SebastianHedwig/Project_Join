@@ -52,7 +52,7 @@ body {
     height: 3.0625rem;
     align-self: flex-start;
     pointer-events: auto;
-        transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .header__signup span {
@@ -70,7 +70,7 @@ main {
     height: 100vh;
     opacity: 1;
     pointer-events: auto;
-        transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.4s ease-in-out;
 }
 
 .useraccess-form {
@@ -85,6 +85,7 @@ main {
     width: fit-content;
     height: fit-content;
     position: relative;
+    box-shadow: 0 0 14px 3px color-mix(in srgb, var(--color-black) 4%, transparent);
 }
 
 .useraccess-form__arrowicon {
@@ -316,4 +317,48 @@ input[type="checkbox"]:checked+label:hover {
     top: 3.625rem;
     font-size: 0.875rem;
     color: var(--color-error);
+}
+
+@media screen and (max-width: 1024px) {
+    .header__joinlogo {
+        width: 64px;
+        height: 78px;
+    }
+
+    .content-wrapper {
+        padding: 0 1rem 0 1rem;
+    }
+
+    .content-wrapper.header {
+        padding: 37px 0px 0px 38px;
+    }
+
+    .useraccess-form {
+        padding: 32px calc(-29px + 14vw);
+        gap: 3.5rem;
+    }
+
+    .inputfield__wrapper {
+        width: calc(183px + 23vw);
+    }
+
+    .form__inputfields {
+        gap: 24px;
+    }
+
+    .useraccess-form__btnholder {
+        flex-direction: column;
+        gap: 21px;
+        height: fit-content;
+    }
+
+    .useraccess-form__privacy-policy {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .useraccess-form__arrowicon {
+        left: 6%;
+    }
 }
