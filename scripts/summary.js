@@ -4,8 +4,8 @@ let greetingHeader = document.getElementById('greeting-header');
 
 async function initSummary() {
     await getData();
-    let users = await fetchAllUsers();
-    let loggedInUser = extractActiveUserInfo(users);
+    let userArray = await fetchAllUsers();
+    let loggedInUser = extractActiveUserInfo(userArray);
     setGreetingHeader();
     setGreetingName(loggedInUser);
     currentDate();
@@ -58,8 +58,8 @@ function countToDos() {
     const urgent = document.getElementById('urgent-count');
     [toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard].forEach(counter => counter.innerHTML = "0");
     for (let index = 0; index < tasks.length; index++) {
-        countingLoop(index, {toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard}, tasks);
-    }  
+        countingLoop(index, { toDos, done, urgent, inProgress, awaitingFeedback, tasksInBoard }, tasks);
+    }
     tasksInBoard.textContent = tasks.length;
 }
 
@@ -67,15 +67,15 @@ function countingLoop(index, counters, tasks) {
     const task = tasks[index];
 
     const countRules = [
-    { field: 'taskState', match: 'to-do', counter: 'toDos' },
-    { field: 'taskState', match: 'done', counter: 'done' },
-    { field: 'taskState', match: 'in-progress', counter: 'inProgress' },
-    { field: 'taskState', match: 'await-feedback', counter: 'awaitingFeedback' },
-    { field: 'priority', match: 'urgent', counter: 'urgent' }
-  ];
+        { field: 'taskState', match: 'to-do', counter: 'toDos' },
+        { field: 'taskState', match: 'done', counter: 'done' },
+        { field: 'taskState', match: 'in-progress', counter: 'inProgress' },
+        { field: 'taskState', match: 'await-feedback', counter: 'awaitingFeedback' },
+        { field: 'priority', match: 'urgent', counter: 'urgent' }
+    ];
     countRules.forEach(rule => {
         if (task[rule.field] === rule.match) {
-            counters[rule.counter].innerHTML = Number(counters[rule.counter].innerHTML) +1;
+            counters[rule.counter].innerHTML = Number(counters[rule.counter].innerHTML) + 1;
         }
     }
     );

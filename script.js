@@ -65,7 +65,7 @@ function getAndStoreUserId(userName) {
     for (const key in rawData) {
         if (rawData[key].name === userName) {
             STORED_USER_KEY = key;
-            return
+            return STORED_USER_KEY 
         }
     }
 }
