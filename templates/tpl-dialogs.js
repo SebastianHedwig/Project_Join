@@ -30,7 +30,9 @@ function getTaskInfoDlgTpl(task) {
 
       <div class="dlg__main__task-assignments">
         <span class="dlg__main__assignments-title">Assigned to:</span>
-        ${renderAssignedUsers(task.assignedContacts)}
+          <div class="task__assignments">
+            ${renderAssignedUsers(task.assignedContacts)}
+          </div>
       </div>
 
       <div class="dlg__main__task-subtask-box">
@@ -103,10 +105,10 @@ function getTaskEditDlgTpl(task) {
             <div class="dlg-edit__main__task-assignments-box">
                 <span class="dlg-edit__main__assignments-title">Assigned to</span>
                     <div class="contacts-selection" id="contact-select">
-                    <div class="search-wrapper">
+                      <div class="search-wrapper">
                         <input type="text" id="contact-search" class="selector" placeholder="Search contacts to assign..." autocomplete="off"/>
-                    </div>
-                        <ul class="contact-options"></ul>
+                      </div>
+                      <ul class="contact-options"></ul>
                     </div>
 
                 <div class="dlg-edit__main__assigned-user-container"></div>
