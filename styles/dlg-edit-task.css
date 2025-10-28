@@ -39,6 +39,10 @@
   margin-bottom: 0.5rem;
 }
 
+.title-input {
+  cursor: text !important;
+}
+
 .error-msg {
   color: var(--color-error);
   font-size: 0.9rem;
@@ -195,6 +199,7 @@
 
 .subtask-input {
   flex: 1;
+  cursor: text !important;
 }
 
 .subtask-input-icons {
@@ -256,6 +261,10 @@
   align-items: center;
   height: 1.5rem;
   gap: 0.5rem;
+}
+
+.edit-input {
+  cursor: text !important;
 }
 
 .edit-input:focus {

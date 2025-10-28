@@ -47,7 +47,7 @@ function getTaskEditDlgTpl(task) {
         <main class="dlg-edit__main overflow-y">
             <div class="dlg-edit__main__title-box">
                 <span class="dlg-edit__main__task-title">Title</span>
-                <input id="title-input" class="dlg-edit__input-text" type="text" placeholder="Enter a Title">
+                <input id="title-input" class="title-input dlg-edit__input-text" type="text" placeholder="Enter a Title">
             </div>
             <div class="dlg-edit__main__description-box">
                 <span class="dlg-edit__main__task-description">Description</span>
