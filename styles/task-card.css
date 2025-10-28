@@ -83,7 +83,13 @@
   flex-direction: row;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 1.25rem;
+}
+
+.task__assignments__user-dates {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 0.5rem 0;
 }
 
 .task__assignments img {
@@ -111,7 +117,7 @@
   font-weight: 400;
   font-size: 0.9rem;
   text-transform: uppercase;
-  margin-left: -0.75rem;
+  margin-left: 1rem;
   transition: transform 0.05s ease, z-index 0.05s ease;
 }
 /* OPTIONAL - WENN ZUM SCHLUSS NOCH ZEIT */

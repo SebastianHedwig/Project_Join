@@ -1,3 +1,4 @@
+let subtaskActionLock = false;
 
 function getPriorityImg(priority) {
   switch (priority) {
@@ -27,10 +28,11 @@ function getPriorityImg(priority) {
           const name = getUserNameById(id);
           const imgColour = getUserPicById(id);
           const userInitials = getUserInitialsById(id);
-          return /*html*/ `<div class="task__assignments">
-                      <div class="task__assignments-circle" style="background-color : ${imgColour}">${userInitials}</div>
-                      <div class="assigned-user-entry">${name}</div>
-                  </div>`;
+          return /*html*/ `
+            <div class="task__assignments__user-dates">
+                <div class="task__assignments-circle" style="background-color : ${imgColour}">${userInitials}</div>
+                <div class="assigned-user-name">${name}</div>
+            </div>`;
         })  
         .join('')}
     </div>
@@ -58,27 +60,48 @@ function renderSubtasks(subtasks = {}, taskId) {
 
     return /*html*/ `
       <div class="dlg__main__task-subtask"
-          data-subtask-key="${key}"
-          data-task-id="${taskId}">
+           data-subtask-key="${key}"
+           data-task-id="${taskId}"
+           onmousedown="onSubtaskRowMouseDown(event, '${taskId}', '${key}', this)">
 
         <div class="subtask-wrapper">
           <img class="checkbox"
-              src="${getCheckboxImgSrc(checked)}"
-              data-checked="${checked}"
-              alt="checkbox"
-              onmousedown="toggleSubtaskChecked('${taskId}','${key}', this.closest('.dlg__main__task-subtask')); return false;">
+               src="${getCheckboxImgSrc(checked)}"
+               data-checked="${checked}"
+               alt="checkbox">
           <span class="subtask-text">${st.task}</span>
         </div>
 
         <div class="deletebox-wrapper">
           <div class="separator"></div>
           <img class="subtask-delete-btn"
-              src="../assets/img/delete.svg"
-              alt="delete subtask"
-              onmousedown="deleteSubtask('${taskId}','${key}', this.closest('.dlg__main__task-subtask')); return false;">
+               src="../assets/img/delete.svg"
+               alt="delete subtask"
+               onmousedown="onDeleteSubtaskMouseDown(event, '${taskId}', '${key}', this)">
         </div>
-
       </div>
     `;
   }).join('');
+}
+
+function onSubtaskRowMouseDown(e, taskId, subtaskKey, rowEl) {
+  if (e.target.closest('.deletebox-wrapper')) return;
+
+  if (subtaskActionLock) return;
+  subtaskActionLock = true;
+  setTimeout(() => subtaskActionLock = false, 200);
+
+  e.preventDefault();
+  e.stopPropagation();
+  toggleSubtaskChecked(taskId, subtaskKey, rowEl);
+}
+
+function onDeleteSubtaskMouseDown(e, taskId, subtaskKey, btnEl) {
+  if (subtaskActionLock) return;
+  subtaskActionLock = true;
+  setTimeout(() => subtaskActionLock = false, 200);
+
+  e.preventDefault();
+  e.stopPropagation();
+  deleteSubtask(taskId, subtaskKey, btnEl.closest('.dlg__main__task-subtask'));
 }
