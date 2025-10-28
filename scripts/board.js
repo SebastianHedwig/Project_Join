@@ -25,11 +25,11 @@ function renderTaskEditDlg(task) {
   taskEditDlgRef.innerHTML = getTaskEditDlgTpl(task);
 
   displayDlg();
-  contactAssign.init();
   initSubtaskInput();
   initSubtaskIconButtons();
   initSubtaskHandlers();
   fillEditFormWithTaskData(task);
+  populateAssignmentListFromFirebase(task);
 }
 
 async function renderAddTaskDlg(defaultTaskState = "to-do") {
@@ -120,11 +120,21 @@ function fillEditFormWithTaskData(task) {
   if (priorityBtn) {
     changePriorityBtn(priorityBtn);
   }
-  // den rest muss man dann hier noch einfügen,
-  // sobald mit firebase alles klappt bezüglich der subtasks und assignet usern.
+
+  const ul = document.querySelector('.dlg-edit__subtask-list');
+  if (ul) {
+    ul.innerHTML = '';
+    if (task.subtasks && typeof task.subtasks === 'object') {
+      Object.values(task.subtasks).forEach(subtask => {
+        if (subtask && subtask.task) {
+          ul.insertAdjacentHTML('beforeend', getSubtaskTpl(subtask.task));
+        }
+      });
+    }
+  }
 }
 
 function getUserNameById(id) {
-  const user = users.find(u => u.id === id);
+  const user = users.find(user => user.id === id);
   return user ? user.name : "Unknown User";
 }

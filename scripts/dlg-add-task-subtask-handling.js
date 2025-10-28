@@ -49,8 +49,8 @@ function initSubtaskIconButtons() {
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
 
   if (confirmRef) {
-    confirmRef.addEventListener('mousedown', (e) => {
-      e.preventDefault();
+    confirmRef.addEventListener('mousedown', (event) => {
+      event.preventDefault();
       if (subtaskInputRef.value.trim() !== '') {
         const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
         subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
@@ -105,8 +105,8 @@ function handleSubtaskEdit(event) {
     input.focus();
     input.select();
 
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
         subtaskList.insertAdjacentHTML('beforeend', originalHTML);
@@ -140,4 +140,32 @@ function handleSubtaskConfirm(event) {
 
   listItem.insertAdjacentHTML('afterend', newHTML);
   listItem.remove();
+}
+
+function collectSubtasksFromEditDialog() {
+  const list = document.querySelector('.dlg-edit__subtask-list');
+  if (!list) return {};
+
+  const items = Array.from(list.querySelectorAll('li')).filter(li => !li.classList.contains('edit-mode'));
+
+  const subtasksObj = {};
+  items.forEach((li, index) => {
+
+    let text = '';
+    const textNode = Array.from(li.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+    if (textNode && textNode.nodeValue) {
+      text = textNode.nodeValue.replace('•', '').trim();
+    } else {
+      text = (li.textContent || '').replace('•', '').trim();
+    }
+
+    if (text) {
+      subtasksObj[`subtask${index}`] = {
+        task: text,
+        taskChecked: false
+      };
+    }
+  });
+
+  return subtasksObj;
 }

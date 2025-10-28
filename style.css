@@ -150,6 +150,10 @@ input::placeholder {
   color: var(--color-lightgrey);
 }
 
+.input--validation-modifier:invalid {
+    border: 1px solid var(--color-error);
+}
+
 a {
   text-decoration: none;
 }

@@ -86,88 +86,10 @@ function getTaskEditDlgTpl(task) {
                     <div class="search-wrapper">
                         <input type="text" id="contact-search" class="selector" placeholder="Search contacts to assign..." autocomplete="off"/>
                     </div>
-                        <ul class="contact-options">
-                            <li data-user="anna">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#3b82f6" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">A</text>
-                                    </svg>
-                                    <span class="username">Anna</span>
-                                </div>
-                                <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-
-                            <li data-user="ben">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#10b981" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle"font-size="12" fill="white" font-family="sans-serif">B</text>
-                                    </svg>
-                                    <span class="username">Ben</span>
-                                </div>
-                                 <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-
-                            <li data-user="clara">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#f97316" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">C</text>
-                                    </svg>
-                                    <span class="username">Clara</span>
-                                </div>
-                                <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-
-                            <li data-user="basti">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#f97316" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">B</text>
-                                    </svg>
-                                    <span class="username">Basti</span>
-                                </div>
-                                <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-
-                            <li data-user="sascha">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#f97316" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">S</text>
-                                    </svg>
-                                    <span class="username">Sascha</span>
-                                </div>
-
-                                <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-
-                            <li data-user="marvin">
-                                <div class="user-selection-field">
-                                    <svg width="32" height="32" viewBox="0 0 42 42">
-                                        <circle cx="21" cy="21" r="20" fill="#f97316" stroke="white" stroke-width="2" />
-                                        <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">M</text>
-                                    </svg>
-                                    <span class="username">Marvin</span>
-                                </div>
-
-                                <img class="checkbox" src="../assets/img/checkbox-unchecked.svg" alt="checkbox" data-checked="false">
-                            </li>
-                        </ul>
+                        <ul class="contact-options"></ul>
                     </div>
 
-                <div class="dlg-edit__main__assigned-user-container">
-                    <div class="dlg-edit__user-box">
-                        <img class="dlg__user-img" id="A" src="../assets/img/user-img-anna.svg" alt="User Image or initials">
-                    </div>
-                    <div class="dlg-edit__user-box">
-                        <img class="dlg__user-img" id="B" src="../assets/img/user-img-david.svg" alt="User Image or initials">
-                    </div>
-                    <div class="dlg-edit__user-box">
-                        <img class="dlg__user-img" id="C" src="../assets/img/user-img-sofia.svg" alt="User Imare or initials">
-                    </div>
-                </div>
+                <div class="dlg-edit__main__assigned-user-container"></div>
             </div>
             <div class="dlg-edit__main__subtasks-box">
                 <div class="dlg-edit__main__add-subtask-box">
@@ -186,7 +108,8 @@ function getTaskEditDlgTpl(task) {
         </main>
         <footer class="dlg-edit__footer">
             <div class="dlg-edit__footer__discard-btn filled-btn" onclick='renderTaskInfoDlg(${JSON.stringify(task)})'>Discard</div>
-            <div class="dlg-edit__footer__save-btn filled-btn">SAVE</div>
+            <div class="dlg-edit__footer__save-btn filled-btn" onclick="saveEditedTask('${task.id}')">SAVE</div>
+
         </footer>`
 }
 
@@ -221,4 +144,37 @@ function getAddTaskDlgTpl(defaultTaskState = "to-do") {
         <input type="hidden" id="task-state" value="${defaultTaskState}">
         <div data-insert="add-task-insert.html"></div>
     `
+}
+
+function getAssignmentListUserTpl(user, checked = false) {
+  const initials = getUserNameInitials(user.name || '');
+  const color = user.profilImgColor || '#3b82f6';
+
+  return /*html*/ `
+    <li data-user-id="${user.id}" class="${checked ? 'active' : ''}">
+      <div class="user-selection-field">
+        <svg width="32" height="32" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+          <circle cx="21" cy="21" r="20" fill="${color}" stroke="white" stroke-width="2" />
+          <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">${initials}</text>
+        </svg>
+        <span class="username">${user.name}</span>
+      </div>
+      <img class="checkbox"
+           src="../assets/img/${checked ? 'checkbox-checked-white.svg' : 'checkbox-unchecked.svg'}"
+           alt="checkbox"
+           data-checked="${checked}">
+    </li>
+  `;
+}
+
+
+function getAssignedUserSvgTpl(user) {
+  const initials = getUserNameInitials(user.name || '');
+  const color = user.profilImgColor || '#3b82f6';
+  return /*html*/ `
+    <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+      <circle cx="21" cy="21" r="20" fill="${color}" stroke="white" stroke-width="2" />
+      <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">${initials}</text>
+    </svg>
+  `;
 }
