@@ -24,8 +24,13 @@ function getPriorityImg(priority) {
       ${contacts
         .map(id => {
           const name = getUserNameById(id);
-          return `<div class="assigned-user-entry">${name}</div>`;
-        })
+          const imgColour = getUserPicById(id);
+          const userInitials = getUserInitialsById(id);
+          return `<div class="task__assignments">
+                      <div class="task__assignments-circle" style="background-color : ${imgColour}">${userInitials}</div>
+                      <div class="assigned-user-entry">${name}</div>
+                  </div>`;
+        })  
         .join('')}
     </div>
   `;

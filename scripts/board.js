@@ -138,3 +138,17 @@ function getUserNameById(id) {
   const user = users.find(user => user.id === id);
   return user ? user.name : "Unknown User";
 }
+
+function getUserPicById(id) {
+  const user = users.find(user => user.id === id);
+  return user ? user.profilImgColor : null;
+}
+
+function getUserInitialsById(id) {
+  const user = users.find(u => u.id === id);
+  if (!user || !user.name) return "";
+  return user.name
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase())
+    .join("");
+}
