@@ -9,6 +9,7 @@
 h3 {
     color: var(--color-maincolor);
 }
+
 .summary-content__header span {
     font-size: 1.5rem;
     font-weight: 400;
@@ -26,6 +27,7 @@ h3 {
 .summary-content__metrics {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap-reverse;
     align-items: center;
     margin-top: 4rem;
     gap: 4rem;
@@ -163,4 +165,106 @@ h3 {
     width: 0.25rem;
     height: 6rem;
     background-color: var(--color-lightgrey);
+}
+
+@media screen and (max-width: 1024px) {
+    body {
+        flex-direction: column-reverse;
+    }
+
+    .metric-number {
+        font-size: 47px;
+    }
+
+    .metrics__box-text {
+        font-size: 14px;
+        gap: 0;
+    }
+
+    .metrics__box-date {
+        font-size: 16px;
+    }
+
+    .metric-txt {
+        font-size: 14px;
+    }
+
+    .metrics__box img {
+        height: 40px;
+        width: 40px;
+    }
+
+
+    .summary-content__header.content-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 40px;
+        gap: 12px;
+    }
+
+    .blue_seperator {
+        width: 90px;
+        height: 0;
+        border-top: 0.1875rem solid;
+        border-color: var(--color-lightblue);
+        border-radius: 0.1875rem;
+        order: 3
+    }
+
+    .summary-content__header span {
+        font-size: 20px;
+    }
+
+    .summary-content__left {
+        width: 100%;
+        max-width: 550px;
+    }
+
+    .summary-content__right {
+        display: none;
+    }
+
+    .summary-content__metrics.content-wrapper {
+        margin-top: 48px;
+        justify-content: center;
+    }
+
+    .summary-content__metrics-row {
+        gap: 24px;
+        height: 120px;
+        width: 100%;
+    }
+
+.metrics__box  {
+    justify-content: space-evenly;
+}
+
+    .metrics__box.metrics__box-top.metrics__icon-todo {
+        border-radius: 20px;
+        gap: 10px;
+        padding: 5% 8%;
+        width: fit-content;
+    }
+
+    .metrics__box.metrics__box-top.metrics__icon-done {
+        border-radius: 20px;
+        gap: 10px;
+        padding: 5% 8%;
+        min-width: 100px;
+        max-width: 300px;
+    }
+
+    .metrics__box.metrics__box-middle {
+        gap: 20px;
+        padding: 28px 10px;
+    }
+
+    .metrics__box.metrics__box-bottom {
+        border-radius: 20px;
+        gap: 13px;
+        padding: 5% 5%;
+        min-width: 100px;
+        height: fit-content;
+        width: auto;
+    }
 }

@@ -21,11 +21,11 @@
     text-align: left;
     gap: 1.2rem;
     transition: background-color 0.3s;
-} 
+}
 
 a:focus-visible {
-  border: 2px solid var(--color-lightblue);
-  
+    border: 2px solid var(--color-lightblue);
+
 }
 
 .nav-menu__btn-container a img {
@@ -77,4 +77,67 @@ a:focus-visible {
 .nav-menu__bottom__btn a:hover {
     color: var(--color-lightblue);
     font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+    .nav-menu {
+        flex: none;
+        flex-direction: row;
+        width: 100%;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        min-height: 0;
+        justify-content: center;
+    }
+
+    .nav-menu__btn-container {
+
+        flex-direction: row;
+        margin-top: 0;
+        gap: 0;
+        justify-content: space-evenly;
+        width: 100%;
+    }
+
+    .nav-menu__bottom__btn {
+        display: none;
+    }
+
+    #logo {
+        display: none;
+    }
+
+    .nav-menu a {
+        margin: 4px 0px;
+        flex-direction: column;
+        padding: 0;
+        width: auto;
+        border-radius: 16px;
+        padding: 15px 8px;
+    }
+
+    a img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .header__content {
+        height: 5rem;
+        padding: 0 1rem;
+    }
+
+    #help-img {
+        display: none;
+    }
+
+    #join-logo {
+        width: 32px;
+        height: 39px;
+    }
+
 }

@@ -19,7 +19,7 @@ password.addEventListener('keyup', () => {
     updatePasswordLockIcon();
 });
 window.addEventListener('load', () => {
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1025) {
         setTimeout(() => {
             welcomeScreenBckgrnd.classList.add('hidden');
             fullsizeScreenWelcome();
@@ -113,12 +113,6 @@ function togglePasswordIcon() {
     }
     else {
         passwordIcon.src = '../assets/img/pw-visible.svg';
-    }
-}
-
-function handleResizeScreen() {
-    if (window.innerWidth < 1024) {
-        document.getElementById('main').innerHTML += renderHeaderSignup();
     }
 }
 

@@ -1,6 +1,5 @@
-
-let greetingName = document.getElementById('greeting-name');
-let greetingHeader = document.getElementById('greeting-header');
+const greetingName = document.getElementById('greeting-name');
+const greetingHeader = document.getElementById('greeting-header');
 
 async function initSummary() {
     await getData();
@@ -11,7 +10,6 @@ async function initSummary() {
     currentDate();
     countToDos();
 }
-
 
 function setGreetingHeader() {
     let hour = new Date().getHours();

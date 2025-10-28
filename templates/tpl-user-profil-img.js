@@ -1,9 +1,3 @@
-// How it works:
-// cx and cy define the circle’s center.
-// The text’s x and y match those coordinates.
-// text-anchor="middle" centers horizontally.
-// dominant-baseline="middle" centers vertically.
-
 function getBigUserProfilImg(profilImgColor, userInitals) {
     return /*html*/ `
     <svg class="svg__wrapper big">

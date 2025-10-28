@@ -31,8 +31,11 @@
     <script src="../templates/tpl-dialogs.js" defer></script>
     <script src="../templates/tpl-task-card.js" defer></script>
     <script src="../scripts/manage-user-profil.js" defer></script>
-
+    <script src="../templates/tpl-navigation.js" defer></script>
+<script src="../scripts/navigation.js" defer></script>
 </head>
+
+
 
 <body onload="initBoard()">
     <nav aria-label="Primary navigation" id="nav-menu" class="nav-menu">
@@ -64,12 +67,12 @@
                     </div>
                 </div>
                 <nav aria-label="user drop down menu" id="user-drop-down-menu" class="d-none">
-                        <ul class="user-drop-down-menu">
-                            <li><a href="./legal-notice.html">Legal Notice</a></li>
-                            <li><a href="./privacy-policy.html">Privacy Policy</a></li>
-                            <li onclick="logOutUser()"><a>Log Out</a ></li>
-                        </ul>
-                    </nav>
+                    <ul class="user-drop-down-menu">
+                        <li><a href="./legal-notice.html">Legal Notice</a></li>
+                        <li><a href="./privacy-policy.html">Privacy Policy</a></li>
+                        <li onclick="logOutUser()"><a>Log Out</a></li>
+                    </ul>
+                </nav>
             </div>
         </header>
 
