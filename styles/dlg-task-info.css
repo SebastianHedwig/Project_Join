@@ -78,7 +78,7 @@
 
 .deletebox-wrapper {
   display: flex;
-  height: 100%;
+  height: 1.5rem;
   align-items: center;
   gap: 0.5rem;
   opacity: 0;
@@ -105,8 +105,6 @@
 .subtask-delete-btn {
   opacity: 0;
   pointer-events: none;
-  width: 1.6rem;
-  height: 1.6rem;
 }
 
 .dlg__main__task-subtask:hover .subtask-delete-btn {
@@ -115,7 +113,6 @@
 }
 
 .subtask-delete-btn:hover {
-  content: url(../assets/img/delete-hover.svg);
   transform: scale(1.1);
   cursor: pointer;
 }
