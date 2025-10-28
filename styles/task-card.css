@@ -80,6 +80,10 @@
 .task__assignments {
   display: flex;
   flex: 1;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .task__assignments img {
@@ -93,6 +97,22 @@
 
 .task__assignments img:first-child {
   margin-left: 0;
+}
+
+.task__assignments-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-white);
+  color: var(--color-white);
+  font-weight: 400;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin-left: -0.75rem;
+  transition: transform 0.05s ease, z-index 0.05s ease;
 }
 /* OPTIONAL - WENN ZUM SCHLUSS NOCH ZEIT */
 /* .task_assignments img:hover {

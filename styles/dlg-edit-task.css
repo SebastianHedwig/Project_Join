@@ -39,6 +39,17 @@
   margin-bottom: 0.5rem;
 }
 
+.title-input {
+  cursor: text !important;
+}
+
+.error-msg {
+  color: var(--color-error);
+  font-size: 0.9rem;
+  margin-top: 0.25rem;
+  margin-left: 0.5rem;
+}
+
 .dlg-edit__main__task-priority-title.bold {
   font-weight: 700;
 }
@@ -188,6 +199,7 @@
 
 .subtask-input {
   flex: 1;
+  cursor: text !important;
 }
 
 .subtask-input-icons {
@@ -251,6 +263,10 @@
   gap: 0.5rem;
 }
 
+.edit-input {
+  cursor: text !important;
+}
+
 .edit-input:focus {
   border: none !important;
 }
@@ -286,12 +302,6 @@
 .subtask-input__cancel-img:hover,
 .subtask-input__confirm-img:hover {
   transform: scale(1.1);
-}
-
-.separator {
-  display: flex;
-  height: 100%;
-  border: 1px solid var(--color-lightgrey);
 }
 
 .dlg-edit__input-text:focus,

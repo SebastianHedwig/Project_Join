@@ -49,8 +49,8 @@ function initSubtaskIconButtons() {
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
 
   if (confirmRef) {
-    confirmRef.addEventListener('mousedown', (e) => {
-      e.preventDefault();
+    confirmRef.addEventListener('mousedown', (event) => {
+      event.preventDefault();
       if (subtaskInputRef.value.trim() !== '') {
         const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
         subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
@@ -105,8 +105,8 @@ function handleSubtaskEdit(event) {
     input.focus();
     input.select();
 
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
         subtaskList.insertAdjacentHTML('beforeend', originalHTML);
@@ -140,4 +140,90 @@ function handleSubtaskConfirm(event) {
 
   listItem.insertAdjacentHTML('afterend', newHTML);
   listItem.remove();
+}
+
+function collectSubtasksFromEditDialog() {
+  const list = document.querySelector('.dlg-edit__subtask-list');
+  if (!list) return {};
+
+  const items = Array.from(list.querySelectorAll('li')).filter(li => !li.classList.contains('edit-mode'));
+
+  const subtasksObj = {};
+  items.forEach((li, index) => {
+
+    let text = '';
+    const textNode = Array.from(li.childNodes).find(n => n.nodeType === Node.TEXT_NODE);
+    if (textNode && textNode.nodeValue) {
+      text = textNode.nodeValue.replace('•', '').trim();
+    } else {
+      text = (li.textContent || '').replace('•', '').trim();
+    }
+
+    if (text) {
+      subtasksObj[`subtask${index}`] = {
+        task: text,
+        taskChecked: false
+      };
+    }
+  });
+
+  return subtasksObj;
+}
+
+async function toggleSubtaskChecked(taskId, subtaskKey, containerEl) {
+  const rowEl = containerEl.closest('.dlg__main__task-subtask');
+  const imgEl = rowEl.querySelector('img.checkbox');
+  if (!imgEl) return;
+
+  const wasChecked = imgEl.dataset.checked === 'true';
+  const willBeChecked = !wasChecked;
+
+  // UI sofort aktualisieren
+  imgEl.dataset.checked = String(willBeChecked);
+  imgEl.src = getCheckboxImgSrc(willBeChecked);
+
+  // Text holen
+  let text = '';
+  const taskObj = tasks.find(t => t.id === taskId);
+  if (taskObj?.subtasks?.[subtaskKey]?.task) {
+    text = taskObj.subtasks[subtaskKey].task;
+  } else {
+    const tn = rowEl.querySelector('.subtask-text');
+    text = tn?.textContent?.trim() || '';
+  }
+
+  // Firebase speichern
+  const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
+  await fetch(url, {
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ task: text, taskChecked: willBeChecked })
+  });
+
+  // lokal auch aktualisieren
+  const idx = tasks.findIndex(t => t.id === taskId);
+  if (idx > -1 && tasks[idx].subtasks?.[subtaskKey]) {
+    tasks[idx].subtasks[subtaskKey].taskChecked = willBeChecked;
+  }
+}
+
+
+async function deleteSubtask(taskId, subtaskKey, containerEl) {
+  const rowEl = containerEl.closest('.dlg__main__task-subtask');
+  const parentBox = rowEl.closest('.dlg__main__task-subtask-box');
+  if (!parentBox) return;
+
+  // Firebase löschen
+  const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
+  await fetch(url, { method: 'DELETE' });
+
+  // frisch holen
+  await getData();
+  const fresh = tasks.find(t => t.id === taskId);
+
+  // nur die Liste neu schreiben — NICHT den Titel entfernen
+  const list = parentBox.querySelector('.subtasks-content');
+  if (!list) return;
+
+  list.innerHTML = renderSubtasks(fresh?.subtasks || {}, taskId);
 }

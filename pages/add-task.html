@@ -62,12 +62,22 @@
                 </nav>
             </div>
         </header>
-
+        <input type="hidden" id="task-state" value="to-do">
         <main>
             <div class="content">
                 <div data-insert="add-task-insert.html"></div>
             </div>
         </main>
+        <!-- ALERT OVERLAY -->
+<div id="alert-overlay" class="alert-overlay d-none">
+  <div class="alert-box">
+    <h2 id="alert-message">Task added successfully!</h2>
+    <div class="alert-buttons">
+      <button id="alert-ok" onclick="closeAlertOverlay()">OK</button>
+      <button id="alert-board" onclick="goToBoard()">Go to Board</button>
+    </div>
+  </div>
+</div>
     </div>
 
 </body>

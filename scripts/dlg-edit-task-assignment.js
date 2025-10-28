@@ -88,3 +88,51 @@ const contactAssign = (() => {
 
   return { init };
 })();
+
+function populateAssignmentListFromFirebase(task) {
+  const ul = document.querySelector('.contact-options');
+  const container = document.querySelector('.dlg-edit__main__assigned-user-container');
+  if (!ul || !container) return;
+
+  const assignedIds = Array.isArray(task.assignedContacts) ? task.assignedContacts.filter(Boolean) : [];
+
+  ul.innerHTML = users
+    .map(user => getAssignmentListUserTpl(user, assignedIds.includes(user.id)))
+    .join('');
+
+  contactAssign.init();
+  refreshAssignedUserContainer();
+  ul.querySelectorAll('li').forEach(li => {
+    li.addEventListener('click', () => {
+      requestAnimationFrame(refreshAssignedUserContainer);
+    });
+  });
+
+  function refreshAssignedUserContainer() {
+    const selectedIds = getSelectedAssignmentIds();
+    container.innerHTML = selectedIds
+      .map(id => {
+        const user = users.find(user => user.id === id);
+        const svg = (typeof getAssignedUserSvgTpl === 'function')
+          ? getAssignedUserSvgTpl(user)
+          : (typeof getAssignetUserSvgtpl === 'function' ? getAssignetUserSvgtpl(user) : '');
+        return user ? /*html*/ `<div class="dlg-edit__user-box" title="${user.name}">${svg}</div>` : '';
+      })
+      .join('');
+  }
+}
+
+function getSelectedAssignmentIds() {
+  const ul = document.querySelector('.contact-options');
+  if (!ul) return [];
+  const items = ul.querySelectorAll('li');
+  const picked = [];
+  items.forEach(li => {
+    const checkbox = li.querySelector('.checkbox');
+    const userId = li.getAttribute('data-user-id');
+    const isActive = li.classList.contains('active');
+    const isChecked = checkbox && checkbox.dataset.checked === 'true';
+    if (userId && (isActive || isChecked)) picked.push(userId);
+  });
+  return picked;
+}

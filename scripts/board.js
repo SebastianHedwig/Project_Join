@@ -11,25 +11,30 @@ async function initBoard() {
   updateAllPlaceholders();
 }
 
-function renderTaskInfoDlg(task) {
-  const taskInfoDlgRef = document.getElementById("dlg-box");
-  taskInfoDlgRef.innerHTML = "";
-  // hier muss noch Firebase rein
-  taskInfoDlgRef.innerHTML = getTaskInfoDlgTpl(task);
+async function renderTaskInfoDlg(taskId) {
+  await getData();
+  const task = tasks.find(t => t.id === taskId);
+  if (!task) return console.warn('Task not found:', taskId);
+
+  const box = document.getElementById("dlg-box");
+  box.innerHTML = getTaskInfoDlgTpl(task);
   displayDlg();
 }
 
-function renderTaskEditDlg(task) {
-  const taskEditDlgRef = document.getElementById("dlg-box");
-  taskEditDlgRef.innerHTML = "";
-  taskEditDlgRef.innerHTML = getTaskEditDlgTpl(task);
+async function renderTaskEditDlg(taskId) {
+  await getData();
+  const task = tasks.find(t => t.id === taskId);
+  if (!task) return console.warn('Task not found:', taskId);
 
+  const box = document.getElementById("dlg-box");
+  box.innerHTML = getTaskEditDlgTpl(task);
   displayDlg();
-  contactAssign.init();
+
   initSubtaskInput();
   initSubtaskIconButtons();
   initSubtaskHandlers();
   fillEditFormWithTaskData(task);
+  populateAssignmentListFromFirebase(task);
 }
 
 async function renderAddTaskDlg(defaultTaskState = "to-do") {
@@ -120,6 +125,35 @@ function fillEditFormWithTaskData(task) {
   if (priorityBtn) {
     changePriorityBtn(priorityBtn);
   }
-  // den rest muss man dann hier noch einfügen,
-  // sobald mit firebase alles klappt bezüglich der subtasks und assignet usern.
+
+  const ul = document.querySelector('.dlg-edit__subtask-list');
+  if (ul) {
+    ul.innerHTML = '';
+    if (task.subtasks && typeof task.subtasks === 'object') {
+      Object.values(task.subtasks).forEach(subtask => {
+        if (subtask && subtask.task) {
+          ul.insertAdjacentHTML('beforeend', getSubtaskTpl(subtask.task));
+        }
+      });
+    }
+  }
+}
+
+function getUserNameById(id) {
+  const user = users.find(user => user.id === id);
+  return user ? user.name : "Unknown User";
+}
+
+function getUserPicById(id) {
+  const user = users.find(user => user.id === id);
+  return user ? user.profilImgColor : null;
+}
+
+function getUserInitialsById(id) {
+  const user = users.find(u => u.id === id);
+  if (!user || !user.name) return "";
+  return user.name
+    .split(" ")
+    .map(word => word.charAt(0).toUpperCase())
+    .join("");
 }

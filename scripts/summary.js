@@ -3,8 +3,8 @@ const greetingHeader = document.getElementById('greeting-header');
 
 async function initSummary() {
     await getData();
-    let userArray = await fetchAllUsers();
-    let loggedInUser = extractActiveUserInfo(userArray);
+    let users = await fetchAllUsers();
+    let loggedInUser = extractActiveUserInfo(users);
     setGreetingHeader();
     setGreetingName(loggedInUser);
     currentDate();

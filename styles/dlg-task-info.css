@@ -5,13 +5,13 @@
 }
 
 .dlg__close-btn:hover {
-    content: url(../assets/img/close-delete-cross-hover.svg);
-    cursor: pointer;
+  content: url(../assets/img/close-delete-cross-hover.svg);
+  cursor: pointer;
 }
 
 .dlg__main {
-    gap: 1.5rem;
-    padding: 0 0.5rem;
+  gap: 1.5rem;
+  padding: 0 0.5rem;
 }
 
 .dlg__header_task-category {
@@ -32,86 +32,125 @@
 
 .dlg__main__task__due-date,
 .dlg__main_task-priority-box {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 .dlg__main__task__due-date-label,
 .dlg__main__task-priority-title {
-    color: var(--color-maincolor);
+  color: var(--color-maincolor);
 }
 
 .dlg__main__task-assignments {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .dlg__main__assignments-title,
 .dlg__main__task-subtask-title {
-    color: var(--color-maincolor);
-    display: flex;
-    padding: 0.25rem 0;
+  color: var(--color-maincolor);
+  display: flex;
+  padding: 0.25rem 0;
 }
 
 .dlg__user-box,
 .dlg__main__task-subtask {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.dlg__main__task-subtask {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.subtask-wrapper {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.deletebox-wrapper {
+  display: flex;
+  height: 1.5rem;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dlg__main__task-subtask:hover .deletebox-wrapper {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .dlg__main__task-subtask-box {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .dlg__main__task-subtask:hover {
-    background-color: rgb(230, 230, 230);
-    border-radius: 0.5rem;
-    cursor: pointer;
+  background-color: rgb(230, 230, 230);
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
-.dlg__main__task-subtask:hover img {
-    content: url(../assets/img/checkbox-checked-hover.svg);
+.subtask-delete-btn {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.dlg__main__task-subtask:hover .subtask-delete-btn {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.subtask-delete-btn:hover {
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .separator {
-    display: flex;
-    height: 100%;
-    border: 1px solid var(--color-lightgrey);
+  display: flex;
+  height: 100%;
+  border: 1px solid var(--color-lightgrey);
 }
 
 .dlg__footer {
-    display: flex;
-    justify-content: flex-end;
-    color: var(--color-maincolor);
+  display: flex;
+  justify-content: flex-end;
+  color: var(--color-maincolor);
 }
 
 .dlg__footer__options-box {
-    display: flex;
+  display: flex;
 }
 
 .dlg__footer__options-box img {
-    margin: 0 0.5rem;
+  margin: 0 0.5rem;
 }
 
 .delete-btn {
-    width: 5.125rem;
+  width: 5.125rem;
 }
 
 .edit-btn {
-    width: 3.875rem;
+  width: 3.875rem;
 }
 
 .delete-btn:hover {
-    content: url(../assets/img/delete-with-text-hover.svg);
-    cursor: pointer;
+  content: url(../assets/img/delete-with-text-hover.svg);
+  cursor: pointer;
 }
 
 .edit-btn:hover {
-    content: url(../assets/img/edit-with-text-hover.svg);
-    cursor: pointer;
+  content: url(../assets/img/edit-with-text-hover.svg);
+  cursor: pointer;
 }

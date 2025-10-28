@@ -5,7 +5,7 @@ function getTasksTemplate(task) {
     };
     const categoryClass = categoryMap[task.category] || 'task__category'
   return /*html*/ `
-    <div class="task" draggable="true" ondragstart="startDragging('${task.id}')" onclick='renderTaskInfoDlg(${JSON.stringify(task)})'>
+    <div class="task" draggable="true" ondragstart="startDragging('${task.id}')" onclick="renderTaskInfoDlg('${task.id}')">
       <span class=" ${categoryClass}">${formatCategory(task.category)}</span>
       <div class="task__content-metadata-box">
         <span class="task__title">${task.title}</span>

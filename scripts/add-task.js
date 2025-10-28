@@ -40,6 +40,7 @@ function resetPriorityButtons() {
 }
 
 function changePriorityBtnIcon(btn) {
+  if (event) event.stopPropagation();
   document.querySelectorAll('.priority-options-btn img').forEach(img => {
     img.src = img.dataset.default;
   });
@@ -70,13 +71,12 @@ window.handleCreateTask = function handleCreateTask(event) {
   createTask();
   form.reset();
   resetPriorityButtons();
-  alert('You added a new task!');
 }
 
 async function createTask() {
 
   const taskStateRef = document.getElementById('task-state').value;
-
+  
   let newTask = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
@@ -87,10 +87,27 @@ async function createTask() {
     priority: chosenPriority,
     taskState: taskStateRef
   };
+  
   const key = await getNextTaskKey();
   await saveTaskToFirebase(newTask, key);
-  window.location.reload();
+  
+  showAlertOverlay();
   console.log(tasks);
+}
+
+function showAlertOverlay() {
+  const overlay = document.getElementById('alert-overlay');
+  overlay.classList.remove('d-none');
+}
+
+function closeAlertOverlay() {
+  const overlay = document.getElementById('alert-overlay');
+  overlay.classList.add('d-none');
+  window.location.reload();
+}
+
+function goToBoard() {
+  window.location.href = './board.html';
 }
 
 function getSelectedUserIds(selectId = 'assigned-to') {
