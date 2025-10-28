@@ -304,12 +304,6 @@
   transform: scale(1.1);
 }
 
-.separator {
-  display: flex;
-  height: 100%;
-  border: 1px solid var(--color-lightgrey);
-}
-
 .dlg-edit__input-text:focus,
 .dlg-edit__main__description-box textarea:focus,
 .dlg-edit__main__task-assignments-box input:focus,

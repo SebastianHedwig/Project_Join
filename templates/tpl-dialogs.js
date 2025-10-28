@@ -3,8 +3,13 @@ function getTaskInfoDlgTpl(task) {
   return /*html*/ `
     <header class="dlg__header">
       <span class="dlg__header_task-category">${task.category || 'No category'}</span>
-      <img class="dlg__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt="small cross as close button">
+      <img
+        class="dlg__close-btn"
+        src="../assets/img/close-delete-cross.svg"
+        onclick="hideDlg()"
+        alt="small cross as close button">
     </header>
+
     <main class="dlg__main">
       <span class="dlg__main__task-title">${task.title || 'Untitled Task'}</span>
       <span class="dlg__main__task-description">${task.description || 'No description provided.'}</span>
@@ -16,7 +21,11 @@ function getTaskInfoDlgTpl(task) {
 
       <div class="dlg__main_task-priority-box"> 
         <span class="dlg__main_task-priority-title">Priority:</span>
-        <img id="priority" class="dlg_main_task-priority" src="${getPriorityImg(task.priority)}" alt="priority icon">
+        <img
+          id="priority"
+          class="dlg_main_task-priority"
+          src="${getPriorityImg(task.priority)}"
+          alt="priority icon">
       </div>
 
       <div class="dlg__main__task-assignments">
@@ -26,14 +35,25 @@ function getTaskInfoDlgTpl(task) {
 
       <div class="dlg__main__task-subtask-box">
         <span class="dlg__main__task-subtask-title">Subtasks:</span>
-        ${renderSubtasks(task.subtasks)}
+        <div class="subtasks-content">
+          ${renderSubtasks(task.subtasks, task.id)}
+        </div>
       </div>
     </main>
+
     <footer class="dlg__footer">
       <div class="dlg__footer__options-box">
-        <img class="delete-btn" src="../assets/img/delete-with-text.svg" onclick="deleteTask('${task.id}')" alt="image of a garbage can">
+        <img
+          class="delete-btn"
+          src="../assets/img/delete-with-text.svg"
+          onclick="deleteTask('${task.id}')"
+          alt="image of a garbage can">
         <span class="separator"></span>
-        <img class="edit-btn" src="../assets/img/edit-with-text.svg" onclick='renderTaskEditDlg(${JSON.stringify(task)})' alt="image of a pencil">
+        <img
+          class="edit-btn"
+          src="../assets/img/edit-with-text.svg"
+          onclick="renderTaskEditDlg('${task.id}')"
+          alt="image of a pencil">
       </div>
     </footer>
   `;
@@ -95,19 +115,19 @@ function getTaskEditDlgTpl(task) {
                 <div class="dlg-edit__main__add-subtask-box">
                     <span class="dlg-edit__main__subtask-title">Subtasks</span>
                     <div class="subtask-input-wrapper">
-                    <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text" placeholder="Add new Subtask" />
-                    <div class="subtask-input-icons">
-                        <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg" alt="Cancel Subtask" />
-                        <div class="separator"></div>
-                        <img class="subtask-input__confirm-img" src="../assets/img/check.svg" alt="Add Subtask" />
-                    </div>
+                      <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text" placeholder="Add new Subtask" />
+                      <div class="subtask-input-icons">
+                          <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg" alt="Cancel Subtask" />
+                          <div class="separator"></div>
+                          <img class="subtask-input__confirm-img" src="../assets/img/check.svg" alt="Add Subtask" />
+                      </div>
                     </div>
                 </div>
                 <ul class="dlg-edit__subtask-list"></ul>
             </div>
         </main>
         <footer class="dlg-edit__footer">
-            <div class="dlg-edit__footer__discard-btn filled-btn" onclick='renderTaskInfoDlg(${JSON.stringify(task)})'>Discard</div>
+            <div class="dlg-edit__footer__discard-btn filled-btn" onclick="renderTaskInfoDlg('${task.id}')">Discard</div>
             <div class="dlg-edit__footer__save-btn filled-btn" onclick="saveEditedTask('${task.id}')">SAVE</div>
 
         </footer>`

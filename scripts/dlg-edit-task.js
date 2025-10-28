@@ -136,7 +136,7 @@ async function saveEditedTask(taskId) {
     // --- 7) Frischen Task finden und Info-Dialog anzeigen (Edit-Dialog wird ersetzt) ---
     const freshTask = tasks.find(t => t.id === taskId);
     if (freshTask) {
-      renderTaskInfoDlg(freshTask);
+      renderTaskInfoDlg(freshTask.id);
     } else {
       hideDlg(); // fallback
     }
