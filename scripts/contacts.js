@@ -8,8 +8,9 @@ let contactProfilImg = document.querySelector('.header__contact-profil-img');
 let showContact = false;
 let userArrayGlobal = [];
 
-window.addEventListener("resize", handleResizeScreen);
-window.addEventListener("load", handleResizeScreen);
+window.addEventListener("resize", handleResizeScreenContacts);
+window.addEventListener("load", handleResizeScreenContacts);
+
 
 async function getDatafromFirebase() {
     try {
@@ -127,8 +128,6 @@ function showContactDetailsinCard(selectedContact) {
 }
 
 function getContactInfofromContactlistandDB(contactElement) {
-    console.log(userArrayGlobal);
-
     let userName = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
     let selectedUser = userArrayGlobal.find(user => user.name === userName);
@@ -145,7 +144,7 @@ function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
     contactProfilImg.innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
 }
 
-function handleResizeScreen() {
+function handleResizeScreenContacts() {
     let isSmallScreen = window.innerWidth < 1025;
     handleContent(isSmallScreen);
 }
@@ -179,4 +178,39 @@ function showContactMobile() {
 
 function showAddUserIconMoblie() {
     document.querySelector('.add-user-icon').style.display = 'flex';
+    document.querySelector('.contacts-options-icon').style.display = 'none';
 }
+
+function showContactList() {
+    showContact = false;
+    handleResizeScreenContacts();
+    let contactListItems = document.querySelectorAll('.contact-list__item');
+    contactListItems.forEach(item => {
+        item.classList.remove('selected');
+        let contactName = item.querySelector('.contact-name');
+        contactName.style.color = 'var(--color-black)';
+    })
+}
+
+function displayContactActionMenu() {
+    document.querySelector('.manage-contact__actions').classList.remove('invisible');
+    setTimeout(() => {
+        document.addEventListener("click", handleMenuClick);
+    }, 400);
+
+}
+
+function hideContactActionMenu() {
+    document.querySelector('.manage-contact__actions').classList.add('invisible');
+    document.removeEventListener("click", handleMenuClick);
+}
+
+function handleMenuClick(event) {
+    const isSmallScreen = window.innerWidth < 1025;
+    const menu = document.querySelector('.manage-contact__actions');
+    if (isSmallScreen && !menu.contains(event.target)) {
+        hideContactActionMenu();
+    }
+}
+
+

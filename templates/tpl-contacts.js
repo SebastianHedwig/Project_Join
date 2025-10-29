@@ -57,7 +57,7 @@ function getEditContactDlgTpl() {
             </div>
 
             <div class="dialog-right">
-                <div class="close-button__wrapper" id="dialog-close-btn" onclick="removeAnimationClass()">
+                <div class="close-button__wrapper" id="dialog-close-btn" onclick="removeAnimationClass(); hideContactActionMenu()">
                     <img src="../assets/img/close.svg" alt="icon of the letter X">
                 </div>
                 <div class="content-right__wrapper">

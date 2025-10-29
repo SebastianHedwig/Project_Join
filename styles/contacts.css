@@ -246,6 +246,10 @@ main {
     display: none;
 }
 
+.blue-arrow-back {
+    display: none;
+}
+
 @media screen and (max-width: 1024px) {
 
     .content-left__button-holder {
@@ -287,12 +291,22 @@ main {
         flex-wrap: wrap;
     }
 
+    .blue-arrow-back {
+        display: flex;
+        position: absolute;
+        right: 16px;
+    }
+
+    .blue-arrow-back:active {
+        content: url('../assets/img/arrow-left-blue-hover.svg');
+    }
+
     .content-right__contact-info-card {
-        margin-bottom: 100px;
+        margin-bottom: 120px;
         overflow-y: scroll;
     }
 
-    .contact-info-card__header{
+    .contact-info-card__header {
         gap: 20px;
     }
 
@@ -303,6 +317,10 @@ main {
         right: 16px;
         width: auto;
         height: 70px;
+    }
+
+    .add-user-icon:hover {
+        cursor: pointer;
     }
 
     .add-user-icon:active {
@@ -322,8 +340,35 @@ main {
         content: url('../assets/img/contacts-options-active.svg');
     }
 
+    .contacts-options-icon:hover {
+        cursor: pointer;
+    }
+
     .manage-contact__actions {
-        display: none;
+        pointer-events: all;
+        opacity: 1;
+        bottom: 132px;
+        right: 16px;
+        position: fixed;
+        z-index: 1000;
+        background-color: var(--color-white);
+        flex-direction: column;
+        align-items: center;
+        border-radius: 20px 20px 0px 20px;
+        padding: 20px;
+        width: fit-content;
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+        transition: all 300ms ease-in-out;
+    }
+
+    .manage-contact__actions.invisible {
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(200vw, 0px);
+    }
+
+    .action__edit {
+        align-self: flex-start;
     }
 
     .contact-info__details {
