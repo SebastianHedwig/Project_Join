@@ -66,3 +66,7 @@ function getTasksTemplate(task) {
     </div>
   `;
 }
+
+
+
+// MUSS NOCH REFACTORED WERDEN

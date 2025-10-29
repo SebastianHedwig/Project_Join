@@ -7,20 +7,20 @@ placeholder.className = "task task--placeholder";
 function startDragging(id) {
     draggedTaskId = id;
 
-    const el = document.querySelector(`[onclick="renderTaskInfoDlg('${id}')"]`);
-    if (el) {
-        el.classList.add('dragging');
+    const taskCard = document.querySelector(`[onclick="renderTaskInfoDlg('${id}')"]`);
+    if (taskCard) {
+        taskCard.classList.add('dragging');
 
-        const rect = el.getBoundingClientRect();
-        placeholder.style.height = `${rect.height}px`;
+        const placeholderSize = taskCard.getBoundingClientRect();
+        placeholder.style.height = `${placeholderSize.height}px`;
         placeholder.style.width = '100%';
     }
 }
 
 function stopDragging() {
-    const el = document.querySelector('.task.dragging');
-    if (el) {
-        el.classList.remove('dragging');
+    const taskCard = document.querySelector('.task.dragging');
+    if (taskCard) {
+        taskCard.classList.remove('dragging');
     }
 
     if (placeholder && placeholder.isConnected) {

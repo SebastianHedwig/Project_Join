@@ -113,11 +113,9 @@ async function toggleSubtaskChecked(taskId, subtaskKey, rowEl) {
   const wasChecked = imgEl.dataset.checked === 'true';
   const willBeChecked = !wasChecked;
 
-  // UI sofort umschalten
   imgEl.dataset.checked = String(willBeChecked);
   imgEl.src = getCheckboxImgSrc(willBeChecked);
 
-  // Text ermitteln
   let text = '';
   const taskObj = tasks.find(t => t.id === taskId);
   if (taskObj?.subtasks?.[subtaskKey]?.task) {
@@ -126,7 +124,6 @@ async function toggleSubtaskChecked(taskId, subtaskKey, rowEl) {
     text = rowEl.querySelector('.subtask-text')?.textContent?.trim() || '';
   }
 
-  // Firebase aktualisieren
   const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
   await fetch(url, {
     method: 'PUT',
@@ -134,7 +131,6 @@ async function toggleSubtaskChecked(taskId, subtaskKey, rowEl) {
     body: JSON.stringify({ task: text, taskChecked: willBeChecked })
   });
 
-  // Full Reload + Dialog wieder öffnen
   await getData();
   loadTasks();
   updateAllPlaceholders?.();

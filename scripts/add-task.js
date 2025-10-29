@@ -128,7 +128,7 @@ function goToBoard() {
 }
 
 function getSelectedUserIds(selectId = 'assigned-to') {
-  return Array.from(document.getElementById(selectId).selectedOptions).map(o => o.value);
+  return Array.from(document.getElementById(selectId).selectedOptions).map(option => option.value);
 }
 
 function getSelectedCategoryText(selId = 'category') {
