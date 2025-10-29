@@ -87,19 +87,19 @@ function initContactAssign() {
 }
 
 function populateAssignmentListFromFirebase(task) {
-  const ul = document.querySelector('.contact-options');
-  const container = document.querySelector('.dlg-edit__main__assigned-user-container');
-  if (!ul || !container) return;
+  const contactsDropDownList = document.querySelector('.contact-options');
+  const avatarContainer = document.querySelector('.dlg-edit__main__assigned-user-container');
+  if (!contactsDropDownList || !avatarContainer) return;
 
   const assignedIds = Array.isArray(task.assignedContacts) ? task.assignedContacts.filter(Boolean) : [];
 
-  ul.innerHTML = users
+  contactsDropDownList.innerHTML = users
     .map(user => getAssignmentListUserTpl(user, assignedIds.includes(user.id)))
     .join('');
 
   initContactAssign();
   refreshAssignedUserContainer();
-  ul.querySelectorAll('li').forEach(li => {
+  contactsDropDownList.querySelectorAll('li').forEach(li => {
     li.addEventListener('click', () => {
       requestAnimationFrame(refreshAssignedUserContainer);
     });
@@ -107,7 +107,7 @@ function populateAssignmentListFromFirebase(task) {
 
   function refreshAssignedUserContainer() {
     const selectedIds = getSelectedAssignmentIds();
-    container.innerHTML = selectedIds
+    avatarContainer.innerHTML = selectedIds
       .map(id => {
         const user = users.find(user => user.id === id);
         const svg = (typeof getAssignedUserSvgTpl === 'function')

@@ -46,6 +46,9 @@ async function renderAddTaskDlg(defaultTaskState = "to-do") {
 
   const insertElement = addTaskDlgRef.querySelector("[data-insert]");
   await InsertLoader.loadInsertByElement(insertElement);
+
+  await waitFor('.contact-options');
+  populateAssignmentListFromFirebase({ assignedContacts: [] });
   displayDlg();
 }
 
