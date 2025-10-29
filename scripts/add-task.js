@@ -3,8 +3,25 @@ let chosenPriority = "medium";
 
 
 async function initAddTask() {
-  await getData();
-  assignedTo();
+  await getData();                         // users/tasks laden
+  await waitFor('.contact-options'); // Wartet, bis das Insert geladen ist
+  populateAssignmentListFromFirebase({ assignedContacts: [] });
+}
+
+// Helper: wartet, bis ein Selector im DOM existiert
+function waitFor(selector) {
+  return new Promise(resolve => {
+    const el = document.querySelector(selector);
+    if (el) return resolve(el);
+    const obs = new MutationObserver(() => {
+      const el2 = document.querySelector(selector);
+      if (el2) {
+        obs.disconnect();
+        resolve(el2);
+      }
+    });
+    obs.observe(document.documentElement, { childList: true, subtree: true });
+  });
 }
 
 function changePriorityBtn(priorityBtn) {
@@ -81,7 +98,7 @@ async function createTask() {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
     dueDate: document.getElementById('due-date').value,
-    assignedContacts: getSelectedUserIds(),
+    assignedContacts: getSelectedAssigmentIds(),
     category: getSelectedCategoryText(),
     subtasks: buildSubtasksObject(),
     priority: chosenPriority,
