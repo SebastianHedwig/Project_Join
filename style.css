@@ -151,7 +151,7 @@ input::placeholder {
 }
 
 .input--validation-modifier:invalid {
-    border: 1px solid var(--color-error);
+  border: 1px solid var(--color-error);
 }
 
 a {
@@ -297,11 +297,15 @@ select {
     font-size: 47px;
   }
 
+  h3 {
+    font-size: 36px;
+  }
+
   .filled-btn {
     font-size: 16px;
   }
 
-  .content-wrapper{
+  .content-wrapper {
     padding: 0 1rem 0 1rem;
   }
 }

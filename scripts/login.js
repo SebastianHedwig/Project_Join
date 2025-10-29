@@ -117,7 +117,7 @@ function togglePasswordIcon() {
 }
 
 function handleResizeScreen() {
-    let isSmallScreen = window.innerWidth < 1024;
+    let isSmallScreen = window.innerWidth < 1025;
     if (isSmallScreen && !headerAdded) {
         main.insertAdjacentHTML('beforeend', renderHeaderSignup());
         headerAdded = true;

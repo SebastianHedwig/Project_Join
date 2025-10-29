@@ -5,8 +5,11 @@ let contactName = document.getElementById('contact-name');
 let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 let contactProfilImg = document.querySelector('.header__contact-profil-img');
-
+let showContact = false;
 let userArrayGlobal = [];
+
+window.addEventListener("resize", handleResizeScreen);
+window.addEventListener("load", handleResizeScreen);
 
 async function getDatafromFirebase() {
     try {
@@ -38,7 +41,7 @@ async function deleteUser(userkeyToDelete) {
     }
 }
 
-async function deleteUserFromDB(){
+async function deleteUserFromDB() {
     getAndStoreUserId(contactName.innerText);
     await deleteUser(STORED_USER_KEY);
     renderContactList();
@@ -125,7 +128,7 @@ function showContactDetailsinCard(selectedContact) {
 
 function getContactInfofromContactlistandDB(contactElement) {
     console.log(userArrayGlobal);
-    
+
     let userName = contactElement.querySelector('.contact-name').innerText;
     let email = contactElement.querySelector('.contact-email').innerText;
     let selectedUser = userArrayGlobal.find(user => user.name === userName);
@@ -140,4 +143,40 @@ function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
     contactPhone.innerText = phone;
     let userInitals = getUserNameInitials(userName);
     contactProfilImg.innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
+}
+
+function handleResizeScreen() {
+    let isSmallScreen = window.innerWidth < 1025;
+    handleContent(isSmallScreen);
+}
+
+function handleContent(isSmallScreen) {
+    if (isSmallScreen && !showContact) {
+        document.querySelector('.content-left').style.display = 'flex';
+        document.querySelector('.content-right').style.display = 'none';
+        showAddUserIconMoblie();
+        showContact = false;
+    } else if (isSmallScreen && showContact) {
+        document.querySelector('.content-left').style.display = 'none';
+        document.querySelector('.content-right').style.display = 'flex';
+        showContact = true;
+    } else {
+        document.querySelector('.content-right').style.display = 'flex';
+        document.querySelector('.content-left').style.display = 'flex';
+    }
+}
+
+function showContactMobile() {
+    if (window.innerWidth < 1025) {
+        document.querySelector('.content-left').style.display = 'none';
+        document.querySelector('.content-right').style.display = 'flex';
+        document.querySelector('.add-user-icon').style.display = 'none';
+        document.querySelector('.contacts-options-icon').style.display = 'flex';
+        showContact = true;
+    }
+
+}
+
+function showAddUserIconMoblie() {
+    document.querySelector('.add-user-icon').style.display = 'flex';
 }

@@ -172,6 +172,10 @@ h3 {
         flex-direction: column-reverse;
     }
 
+    .site-wrapper {
+        margin-bottom: 100px;
+    }
+
     .metric-number {
         font-size: 47px;
     }
@@ -193,7 +197,6 @@ h3 {
         height: 40px;
         width: 40px;
     }
-
 
     .summary-content__header.content-wrapper {
         flex-direction: column;
@@ -235,9 +238,9 @@ h3 {
         width: 100%;
     }
 
-.metrics__box  {
-    justify-content: space-evenly;
-}
+    .metrics__box {
+        justify-content: space-evenly;
+    }
 
     .metrics__box.metrics__box-top.metrics__icon-todo {
         border-radius: 20px;

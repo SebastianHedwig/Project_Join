@@ -37,7 +37,7 @@ main {
     flex-direction: column;
     align-items: center;
     width: 38%;
-    box-shadow: 0.25rem 0rem 0.75rem  0rem rgba(0, 0, 0, 0.1);
+    box-shadow: 0.25rem 0rem 0.75rem 0rem rgba(0, 0, 0, 0.1);
     min-width: 26.875rem;
     height: 100%;
     background-color: var(--color-white);
@@ -236,4 +236,97 @@ main {
 
 .details__email {
     color: var(--color-email);
+}
+
+.add-user-icon {
+    display: none;
+}
+
+.contacts-options-icon {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+
+    .content-left__button-holder {
+        display: none;
+    }
+
+    .contact-list {
+        margin-bottom: 100px;
+        padding: 0px 16px;
+    }
+
+    .content-left {
+        width: 100%;
+    }
+
+    .content-right {
+        width: 100%;
+        margin-top: 40px;
+        padding-left: 16px;
+    }
+
+    #contacts-content {
+        padding: 0;
+    }
+
+    .header__bluestrip {
+        width: 90px;
+        height: 0;
+        border-top: 0.1875rem solid;
+        border-color: var(--color-lightblue);
+        border-radius: 0.1875rem;
+        order: 3
+    }
+
+    .content-right__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .content-right__contact-info-card {
+        margin-bottom: 100px;
+        overflow-y: scroll;
+    }
+
+    .contact-info-card__header{
+        gap: 20px;
+    }
+
+    .add-user-icon {
+        display: flex;
+        position: fixed;
+        bottom: 132px;
+        right: 16px;
+        width: auto;
+        height: 70px;
+    }
+
+    .add-user-icon:active {
+        content: url('../assets/img/contacts-add-user-active.svg');
+    }
+
+    .contacts-options-icon {
+        display: none;
+        position: fixed;
+        bottom: 132px;
+        right: 16px;
+        width: auto;
+        height: 70px;
+    }
+
+    .contacts-options-icon:active {
+        content: url('../assets/img/contacts-options-active.svg');
+    }
+
+    .manage-contact__actions {
+        display: none;
+    }
+
+    .contact-info__details {
+        gap: 15px;
+    }
 }
