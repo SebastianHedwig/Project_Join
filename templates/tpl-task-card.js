@@ -25,8 +25,8 @@ function getTasksTemplate(task) {
 
   // Kategorie-Klassen
   const categoryMap = {
-    userStory: 'task__category',
-    technicalTask: 'task__category2'
+    'User Story': 'task__category',
+    'Technical Task': 'task__category2'
   };
   const categoryClass = categoryMap[task.category] || 'task__category';
 
