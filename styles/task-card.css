@@ -57,19 +57,26 @@
 }
 
 .task__progressbar {
-  --progress: 0%;
+  position: relative;
+  width: 100%;
   height: 0.5rem;
   border-radius: 10px;
-  background: linear-gradient(
-    to right,
-    #4589ff 0%,
-    #00bee8 var(--progress),
-    #eeeeee var(--progress),
-    #eeeeee 100%
-  );
-  flex: 1;
-  transition: background 0.5s ease-in-out;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.15);
+  background: #eeeeee;
+  overflow: auto;
+}
+
+.task__progressbar::after {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: var(--progress);
+  background: linear-gradient(to right, #4589ff, #00bee8, #00f88c);
+  border-radius: 10px;
+  transition: width 1.2s ease-in-out;
+}
+
+.task__subtasks {
+  text-wrap: nowrap;
 }
 
 .task__assignment-and-priority-box {
@@ -92,16 +99,14 @@
   padding: 0.5rem 0;
 }
 
-.task__assignments img {
+.task__assignments svg {
   height: 2.5rem;
   border-radius: 50%;
-  border: 1px solid var(--color-white);
   object-fit: cover;
-  margin-left: -0.75rem;
-  transition: transform 0.05s ease, z-index 0.05s ease;
+  margin-left: -1.5rem;
 }
 
-.task__assignments img:first-child {
+.task__assignments svg:first-child {
   margin-left: 0;
 }
 
@@ -119,10 +124,5 @@
   text-transform: uppercase;
   margin-left: 1rem;
   transition: transform 0.05s ease, z-index 0.05s ease;
+  cursor: default;
 }
-/* OPTIONAL - WENN ZUM SCHLUSS NOCH ZEIT */
-/* .task_assignments img:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-    z-index: 2;
-} */

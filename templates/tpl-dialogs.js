@@ -27,20 +27,17 @@ function getTaskInfoDlgTpl(task) {
           src="${getPriorityImg(task.priority)}"
           alt="priority icon">
       </div>
-
-      <div class="dlg__main__task-assignments">
-        <span class="dlg__main__assignments-title">Assigned to:</span>
-          <div class="task__assignments">
-            ${renderAssignedUsers(task.assignedContacts)}
+        <div class="scroll-wrapper">
+          <div class="dlg__main__task-assignments">
+            <span class="dlg__main__assignments-title">Assigned to:</span>
+            <div class="task__assignments">${renderAssignedUsers(task.assignedContacts)}</div>
           </div>
-      </div>
 
-      <div class="dlg__main__task-subtask-box">
-        <span class="dlg__main__task-subtask-title">Subtasks:</span>
-        <div class="subtasks-content">
-          ${renderSubtasks(task.subtasks, task.id)}
+          <div class="dlg__main__task-subtask-box">
+            <span class="dlg__main__task-subtask-title">Subtasks:</span>
+            <div class="subtasks-content">${renderSubtasks(task.subtasks, task.id)}</div>
+          </div>
         </div>
-      </div>
     </main>
 
     <footer class="dlg__footer">
@@ -170,7 +167,7 @@ function getAddTaskDlgTpl(defaultTaskState = "to-do") {
 
 function getAssignmentListUserTpl(user, checked = false) {
   const initials = getUserNameInitials(user.name || '');
-  const color = user.profilImgColor || '#3b82f6';
+  const color = user.profilImgColor;
 
   return /*html*/ `
     <li data-user-id="${user.id}" class="${checked ? 'active' : ''}">
@@ -189,14 +186,34 @@ function getAssignmentListUserTpl(user, checked = false) {
   `;
 }
 
-
 function getAssignedUserSvgTpl(user) {
   const initials = getUserNameInitials(user.name || '');
-  const color = user.profilImgColor || '#3b82f6';
+  const color = user.profilImgColor;
   return /*html*/ `
     <svg width="42" height="42" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
       <circle cx="21" cy="21" r="20" fill="${color}" stroke="white" stroke-width="2" />
       <text x="21" y="23" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="white" font-family="sans-serif">${initials}</text>
+    </svg>
+  `;
+}
+
+function getProgressbarAndTaskInfoTpl(percent, doneSubtasks, totalSubtasks) {
+  const label = totalSubtasks === 1 ? 'Subtask' : 'Subtasks';
+  return /*html*/ `
+    <span class="task__progressbar" style="--progress:${percent}%;"></span>
+    <span class="task__subtasks">${doneSubtasks} / ${totalSubtasks} ${label}</span>
+  `;
+}
+
+function getAssignedUserInCardTpl(user) {
+  const initials = getUserNameInitials(user.name);
+  const color = user.profilImgColor;
+  return /*html*/ `
+    <svg width="32" height="32" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+      <title>${user.name}</title>
+      <circle cx="21" cy="21" r="20" fill="${color}" stroke="white" stroke-width="2" />
+      <text x="21" y="23" text-anchor="middle" dominant-baseline="middle"
+            font-size="12" fill="white" font-family="sans-serif">${initials}</text>
     </svg>
   `;
 }

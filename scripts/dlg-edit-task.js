@@ -11,7 +11,6 @@ function getSelectedPriorityFromEditDialog() {
   return null;
 }
 
-
 async function saveEditedTask(taskId) {
   const titleInput = document.getElementById('title-input');
   const titleBox = titleInput?.closest('.dlg-edit__main__title-box');
@@ -109,6 +108,16 @@ async function saveEditedTask(taskId) {
   } catch (err) {
     console.error('Fehler beim Speichern:', err);
   }
+}
+
+async function deleteSubtask(taskId, subtaskKey, rowEl) {
+  const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
+  await fetch(url, { method: 'DELETE' });
+
+  await getData();
+  loadTasks();
+  updateAllPlaceholders?.();
+  renderTaskInfoDlg(taskId);
 }
 
 

@@ -120,6 +120,11 @@ main {
   height: calc(100vh - 8rem);
 }
 
+.scroll-wrapper {
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
 h1 {
   font-size: 3.75rem;
   font-weight: bold;
