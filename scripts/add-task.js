@@ -174,10 +174,10 @@ function relocateRequiredInfo() {
 }
 
 function toggleFirstInfoBox(isSmallScreen) {
-  let requiredInfo = document.getElementById('required');
-  if (isSmallScreen) {
+  let requiredInfo = document.querySelector('.required');
+  if (isSmallScreen && !requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.add('d-none');
-  } else {
+  } else if (!isSmallScreen && requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.remove('d-none');
   }
 }
