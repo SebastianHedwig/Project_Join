@@ -9,7 +9,7 @@ function initSubtaskInput() {
     if (event.key === 'Enter' && subtaskInputRef.value.trim() !== '') {
       event.preventDefault();
       const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-      subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
+      subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
       subtaskInputRef.value = '';
     }
 
@@ -25,6 +25,10 @@ function initSubtaskHandlers() {
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
   if (!subtaskListRef) return;
 
+  subtaskListRef.addEventListener('dblclick', (event) => {
+    handleSubtaskEdit(event);
+  });
+
   subtaskListRef.addEventListener('click', (event) => {
     const listItem = event.target.closest('.dlg-edit__main__subtask.edit-mode');
     if (listItem) {
@@ -35,10 +39,8 @@ function initSubtaskHandlers() {
       }
     }
 
-    handleSubtaskEdit(event);
     handleSubtaskConfirm(event);
     handleSubtaskDelete(event);
-
   });
 }
 
@@ -53,7 +55,7 @@ function initSubtaskIconButtons() {
       event.preventDefault();
       if (subtaskInputRef.value.trim() !== '') {
         const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-        subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
+        subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
         subtaskInputRef.value = '';
         subtaskInputRef.focus();
       }
@@ -94,7 +96,7 @@ function handleSubtaskEdit(event) {
   const currentText = textNode?.nodeValue?.replace('•', '').trim() || '';
 
   const newHTML = getEditSubtaskTpl(currentText);
-  listItem.insertAdjacentHTML('afterend', newHTML);
+  listItem.insertAdjacentHTML('afterend', newHTML); // Hier nochmal drüber schauen
   listItem.remove();
 
   const subtaskList = document.querySelector('.dlg-edit__subtask-list');
@@ -109,7 +111,7 @@ function handleSubtaskEdit(event) {
       if (event.key === 'Escape') {
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
-        subtaskList.insertAdjacentHTML('beforeend', originalHTML);
+        subtaskList.insertAdjacentHTML('beforeend', originalHTML); // Hier nochmal drüber schauen
       }
     });
   }
