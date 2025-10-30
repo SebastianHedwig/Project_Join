@@ -126,12 +126,12 @@
   height: stretch;
   min-width: 0;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  cursor: grab;
 }
 
 .task:hover {
   transform: translateY(-2px);
   box-shadow: 0 0.375rem 0.875rem rgba(0, 0, 0, 0.15);
+  cursor: grab;
 }
 
 .task:active {
