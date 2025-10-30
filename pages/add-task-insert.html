@@ -53,15 +53,25 @@
 
                 <div class="dlg-edit__main__assigned-user-container"></div>
             </div>
-            <div class="add-task__field subtasks__input--border-color">
-                <label for="subtasks">Subtasks</label>
-                <input type="text" id="subtasks" placeholder="Add new subtask">
+            <div class="dlg-edit__main__subtasks-box">
+                <div class="dlg-edit__main__add-subtask-box">
+                    <span class="dlg-edit__main__subtask-title">Subtasks</span>
+                    <div class="subtask-input-wrapper">
+                      <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text" placeholder="Add new Subtask" />
+                      <div class="subtask-input-icons">
+                          <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg" alt="Cancel Subtask" />
+                          <div class="separator"></div>
+                          <img class="subtask-input__confirm-img" src="../assets/img/check.svg" alt="Add Subtask" />
+                      </div>
+                    </div>
+                </div>
+                <ul class="dlg-edit__subtask-list"></ul>
             </div>
         </div>
     </div>
 
     <div class="task-content__footer">
-        <span id="required" class="required required--before"> This field is required</span>
+        <span class="required required--before"> This field is required</span>
         <div class="task-content__footer-btn">
             <button type="button"  onclick="clearTask()" class="empty-btn">Clear
                 <img src="../assets/img/close.svg" alt="close icon">

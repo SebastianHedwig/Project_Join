@@ -49,6 +49,12 @@ async function renderAddTaskDlg(defaultTaskState = "to-do") {
 
   await waitFor('.contact-options');
   populateAssignmentListFromFirebase({ assignedContacts: [] });
+
+  await waitFor('.dlg-edit__subtask-list');
+  initSubtaskInput();
+  initSubtaskHandlers();
+  initSubtaskIconButtons();
+
   displayDlg();
 }
 
