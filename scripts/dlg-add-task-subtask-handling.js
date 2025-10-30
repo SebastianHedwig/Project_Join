@@ -96,7 +96,7 @@ function handleSubtaskEdit(event) {
   const currentText = textNode?.nodeValue?.replace('•', '').trim() || '';
 
   const newHTML = getEditSubtaskTpl(currentText);
-  listItem.insertAdjacentHTML('afterend', newHTML); // Hier nochmal drüber schauen
+  listItem.insertAdjacentHTML('afterend', newHTML);
   listItem.remove();
 
   const subtaskList = document.querySelector('.dlg-edit__subtask-list');
@@ -109,13 +109,25 @@ function handleSubtaskEdit(event) {
 
     input.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
-        subtaskList.insertAdjacentHTML('beforeend', originalHTML); // Hier nochmal drüber schauen
+        subtaskList.insertAdjacentHTML('beforeend', originalHTML);
+      }
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const newText = input.value.trim();
+        if (newText) {
+          const newHTML = getSubtaskTpl(newText);
+          newListItem.insertAdjacentHTML('afterend', newHTML);
+          newListItem.remove();
+        }
       }
     });
   }
 }
+
 
 function handleSubtaskDelete(event) {
   const deleteBtn = event.target.closest('.subtask-edit-box__delete-img');
