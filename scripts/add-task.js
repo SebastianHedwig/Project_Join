@@ -103,9 +103,9 @@ async function createTask() {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
     dueDate: document.getElementById('due-date').value,
-    assignedContacts: getSelectedAssigmentIds(),
+    assignedContacts: getSelectedAssignmentIds(),
     category: getSelectedCategoryText(),
-    subtasks: buildSubtasksObject(),
+    subtasks: collectSubtasksFromEditDialog(),
     priority: chosenPriority,
     taskState: taskStateRef
   };
