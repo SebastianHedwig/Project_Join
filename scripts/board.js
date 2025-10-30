@@ -16,8 +16,8 @@ async function renderTaskInfoDlg(taskId) {
   const task = tasks.find(t => t.id === taskId);
   if (!task) return console.warn('Task not found:', taskId);
 
-  const box = document.getElementById("dlg-box");
-  box.innerHTML = getTaskInfoDlgTpl(task);
+  const dlgBox = document.getElementById("dlg-box");
+  dlgBox.innerHTML = getTaskInfoDlgTpl(task);
   displayDlg();
 }
 
@@ -26,8 +26,8 @@ async function renderTaskEditDlg(taskId) {
   const task = tasks.find(t => t.id === taskId);
   if (!task) return console.warn('Task not found:', taskId);
 
-  const box = document.getElementById("dlg-box");
-  box.innerHTML = getTaskEditDlgTpl(task);
+  const dlgBox = document.getElementById("dlg-box");
+  dlgBox.innerHTML = getTaskEditDlgTpl(task);
   displayDlg();
 
   initSubtaskInput();
@@ -46,6 +46,9 @@ async function renderAddTaskDlg(defaultTaskState = "to-do") {
 
   const insertElement = addTaskDlgRef.querySelector("[data-insert]");
   await InsertLoader.loadInsertByElement(insertElement);
+
+  await waitFor('.contact-options');
+  populateAssignmentListFromFirebase({ assignedContacts: [] });
   displayDlg();
 }
 

@@ -105,3 +105,34 @@ function onDeleteSubtaskMouseDown(e, taskId, subtaskKey, btnEl) {
   e.stopPropagation();
   deleteSubtask(taskId, subtaskKey, btnEl.closest('.dlg__main__task-subtask'));
 }
+
+async function toggleSubtaskChecked(taskId, subtaskKey, rowEl) {
+  const imgEl = rowEl.querySelector('img.checkbox');
+  if (!imgEl) return;
+
+  const wasChecked = imgEl.dataset.checked === 'true';
+  const willBeChecked = !wasChecked;
+
+  imgEl.dataset.checked = String(willBeChecked);
+  imgEl.src = getCheckboxImgSrc(willBeChecked);
+
+  let text = '';
+  const taskObj = tasks.find(t => t.id === taskId);
+  if (taskObj?.subtasks?.[subtaskKey]?.task) {
+    text = taskObj.subtasks[subtaskKey].task;
+  } else {
+    text = rowEl.querySelector('.subtask-text')?.textContent?.trim() || '';
+  }
+
+  const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
+  await fetch(url, {
+    method: 'PUT',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ task: text, taskChecked: willBeChecked })
+  });
+
+  await getData();
+  loadTasks();
+  updateAllPlaceholders?.();
+  renderTaskInfoDlg(taskId);
+}

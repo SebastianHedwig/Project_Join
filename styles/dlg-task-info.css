@@ -10,6 +10,8 @@
 }
 
 .dlg__main {
+  overflow-y: auto;
+  scrollbar-width: none;
   gap: 1.5rem;
   padding: 0 0.5rem;
 }

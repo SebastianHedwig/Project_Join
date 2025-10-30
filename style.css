@@ -76,7 +76,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   z-index: 100;
 }
 
@@ -118,6 +118,11 @@ main {
   overflow-y: auto;
   scrollbar-width: none;
   height: calc(100vh - 8rem);
+}
+
+.scroll-wrapper {
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 
 h1 {
