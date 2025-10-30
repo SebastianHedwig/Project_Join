@@ -103,9 +103,9 @@ async function createTask() {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
     dueDate: document.getElementById('due-date').value,
-    assignedContacts: getSelectedAssigmentIds(),
+    assignedContacts: getSelectedAssignmentIds(),
     category: getSelectedCategoryText(),
-    subtasks: buildSubtasksObject(),
+    subtasks: collectSubtasksFromEditDialog(),
     priority: chosenPriority,
     taskState: taskStateRef
   };
@@ -174,10 +174,10 @@ function relocateRequiredInfo() {
 }
 
 function toggleFirstInfoBox(isSmallScreen) {
-  let requiredInfo = document.getElementById('required');
-  if (isSmallScreen) {
+  let requiredInfo = document.querySelector('.required');
+  if (isSmallScreen && !requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.add('d-none');
-  } else {
+  } else if (!isSmallScreen && requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.remove('d-none');
   }
 }

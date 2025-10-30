@@ -23,8 +23,8 @@
 
     <main class="content-wrapper">
         <form class="useraccess-form">
-            <img class="useraccess-form__arrowicon" src="../assets/img/arrow-left-blue.svg"
-                alt="blue arrow that points to the left" onclick="location.href='../index.html'">
+            <a href="../index.html"><img class="useraccess-form__arrowicon" src="../assets/img/arrow-left-blue.svg"
+                    alt="blue arrow that points to the left"></a>
             <div class="useraccess-form__header">
                 <h1>Sign up</h1>
                 <div class="header__bluestrip"></div>
@@ -32,25 +32,30 @@
 
             <div class="form__inputfields">
                 <div id="name__wrapper" class="inputfield__wrapper">
-                    <input id="name" type="text" placeholder="Name" aria-label="name" onkeyup="handleNameValidation(this)">
+                    <input id="name" type="text" placeholder="Name" aria-label="name"
+                        onkeyup="handleNameValidation(this)">
                     <img src="../assets/img/person.svg" alt="icon of an person">
                 </div>
 
                 <div id="valid-email" class="inputfield__wrapper">
                     <input id="email" type="email" placeholder="E-Mail" />
-                    <small id="msg" style="color: var(--color-error); display:none; width: 12rem;"> ❌ invalid E-Mail</small>
+                    <small id="msg" style="color: var(--color-error); display:none; width: 12rem;"> ❌ invalid
+                        E-Mail</small>
                     <img src="../assets/img/mail.svg" alt="icon of an email">
                 </div>
 
                 <div id="password__wrapper" class="inputfield__wrapper">
-                    <input id="password" type="password" placeholder="Password" aria-label="password" onkeyup="handlePasswordInputChange(this)">
-                    <img id="password-icon" src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
+                    <input id="password" type="password" placeholder="Password" aria-label="password"
+                        onkeyup="handlePasswordInputChange(this)">
+                    <img id="password-icon" src="../assets/img/lock.svg" alt="icon of a lock"
+                        onclick="setPasswordVisibility(this)">
                 </div>
 
                 <div id="confirm-pw__wrapper" class="inputfield__wrapper">
                     <input id="confirm-password" type="password" placeholder="Confirm Password"
                         aria-label="confirm password" onkeyup="validatePasswordMatch()">
-                    <img id="confirm-password-icon" src="../assets/img/lock.svg" alt="icon of a lock" onclick="setPasswordVisibility(this)">
+                    <img id="confirm-password-icon" src="../assets/img/lock.svg" alt="icon of a lock"
+                        onclick="setPasswordVisibility(this)">
                     <p id="pw-error-warning" class="confirm-password__err-warning">Your passwords don't match. Please
                         try again.</p>
                 </div>
@@ -58,13 +63,14 @@
 
 
                 <p class="useraccess-form__privacy-policy">
-                    <input type="checkbox" id="check" onclick="evaluateFormValidity()"/>
+                    <input type="checkbox" id="check" onclick="evaluateFormValidity()" />
                     <label for="check"></label>
                     <span>I accept the <a href="./privacy-policy-external.html" target="_blank">Privacy Policy</a>
                     </span>
                 </p>
             </div>
-            <div id="sign-up-btn" role="button" aria-disabled="true" class="btn filled-btn disabled" onclick="sendSignupForm()">Sign up</div>
+            <div id="sign-up-btn" role="button" aria-disabled="true" class="btn filled-btn disabled"
+                onclick="sendSignupForm()">Sign up</div>
         </form>
         <overlay id="overlay" class="overlay d-none"></overlay>
     </main>

@@ -320,6 +320,11 @@ input[type="checkbox"]:checked+label:hover {
 }
 
 @media screen and (max-width: 1024px) {
+
+    body {
+        overflow-x: hidden;
+    }
+
     .header__joinlogo {
         width: 64px;
         height: 78px;
@@ -336,7 +341,7 @@ input[type="checkbox"]:checked+label:hover {
 
     .header__signup.mobileview {
         display: flex;
-        margin: 10% 0;
+        margin: 0 0 10% 0;
         width: 100%;
     }
 
@@ -346,6 +351,7 @@ input[type="checkbox"]:checked+label:hover {
 
     .useraccess-form {
         padding: 32px calc(-29px + 14vw);
+        margin-bottom: 10%;
     }
 
     .inputfield__wrapper {

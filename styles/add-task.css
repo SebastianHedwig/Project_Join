@@ -228,11 +228,14 @@ a:focus-visible {
     height: fit-content;
     width: fit-content;
     position: fixed;
-    bottom: 110px;
+    bottom: 100px;
+    padding: 10px 0px;
+    margin: 0;
+    background-color: var(--color-background);
   }
 
   .task-content__footer-btn {
-    width: 90vw;
+    width: 99vw;
     justify-content: center;
     gap: 2rem;
   }
