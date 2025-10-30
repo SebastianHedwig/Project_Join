@@ -222,10 +222,10 @@ h3 {
     .summary-content__left {
         width: 100%;
         max-width: 550px;
-        padding-bottom: 10px;
+        padding-bottom: 50px;
         height: 100%;
         gap: 18px;
-                overflow-y: scroll;
+        overflow-y: scroll;
     }
 
     .summary-content__right {
