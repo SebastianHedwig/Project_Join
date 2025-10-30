@@ -1,6 +1,8 @@
 
 let chosenPriority = "medium";
 
+window.addEventListener("resize", relocateRequiredInfo);
+window.addEventListener("load", relocateRequiredInfo);
 
 async function initAddTask() {
   await getData();
@@ -76,7 +78,7 @@ window.handleCreateTask = function handleCreateTask(event) {
 async function createTask() {
 
   const taskStateRef = document.getElementById('task-state').value;
-  
+
   let newTask = {
     title: document.getElementById('title').value,
     description: document.getElementById('description').value,
@@ -87,10 +89,10 @@ async function createTask() {
     priority: chosenPriority,
     taskState: taskStateRef
   };
-  
+
   const key = await getNextTaskKey();
   await saveTaskToFirebase(newTask, key);
-  
+
   showAlertOverlay();
   console.log(tasks);
 }
@@ -139,4 +141,30 @@ function clearTask() {
   const form = document.getElementById('task-form');
   form.reset();
   resetPriorityButtons();
+}
+
+function relocateRequiredInfo() {
+  const isSmallScreen = window.innerWidth < 1025;
+  toggleFirstInfoBox(isSmallScreen);
+  toggleSecondInfoBox(isSmallScreen);
+}
+
+function toggleFirstInfoBox(isSmallScreen) {
+  let requiredInfo = document.getElementById('required');
+  if (isSmallScreen) {
+    requiredInfo.classList.add('d-none');
+  } else {
+    requiredInfo.classList.remove('d-none');
+  }
+}
+
+function toggleSecondInfoBox(isSmallScreen) {
+  let requiredInfoDisplayed = document.getElementById('required-mobile');
+  let rightColumn = document.querySelector('.add-task__right-column');
+  if (isSmallScreen && !requiredInfoDisplayed) {
+    let insertHTML = getFieldRequiredInfo();
+    rightColumn.innerHTML += insertHTML;
+  } else if(!isSmallScreen && requiredInfoDisplayed){
+    requiredInfoDisplayed.remove();
+  }
 }

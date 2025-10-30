@@ -12,6 +12,21 @@ window.addEventListener("resize", handleResizeScreenContacts);
 window.addEventListener("load", handleResizeScreenContacts);
 
 
+window.addEventListener("DOMContentLoaded", () => {
+    let hoverImages = [
+        "../assets/img/arrow-left-blue-hover.svg",
+        "../assets/img/contacts-add-user-active.svg",
+        "../assets/img/contacts-options-active.svg",
+        "../assets/img/edit-with-text-hover.svg",
+        "../assets/img/delete-with-text-hover.svg"
+    ];
+    hoverImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+});
+
+
 async function getDatafromFirebase() {
     try {
         let response = await fetch(DB_URL + "users/" + ".json");
@@ -211,6 +226,17 @@ function handleMenuClick(event) {
     if (isSmallScreen && !menu.contains(event.target)) {
         hideContactActionMenu();
     }
+}
+
+function AddContactSuccessAnimation() {
+    const successDlg = getSuccessDlg();
+    document.body.insertAdjacentHTML('beforeend', successDlg);
+    const successDlgElement = document.querySelector('.create-contact-successful');
+    requestAnimationFrame(() => successDlgElement.classList.remove('invisible'));
+    setTimeout(() => {
+        successDlgElement.classList.add('invisible');
+        setTimeout(() => successDlgElement.remove(), 300);
+    }, 1500);
 }
 
 

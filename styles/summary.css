@@ -170,6 +170,7 @@ h3 {
 @media screen and (max-width: 1024px) {
     body {
         flex-direction: column-reverse;
+        overflow: hidden;
     }
 
     .site-wrapper {
@@ -221,6 +222,7 @@ h3 {
     .summary-content__left {
         width: 100%;
         max-width: 550px;
+        padding-bottom: 10px;
     }
 
     .summary-content__right {
@@ -228,8 +230,10 @@ h3 {
     }
 
     .summary-content__metrics.content-wrapper {
-        margin-top: 48px;
+        margin-top: 40px;
         justify-content: center;
+        overflow-y: scroll;
+        height: calc(100vh - 380px);
     }
 
     .summary-content__metrics-row {

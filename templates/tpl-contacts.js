@@ -36,7 +36,7 @@ function getAddContactDlgTpl() {
                             <div class="inputfields__button-holder">
                                 <button class="empty-btn" onclick="removeAnimationClass()">Cancel<img src="../assets/img/close.svg"
                                         alt="icon of the letter X"></button>
-                                <button class="filled-btn" onclick="putNewContactToDB()">Create contact<img src="../assets/img/done.svg"
+                                <button class="filled-btn" onclick="putNewContactToDB(); AddContactSuccessAnimation()">Create contact<img src="../assets/img/done.svg"
                                         alt="icon of a checkmark"></button>
                             </div>
                         </div>
@@ -92,6 +92,14 @@ function getEditContactDlgTpl() {
     `
 }
 
+function getSuccessDlg() {
+    return /*html*/ `
+    <div class="create-contact-successful invisible">
+        Contact succesfully created
+    </div>
+    `
+}
+
 function getUserInitialLetterSectionTpl(letter) {
     return /*html*/ `
     <div id="initial-letter__wrapper-${letter}">
@@ -111,8 +119,9 @@ function getUserContactListItemTpl(username, email, userImg) {
             </div>
     </div>
     `
-
 }
+
+
 
 
 

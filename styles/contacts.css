@@ -250,6 +250,27 @@ main {
     display: none;
 }
 
+.create-contact-successful {
+    position: fixed;
+    top: calc(100vh - 100px);
+    left: calc(880px + (100vw - 1430px) * 0.359);
+    transform: translate(-50%, -50%);
+    z-index: 200;
+    height: fit-content;
+    padding: 25px 30px;
+    width: 320px;
+    background-color: var(--color-maincolor);
+    font-size: 20px;
+    color: var(--color-white);
+    border-radius: 20px;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    transition: all 500ms ease-in-out;
+}
+
+.create-contact-successful.invisible {
+    transform: translate(200vw, 0px);
+}
+
 @media screen and (max-width: 1024px) {
 
     .content-left__button-holder {
@@ -358,7 +379,7 @@ main {
         padding: 20px;
         width: fit-content;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-        transition: all 300ms ease-in-out;
+        transition: all 100ms ease-in-out;
     }
 
     .manage-contact__actions.invisible {
@@ -373,5 +394,14 @@ main {
 
     .contact-info__details {
         gap: 15px;
+    }
+
+    .create-contact-successful {
+        top: calc(100vh - 300px);
+        left: 50vw;
+    }
+
+    .create-contact-successful.invisible {
+        transform: translate(-50%, 200vh);
     }
 }

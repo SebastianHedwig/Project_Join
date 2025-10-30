@@ -80,7 +80,7 @@ a:focus-visible {
 }
 
 @media screen and (max-width: 1024px) {
-    nav {
+    #nav-menu {
         position: fixed;
         bottom: 0;
         left: 0;

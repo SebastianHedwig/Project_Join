@@ -86,7 +86,8 @@
                                 <h1>Contacts</h1>
                                 <div class="header__bluestrip"></div>
                                 <span>Better with a team</span>
-                                <img class="blue-arrow-back" src="../assets/img/arrow-left-blue.svg" alt="Blue arrow that points to the left" onclick="showContactList()">
+                                <img class="blue-arrow-back" src="../assets/img/arrow-left-blue.svg"
+                                    alt="Blue arrow that points to the left" onclick="showContactList()">
                             </div>
 
                             <div class="content-right__contact-info-card invisible">
@@ -96,7 +97,8 @@
                                         <h3 id="contact-name"></h3>
                                         <div class="manage-contact__actions invisible">
                                             <img class="action__edit" src="../assets/img/edit-with-text.svg"
-                                                alt="a grey pencil" onclick="renderEditContactDlg(); hideContactActionMenu()">
+                                                alt="a grey pencil"
+                                                onclick="renderEditContactDlg(); hideContactActionMenu()">
                                             <img class="action__delete" src="../assets/img/delete-with-text.svg"
                                                 alt="a grey trashbin" onclick="deleteUserFromDB()">
                                         </div>
@@ -111,13 +113,15 @@
                                     <p id="contact-phone"></p>
                                 </div>
                             </div>
+
                         </div>
                     </section>
                 </div>
                 <overlay id="overlay" class="overlay d-none"></overlay>
                 <dialog id="dlg-box" class="add-contact__dialog d-none"></dialog>
                 <img src="../assets/img/contacts-add-user.svg"
-                    alt="The outline of a person with a plus symbol next to it" class="add-user-icon" onclick="renderAddContactDlg()">
+                    alt="The outline of a person with a plus symbol next to it" class="add-user-icon"
+                    onclick="renderAddContactDlg()">
                 <img src="../assets/img/contacts-options.svg" alt="Three dots on top of each other"
                     class="contacts-options-icon" onclick="displayContactActionMenu()">
             </main>
