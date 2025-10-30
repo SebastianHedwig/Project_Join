@@ -174,7 +174,7 @@ function relocateRequiredInfo() {
 }
 
 function toggleFirstInfoBox(isSmallScreen) {
-  let requiredInfo = document.querySelector('.required');
+  let requiredInfo = document.getElementById('required-info');
   if (isSmallScreen && !requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.add('d-none');
   } else if (!isSmallScreen && requiredInfo.classList.contains('d-none')) {
@@ -183,12 +183,11 @@ function toggleFirstInfoBox(isSmallScreen) {
 }
 
 function toggleSecondInfoBox(isSmallScreen) {
-  let requiredInfoDisplayed = document.getElementById('required-mobile');
   let rightColumn = document.querySelector('.add-task__right-column');
-  if (isSmallScreen && !requiredInfoDisplayed) {
+  if (isSmallScreen && !document.getElementById('required-mobile')) {
     let insertHTML = getFieldRequiredInfo();
     rightColumn.innerHTML += insertHTML;
-  } else if (!isSmallScreen && requiredInfoDisplayed) {
-    requiredInfoDisplayed.remove();
+  } else if (!isSmallScreen && document.getElementById('required-mobile')) {
+    document.getElementById('required-mobile').remove();
   }
 }

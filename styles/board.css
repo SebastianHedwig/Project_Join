@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .board-content {
   margin-top: 8rem;
 }
@@ -123,10 +127,12 @@
   flex-direction: column;
   margin-top: 1rem;
   gap: 1rem;
-  height: stretch;
   min-width: 0;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: grab;
+  overflow-y: scroll;
+  height: calc(100vh - 370px);
+  padding: 10px 10px 30px 10px;
 }
 
 .task:hover {

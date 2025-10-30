@@ -3,91 +3,93 @@
         <h1>Add Task</h1>
     </div>
     <form id="task-form" onsubmit="handleCreateTask(event)">
-    <div class="task-content__container">
-        <div class="add-task__left-column">
-            <div class="add-task__field">
-                <label for="title" class="required--after">Title</label>
-                <input class="input--validation-modifier" type="text" id="title" placeholder="Enter a title" required>
-            </div>
-            <div class="add-task__field">
-                <label for="description">Description</label>
-                <textarea name="Add Task Description" id="description" placeholder="Enter a Description"></textarea>
-            </div>
-            <div class="add-task__field">
-                <label for="due-date" class="required required--after">Due date</label>
-                <input onclick="setMinDueDate()" class="input--validation-modifier" type="date" id="due-date" placeholder="dd/mm/yyyy" required>
-            </div>
-        </div>
-        <div class="grey-seperator"></div>
-        <div class="add-task__right-column">
-            <div class="add-task__field">
-                <span id="priority-label">Priority</span>
-                <div class="priority-options" role="group" aria-labelledby="priority-label">
-                    <button type="button" class="priority-options-btn" id="urgent" 
-                        onclick="changePriorityBtn(this)">Urgent <img
-                            src="../assets/img/priority-urgent.svg"
-                            data-default="../assets/img/priority-urgent.svg"
-                            data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></button>
-                    <button type="button" class="priority-options-btn" id="medium"
-                        onclick="changePriorityBtn(this)">Medium <img
-                            src="../assets/img/priority-medium.svg"
-                            data-default="../assets/img/priority-medium.svg"
-                            data-selected="../assets/img/priority-medium-active.svg" alt="medium"></button>
-                    <button type="button" class="priority-options-btn" id="low"
-                        onclick="changePriorityBtn(this)">Low <img 
-                            src="../assets/img/priority-low.svg"
-                            data-default="../assets/img/priority-low.svg"
-                            data-selected="../assets/img/priority-low-active.svg"
-                            alt="low"></button>
+        <div class="task-content__container">
+            <div class="add-task__left-column">
+                <div class="add-task__field">
+                    <label for="title" class="required--after">Title</label>
+                    <input class="input--validation-modifier" type="text" id="title" placeholder="Enter a title"
+                        required>
+                </div>
+                <div class="add-task__field">
+                    <label for="description">Description</label>
+                    <textarea name="Add Task Description" id="description" placeholder="Enter a Description"></textarea>
+                </div>
+                <div class="add-task__field">
+                    <label for="due-date" class="required required--after">Due date</label>
+                    <input onclick="setMinDueDate()" class="input--validation-modifier" type="date" id="due-date"
+                        placeholder="dd/mm/yyyy" required>
                 </div>
             </div>
-           
-            <div class="dlg-edit__main__task-assignments-box">
-                <span class="dlg-edit__main__assignments-title">Assigned to</span>
+            <div class="grey-seperator"></div>
+            <div class="add-task__right-column">
+                <div class="add-task__field">
+                    <span id="priority-label">Priority</span>
+                    <div class="priority-options" role="group" aria-labelledby="priority-label">
+                        <button type="button" class="priority-options-btn" id="urgent"
+                            onclick="changePriorityBtn(this)">Urgent <img src="../assets/img/priority-urgent.svg"
+                                data-default="../assets/img/priority-urgent.svg"
+                                data-selected="../assets/img/priority-urgent-active.svg" alt="urgent"></button>
+                        <button type="button" class="priority-options-btn" id="medium"
+                            onclick="changePriorityBtn(this)">Medium <img src="../assets/img/priority-medium.svg"
+                                data-default="../assets/img/priority-medium.svg"
+                                data-selected="../assets/img/priority-medium-active.svg" alt="medium"></button>
+                        <button type="button" class="priority-options-btn" id="low"
+                            onclick="changePriorityBtn(this)">Low <img src="../assets/img/priority-low.svg"
+                                data-default="../assets/img/priority-low.svg"
+                                data-selected="../assets/img/priority-low-active.svg" alt="low"></button>
+                    </div>
+                </div>
+
+                <div class="dlg-edit__main__task-assignments-box">
+                    <span class="dlg-edit__main__assignments-title">Assigned to</span>
                     <div class="contacts-selection" id="contact-select">
-                      <div class="search-wrapper">
-                        <input type="text" id="contact-search" class="selector" placeholder="Search contacts to assign..." autocomplete="off"/>
-                      </div>
-                      <ul class="contact-options"></ul>
+                        <div class="search-wrapper">
+                            <input type="text" id="contact-search" class="selector"
+                                placeholder="Search contacts to assign..." autocomplete="off" />
+                        </div>
+                        <ul class="contact-options"></ul>
                     </div>
 
-                <div class="dlg-edit__main__assigned-user-container"></div>
-            </div>
-             <div class="add-task__field">
-                <label for="category" class="required--after">Category</label>
-                <select name="category" id="category" required>
-                    <option value="" disabled selected hidden>Select task category</option>
-                    <option value="technicalTask">Technical Task</option>
-                    <option value="userStory">User Story</option>
-                </select>
-            </div>
-            <div class="dlg-edit__main__subtasks-box">
-                <div class="dlg-edit__main__add-subtask-box">
-                    <span class="dlg-edit__main__subtask-title">Subtasks</span>
-                    <div class="subtask-input-wrapper">
-                      <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text" placeholder="Add new Subtask" />
-                      <div class="subtask-input-icons">
-                          <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg" alt="Cancel Subtask" />
-                          <div class="separator"></div>
-                          <img class="subtask-input__confirm-img" src="../assets/img/check.svg" alt="Add Subtask" />
-                      </div>
-                    </div>
+                    <div class="dlg-edit__main__assigned-user-container"></div>
                 </div>
-                <ul class="dlg-edit__subtask-list"></ul>
+                <div class="add-task__field">
+                    <label for="category" class="required--after">Category</label>
+                    <select name="category" id="category" required>
+                        <option value="" disabled selected hidden>Select task category</option>
+                        <option value="technicalTask">Technical Task</option>
+                        <option value="userStory">User Story</option>
+                    </select>
+                </div>
+                <div class="dlg-edit__main__subtasks-box">
+                    <div class="dlg-edit__main__add-subtask-box">
+                        <span class="dlg-edit__main__subtask-title">Subtasks</span>
+                        <div class="subtask-input-wrapper">
+                            <input id="subtask-input" class="subtask-input dlg-edit__input-text" type="text"
+                                placeholder="Add new Subtask" />
+                            <div class="subtask-input-icons">
+                                <img class="subtask-input__cancel-img" src="../assets/img/close-delete-cross.svg"
+                                    alt="Cancel Subtask" />
+                                <div class="separator"></div>
+                                <img class="subtask-input__confirm-img" src="../assets/img/check.svg"
+                                    alt="Add Subtask" />
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="dlg-edit__subtask-list"></ul>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="task-content__footer">
-        <span class="required required--before d-none"> This field is required</span>
-        <div class="task-content__footer-btn">
-            <button type="button"  onclick="clearTask()" class="empty-btn">Clear
-                <img src="../assets/img/close.svg" alt="close icon">
-            </button>
-            <button type="submit" class="filled-btn">Create Task
-                <img src="../assets/img/done.svg" alt="done icon">
-            </button>
+        <div class="task-content__footer">
+            <span id="required-info" class="required required--before d-none"> This field is required</span>
+            <div class="task-content__footer-btn">
+                <button type="button" onclick="clearTask()" class="empty-btn">Clear
+                    <img src="../assets/img/close.svg" alt="close icon">
+                </button>
+                <button type="submit" class="filled-btn">Create Task
+                    <img src="../assets/img/done.svg" alt="done icon">
+                </button>
+            </div>
         </div>
-    </div>
     </form>
 </section>
