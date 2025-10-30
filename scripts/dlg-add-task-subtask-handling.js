@@ -2,14 +2,21 @@
 function initSubtaskInput() {
   const subtaskInputRef = document.getElementById('subtask-input');
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
-
   if (!subtaskInputRef || !subtaskListRef) return;
 
   subtaskInputRef.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' && subtaskInputRef.value.trim() !== '') {
+    const inputValue = subtaskInputRef.value.trim();
+
+    if (event.key === 'Enter' && inputValue !== '') {
       event.preventDefault();
-      const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-      subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
+
+      const template = document.createElement('template');
+      template.innerHTML = getSubtaskTpl(inputValue).trim();
+
+      const newSubtaskEl = template.content.firstElementChild;
+
+      subtaskListRef.appendChild(newSubtaskEl);
+
       subtaskInputRef.value = '';
     }
 
@@ -50,15 +57,24 @@ function initSubtaskIconButtons() {
   const cancelRef = document.querySelector('.subtask-input__cancel-img');
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
 
+  if (!subtaskInputRef || !subtaskListRef) return;
+
   if (confirmRef) {
     confirmRef.addEventListener('mousedown', (event) => {
       event.preventDefault();
-      if (subtaskInputRef.value.trim() !== '') {
-        const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-        subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
-        subtaskInputRef.value = '';
-        subtaskInputRef.focus();
-      }
+
+      const inputValue = subtaskInputRef.value.trim();
+      if (inputValue === '') return;
+
+
+      const template = document.createElement('template');
+      template.innerHTML = getSubtaskTpl(inputValue).trim();
+      const newSubtaskEl = template.content.firstElementChild;
+
+      subtaskListRef.appendChild(newSubtaskEl);
+
+      subtaskInputRef.value = '';
+      subtaskInputRef.focus();
     });
   }
 
@@ -112,7 +128,7 @@ function handleSubtaskEdit(event) {
         event.preventDefault();
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
-        subtaskList.insertAdjacentHTML('beforeend', originalHTML);
+        subtaskList.insertAdjacentHTML('beforeend', originalHTML);  // Hier nochmal drüber schauen
       }
 
       if (event.key === 'Enter') {
@@ -120,7 +136,7 @@ function handleSubtaskEdit(event) {
         const newText = input.value.trim();
         if (newText) {
           const newHTML = getSubtaskTpl(newText);
-          newListItem.insertAdjacentHTML('afterend', newHTML);
+          newListItem.insertAdjacentHTML('afterend', newHTML);  // Hier nochmal drüber schauen
           newListItem.remove();
         }
       }
@@ -152,7 +168,7 @@ function handleSubtaskConfirm(event) {
 
   const newHTML = getSubtaskTpl(newText);
 
-  listItem.insertAdjacentHTML('afterend', newHTML);
+  listItem.insertAdjacentHTML('afterend', newHTML);  // Hier nochmal drüber schauen
   listItem.remove();
 }
 
