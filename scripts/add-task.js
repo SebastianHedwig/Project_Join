@@ -8,6 +8,9 @@ async function initAddTask() {
   await getData();                         // users/tasks laden
   await waitFor('.contact-options'); // Wartet, bis das Insert geladen ist
   populateAssignmentListFromFirebase({ assignedContacts: [] });
+  initSubtaskInput();
+  initSubtaskHandlers();
+  initSubtaskIconButtons();
 }
 
 // Helper: wartet, bis ein Selector im DOM existiert

@@ -9,7 +9,7 @@ function initSubtaskInput() {
     if (event.key === 'Enter' && subtaskInputRef.value.trim() !== '') {
       event.preventDefault();
       const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-      subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
+      subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
       subtaskInputRef.value = '';
     }
 
@@ -25,6 +25,10 @@ function initSubtaskHandlers() {
   const subtaskListRef = document.querySelector('.dlg-edit__subtask-list');
   if (!subtaskListRef) return;
 
+  subtaskListRef.addEventListener('dblclick', (event) => {
+    handleSubtaskEdit(event);
+  });
+
   subtaskListRef.addEventListener('click', (event) => {
     const listItem = event.target.closest('.dlg-edit__main__subtask.edit-mode');
     if (listItem) {
@@ -35,10 +39,8 @@ function initSubtaskHandlers() {
       }
     }
 
-    handleSubtaskEdit(event);
     handleSubtaskConfirm(event);
     handleSubtaskDelete(event);
-
   });
 }
 
@@ -53,7 +55,7 @@ function initSubtaskIconButtons() {
       event.preventDefault();
       if (subtaskInputRef.value.trim() !== '') {
         const subtaskHTML = getSubtaskTpl(subtaskInputRef.value.trim());
-        subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML);
+        subtaskListRef.insertAdjacentHTML('beforeend', subtaskHTML); // Hier nochmal drüber schauen
         subtaskInputRef.value = '';
         subtaskInputRef.focus();
       }
@@ -107,13 +109,25 @@ function handleSubtaskEdit(event) {
 
     input.addEventListener('keydown', (event) => {
       if (event.key === 'Escape') {
+        event.preventDefault();
         newListItem.remove();
         const originalHTML = getSubtaskTpl(currentText);
         subtaskList.insertAdjacentHTML('beforeend', originalHTML);
       }
+
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        const newText = input.value.trim();
+        if (newText) {
+          const newHTML = getSubtaskTpl(newText);
+          newListItem.insertAdjacentHTML('afterend', newHTML);
+          newListItem.remove();
+        }
+      }
     });
   }
 }
+
 
 function handleSubtaskDelete(event) {
   const deleteBtn = event.target.closest('.subtask-edit-box__delete-img');
