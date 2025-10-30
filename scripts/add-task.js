@@ -162,8 +162,12 @@ function clearTask() {
 
 function relocateRequiredInfo() {
   const isSmallScreen = window.innerWidth < 1025;
-  toggleFirstInfoBox(isSmallScreen);
-  toggleSecondInfoBox(isSmallScreen);
+  let currentPath = window.location.pathname;
+  let relativePath = '/pages/add-task.html';
+  if (currentPath.endsWith(relativePath)) {
+    toggleFirstInfoBox(isSmallScreen);
+    toggleSecondInfoBox(isSmallScreen);
+  }
 }
 
 function toggleFirstInfoBox(isSmallScreen) {
@@ -181,7 +185,7 @@ function toggleSecondInfoBox(isSmallScreen) {
   if (isSmallScreen && !requiredInfoDisplayed) {
     let insertHTML = getFieldRequiredInfo();
     rightColumn.innerHTML += insertHTML;
-  } else if(!isSmallScreen && requiredInfoDisplayed){
+  } else if (!isSmallScreen && requiredInfoDisplayed) {
     requiredInfoDisplayed.remove();
   }
 }

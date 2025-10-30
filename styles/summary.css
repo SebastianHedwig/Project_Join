@@ -223,6 +223,9 @@ h3 {
         width: 100%;
         max-width: 550px;
         padding-bottom: 10px;
+        height: 100%;
+        gap: 18px;
+                overflow-y: scroll;
     }
 
     .summary-content__right {
@@ -232,7 +235,6 @@ h3 {
     .summary-content__metrics.content-wrapper {
         margin-top: 40px;
         justify-content: center;
-        overflow-y: scroll;
         height: calc(100vh - 380px);
     }
 
@@ -273,5 +275,11 @@ h3 {
         min-width: 100px;
         height: fit-content;
         width: auto;
+    }
+
+    #bottom-row {
+        flex-wrap: wrap;
+        height: auto;
+        gap: 10px;
     }
 }
