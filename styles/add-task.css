@@ -151,7 +151,7 @@ a:focus-visible {
 }
 
 .alert-box {
-  background: white;
+  background: var(--color-maincolor);
   border-radius: 12px;
   padding: 40px 60px;
   text-align: center;
@@ -161,7 +161,7 @@ a:focus-visible {
 
 .alert-box h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: white;
 }
 
 .alert-buttons {
@@ -172,7 +172,7 @@ a:focus-visible {
 }
 
 .alert-buttons button {
-  background-color: #4589ff;
+  background-color: var(--color-lightblue);
   color: white;
   border: none;
   padding: 10px 24px;
