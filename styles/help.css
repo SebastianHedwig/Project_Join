@@ -35,19 +35,6 @@
   margin-right: 2.2rem;
 }
 
-.help-content_head-container {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 2rem;
-}
-
-.help-content_head-container img {
-  height: 2rem;
-  display: inline-flex;
-  justify-content: flex-end;
-}
-
 .go-back-arrow:hover {
   content: url("../assets/img/arrow-left-blue-hover.svg");
   cursor: pointer;

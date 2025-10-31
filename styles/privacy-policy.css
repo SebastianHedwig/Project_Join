@@ -33,3 +33,13 @@
 .data-privacy-content li {
     padding: 0.25rem 0;
 }
+
+.h1_head-container img {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .h1_head-container img {
+        display: inline-flex;
+    }
+}

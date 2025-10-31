@@ -13,5 +13,15 @@
 
 .legal-content h3 {
     font-size: 1.25rem;
-    font-weight: 700 ;
+    font-weight: 700;
+}
+
+.h1_head-container img {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .h1_head-container img {
+        display: inline-flex;
+    }
 }

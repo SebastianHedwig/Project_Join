@@ -325,6 +325,10 @@ input[type="checkbox"]:checked+label:hover {
         overflow-x: hidden;
     }
 
+    #msg{
+        display: none !important;
+    }
+
     .header__joinlogo {
         width: 64px;
         height: 78px;

@@ -314,3 +314,16 @@ select {
     padding: 0 1rem 0 1rem;
   }
 }
+
+.h1_head-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.h1_head-container img {
+  height: 2rem;
+  align-self: flex-start;
+  display: inline-flex;
+}
