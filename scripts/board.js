@@ -13,13 +13,13 @@ async function initBoard() {
   await getData();
   loadTasks();
   updateAllPlaceholders();
+  initSearch();
 }
 
 async function renderTaskInfoDlg(taskId) {
   await getData();
-  const task = tasks.find(t => t.id === taskId);
-  if (!task) return console.warn('Task not found:', taskId);
-
+  const task = tasks.find(task => task.id === taskId);
+  if (!task) return;
   const dlgBox = document.getElementById("dlg-box");
   dlgBox.innerHTML = getTaskInfoDlgTpl(task);
   displayDlg();
@@ -27,13 +27,11 @@ async function renderTaskInfoDlg(taskId) {
 
 async function renderTaskEditDlg(taskId) {
   await getData();
-  const task = tasks.find(t => t.id === taskId);
-  if (!task) return console.warn('Task not found:', taskId);
-
+  const task = tasks.find(task => task.id === taskId);
+  if (!task) return;
   const dlgBox = document.getElementById("dlg-box");
   dlgBox.innerHTML = getTaskEditDlgTpl(task);
   displayDlg();
-
   initSubtaskInput();
   initSubtaskIconButtons();
   initSubtaskHandlers();
@@ -42,160 +40,99 @@ async function renderTaskEditDlg(taskId) {
 }
 
 async function renderAddTaskDlg(defaultTaskState = "to-do") {
-  const addTaskDlgRef = document.getElementById("dlg-box");
-
-  addTaskDlgRef.classList.add("dlg-add-task");
-  addTaskDlgRef.innerHTML = "";
-  addTaskDlgRef.innerHTML = getAddTaskDlgTpl(defaultTaskState);
-
-  const insertElement = addTaskDlgRef.querySelector("[data-insert]");
-  await InsertLoader.loadInsertByElement(insertElement);
-
-  await waitFor('.contact-options');
+  const dlg = document.getElementById("dlg-box");
+  dlg.classList.add("dlg-add-task");
+  dlg.innerHTML = getAddTaskDlgTpl(defaultTaskState);
+  await InsertLoader.loadInsertByElement(dlg.querySelector("[data-insert]"));
+  await waitFor(".contact-options");
   populateAssignmentListFromFirebase({ assignedContacts: [] });
-
-  await waitFor('.dlg-edit__subtask-list');
+  await waitFor(".dlg-edit__subtask-list");
   initSubtaskInput();
   initSubtaskHandlers();
   initSubtaskIconButtons();
-
   displayDlg();
 }
 
 function loadTasks() {
-  Object.values(columnMap).forEach(id => {
-    document.getElementById(id).innerHTML = '';
-  });
-
-  tasks.forEach(task => {
-    const columnId = columnMap[task.taskState];
-    if (columnId) {
-      document.getElementById(columnId).innerHTML += getTasksTemplate(task);
-    }
-  });
-
+  clearColumns();
+  tasks.forEach(task => appendTaskToColumn(task));
   updateAllPlaceholders();
 }
 
 async function deleteTask(taskId) {
   try {
     const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}.json`;
-
-    const response = await fetch(url, {
-      method: 'DELETE'
-    });
-
-    if (!response.ok) {
-      throw new Error(`Fehler beim Löschen: ${response.status}`)
-    }
-
-    console.log(`Task ${taskId} erfolgreich gelöscht`);
-
+    const response = await fetch(url, { method: "DELETE" });
+    if (!response.ok) throw new Error(`Fehler: ${response.status}`);
     await getData();
     loadTasks();
     updateAllPlaceholders();
     hideDlg();
-
   } catch (error) {
-    console.error('Fehler beim Löschen des Tasks:', error);
+    console.error("Fehler beim Löschen:", error);
   }
 }
 
-function updateColumnPlaceholder(columnId) {
-  const column = document.getElementById(columnId);
-  if (!column) return;
-
-  const hasTasks = column.querySelector(".task");
-  const existingPlaceholder = column.querySelector(".no-tasks-placeholder");
-
-  if (hasTasks && existingPlaceholder) {
-    existingPlaceholder.remove();
-    return;
-  }
-
-  if (!hasTasks && !existingPlaceholder) {
-    const placeholderEl = createElementFromHTML(getPlaceholderTpl());
-    column.appendChild(placeholderEl);
-  }
+function clearColumns() {
+  Object.values(columnMap).forEach(id => {
+    document.getElementById(id).innerHTML = "";
+  });
 }
 
-function createElementFromHTML(html) {
-  const template = document.createElement("template");
-  template.innerHTML = html.trim();
-  return template.content.firstElementChild;
+function appendTaskToColumn(task) {
+  const colId = columnMap[task.taskState];
+  if (!colId) return;
+  const col = document.getElementById(colId);
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = getTasksTemplate(task).trim();
+  col.appendChild(wrapper.firstElementChild);
 }
 
 function updateAllPlaceholders() {
-  updateColumnPlaceholder("to-do-tasks");
-  updateColumnPlaceholder("in-progress-tasks");
-  updateColumnPlaceholder("await-feedback-tasks");
-  updateColumnPlaceholder("done-tasks");
+  Object.values(columnMap).forEach(updateColumnPlaceholder);
+}
+
+function updateColumnPlaceholder(columnId) {
+  const col = document.getElementById(columnId);
+  const hasTask = col.querySelector(".task");
+  const placeholder = col.querySelector(".no-tasks-placeholder");
+  if (hasTask && placeholder) placeholder.remove();
+  if (!hasTask && !placeholder) {
+    const div = document.createElement("div");
+    div.innerHTML = getPlaceholderTpl();
+    col.appendChild(div.firstElementChild);
+  }
 }
 
 function fillEditFormWithTaskData(task) {
-  document.getElementById('title-input').value = task.title || '';
-  document.getElementById('descriptions-input').value = task.description || '';
-  document.getElementById('due-date').value = task.dueDate || '';
-
-  const priorityBtn = document.getElementById(task.priority);
-  if (priorityBtn) {
-    changePriorityBtn(priorityBtn);
-  }
-
-  const ul = document.querySelector('.dlg-edit__subtask-list');
-  if (ul) {
-    ul.innerHTML = '';
-    if (task.subtasks && typeof task.subtasks === 'object') {
-      Object.values(task.subtasks).forEach(subtask => {
-        if (subtask && subtask.task) {
-          ul.insertAdjacentHTML('beforeend', getSubtaskTpl(subtask.task));
-        }
-      });
-    }
-  }
+  document.getElementById("title-input").value = task.title || "";
+  document.getElementById("descriptions-input").value = task.description || "";
+  document.getElementById("due-date").value = task.dueDate || "";
+  const btn = document.getElementById(task.priority);
+  if (btn) changePriorityBtn(btn);
+  loadSubtasksIntoForm(task);
 }
 
-function getUserNameById(id) {
-  const user = users.find(user => user.id === id);
-  return user ? user.name : "Unknown User";
+function loadSubtasksIntoForm(task) {
+  const ul = document.querySelector(".dlg-edit__subtask-list");
+  if (!ul) return;
+  ul.innerHTML = "";
+  if (!task.subtasks) return;
+  Object.values(task.subtasks).forEach(subtask => {
+    if (!subtask?.task) return;
+    const li = document.createElement("li");
+    li.innerHTML = getSubtaskTpl(subtask.task).trim();
+    ul.appendChild(li.firstElementChild);
+  });
 }
 
-function getUserPicById(id) {
-  const user = users.find(user => user.id === id);
-  return user ? user.profilImgColor : null;
-}
+const getUserNameById = id => users.find(user => user.id === id)?.name || "Unknown User";
+const getUserPicById = id => users.find(user => user.id === id)?.profilImgColor || null;
+const getUserInitialsById = id =>
+  users.find(user => user.id === id)?.name?.split(" ").map(name => name[0].toUpperCase()).join("") || "";
 
-function getUserInitialsById(id) {
-  const user = users.find(u => u.id === id);
-  if (!user || !user.name) return "";
-  return user.name
-    .split(" ")
-    .map(word => word.charAt(0).toUpperCase())
-    .join("");
-}
-
-
-
-function handleResizeScreenBoard() {
-  const isSmallScreen = window.innerWidth < 1025;
-  const boardHead = document.getElementById('board-head');
-  setLayout(isSmallScreen);
-  if (currentLayout === 'mobile') {
-    renderMobileHead(boardHead);
-  } else if (currentLayout === 'desktop') {
-    renderDesktopHead(boardHead);
-  }
-}
-
-function renderMobileHead(boardHead) {
-  boardHead.innerHTML = getAddTaskBtnMobile();
-}
-
-function renderDesktopHead(boardHead) {
-  boardHead.innerHTML = getBoardHeadDesktop();
-}
-
-function setLayout(isSmallScreen) {
-  if (isSmallScreen) { currentLayout = 'mobile'; }
-  else { currentLayout = 'desktop'; }
+function toggleTasksAutoHeight(enable) {
+  document.querySelectorAll(".tasks").forEach(col => {
+    col.style.height = enable ? "auto" : "calc(100vh - 27rem)";
+  });
 }

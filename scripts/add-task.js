@@ -1,19 +1,19 @@
-
 let chosenPriority = "medium";
 
 window.addEventListener("resize", relocateRequiredInfo);
 window.addEventListener("load", relocateRequiredInfo);
 
 async function initAddTask() {
-  await getData();                         // users/tasks laden
-  await waitFor('.contact-options'); // Wartet, bis das Insert geladen ist
+  await getData();
+  await waitFor(".contact-options"); // Insert ist geladen
   populateAssignmentListFromFirebase({ assignedContacts: [] });
   initSubtaskInput();
   initSubtaskHandlers();
   initSubtaskIconButtons();
+
 }
 
-// Helper: wartet, bis ein Selector im DOM existiert
+/** Helper: wartet, bis ein Selector im DOM existiert */
 function waitFor(selector) {
   return new Promise(resolve => {
     const el = document.querySelector(selector);
@@ -29,86 +29,121 @@ function waitFor(selector) {
   });
 }
 
+/* ================= Priority ================= */
 function changePriorityBtn(priorityBtn) {
   changePriorityBtnColor(priorityBtn.id);
   changePriorityBtnIcon(priorityBtn.id);
-  chosenPriority = priorityBtn.id
-  console.log(chosenPriority);
+  chosenPriority = priorityBtn.id;
 }
-
 function changePriorityBtnColor(btn) {
-  const colors = {
-    urgent: '#FF3D00',
-    medium: '#FFA700',
-    low: '#7AE229'
-  };
-  ['urgent', 'medium', 'low'].forEach(btn => {
-    document.getElementById(btn).style.backgroundColor = "#FFFFFF";
-    document.getElementById(btn).style.color = "#000000";
+  const colors = { urgent: "#FF3D00", medium: "#FFA700", low: "#7AE229" };
+  ["urgent", "medium", "low"].forEach(id => {
+    const b = document.getElementById(id);
+    b.style.backgroundColor = "#FFFFFF";
+    b.style.color = "#000000";
   });
   const selectedBtn = document.getElementById(btn);
   selectedBtn.style.backgroundColor = colors[selectedBtn.id];
   selectedBtn.style.color = "#FFFFFF";
 }
-
 function resetPriorityButtons() {
-  ['urgent', 'medium', 'low'].forEach(id => {
+  ["urgent", "medium", "low"].forEach(id => {
     const btn = document.getElementById(id);
     btn.style.backgroundColor = "#FFFFFF";
     btn.style.color = "#000000";
-    btn.querySelector('img').src = btn.querySelector('img').dataset.default;
+    const img = btn.querySelector("img");
+    if (img) img.src = img.dataset.default;
   });
   chosenPriority = "medium";
 }
-
-function changePriorityBtnIcon(btn) {
-  if (event) event.stopPropagation();
-  document.querySelectorAll('.priority-options-btn img').forEach(img => {
+function changePriorityBtnIcon(btnId) {
+  document.querySelectorAll(".priority-options-btn img").forEach(img => {
     img.src = img.dataset.default;
   });
-  const selectedBtnIcon = document.getElementById(btn).querySelector('img');
-  selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
+  const selectedBtnIcon = document.getElementById(btnId)?.querySelector("img");
+  if (selectedBtnIcon) selectedBtnIcon.src = selectedBtnIcon.dataset.selected;
 }
 
-function assignedTo() {
-  let select = document.getElementById('assigned-to');
-  users.forEach(u => {
-    let opt = document.createElement('option');
-    opt.value = u.id;
-    opt.textContent = `${u.name}`;
-    select.appendChild(opt);
-  });
-}
+/* ========== Category Dropdown & Validation (=Variante Proxy) ========== */
 
-window.handleCreateTask = function handleCreateTask(event) {
-  event.preventDefault();
-
-  const form = event.target;
-
-  if (!form.checkValidity()) {
-    form.reportValidity();
+// Öffnen/Schließen + Auswahl + Außenklick (delegiert)
+document.addEventListener('click', (e) => {
+  // Toggle
+  const trigger = e.target.closest('.category-selection .selector');
+  const root    = e.target.closest('.category-selection');
+  if (trigger && root) {
+    root.classList.toggle('open');
     return;
   }
 
-  createTask();
+  // Option gewählt
+  const opt = e.target.closest('.category-selection .category-options li');
+  if (opt) {
+    const currentRoot   = opt.closest('.category-selection');
+    const visibleInput  = currentRoot.querySelector('.selector');
+    const proxyInput    = document.getElementById('category-proxy');
+    const hiddenInput   = document.getElementById('category-hidden');
+
+    const text  = opt.textContent.trim();
+    const value = opt.dataset.value || text;
+
+    if (visibleInput) visibleInput.value = text; // Anzeige
+    if (proxyInput)   proxyInput.value   = text; // Proxy erfüllt required
+    if (hiddenInput)  hiddenInput.value  = value; // tatsächlicher Wert
+
+    currentRoot.classList.remove('open');
+    return;
+  }
+
+  // Klick außerhalb -> schließen
+  if (!e.target.closest('.category-selection')) {
+    document.querySelectorAll('.category-selection.open')
+      .forEach(el => el.classList.remove('open'));
+  }
+});
+
+// Submit: verlässt sich auf native Browser-Validierung (Proxy ist required)
+window.handleCreateTask = async function handleCreateTask(event) {
+  event.preventDefault();
+  const form = event.target;
+
+  if (!form.checkValidity()) {
+    form.reportValidity(); // zeigt „Fülle dieses Feld aus“
+    return;
+  }
+
+  try {
+    await createTask?.();
+  } catch (err) {
+    console.error('createTask() failed:', err);
+    return;
+  }
+
+  // Reset
   form.reset();
-  resetPriorityButtons();
-}
+  const catVisible = document.querySelector('.category-selection .selector');
+  const catProxy   = document.getElementById('category-proxy');
+  const catHidden  = document.getElementById('category-hidden');
+  if (catVisible) catVisible.value = '';
+  if (catProxy)   catProxy.value   = '';
+  if (catHidden)  catHidden.value  = '';
+  resetPriorityButtons?.();
+};
 
-
+/* ================= Task-Erstellung ================= */
 async function createTask() {
+  const taskStateRef = document.getElementById("task-state").value;
 
-  const taskStateRef = document.getElementById('task-state').value;
-
-  let newTask = {
-    title: document.getElementById('title').value,
-    description: document.getElementById('description').value,
-    dueDate: document.getElementById('due-date').value,
+  const newTask = {
+    title:        document.getElementById("title").value,
+    description:  document.getElementById("description").value,
+    dueDate:      document.getElementById("due-date").value,
     assignedContacts: getSelectedAssignmentIds(),
-    category: getSelectedCategoryText(),
-    subtasks: collectSubtasksFromEditDialog(),
-    priority: chosenPriority,
-    taskState: taskStateRef
+    category:     getSelectedCategoryText(),   // sichtbarer Text
+    categoryValue:getSelectedCategoryValue(),  // ID/Value (optional)
+    subtasks:     collectSubtasksFromEditDialog(),
+    priority:     chosenPriority,
+    taskState:    taskStateRef
   };
 
   const key = await getNextTaskKey();
@@ -118,74 +153,77 @@ async function createTask() {
   console.log(tasks);
 }
 
-
+/* ================= Overlay / Navigation ================= */
 function showAlertOverlay() {
-  const overlay = document.getElementById('alert-overlay');
-  overlay.classList.remove('d-none');
+  const overlay = document.getElementById("alert-overlay");
+  overlay.classList.remove("d-none");
 }
-
-
 function closeAlertOverlay() {
-  const overlay = document.getElementById('alert-overlay');
-  overlay.classList.add('d-none');
+  const overlay = document.getElementById("alert-overlay");
+  overlay.classList.add("d-none");
   window.location.reload();
 }
-
-
 function goToBoard() {
-  window.location.href = './board.html';
+  window.location.href = "./board.html";
 }
 
-
-function getSelectedUserIds(selectId = 'assigned-to') {
-  return Array.from(document.getElementById(selectId).selectedOptions).map(option => option.value);
+/* ================= Utilities ================= */
+function getSelectedUserIds(selectId = "assigned-to") {
+  return Array.from(document.getElementById(selectId).selectedOptions)
+              .map(option => option.value);
 }
-
-
-function getSelectedCategoryText(selId = 'category') {
-  const el = document.getElementById(selId);
-  return el.options[el.selectedIndex].value;
+function getSelectedCategoryText() {
+  const el = document.querySelector(".category-selection .selector");
+  return (el && el.value) ? el.value.trim() : "";
 }
-
-
+function getSelectedCategoryValue() {
+  const el = document.getElementById("category-hidden");
+  return (el && el.value) ? el.value.trim() : "";
+}
 function formatCategory(category) {
-  return category
-    .replace(/([A-Z])/g, ' $1')        // fügt Leerzeichen vor Großbuchstaben ein
-    .replace(/^./, str => str.toUpperCase()); // macht den ersten Buchstaben groß
+  return String(category || "")
+    .replace(/([A-Z])/g, " $1")
+    .replace(/^./, str => str.toUpperCase())
+    .trim();
 }
-
-
 function clearTask() {
-  const form = document.getElementById('task-form');
+  const form = document.getElementById("task-form");
   form.reset();
+  const catVisible = document.querySelector(".category-selection .selector");
+  const catProxy   = document.getElementById("category-proxy");
+  const catHidden  = document.getElementById("category-hidden");
+  if (catVisible) catVisible.value = "";
+  if (catProxy)   catProxy.value   = "";
+  if (catHidden)  catHidden.value  = "";
   resetPriorityButtons();
 }
 
+/* ================= Responsive Hinweisboxen ================= */
 function relocateRequiredInfo() {
   const isSmallScreen = window.innerWidth < 1025;
-  const currentPath = window.location.pathname;
-  const relativePath = '/pages/add-task.html';
+  let currentPath = window.location.pathname;
+  let relativePath = "/pages/add-task.html";
   if (currentPath.endsWith(relativePath)) {
     toggleFirstInfoBox(isSmallScreen);
     toggleSecondInfoBox(isSmallScreen);
   }
 }
-
 function toggleFirstInfoBox(isSmallScreen) {
-  const requiredInfo = document.getElementById('required-info');
-  if (isSmallScreen && !requiredInfo.classList.contains('d-none')) {
-    requiredInfo.classList.add('d-none');
-  } else if (!isSmallScreen && requiredInfo.classList.contains('d-none')) {
-    requiredInfo.classList.remove('d-none');
+  let requiredInfo = document.getElementById("required-info");
+  if (!requiredInfo) return;
+  if (isSmallScreen && !requiredInfo.classList.contains("d-none")) {
+    requiredInfo.classList.add("d-none");
+  } else if (!isSmallScreen && requiredInfo.classList.contains("d-none")) {
+    requiredInfo.classList.remove("d-none");
   }
 }
-
 function toggleSecondInfoBox(isSmallScreen) {
-  const rightColumn = document.querySelector('.add-task__right-column');
-  if (isSmallScreen && !document.getElementById('required-mobile')) {
-    const insertHTML = getFieldRequiredInfo();
-    rightColumn.innerHTML += insertHTML;
-  } else if (!isSmallScreen && document.getElementById('required-mobile')) {
-    document.getElementById('required-mobile').remove();
+  let rightColumn = document.querySelector(".add-task__right-column");
+  if (!rightColumn) return;
+  if (isSmallScreen && !document.getElementById("required-mobile")) {
+    let insertHTML = getFieldRequiredInfo?.();
+    if (insertHTML) rightColumn.insertAdjacentHTML("beforeend", insertHTML);
+  } else if (!isSmallScreen && document.getElementById("required-mobile")) {
+    document.getElementById("required-mobile").remove();
   }
 }
