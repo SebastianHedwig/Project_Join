@@ -177,3 +177,40 @@ body {
   box-shadow: 0 0 0.25rem rgba(0, 0, 0, 0.16);
   z-index: 1000;
 }
+
+@media screen and (max-width: 1024px) {
+  .board-content.content-wrapper {
+    margin-top: 40px;
+  }
+  .board__head {
+    margin-bottom: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-search-and-add{
+    justify-content: flex-start;
+  }
+
+  .board__table{
+    grid-template-columns: repeat(1, 1fr);
+    overflow-y: auto;
+    height: calc(100vh - 100px);
+    padding-bottom: 80px;
+  }
+
+  .tasks {
+    height: 300px;
+    flex-direction: row;
+    padding-bottom: 10px;
+    overflow: hidden;
+  }
+
+  .task {
+    width: 250px;
+  }
+
+.task__subtasks-and-progressbar-box {
+  flex-wrap: wrap;
+}
+}

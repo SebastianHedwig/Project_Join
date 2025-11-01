@@ -163,8 +163,8 @@ function clearTask() {
 
 function relocateRequiredInfo() {
   const isSmallScreen = window.innerWidth < 1025;
-  let currentPath = window.location.pathname;
-  let relativePath = '/pages/add-task.html';
+  const currentPath = window.location.pathname;
+  const relativePath = '/pages/add-task.html';
   if (currentPath.endsWith(relativePath)) {
     toggleFirstInfoBox(isSmallScreen);
     toggleSecondInfoBox(isSmallScreen);
@@ -172,7 +172,7 @@ function relocateRequiredInfo() {
 }
 
 function toggleFirstInfoBox(isSmallScreen) {
-  let requiredInfo = document.getElementById('required-info');
+  const requiredInfo = document.getElementById('required-info');
   if (isSmallScreen && !requiredInfo.classList.contains('d-none')) {
     requiredInfo.classList.add('d-none');
   } else if (!isSmallScreen && requiredInfo.classList.contains('d-none')) {
@@ -181,9 +181,9 @@ function toggleFirstInfoBox(isSmallScreen) {
 }
 
 function toggleSecondInfoBox(isSmallScreen) {
-  let rightColumn = document.querySelector('.add-task__right-column');
+  const rightColumn = document.querySelector('.add-task__right-column');
   if (isSmallScreen && !document.getElementById('required-mobile')) {
-    let insertHTML = getFieldRequiredInfo();
+    const insertHTML = getFieldRequiredInfo();
     rightColumn.innerHTML += insertHTML;
   } else if (!isSmallScreen && document.getElementById('required-mobile')) {
     document.getElementById('required-mobile').remove();

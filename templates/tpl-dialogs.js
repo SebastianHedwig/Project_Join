@@ -59,7 +59,7 @@ function getTaskInfoDlgTpl(task) {
 }
 
 function getTaskEditDlgTpl(task) {
-    return /*html*/ `
+  return /*html*/ `
         <header class="dlg-edit__header">
             <img class="dlg-edit__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt=" small cross as close button">
         </header>
@@ -156,7 +156,7 @@ function getEditSubtaskTpl(value = '') {
 }
 
 function getAddTaskDlgTpl(defaultTaskState = "to-do") {
-    return /*html*/ `
+  return /*html*/ `
         <header class="dlg-edit__header dlg-add-task-header">
             <img class="dlg-edit__close-btn" src="../assets/img/close-delete-cross.svg" onclick="hideDlg()" alt=" small cross as close button">
         </header>

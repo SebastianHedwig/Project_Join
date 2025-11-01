@@ -225,7 +225,7 @@ h3 {
         padding-bottom: 50px;
         height: 100%;
         gap: 18px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .summary-content__right {
@@ -239,28 +239,19 @@ h3 {
     }
 
     .summary-content__metrics-row {
-        gap: 24px;
         height: 120px;
-        width: 100%;
+        gap: 2.5vw;
     }
 
     .metrics__box {
         justify-content: space-evenly;
     }
 
-    .metrics__box.metrics__box-top.metrics__icon-todo {
+    .metrics__box.metrics__box-top{
         border-radius: 20px;
         gap: 10px;
-        padding: 5% 8%;
-        width: fit-content;
-    }
-
-    .metrics__box.metrics__box-top.metrics__icon-done {
-        border-radius: 20px;
-        gap: 10px;
-        padding: 5% 8%;
-        min-width: 100px;
-        max-width: 300px;
+        padding: 5% 5%;
+        flex: 1
     }
 
     .metrics__box.metrics__box-middle {
@@ -270,16 +261,13 @@ h3 {
 
     .metrics__box.metrics__box-bottom {
         border-radius: 20px;
-        gap: 13px;
         padding: 5% 5%;
-        min-width: 100px;
-        height: fit-content;
-        width: auto;
+        height: 100%;
+        width: initial;
+        flex: 1;
     }
 
     #bottom-row {
-        flex-wrap: wrap;
-        height: auto;
-        gap: 10px;
+        justify-content: initial;
     }
 }

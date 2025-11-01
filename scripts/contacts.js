@@ -5,13 +5,12 @@ let contactName = document.getElementById('contact-name');
 let contactMail = document.getElementById('contact-email');
 let contactPhone = document.getElementById('contact-phone');
 let contactProfilImg = document.querySelector('.header__contact-profil-img');
+
 let showContact = false;
 let userArrayGlobal = [];
 
 window.addEventListener("resize", handleResizeScreenContacts);
 window.addEventListener("load", handleResizeScreenContacts);
-
-
 window.addEventListener("DOMContentLoaded", () => {
     let hoverImages = [
         "../assets/img/arrow-left-blue-hover.svg",
@@ -43,6 +42,7 @@ async function getDatafromFirebase() {
     }
 }
 
+
 async function deleteUser(userkeyToDelete) {
     try {
         const response = await fetch(DB_URL + "users/" + userkeyToDelete + ".json", {
@@ -51,18 +51,23 @@ async function deleteUser(userkeyToDelete) {
         if (!response.ok) {
             throw new Error(`Fehler beim Löschen: ${response.status}`);
         }
-        console.log("User erfolgreich gelöscht!");
     } catch (error) {
         console.error(error);
     }
 }
 
-async function deleteUserFromDB() {
+
+async function deleteUserFlow() {
     getAndStoreUserId(contactName.innerText);
     await deleteUser(STORED_USER_KEY);
     renderContactList();
     setContactCardtoInvisible();
+    if (window.innerWidth < 1025) {
+        showContact = false;
+        handleResizeScreenContacts();
+    }
 }
+
 
 function getInitialLetters(array) {
     let initialLetters = [];
@@ -74,6 +79,7 @@ function getInitialLetters(array) {
     let uniqueLetters = [...new Set(initialLetters)];
     return uniqueLetters
 }
+
 
 function renderInitialLettersSections(initialLettersArray) {
     let initialLetterSections = "";
@@ -110,6 +116,7 @@ async function renderContactList() {
     setEventlistenerEveryContact();
 }
 
+
 function setEventlistenerEveryContact() {
     let contactListItems = document.querySelectorAll('.contact-list__item');
     contactListItems.forEach(item => {
@@ -127,20 +134,24 @@ function setEventlistenerEveryContact() {
     })
 }
 
+
 function setContactCardtoVisible() {
     contactInfoCard.classList.remove('invisible');
     contactInfoCard.style.visibility = 'visible';
 }
 
+
 function setContactCardtoInvisible() {
     contactInfoCard.classList.add('invisible');
 }
+
 
 function showContactDetailsinCard(selectedContact) {
     let contactInfo = getContactInfofromContactlistandDB(selectedContact);
     setContactInfoIntoCard(contactInfo);
     setContactCardtoVisible();
 }
+
 
 function getContactInfofromContactlistandDB(contactElement) {
     let userName = contactElement.querySelector('.contact-name').innerText;
@@ -151,6 +162,7 @@ function getContactInfofromContactlistandDB(contactElement) {
     return { userName, email, phone, profilImgColor };
 }
 
+
 function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
     contactName.innerText = userName;
     contactMail.innerText = email;
@@ -159,10 +171,12 @@ function setContactInfoIntoCard({ userName, email, phone, profilImgColor }) {
     contactProfilImg.innerHTML = getBigUserProfilImg(profilImgColor, userInitals);
 }
 
+
 function handleResizeScreenContacts() {
     let isSmallScreen = window.innerWidth < 1025;
     handleContent(isSmallScreen);
 }
+
 
 function handleContent(isSmallScreen) {
     if (isSmallScreen && !showContact) {
@@ -180,6 +194,7 @@ function handleContent(isSmallScreen) {
     }
 }
 
+
 function showContactMobile() {
     if (window.innerWidth < 1025) {
         document.querySelector('.content-left').style.display = 'none';
@@ -188,13 +203,14 @@ function showContactMobile() {
         document.querySelector('.contacts-options-icon').style.display = 'flex';
         showContact = true;
     }
-
 }
+
 
 function showAddUserIconMoblie() {
     document.querySelector('.add-user-icon').style.display = 'flex';
     document.querySelector('.contacts-options-icon').style.display = 'none';
 }
+
 
 function showContactList() {
     showContact = false;
@@ -207,31 +223,34 @@ function showContactList() {
     })
 }
 
+
 function displayContactActionMenu() {
     document.querySelector('.manage-contact__actions').classList.remove('invisible');
     setTimeout(() => {
         document.addEventListener("click", handleMenuClick);
     }, 400);
-
 }
+
 
 function hideContactActionMenu() {
     document.querySelector('.manage-contact__actions').classList.add('invisible');
     document.removeEventListener("click", handleMenuClick);
 }
 
+
 function handleMenuClick(event) {
-    const isSmallScreen = window.innerWidth < 1025;
-    const menu = document.querySelector('.manage-contact__actions');
+    let isSmallScreen = window.innerWidth < 1025;
+    let menu = document.querySelector('.manage-contact__actions');
     if (isSmallScreen && !menu.contains(event.target)) {
         hideContactActionMenu();
     }
 }
 
+
 function AddContactSuccessAnimation() {
-    const successDlg = getSuccessDlg();
+    let successDlg = getAddUserSuccessDlg();
     document.body.insertAdjacentHTML('beforeend', successDlg);
-    const successDlgElement = document.querySelector('.create-contact-successful');
+    let successDlgElement = document.querySelector('.create-contact-successful');
     requestAnimationFrame(() => successDlgElement.classList.remove('invisible'));
     setTimeout(() => {
         successDlgElement.classList.add('invisible');

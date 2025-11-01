@@ -11,6 +11,18 @@ const footer = document.querySelector('footer');
 const welcomeScreenBckgrnd = document.getElementById('welcomescreen-mobile');
 let headerAdded = false;
 
+
+window.addEventListener("DOMContentLoaded", () => {
+    let animationImages = [
+        "../assets/img/logo-black.png",
+        "../assets/img/logo-white.png"
+    ];
+    animationImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+});
+
 window.addEventListener("resize", handleResizeScreen);
 window.addEventListener("load", handleResizeScreen);
 email.addEventListener('keyup', clearLoginError());

@@ -1,5 +1,5 @@
 body {
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 section {
@@ -32,9 +32,16 @@ main {
     height: 100%;
 }
 
-.content-left {
+.content-left,
+.content-right,
+.contact-list__item div,
+.contact-info__details,
+.manage-contact__header {
     display: flex;
     flex-direction: column;
+}
+
+.content-left {
     align-items: center;
     width: 38%;
     box-shadow: 0.25rem 0rem 0.75rem 0rem rgba(0, 0, 0, 0.1);
@@ -111,8 +118,6 @@ main {
 
 
 .contact-list__item div {
-    display: flex;
-    flex-direction: column;
     gap: 0.3125rem;
 }
 
@@ -139,8 +144,6 @@ main {
 }
 
 .content-right {
-    display: flex;
-    flex-direction: column;
     margin-top: 8rem;
     width: 62%;
     gap: 2rem;
@@ -192,8 +195,6 @@ main {
 }
 
 .manage-contact__header {
-    display: flex;
-    flex-direction: column;
     gap: 0.5rem;
 }
 
@@ -229,8 +230,6 @@ main {
 }
 
 .contact-info__details {
-    display: flex;
-    flex-direction: column;
     gap: 1.25rem;
 }
 
@@ -238,14 +237,8 @@ main {
     color: var(--color-email);
 }
 
-.add-user-icon {
-    display: none;
-}
-
-.contacts-options-icon {
-    display: none;
-}
-
+.add-user-icon,
+.contacts-options-icon,
 .blue-arrow-back {
     display: none;
 }
@@ -324,18 +317,23 @@ main {
 
     .content-right__contact-info-card {
         margin-bottom: 120px;
-        overflow-y: scroll;
+        overflow-y: auto;
     }
 
     .contact-info-card__header {
         gap: 20px;
     }
 
-    .add-user-icon {
-        display: flex;
+    .add-user-icon,
+    .contacts-options-icon,
+    .manage-contact__actions {
         position: fixed;
         bottom: 132px;
         right: 16px;
+    }
+
+    .add-user-icon {
+        display: flex;
         width: auto;
         height: 70px;
     }
@@ -350,9 +348,6 @@ main {
 
     .contacts-options-icon {
         display: none;
-        position: fixed;
-        bottom: 132px;
-        right: 16px;
         width: auto;
         height: 70px;
     }
@@ -368,9 +363,6 @@ main {
     .manage-contact__actions {
         pointer-events: all;
         opacity: 1;
-        bottom: 132px;
-        right: 16px;
-        position: fixed;
         z-index: 1000;
         background-color: var(--color-white);
         flex-direction: column;

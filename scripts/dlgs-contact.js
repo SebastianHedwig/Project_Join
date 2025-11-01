@@ -1,9 +1,8 @@
-
-
 function renderAddContactDlg() {
     dialog.innerHTML = getAddContactDlgTpl();
     showDlgWtihAnimation()
 }
+
 
 function renderEditContactDlg() {
     dialog.innerHTML = getEditContactDlgTpl();
@@ -18,6 +17,7 @@ function renderEditContactDlg() {
     getAndStoreUserId(userName);
 }
 
+
 function showDlgWtihAnimation() {
     displayDlg();
     setTimeout(() => {
@@ -25,12 +25,14 @@ function showDlgWtihAnimation() {
     }, 100);
 }
 
+
 function removeAnimationClass() {
     dialog.classList.remove('show');
     setTimeout(() => {
         hideDlg();
     }, 300);
 }
+
 
 function setMultipatch() {
     let nameValue = document.getElementById("contact-dlg-name-input").value;
@@ -44,25 +46,64 @@ function setMultipatch() {
     return multipatch
 }
 
+
 async function closeDlgAndSaveData() {
     removeAnimationClass();
     let multipatch = setMultipatch();
     await saveChangesToDB(multipatch);
     renderContactList();
     setContactCardtoInvisible();
+    if (window.innerWidth < 1025) {
+        showContact = false;
+        handleResizeScreenContacts();
+    }
 }
 
+
 async function putNewContactToDB() {
+    let { key, data, addUserName } = collectDataAddContactDlg()
+    let validInput = validateInputAddContact(addUserName);
+    if (!validInput) {
+        wrongInputPulseAnimation();
+        return;
+    } else {
+        await pushDataToDB(key, data);
+        removeAnimationClass();
+        renderContactList();
+        setContactCardtoInvisible();
+        AddContactSuccessAnimation();
+    }
+}
+
+
+function collectDataAddContactDlg() {
     let addUserName = document.getElementById('contact-dlg-name-input').value;
     let addEmail = document.getElementById('contact-dlg-email-input').value;
     let addPhone = document.getElementById('contact-dlg-phone-input').value;
     let key = generateUserId(addUserName);
     let data = createDataObjectAddContact(addUserName, addEmail, addPhone);
-    await pushDataToDB(key, data);
-    removeAnimationClass();
-    renderContactList();
-    setContactCardtoInvisible();
+    return { key, data, addUserName };
 }
+
+
+function validateInputAddContact(addUserName) {
+    if (addUserName !== "") {
+        return true
+    }
+}
+
+
+function wrongInputPulseAnimation() {
+    document.querySelectorAll('.inputfield__wrapper').forEach(element => {
+        element.style.borderColor = "var(--color-error)";
+    });
+    setTimeout(() => {
+        document.querySelectorAll('.inputfield__wrapper').forEach(element => {
+            element.style.borderColor = "var(--color-lightgrey";
+        });
+    }, 500);
+}
+
 
 function createDataObjectAddContact(addUserName, addEmail, addPhone) {
     let modifiedUserName = capitalizeInitials(addUserName)
