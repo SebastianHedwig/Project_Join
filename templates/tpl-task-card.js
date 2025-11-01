@@ -67,6 +67,27 @@ function getTasksTemplate(task) {
   `;
 }
 
+function getProgressbarAndTaskInfoTpl(percent, doneSubtasks, totalSubtasks) {
+  const label = totalSubtasks === 1 ? 'Subtask done' : 'Subtasks done';
+  return /*html*/ `
+    <div class="task__progressbar" style="--progress:${percent}%;">
+      <span class="task__progressbar-value">${doneSubtasks} / ${totalSubtasks}</span>
+    </div>
+    <span class="task__subtasks">${label}</span>
+  `;
+}
 
+function getAssignedUserInCardTpl(user) {
+  const initials = getUserNameInitials(user.name);
+  const color = user.profilImgColor;
+  return /*html*/ `
+    <svg width="32" height="32" viewBox="0 0 42 42" aria-hidden="true" focusable="false">
+      <title>${user.name}</title>
+      <circle cx="21" cy="21" r="20" fill="${color}" stroke="white" stroke-width="2" />
+      <text x="21" y="23" text-anchor="middle" dominant-baseline="middle"
+            font-size="12" fill="white" font-family="sans-serif">${initials}</text>
+    </svg>
+  `;
+}
 
 // MUSS NOCH REFACTORED WERDEN

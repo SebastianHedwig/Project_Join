@@ -95,7 +95,7 @@ body {
 .board__table {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.6rem;
+  gap: 1.5rem;
 }
 
 .board__table span {
@@ -130,9 +130,10 @@ body {
   min-width: 0;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: grab;
-  overflow-y: scroll;
-  height: calc(100vh - 370px);
-  padding: 10px 10px 30px 10px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  height: calc(100vh - 23rem);
+  padding: 0.625rem;
 }
 
 .task:hover {
