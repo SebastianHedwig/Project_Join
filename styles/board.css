@@ -123,8 +123,9 @@ body {
   min-width: 0;
 }
 
-.board__table span {
+.board__table__column__title{
   display: flex;
+  justify-content: space-between;
 }
 
 .board__table h2 {
