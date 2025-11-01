@@ -40,7 +40,7 @@ body {
 .board__head__searchbox img {
   height: 2rem;
   border-left: 0.15rem solid var(--color-lightgrey);
-  padding: 0 0.6rem 0 1.5rem;
+  padding: 0 0.6rem 0 1rem;
   cursor: pointer;
 }
 
@@ -51,6 +51,7 @@ body {
   border: none;
   outline: none;
   box-shadow: none;
+  cursor: text;
 }
 
 .board__head__searchbox input:focus-visible {
@@ -69,6 +70,25 @@ body {
 
 .search-btn:active {
   content: url(../assets/img/search-active.svg);
+}
+
+.search-hl {
+  display: inline;
+  background: rgba(69,137,255,0.22);
+  border-radius: 3px;
+  padding: 0 2px;
+  margin: 0;
+  line-height: inherit;
+  white-space: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  vertical-align: baseline;
+  font: inherit;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .add-task-btn {
@@ -100,7 +120,6 @@ body {
 
 .board__table span {
   display: flex;
-  justify-content: space-between;
 }
 
 .board__table h2 {
@@ -128,12 +147,12 @@ body {
   margin-top: 1rem;
   gap: 1rem;
   min-width: 0;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: grab;
+  padding: 0.625rem;
   overflow-y: auto;
   scrollbar-width: none;
-  height: calc(100vh - 23rem);
-  padding: 0.625rem;
+  max-height: calc(100vh - 27rem);
+  height: auto;
 }
 
 .task:hover {

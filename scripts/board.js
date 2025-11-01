@@ -9,6 +9,7 @@ async function initBoard() {
   await getData();
   loadTasks();
   updateAllPlaceholders();
+  initSearch();
 }
 
 async function renderTaskInfoDlg(taskId) {
@@ -165,4 +166,10 @@ function getUserInitialsById(id) {
     .split(" ")
     .map(word => word.charAt(0).toUpperCase())
     .join("");
+}
+
+function toggleTasksAutoHeight(enable) {
+  document.querySelectorAll('.tasks').forEach(col => {
+    col.style.height = enable ? 'auto' : 'calc(100vh - 27rem)';
+  });
 }
