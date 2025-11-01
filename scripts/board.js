@@ -5,6 +5,10 @@ const columnMap = {
   'done': 'done-tasks',
 };
 
+let currentLayout = null;
+window.addEventListener("resize", handleResizeScreenBoard);
+window.addEventListener("load", handleResizeScreenBoard);
+
 async function initBoard() {
   await getData();
   loadTasks();
@@ -76,12 +80,14 @@ function loadTasks() {
 async function deleteTask(taskId) {
   try {
     const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}.json`;
-    
+
     const response = await fetch(url, {
-      method: 'DELETE'});
+      method: 'DELETE'
+    });
 
     if (!response.ok) {
-      throw new Error(`Fehler beim Löschen: ${response.status}`)}
+      throw new Error(`Fehler beim Löschen: ${response.status}`)
+    }
 
     console.log(`Task ${taskId} erfolgreich gelöscht`);
 
@@ -91,7 +97,8 @@ async function deleteTask(taskId) {
     hideDlg();
 
   } catch (error) {
-    console.error('Fehler beim Löschen des Tasks:', error);}
+    console.error('Fehler beim Löschen des Tasks:', error);
+  }
 }
 
 function updateColumnPlaceholder(columnId) {
@@ -165,4 +172,30 @@ function getUserInitialsById(id) {
     .split(" ")
     .map(word => word.charAt(0).toUpperCase())
     .join("");
+}
+
+
+
+function handleResizeScreenBoard() {
+  const isSmallScreen = window.innerWidth < 1025;
+  const boardHead = document.getElementById('board-head');
+  setLayout(isSmallScreen);
+  if (currentLayout === 'mobile') {
+    renderMobileHead(boardHead);
+  } else if (currentLayout === 'desktop') {
+    renderDesktopHead(boardHead);
+  }
+}
+
+function renderMobileHead(boardHead) {
+  boardHead.innerHTML = getAddTaskBtnMobile();
+}
+
+function renderDesktopHead(boardHead) {
+  boardHead.innerHTML = getBoardHeadDesktop();
+}
+
+function setLayout(isSmallScreen) {
+  if (isSmallScreen) { currentLayout = 'mobile'; }
+  else { currentLayout = 'desktop'; }
 }

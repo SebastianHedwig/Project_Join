@@ -95,7 +95,7 @@ function renderContactsIntoSections(initialLettersArray, userArray) {
         let section = document.querySelector(`#initial-letter__wrapper-${letter}`);
         let filteredUsers = userArray.filter(user => user.name[0] === letter);
         filteredUsers.forEach(user => {
-            let userName = user.name;
+            let userName = checkLoggedInUser(user);
             let email = user.email;
             let profilImgColor = user.profilImgColor;
             let userInitals = getUserNameInitials(userName);
@@ -104,6 +104,17 @@ function renderContactsIntoSections(initialLettersArray, userArray) {
             section.insertAdjacentHTML("beforeend", userHTML);
         })
     })
+}
+
+
+function checkLoggedInUser(user) {
+    if (user.name === LOGGED_IN_USER) {
+        let userName = user.name + ' (You)';
+        return userName
+    } else {
+        let userName = user.name
+        return userName
+    }
 }
 
 

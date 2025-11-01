@@ -107,13 +107,7 @@ function showUpcomingDeadline(allDeadlines) {
 
 
 function formatDate(dateStr) {
-  const date = new Date(dateStr);
-  return date.toLocaleDateString("de-DE");
+    const date = new Date(dateStr);
+    return date.toLocaleDateString("de-DE");
 }
 
-
-window.addEventListener('DOMContentLoaded', () => {
-    let scrollContainer = document.querySelector('.summary-content__metrics.content-wrapper');
-    console.log(scrollContainer);
-    scrollContainer.scrollTop = 0; // scroll to top
-});

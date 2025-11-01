@@ -178,38 +178,89 @@ body {
 }
 
 @media screen and (max-width: 1024px) {
-  .board-content.content-wrapper {
-    margin-top: 40px;
+
+  main {
+    width: 100vw;
   }
+
+  .task-search-and-add {
+    width: 100%;
+  }
+
+  .board__head__searchbox {
+    min-width: 300px;
+  }
+
+  .board-content {
+    margin-top: 0px;
+    overflow-y: auto;
+    height: calc(100vh - 180px);
+  }
+
   .board__head {
-    margin-bottom: 24px;
+    margin: 40px 0px 24px 0px;
+    gap: 20px;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  .task-search-and-add{
+  .board__head--mobile {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  .task-search-and-add {
     justify-content: flex-start;
   }
 
-  .board__table{
+  .board__table {
     grid-template-columns: repeat(1, 1fr);
-    overflow-y: auto;
-    height: calc(100vh - 100px);
-    padding-bottom: 80px;
+    padding-bottom: 30px;
+  }
+
+  .board__table__column {
+    width: 100%;
+    max-width: calc(100vw - 32px);
   }
 
   .tasks {
     height: 300px;
+    max-width: 100%;
     flex-direction: row;
     padding-bottom: 10px;
-    overflow: hidden;
+    overflow-x: auto;
   }
 
   .task {
+    min-width: 250px;
     width: 250px;
   }
 
-.task__subtasks-and-progressbar-box {
-  flex-wrap: wrap;
-}
+  .task__subtasks-and-progressbar-box {
+    flex-wrap: wrap;
+  }
+
+  .task__content-metadata-box {
+    overflow: hidden;
+    height: 65px;
+  }
+
+  .task__description {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+  }
+
+  .task__assignment-and-priority-box {
+    justify-content: space-between;
+  }
+
+  .task__assignments{
+    max-width: 85%;
+  }
 }

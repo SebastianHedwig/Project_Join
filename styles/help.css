@@ -9,7 +9,7 @@
 }
 
 .help-content p {
-    margin: 0.5rem 0;
+  margin: 0.5rem 0;
 }
 
 .help-content ol {
@@ -55,4 +55,11 @@
   margin: 0;
   font-size: 1.125rem;
   text-align: justify;
+}
+
+@media screen and (max-width: 1024px) {
+  
+  .help-content {
+    margin-top: 40px;
+  }
 }

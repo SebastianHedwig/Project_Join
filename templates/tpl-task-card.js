@@ -1,8 +1,8 @@
 function getTasksTemplate(task) {
   // Progress berechnen
-  const totalSubtasks  = getTotalSubtaskCount(task);
-  const doneSubtasks   = getCheckedSubtaskCount(task);
-  const percent        = getSubtaskProgressPercent(task);
+  const totalSubtasks = getTotalSubtaskCount(task);
+  const doneSubtasks = getCheckedSubtaskCount(task);
+  const percent = getSubtaskProgressPercent(task);
 
   const hasSubtasks = totalSubtasks > 0;
   const progressHtml = hasSubtasks
@@ -13,8 +13,8 @@ function getTasksTemplate(task) {
   const assignedContactsArr = Array.isArray(task.assignedContacts)
     ? task.assignedContacts
     : (task.assignedContacts && typeof task.assignedContacts === 'object'
-        ? Object.values(task.assignedContacts).filter(Boolean)
-        : []);
+      ? Object.values(task.assignedContacts).filter(Boolean)
+      : []);
 
   const assignedUsersHtml = assignedContactsArr
     .map(id => {
@@ -33,8 +33,8 @@ function getTasksTemplate(task) {
   // Template
   return /*html*/ `
     <div class="task" draggable="true"
-         ondragstart="startDragging('${task.id}')"
-         onclick="renderTaskInfoDlg('${task.id}')">
+        ondragstart="startDragging('${task.id}')"
+        onclick="renderTaskInfoDlg('${task.id}')">
 
       <span class="${categoryClass}">${formatCategory(task.category)}</span>
 
@@ -53,13 +53,12 @@ function getTasksTemplate(task) {
         </div>
         <div class="task__priority">
           <img 
-            src="${
-              task.priority === 'urgent'
-                ? '../assets/img/priority-urgent.svg'
-                : task.priority === 'medium'
-                ? '../assets/img/priority-medium.svg'
-                : '../assets/img/priority-low.svg'
-            }"
+            src="${task.priority === 'urgent'
+      ? '../assets/img/priority-urgent.svg'
+      : task.priority === 'medium'
+        ? '../assets/img/priority-medium.svg'
+        : '../assets/img/priority-low.svg'
+    }"
             alt="${task.priority} priority icon">
         </div>
       </div>

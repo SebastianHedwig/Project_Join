@@ -42,4 +42,8 @@
     .h1_head-container img {
         display: inline-flex;
     }
+
+    .data-privacy-content {
+        margin-top: 40px;
+    }
 }

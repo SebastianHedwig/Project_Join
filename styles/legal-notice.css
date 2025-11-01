@@ -24,4 +24,8 @@
     .h1_head-container img {
         display: inline-flex;
     }
+
+    .legal-content {
+        margin-top: 40px;
+    }
 }

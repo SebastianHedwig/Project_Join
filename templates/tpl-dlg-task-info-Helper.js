@@ -12,7 +12,7 @@ function getPriorityImg(priority) {
 }
 
 
-  function renderAssignedUsers(contacts = []) {
+function renderAssignedUsers(contacts = []) {
   if (!Array.isArray(contacts)) contacts = [];
 
   const validContacts = contacts.filter(id => id && id.trim() !== "");
@@ -24,17 +24,17 @@ function getPriorityImg(priority) {
   return /*html*/ `
     <div id="assigned-user-list">
       ${contacts
-        .map(id => {
-          const name = getUserNameById(id);
-          const imgColour = getUserPicById(id);
-          const userInitials = getUserInitialsById(id);
-          return /*html*/ `
+      .map(id => {
+        const name = getUserNameById(id);
+        const imgColour = getUserPicById(id);
+        const userInitials = getUserInitialsById(id);
+        return /*html*/ `
             <div class="task__assignments__user-dates">
                 <div class="task__assignments-circle" style="background-color : ${imgColour}">${userInitials}</div>
                 <div class="assigned-user-name">${name}</div>
             </div>`;
-        })  
-        .join('')}
+      })
+      .join('')}
     </div>
   `;
 }
@@ -48,10 +48,10 @@ function renderSubtasks(subtasks = {}, taskId) {
     return /*html*/ `<span class="dlg__main__task-subtask no-subtasks">No subtasks</span>`;
   }
 
-  const entries = Object.entries(subtasks).sort(([a],[b])=>{
-    const na = parseInt(a.replace('subtask',''),10);
-    const nb = parseInt(b.replace('subtask',''),10);
-    return (isNaN(na)||isNaN(nb)) ? 0 : na - nb;
+  const entries = Object.entries(subtasks).sort(([a], [b]) => {
+    const na = parseInt(a.replace('subtask', ''), 10);
+    const nb = parseInt(b.replace('subtask', ''), 10);
+    return (isNaN(na) || isNaN(nb)) ? 0 : na - nb;
   });
 
   return entries.map(([key, st]) => {
@@ -127,7 +127,7 @@ async function toggleSubtaskChecked(taskId, subtaskKey, rowEl) {
   const url = `https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app/tasks/${taskId}/subtasks/${subtaskKey}.json`;
   await fetch(url, {
     method: 'PUT',
-    headers: {'Content-Type':'application/json'},
+    headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ task: text, taskChecked: willBeChecked })
   });
 
