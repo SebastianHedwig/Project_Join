@@ -48,7 +48,6 @@ function getPriorityIcon(priority) {
   return base + "low.svg";
 }
 
-
 function getCheckedSubtaskCount(task) {
   if (!task?.subtasks || typeof task.subtasks !== 'object') return 0;
   return Object.values(task.subtasks).filter(st => st && st.taskChecked === true).length;

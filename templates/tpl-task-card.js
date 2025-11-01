@@ -1,6 +1,5 @@
 function getTasksTemplate(task) {
   const view = buildTaskViewModel(task);
-
   return /*html*/ `
     <div class="task" draggable="true"
          ondragstart="startDragging('${task.id}')"
