@@ -23,8 +23,6 @@ async function getData() {
       tasks = Object.entries(data.tasks).map(([id, t]) => ({ id, ...t }));
     }
 
-    console.log("Users array:", users);
-    console.log("Tasks array:", tasks);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }

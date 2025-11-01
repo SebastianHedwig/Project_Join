@@ -95,6 +95,7 @@ window.handleCreateTask = function handleCreateTask(event) {
   resetPriorityButtons();
 }
 
+
 async function createTask() {
 
   const taskStateRef = document.getElementById('task-state').value;
@@ -117,10 +118,12 @@ async function createTask() {
   console.log(tasks);
 }
 
+
 function showAlertOverlay() {
   const overlay = document.getElementById('alert-overlay');
   overlay.classList.remove('d-none');
 }
+
 
 function closeAlertOverlay() {
   const overlay = document.getElementById('alert-overlay');
@@ -128,13 +131,16 @@ function closeAlertOverlay() {
   window.location.reload();
 }
 
+
 function goToBoard() {
   window.location.href = './board.html';
 }
 
+
 function getSelectedUserIds(selectId = 'assigned-to') {
   return Array.from(document.getElementById(selectId).selectedOptions).map(option => option.value);
 }
+
 
 function getSelectedCategoryText(selId = 'category') {
   const el = document.getElementById(selId);
@@ -148,14 +154,6 @@ function formatCategory(category) {
     .replace(/^./, str => str.toUpperCase()); // macht den ersten Buchstaben groß
 }
 
-
-function buildSubtasksObject(inputId = 'subtasks') {
-  const inputValue = document.getElementById(inputId).value;
-  const arr = inputValue.split(',').map(t => t.trim()).filter(Boolean);
-  return Object.fromEntries(arr.map((task, i) => [
-    `subtask${i}`, { task, taskChecked: false }
-  ]));
-}
 
 function clearTask() {
   const form = document.getElementById('task-form');

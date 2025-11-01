@@ -7,9 +7,10 @@ async function initSummary() {
     let loggedInUser = extractActiveUserInfo(users);
     setGreetingHeader();
     setGreetingName(loggedInUser);
-    currentDate();
+    getDeadlineDates();
     countToDos();
 }
+
 
 function setGreetingHeader() {
     let hour = new Date().getHours();
@@ -24,6 +25,7 @@ function setGreetingHeader() {
     greetingHeader.textContent = greetingText;
 }
 
+
 function setGreetingName(loggedInUser) {
     if (loggedInUser !== null) {
         greetingName.innerHTML = loggedInUser;
@@ -33,7 +35,8 @@ function setGreetingName(loggedInUser) {
     }
 }
 
-function currentDate() {
+
+/* function currentDate() {
     const months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"];
@@ -45,7 +48,7 @@ function currentDate() {
 
     let completeDate = `${month} ${day}, ${year}`;
     date.textContent = completeDate;
-}
+} */
 
 function countToDos() {
     const awaitingFeedback = document.getElementById('awaiting-feedback');
@@ -61,9 +64,9 @@ function countToDos() {
     tasksInBoard.textContent = tasks.length;
 }
 
+
 function countingLoop(index, counters, tasks) {
     const task = tasks[index];
-
     const countRules = [
         { field: 'taskState', match: 'to-do', counter: 'toDos' },
         { field: 'taskState', match: 'done', counter: 'done' },
@@ -78,3 +81,39 @@ function countingLoop(index, counters, tasks) {
     }
     );
 }
+
+
+function getDeadlineDates() {
+    let allDeadlines = [];
+    for (let index = 0; index < tasks.length; index++) {
+        if (tasks[index].priority === "urgent") {
+            allDeadlines.push(tasks[index].dueDate);
+        }
+    }
+    allDeadlines.sort((a, b) => new Date(a) - new Date(b));
+    showUpcomingDeadline(allDeadlines);
+}
+
+
+function showUpcomingDeadline(allDeadlines) {
+    let deadLine = document.getElementById('next-due-date');
+    deadLine.innerHTML = "";
+    if (allDeadlines.length === 0) {
+        deadLine.innerHTML = "";
+    } else {
+        deadLine.innerHTML = formatDate(allDeadlines[0]);
+    }
+}
+
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString("de-DE");
+}
+
+
+window.addEventListener('DOMContentLoaded', () => {
+    let scrollContainer = document.querySelector('.summary-content__metrics.content-wrapper');
+    console.log(scrollContainer);
+    scrollContainer.scrollTop = 0; // scroll to top
+});
