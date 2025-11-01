@@ -114,8 +114,13 @@ body {
 
 .board__table {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1.5rem;
+}
+
+.board__table__column,
+.tasks {
+  min-width: 0;
 }
 
 .board__table span {

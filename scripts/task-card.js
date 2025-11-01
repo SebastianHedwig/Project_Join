@@ -21,7 +21,7 @@ function getSubtaskStats(task) {
 function getAssignedUsersHtml(assigned) {
   const ids = normalizeAssignedContacts(assigned);
   return ids.map(id => {
-    const user = users.find(u => u.id === id);
+    const user = users.find(user => user.id === id);
     return user ? getAssignedUserInCardTpl(user) : "";
   }).join("");
 }

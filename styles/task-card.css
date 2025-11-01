@@ -6,6 +6,8 @@
   box-shadow: 0 0 0.625rem 0.188rem rgba(0, 0, 0, 0.1);
   border-radius: 1.5rem;
   color: var(--color-black);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .task__category {
@@ -33,19 +35,29 @@
   flex-direction: column;
   margin: 1.5rem 0;
   gap: 0.5rem;
+  min-width: 0;
+}
+
+.task__title,
+.task__description {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .task__title {
   color: var(--color-maincolor);
   font-size: 1rem;
   font-weight: 700;
+  overflow-wrap: break-word;
 }
 
 .task__description {
   color: var(--color-greyicons);
   font-size: 1rem;
   font-weight: 400;
-  white-space: pre-line;
+  white-space: pre-wrap;
+  hyphens: auto;
 }
 
 .task__subtasks-and-progressbar-box {
@@ -128,7 +140,7 @@
 .task__assignments-circle {
   display: flex;
   align-items: center;
-  justify-content: center; 
+  justify-content: center;
   height: 2.5rem;
   width: 2.5rem;
   border-radius: 50%;
