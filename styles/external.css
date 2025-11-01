@@ -1,0 +1,42 @@
+@media screen and (max-width: 1024px) {
+    .nav-menu {
+        justify-content: space-between;
+        padding: 0 16px;
+    }
+
+    .nav-menu__btn-container {
+        width: fit-content;
+    }
+
+    .nav-menu__bottom__btn {
+        display: flex;
+        flex-direction: row;
+        margin: 2px 0px;
+        gap: 1rem;
+    }
+
+    .nav-menu__bottom__btn a {
+        flex-direction: initial;
+        margin: 0;
+        padding: 8px 12px;
+        height: 100%;
+        width: fit-content;
+        min-width: unset;
+        max-width: none;
+    }
+
+    .nav-menu__bottom__btn a:hover {
+        color: var(--color-white);
+        font-weight: inherit;
+    }
+
+    .data-privacy-content,
+    .legal-content {
+        margin-top: 40px;
+    }
+
+
+    .content {
+        height: calc(100vh - 220px);
+    }
+}

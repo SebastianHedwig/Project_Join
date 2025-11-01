@@ -44,7 +44,6 @@ async function pushDataToDB(key, data) {
     body: JSON.stringify(data)
   });
   let responseToJson = await response.json();
-  console.log(responseToJson);
 }
 
 function sendSignupForm() {

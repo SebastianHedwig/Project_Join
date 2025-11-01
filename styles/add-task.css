@@ -219,7 +219,7 @@ a:focus-visible {
 
   #task-form {
     height: calc(100vh - 350px);
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .task-content__footer {

@@ -21,9 +21,10 @@ function handleLogo(isSmallScreen) {
 }
 
 function handleHelp(isSmallScreen) {
+    let dropDownMenu = document.querySelector('.user-drop-down-menu');
+    if(dropDownMenu == null){return}
     if (isSmallScreen && !helpAdded) {
-        document.querySelector('.user-drop-down-menu')
-            .insertAdjacentHTML('afterbegin', getLinkToHelp());
+        dropDownMenu.insertAdjacentHTML('afterbegin', getLinkToHelp());
         helpAdded = true;
     } else if (!isSmallScreen && helpAdded) {
         document.getElementById('link-to-help')?.remove();

@@ -6,6 +6,7 @@
     padding-bottom: 2rem;
     padding-top: 4rem;
     min-height: 100vh;
+    z-index: 2;
 }
 
 .nav-menu a {
