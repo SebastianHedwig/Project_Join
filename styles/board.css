@@ -286,7 +286,7 @@
   padding: 0.625rem;
   overflow-y: auto;
   scrollbar-width: none;
-  height: calc(100vh - 23rem);
+  height: calc(100vh - 28rem);
 }
 
 .task--placeholder {

@@ -114,6 +114,7 @@ main {
 }
 
 .content {
+  padding-top: 6.5rem;
   width: 100%;
   margin-bottom: auto;
 }

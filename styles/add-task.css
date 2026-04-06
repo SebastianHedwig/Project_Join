@@ -84,6 +84,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 #task-content {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
 }
@@ -91,9 +92,9 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 #task-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  height: calc(100vh - 200px);
-  overflow: auto;
+  height: 70vh;
+  justify-content: space-between;
+
 }
 
 #title {
@@ -177,17 +178,13 @@ textarea.input-error:focus,
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 2rem;
   gap: 1.5rem;
 }
 
 .task-content__container {
+  justify-content: center;
   display: flex;
-  margin-top: 2rem;
-  flex: 1;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  min-height: 0;
+  margin-top: 3rem;
 }
 
 .task-content__container textarea {
@@ -204,7 +201,6 @@ textarea.input-error:focus,
   display: flex;
   flex-direction: column;
   gap: 1.125rem;
-  max-width: 500px;
 }
 
 .task-content__container label,
@@ -222,7 +218,6 @@ textarea.input-error:focus,
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  max-width: 500px;
 }
 
 .priority-options {
@@ -246,17 +241,14 @@ textarea.input-error:focus,
 .grey-seperator {
   width: 0.125rem;
   background-color: var(--color-lightgrey);
+  margin: 0 3rem;
 }
 
 .task-content__footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 1rem;
-  margin-top: auto;
-  max-width: 1000px;
-  height: 4rem;
-  flex-shrink: 0;
+  padding: 0.5rem 0;
 }
 
 .task-content__footer-btn {
@@ -567,10 +559,6 @@ textarea.input-error:focus,
   .task-content__footer-btn {
     margin: 0 auto;
     justify-content: center;
-  }
-
-  .grey-seperator {
-    display: none;
   }
 
   .dlg-edit__main__assigned-user-container {

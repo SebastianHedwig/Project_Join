@@ -45,7 +45,7 @@
                 </div>
 
                 <div id="valid-email" class="inputfield__wrapper">
-                    <input id="email" type="email" maxlength="60" placeholder="E-Mail">
+                    <input id="email" type="email" maxlength="60" placeholder="E-Mail" autocomplete="email">
                     <small id="msg" style="color: var(--color-error); display:none; width: 12rem;"> ❌ invalid
                         E-Mail</small>
                     <img src="../assets/img/mail.svg" alt="icon of an email">
@@ -53,14 +53,14 @@
                 </div>
 
                 <div id="password__wrapper" class="inputfield__wrapper">
-                    <input id="password" type="password" placeholder="Password" aria-label="password"
+                    <input id="password" type="password" placeholder="Password" aria-label="password" autocomplete="new-password"
                         onclick="resetPwStyles()"  onblur="handlePasswordInputChange(this)">
                     <img id="password-icon" src="../assets/img/lock.svg" alt="icon of a lock"
                         onclick="setPasswordVisibility(this)">
                 </div>
 
                 <div id="confirm-pw__wrapper" class="inputfield__wrapper">
-                    <input id="confirm-password" type="password" placeholder="Confirm Password"
+                    <input id="confirm-password" type="password" placeholder="Confirm Password" autocomplete="new-password"
                         aria-label="confirm password" onclick="resetPwStyles()" onblur="validatePasswordMatch()">
                     <img id="confirm-password-icon" src="../assets/img/lock.svg" alt="icon of a lock"
                         onclick="setPasswordVisibility(this)">

@@ -1,11 +1,7 @@
-if (!localStorage.getItem('guestBoardId')) {
-    localStorage.setItem('guestBoardId', 'board_' + Math.random().toString(36).substr(2, 9));
-}
-
-const myBoardId = localStorage.getItem('guestBoardId');
+const FIREBASE_BASE_URL = 'https://join-25a0e-default-rtdb.europe-west1.firebasedatabase.app';
 
 async function syncDefaultData() {
-    const firebaseURL = `https://remotestorage-468cc-default-rtdb.europe-west1.firebasedatabase.app/${myBoardId}.json`;
+    const firebaseURL = `${FIREBASE_BASE_URL}/.json`;
     const check = await fetch(firebaseURL);
     const existingData = await check.json();
     if (!existingData) {
@@ -28,7 +24,7 @@ syncDefaultData();
  * Base URL of the Firebase Realtime Database (must end with a trailing slash).
  * @constant {string}
  */
-const DB_URL = `https://remotestorage-468cc-default-rtdb.europe-west1.firebasedatabase.app/${myBoardId}/`;
+const DB_URL = `${FIREBASE_BASE_URL}/`;
 
 /**
  * Header user dropdown menu element.
