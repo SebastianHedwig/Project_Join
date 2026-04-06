@@ -53,6 +53,7 @@ function setGreetingHeader() {
     let hour = new Date().getHours();
     let greetingText = "";
     if (hour < 12) greetingText = "Good morning,";
+    else if(hour < 15) greetingText = "Good day";
     else if (hour < 17) greetingText = "Good afternoon,";
     else greetingText = "Good evening,";
     greetingHeader.textContent = greetingText;
