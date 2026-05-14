@@ -138,7 +138,7 @@ function isValidSubtaskData(subtask) {
 /**
  * Sorts subtasks by numeric index (subtask0, subtask1, ...).
  * @param {Object} subtask - Subtasks object.
- * @returns {[string, Object][]} Sorted subtasks as entries.
+ * @returns {Array.<Array.<string|Object>>} Sorted subtasks as entries.
  */
 function sortSubtasks(subtask) {
   return Object.entries(subtask).sort(([a], [b]) => {

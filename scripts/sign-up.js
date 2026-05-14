@@ -1,7 +1,9 @@
 /** Regular expression for validating full names (first and last name) */
 const nameInputRegex = /^[a-zA-ZäöüÄÖÜß\-]+(\s[a-zA-ZäöüÄÖÜß\-]+)?$/;
 
-/** @type {HTMLElement} DOM elements for form inputs and validation */
+/** DOM element for the name input.
+ * @type {HTMLElement}
+ */
 const nameInput = document.getElementById('name');
 const nameWrapper = document.getElementById('name__wrapper');
 const nameErrorWarning = document.querySelector('.name-error-warning');
@@ -14,7 +16,9 @@ const signUpBtn = document.getElementById('sign-up-btn');
 const checkbox = document.getElementById('check');
 const email = document.getElementById('email');
 
-/** @type {Object} Tracks form field validation states */
+/** Tracks form field validation states.
+ * @type {Object}
+ */
 let formState = {
     isNameValid: false,
     isEmailValid: false,

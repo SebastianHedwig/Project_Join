@@ -15,13 +15,19 @@ const InsertLoader = (() => {
   // 🔹 CONSTANTS & CACHE SETUP
   // ======================================================
 
-  /** @constant {string} CACHE_KEY - LocalStorage key for cached inserts */
+  /** LocalStorage key for cached inserts.
+   * @constant {string}
+   */
   const CACHE_KEY = "html_insert_cache";
 
-  /** @constant {number} CACHE_TTL_MS - Cache lifetime in milliseconds (24 hours) */
+  /** Cache lifetime in milliseconds (24 hours).
+   * @constant {number}
+   */
   const CACHE_TTL_MS = 24 * 60 * 60 * 1000;
 
-  /** @type {Map<string, string>} - In-memory cache for inserts */
+  /** In-memory cache for inserts.
+   * @type {Map<string, string>}
+   */
   const memoryCache = new Map();
 
   /** @type {Record<string, {html: string, timestamp: number, lastModified: string|null}>} */

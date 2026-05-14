@@ -1,216 +1,261 @@
 # Join - Kanban Project Management Tool
 
-A collaborative task management application built with vanilla JavaScript, featuring drag-and-drop functionality, contact management, and real-time data synchronization with Firebase.
+![Join Preview](assets/img/project-join.png)
 
-## 🚀 Features
+A collaborative task management application built with vanilla JavaScript, featuring drag-and-drop functionality, contact management, responsive layouts, and real-time data synchronization with Firebase.
 
-- **Task Management**: Create, edit, and organize tasks with priorities, due dates, and subtasks
-- **Kanban Board**: Drag-and-drop interface for managing task workflow (To Do, In Progress, Awaiting Feedback, Done)
+## Features
+
+- **Task Management**: Create, edit, search, delete, and organize tasks with priorities, due dates, categories, and subtasks
+- **Kanban Board**: Drag-and-drop interface for managing task workflow across To Do, In Progress, Awaiting Feedback, and Done
 - **Contact Management**: Add, edit, and delete contacts with profile images and contact details
-- **User Authentication**: Secure login system with guest access option
-- **Responsive Design**: Fully responsive layout optimized for desktop, tablet, and mobile devices
+- **User Authentication**: Login, sign-up, and guest access
+- **Responsive Design**: Layouts optimized for desktop, tablet, and mobile devices
 - **Real-time Sync**: Firebase Realtime Database integration for data persistence
+- **Code Documentation**: JSDoc-based documentation for JavaScript modules
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Technologies](#technologies)
-- [Features Details](#features-details)
+- [Feature Details](#feature-details)
 - [Browser Compatibility](#browser-compatibility)
+- [Code Documentation](#code-documentation)
 - [Contributing](#contributing)
+- [License](#license)
+- [Authors](#authors)
 
-## 🛠️ Installation
+## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/join.git
 cd join
 ```
 
-2. Open the project:
-   - Simply open `index.html` in your browser, or
-   - Use a local development server:
-   ```bash
-            # Using Python
-   python -m http.server 8000
-   
-            # Using Node.js
-   npx serve
-   ```
+2. Install dependencies if you want to generate the documentation:
 
-3. Navigate to `http://localhost:8000` (or your server's address)
+```bash
+npm install
+```
 
-## 💻 Usage
+3. Open the project:
+
+You can open `index.html` directly in your browser, or use a local development server:
+
+```bash
+# Using Python
+python -m http.server 8000
+
+# Using Node.js
+npx serve
+```
+
+4. Navigate to `http://localhost:8000` or your server address.
+
+A local server is recommended because some pages load HTML inserts dynamically.
+
+## Usage
 
 ### Login
+
 - Use the login form with your credentials
-- Or click "Guest Login" for immediate access without registration
+- Create a new account on the sign-up page
+- Click "Guest Login" for immediate access without registration
 
 ### Dashboard (Summary)
+
 - View task statistics and upcoming deadlines
-- See personalized greeting based on time of day
+- See a personalized greeting based on the time of day
+- Check urgent tasks and overall workflow progress
 
 ### Board
-- Drag and drop tasks between columns
-- Click tasks to view details or edit
+
+- Drag and drop tasks between workflow columns
+- Click tasks to view details or edit them
 - Filter tasks by search term
-- Add new tasks with the "+" button
+- Add new tasks with the add button
+- Move tasks on mobile with touch-optimized controls
 
 ### Add Task
-- Fill in task details (title, description, due date)
+
+- Fill in task details such as title, description, and due date
 - Assign contacts to tasks
-- Set priority (low, medium, high)
-- Choose category (User Story or Technical Task)
-- Add subtasks for detailed tracking
+- Set priority: low, medium, or urgent
+- Choose a category: User Story or Technical Task
+- Add subtasks for detailed progress tracking
 
 ### Contacts
+
 - View all contacts in alphabetical sections
-- Add new contacts with profile colors
+- Add new contacts with profile colors and initials
 - Edit existing contact information
-- Delete contacts (with confirmation)
-- Mobile-responsive contact details view
+- Delete contacts with confirmation
+- Use the mobile-responsive contact details view
 
-## 📁 Project Structure
+## Project Structure
 
+```text
+Project_Join/                              # Project root
+├── .gitignore                             # Patterns for files and folders excluded from Git
+├── README.md                              # Project overview, setup, and usage documentation
+├── index.html                             # Entry point and login page
+├── script.js                              # Global helper functions and initialization
+├── style.css                              # Base CSS and global styles
+├── jsdoc.json                             # JSDoc configuration
+├── package.json                           # npm metadata and dependencies
+├── package-lock.json                      # Locked npm dependency versions
+├── data-backup.json                       # Sample or backup data
+├── assets/                                # Static assets
+│   ├── fonts/                             # Font files
+│   └── img/                               # Logos, icons, and preview image
+├── docs/                                  # Generated JSDoc documentation
+├── pages/                                 # HTML pages and page inserts
+│   ├── add-task-insert.html               # HTML insert for add-task components
+│   ├── add-task.html                      # Page for creating tasks
+│   ├── board.html                         # Kanban board page
+│   ├── contacts.html                      # Contact overview and management page
+│   ├── help.html                          # Help page
+│   ├── legal-notice-external.html         # External legal notice variant
+│   ├── legal-notice.html                  # Legal notice page
+│   ├── privacy-policy-external.html       # External privacy policy variant
+│   ├── privacy-policy.html                # Privacy policy page
+│   ├── sign-up.html                       # Registration page
+│   └── summary.html                       # Dashboard and statistics page
+├── scripts/                               # JavaScript modules and page logic
+│   ├── add-task-alert-overlay.js          # Overlay and alert logic for task creation
+│   ├── add-task-create-task-form.js       # Task form creation helpers
+│   ├── add-task-validation.js             # Add-task form validation
+│   ├── add-task.js                        # Main add-task page logic
+│   ├── authentication.js                  # Auth checks, session handling, and access control
+│   ├── board-dom.js                       # Board DOM helpers
+│   ├── board-helpers.js                   # General board helper functions
+│   ├── board-tasks.js                     # Task rendering and task data logic
+│   ├── board-ui.js                        # Board UI interactions
+│   ├── board.js                           # Main Kanban board logic
+│   ├── contactlist.js                     # Contact list rendering helpers
+│   ├── contacts.js                        # Contact CRUD, display, and sorting
+│   ├── db.js                              # Firebase Realtime Database interface
+│   ├── dlg-add-task-subtask-handling.js   # Subtask handling in add-task dialogs
+│   ├── dlg-contact-helper.js              # Contact dialog helper functions
+│   ├── dlg-edit-task-assignment.js        # Assignment logic for edit-task dialogs
+│   ├── dlg-edit-task.js                   # Task edit dialog logic
+│   ├── dlg-task-info-helper.js            # Task info dialog helpers
+│   ├── dlgs-contact.js                    # Contact dialog management and rendering
+│   ├── drag-and-drop-autoscroll.js        # Auto-scroll behavior during drag and drop
+│   ├── drag-and-drop-core.js              # Core drag-and-drop state and behavior
+│   ├── drag-and-drop-mobile.js            # Mobile drag-and-drop interactions
+│   ├── drag-and-drop-placeholders.js      # Placeholder rendering for drop targets
+│   ├── drag-and-drop-pointer.js           # Pointer handling for drag interactions
+│   ├── drag-and-drop.js                   # Drag-and-drop entry point
+│   ├── generate-user-id.js                # User ID generation and management
+│   ├── load-inserts.js                    # Dynamic loading of HTML inserts
+│   ├── login.js                           # Login page logic
+│   ├── mail-tld-validator.js              # Email TLD validation
+│   ├── manage-user-profil.js              # User profile display and updates
+│   ├── navigation.js                      # Responsive navigation and sidebar behavior
+│   ├── search-task.js                     # Task search and filtering
+│   ├── sign-up.js                         # Sign-up flow and validation
+│   ├── summary.js                         # Dashboard statistics and greeting logic
+│   └── task-card.js                       # Task card rendering and interaction
+├── templates/                             # Client-side HTML templates
+│   ├── tpl-add-task.js                    # Templates for add-task components
+│   ├── tpl-board.js                       # Templates for board columns and placeholders
+│   ├── tpl-contacts.js                    # Templates for contact lists and entries
+│   ├── tpl-dialogs.js                     # Templates for modal dialogs and overlays
+│   ├── tpl-login-sign-up.js               # Templates for login and sign-up forms
+│   ├── tpl-navigation.js                  # Navigation and sidebar template
+│   ├── tpl-task-card.js                   # Task card templates
+│   └── tpl-user-profil-img.js             # User avatar template and SVG generator
+└── styles/                                # CSS files separated by page and component
+    ├── add-task.css                       # Add-task page and dialog styles
+    ├── board.css                          # Kanban board styles
+    ├── contacts.css                       # Contacts page styles
+    ├── dlg-add-task.css                   # Add-task dialog styles
+    ├── dlg-contact.css                    # Contact dialog styles
+    ├── dlg-edit-task.css                  # Edit-task dialog styles
+    ├── dlg-task-info.css                  # Task info dialog styles
+    ├── external.css                       # Shared external page styles
+    ├── header.css                         # Header and topbar styles
+    ├── help.css                           # Help page styles
+    ├── legal-notice.css                   # Legal notice page styles
+    ├── login-signup.css                   # Login and sign-up styles
+    ├── navigation.css                     # Navigation and sidebar styles
+    ├── privacy-policy.css                 # Privacy policy page styles
+    ├── sign-up.css                        # Sign-up page styles
+    ├── summary.css                        # Dashboard styles
+    └── task-card.css                      # Individual task card styles
 ```
-Project_Join/                              # Projekt-Root
-├── .gitignore                             # Enthält Muster für nicht versionierte Dateien/Ordner
-├── README.md                              # Projektübersicht, Installation & Nutzungshinweise
-├── index.html                             # Einstieg / Login-Seite der Anwendung
-├── script.js                              # Globale Helferfunktionen & ggf. Firebase-Initialisierung
-├── style.css                              # Basis-CSS / globale Styles
-├── jsdoc.json                             # Konfiguration für JSDoc-Generierung
-├── package.json                           # npm-Metadaten (Name, Skripte, Abhängigkeiten)
-├── package-lock.json                      # Versionssperre für npm-Abhängigkeiten
-├── assets/                                # Statische Ressourcen (Bilder, Schriftarten, ...)
-│   ├── fonts/                                  # Schriftdateien (z. B. .woff, .ttf)
-│   └── img/                                    # Logos, Icons und sonstige Bilder
-├── docs/                                  # (Optional) generierte Dokumentation / JSDoc-Ausgabe
-├── pages/                                 # Vollständige HTML-Seiten / Page-Templates
-│   ├── add-task-insert.html                    # HTML-Partial / Insert für Add-Task-Komponenten
-│   ├── add-task.html                           # Seite mit Formular zum Erstellen einer Aufgabe
-│   ├── board.html                              # Kanban-Board-Seite (Spalten & Interaktion)
-│   ├── contacts.html                           # Kontaktübersicht / Kontaktverwaltung
-│   ├── help.html                               # Hilfeseite / Benutzeranleitungen
-│   ├── legal-notice-external.html              # Externe Variante des Impressums (z. B. für iframe)
-│   ├── legal-notice.html                       # Impressum / rechtliche Hinweise
-│   ├── privacy-policy-external.html            # Externe Variante der Datenschutz-Seite
-│   ├── privacy-policy.html                     # Datenschutz / Privacy Policy
-│   ├── sign-up.html                            # Registrierungsseite / Sign-Up-Formular
-│   └── summary.html                            # Dashboard / Übersicht mit Statistiken
-├── scripts/                               # JavaScript-Module / Seiten- und UI-Logik
-│   ├── add-task-alert-overlay.js               # Overlay- und Hinweislogik beim Anlegen von Tasks
-│   ├── add-task-validation.js                  # Eingabevalidierung für Add-Task-Formulare
-│   ├── add-task.js                             # Hauptlogik der Add-Task-Seite (Datenverarbeitung)
-│   ├── authentication.js                       # Auth-Checks, Session-Handling & Zugriffsprüfung
-│   ├── board-helper.js                         # Hilfsfunktionen für Board-Rendering & Logik
-│   ├── board.js                                # Kern-Logik des Kanban-Boards (Statuswechsel)
-│   ├── contacts.js                             # Kontakt-CRUD, Anzeige und Sortierung
-│   ├── db.js                                   # Schnittstelle zur Firebase Realtime Database
-│   ├── dlg-add-task-subtask-handling.js        # Subtask-Handling innerhalb Add-Task-Dialogen
-│   ├── dlg-edit-task-assignment.js             # Dialog-Logik zum Zuweisen von Personen
-│   ├── dlg-edit-task.js                        # Editier-Dialog für Aufgaben (Speichern/Abbrechen)
-│   ├── dlg-task-info-helper.js                 # Hilfsfunktionen für Task-Info-Dialoge
-│   ├── dlgs-contact.js                         # Management und Darstellung von Kontakt-Dialogen
-│   ├── drag-and-drop-helper.js                 # Utility-Funktionen für Drag & Drop Verhalten
-│   ├── drag-and-drop.js                        # Implementierung der Drag & Drop-Interaktionen
-│   ├── generate-user-id.js                     # Generierung und Verwaltung von User-IDs
-│   ├── load-inserts.js                         # Dynamisches Laden von HTML-Insert/Partials
-│   ├── login.js                                # Login-Seiten-Logik (Formular, Fehler, Guest-Login)
-│   ├── mail-tld-validator.js                   # Validierung der E-Mail-TLDs (Whitelist/Checks)
-│   ├── manage-user-profil.js                   # Anzeige/Änderung von Benutzerprofilen
-│   ├── navigation.js                           # Responsive Navigation & Sidebar-Verhalten
-│   ├── search-task.js                          # Such- und Filterfunktionen für Aufgaben
-│   ├── sign-up.js                              # Registrierung / Sign-Up-Flow & Validierung
-│   ├── summary.js                              # Dashboard-Logik (Statistiken, Karten, Termine)
-│   └── task-card.js                            # Erzeugung, Rendering und Interaktion von Task-Karten
-├── templates/                             # Clientseitige HTML-Templates (JS-Module)
-│   ├── tpl-add-task.js                         # Template(s) für Add-Task-Komponenten / Formulare
-│   ├── tpl-board.js                            # Templates für Board-Spalten & Platzhalter
-│   ├── tpl-contacts.js                         # Templates für Kontaktlisten & Listeneinträge
-│   ├── tpl-dialogs.js                          # Templates für Modal-Dialoge & Overlays
-│   ├── tpl-login-sign-up.js                    # Templates für Login- und Sign-Up-Formulare
-│   ├── tpl-navigation.js                       # Template für Navigation / Sidebar-Markup
-│   ├── tpl-task-card.js                        # Template für die Darstellung einer Task-Karte
-│   └── tpl-user-profil-img.js                  # Template / SVG-Generator für Nutzer-Avatare
-└── styles/                                # CSS-Dateien, nach Seite/Komponente getrennt
-    ├── add-task.css                            # Styles für Add-Task-Seite & Dialoge
-    ├── board.css                               # Styles für das Kanban-Board (Spalten & Karten)
-    ├── contacts.css                            # Styles für die Kontakte-Ansicht
-    ├── dlg-add-task.css                        # Styles für Add-Task-Dialoge
-    ├── dlg-contact.css                         # Styles für Kontakt-Dialoge
-    ├── dlg-edit-task.css                       # Styles für Edit-Task-Dialoge
-    ├── dlg-task-info.css                       # Styles für Task-Info-Dialoge
-    ├── external.css                            # Gemeinsame externe Styles / Resets
-    ├── header.css                              # Header- und Topbar-Styles
-    ├── help.css                                # Styles für die Hilfeseite
-    ├── legal-notice.css                        # Styles für Impressum & rechtliche Seiten
-    ├── login-signup.css                        # Styles für Login- und Signup-Seiten
-    ├── navigation.css                          # Styles für Navigation / Sidebar
-    ├── privacy-policy.css                      # Styles für Datenschutz-Seite
-    ├── summary.css                             # Styles für das Dashboard / Übersicht
-    └── task-card.css                           # Styles für einzelne Task-Karten
-```
 
-## 🔧 Technologies
+## Technologies
 
 - **Frontend**: HTML5, CSS3, Vanilla JavaScript (ES6+)
 - **Database**: Firebase Realtime Database
 - **Authentication**: Session Storage based authentication
 - **Icons & Images**: SVG, PNG
 - **Responsive Design**: CSS Media Queries, Flexbox, Grid
+- **Documentation**: JSDoc
 
-## ✨ Features Details
+## Feature Details
 
 ### Task Management
-- **Priority Levels**: Low (green), Medium (orange), High (red)
-- **Categories**: User Story, Technical Task
+
+- **Priority Levels**: Low, medium, and urgent
+- **Categories**: User Story and Technical Task
 - **Subtasks**: Checkbox tracking for task breakdown
 - **Due Dates**: Calendar picker with validation
-- **Search & Filter**: Real-time task filtering on board
+- **Search & Filter**: Real-time task filtering on the board
+- **Task Dialogs**: Detailed task view and edit workflow
 
 ### Contact Management
+
 - **Profile Images**: Auto-generated colored circles with initials
-- **Contact Details**: Name, email, phone number
+- **Contact Details**: Name, email, and phone number
 - **Alphabetical Grouping**: Organized by first letter
-- **Current User Indicator**: "(You)" tag for logged-in user
+- **Current User Indicator**: "(You)" tag for the logged-in user
+- **Task Assignment**: Contacts can be assigned to tasks
 
 ### Responsive Design
-- **Desktop**: Full sidebar navigation, split-view layouts
+
+- **Desktop**: Sidebar navigation and split-view layouts
 - **Tablet**: Optimized spacing and touch targets
-- **Mobile**: Hamburger menu, swipe-friendly interfaces, bottom navigation
+- **Mobile**: Compact navigation, mobile dialogs, and touch-friendly controls
 
 ### Drag and Drop
+
 - **Visual Feedback**: Placeholder indicators during drag
 - **Column Highlighting**: Drop zones highlight on hover
 - **Touch Support**: Mobile-friendly drag implementation
-- **Click Prevention**: Smart detection prevents accidental opens after drop
+- **Auto-scroll**: Board can scroll while dragging near viewport edges
+- **Click Prevention**: Smart detection prevents accidental task opens after dropping
 
-## 🌐 Browser Compatibility
+## Browser Compatibility
 
 - Chrome (recommended)
 - Firefox
 - Safari
 - Edge
-- Mobile browsers 
+- Mobile browsers
 
-## 📝 Code Documentation
+## Code Documentation
 
 The project uses JSDoc for comprehensive code documentation:
 
-- All functions include parameter and return type documentation
-- Event listeners are documented with `@listens` tags
-- Async functions marked with `@async` tag
-- Complex objects have detailed property documentation
+- Functions include parameter and return type documentation
+- Event listeners are documented with `@listens` tags where applicable
+- Async functions are marked with `@async`
+- Complex objects include property documentation
 
-Generate HTML documentation (if JSDoc is installed):
+Generate HTML documentation:
+
 ```bash
-jsdoc -c jsdoc.json
+npx jsdoc -c jsdoc.json
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
@@ -219,21 +264,23 @@ jsdoc -c jsdoc.json
 5. Open a Pull Request
 
 ### Code Style Guidelines
-- Use JSDoc comments for all functions
-- Follow existing naming conventions (camelCase for functions/variables)
-- Use `const` by default, `let` only when reassignment is needed
-- Keep functions under 15 lines when possible
-- Use semantic HTML and CSS class naming
 
-## 📄 License
+- Use JSDoc comments for functions
+- Follow existing naming conventions: camelCase for functions and variables
+- Use `const` by default, and `let` only when reassignment is needed
+- Keep functions focused and readable
+- Use semantic HTML and clear CSS class naming
+- Keep CSS organized by page and component
+
+## License
 
 This project is part of the Developer Akademie curriculum.
 
-## 👥 Authors
+## Authors
 
 - Join Team 1331 - Developer Akademie
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Firebase for backend infrastructure
 - Developer Akademie for project guidance
